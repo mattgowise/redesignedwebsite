@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Optimization -->
+    <title>Print Resources & Artwork Setup Guide | Gowise Print Norwich</title>
+    <meta name="description" content="Learn how to prepare your artwork for commercial printing. Discover the difference between CMYK and RGB, Digital vs Litho, and our pre-press checklist.">
+    <meta name="keywords" content="Artwork Setup Guide, Print Resources, CMYK vs RGB, Litho vs Digital Print, Print Ready PDF, Bleed and Crop Marks, Norwich Printers">
+    <link rel="canonical" href="https://www.gowise.co.uk/resources.html">
+    
+    <!-- Open Graph for Social Sharing -->
+    <meta property="og:title" content="Print Resources & Artwork Setup Guide | Gowise Print">
+    <meta property="og:description" content="A flawless printed product starts with a perfectly prepared file. Read our pre-press guides to get your artwork press-ready.">
+    <meta property="og:type" content="website">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+    <style>
+        /* Base Reset & Universal Font Enforcement */
+        * { 
+            box-sizing: border-box; 
+            margin: 0; 
+            padding: 0; 
+            font-family: "Roboto", -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; 
+            font-weight: 300; 
+        }
+        
+        /* Enable smooth scrolling for anchor links */
+        html { scroll-behavior: smooth; }
+        
+        body { color: #333; overflow-x: hidden; background-color: #fcfcfc; }
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+
+        /* Color Variables */
+        :root {
+            --gowise-magenta: #ff00ff;
+            --gowise-pink: #fd13f0;
+            --gowise-cyan: #009ee0; 
+            --header-dark: #333333;
+            --transition-speed: 0.4s;
+        }
+
+        /* Typography Styles */
+        h1, h2, h3, h4 { font-weight: 600; color: var(--header-dark); }
+        p { line-height: 1.8; color: #555; margin-bottom: 15px; }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: var(--gowise-magenta);
+            color: #fff;
+            text-transform: uppercase;
+            font-size: 14px;
+            font-weight: 600;
+            border-radius: 3px;
+            transition: background-color var(--transition-speed), transform 0.2s;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+        }
+        .btn:hover { background-color: var(--gowise-pink); transform: translateY(-2px); }
+        .btn-outline { background-color: transparent; border: 2px solid #fff; color: #fff; }
+        .btn-outline:hover { background-color: #fff; color: var(--gowise-magenta); }
+        .btn-outline-dark { background-color: transparent; border: 2px solid var(--gowise-magenta); color: var(--gowise-magenta); font-weight: 600; }
+        .btn-outline-dark:hover { background-color: var(--gowise-magenta); color: #fff; }
+
+        /* Image Helpers */
+        .cover-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Header & Nav */
+        .top-bar { background-color: var(--gowise-magenta); color: #fff; display: flex; justify-content: space-between; padding: 8px 5%; font-size: 13px; font-weight: 400; }
+        header { background-color: var(--header-dark); color: #fff; padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; }
+        .logo img { max-height: 60px; width: auto; transition: transform 0.3s ease; }
+        .logo:hover img { transform: scale(1.05); }
+        
+        .main-nav { display: flex; align-items: center; gap: 20px; font-size: 13px; font-weight: 300; }
+        .main-nav li { position: relative; padding: 10px 0; }
+        .main-nav a { padding: 5px 10px; transition: color 0.3s; text-transform: uppercase; }
+        .main-nav a:not(.btn-quote):hover, .main-nav a.active { color: var(--gowise-cyan); }
+        
+        .btn-quote { background-color: var(--gowise-magenta); color: #fff !important; padding: 10px 20px !important; border-radius: 3px; font-weight: 600; transition: background-color 0.3s ease, transform 0.2s ease; }
+        .btn-quote:hover { background-color: var(--gowise-pink); transform: translateY(-2px); }
+
+        .dropdown { display: none; position: absolute; top: 100%; left: 0; background-color: var(--gowise-cyan); min-width: 240px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); z-index: 99; }
+        .main-nav li:hover .dropdown { display: block; animation: dropFade 0.3s ease forwards; }
+        .dropdown li { padding: 0; }
+        .dropdown a { display: block; padding: 12px 15px; border-bottom: 1px solid rgba(255, 255, 255, 0.2); font-size: 12px; text-transform: none; color: #ffffff; }
+        .dropdown a:hover { background-color: rgba(0, 0, 0, 0.15); color: #fff; padding-left: 20px; transition: padding 0.3s ease, background-color 0.3s ease; }
+
+        @keyframes dropFade { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* 1. Inner Hero Section */
+        .inner-hero {
+            position: relative;
+            width: 100%;
+            min-height: 40vh;
+            display: flex;
+            align-items: center;
+            background-color: #111;
+            overflow: hidden;
+        }
+        
+        /* Frosted Glass Background added here */
+        .inner-hero-content {
+            position: relative;
+            z-index: 2;
+            padding: 40px;
+            margin: 0 5%;
+            max-width: 1000px;
+            color: #fff;
+            background-color: rgba(0, 0, 0, 0.65);
+            border-radius: 8px;
+            backdrop-filter: blur(5px);
+        }
+        
+        .inner-hero-content h1 { font-size: 42px; font-weight: 800; color: #fff; margin-bottom: 20px; line-height: 1.2; opacity: 0; transform: translateY(30px); animation: slideUpFade 0.8s forwards; }
+        .inner-hero-content p { font-size: 18px; color: #ddd; font-weight: 300; opacity: 0; transform: translateY(30px); animation: slideUpFade 0.8s 0.2s forwards; }
+        
+        .hero-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; }
+        .hero-bg img { animation: kenBurns 20s infinite alternate ease-in-out; }
+
+        @keyframes slideUpFade { to { opacity: 1; transform: translateY(0); } }
+        @keyframes kenBurns { from { transform: scale(1); } to { transform: scale(1.1); } }
+
+        /* 2. Intro Section */
+        .page-intro { padding: 60px 5%; max-width: 1000px; margin: 0 auto; text-align: center; }
+        .page-intro p { font-size: 18px; }
+
+        /* Section Layout Helpers */
+        .resource-section { padding: 80px 5%; scroll-margin-top: 100px; }
+        .resource-section:nth-child(even) { background-color: #f4f4f4; }
+        .section-container { max-width: 1400px; margin: 0 auto; }
+        .section-header { text-align: center; margin-bottom: 50px; }
+        .section-header h2 { font-size: 36px; color: var(--gowise-magenta); margin-bottom: 15px; }
+        .section-header p { font-size: 18px; max-width: 800px; margin: 0 auto; }
+
+        /* 3. Comparison Cards (CMYK/RGB & Digital/Litho) */
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        .comparison-card {
+            background: #fff;
+            padding: 40px;
+            border-radius: 4px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            border-top: 4px solid var(--gowise-cyan);
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .comparison-card.visible { opacity: 1; transform: translateY(0); }
+        .comparison-card h3 { font-size: 24px; margin-bottom: 20px; color: var(--header-dark); }
+        
+        /* Highlight Callout Box */
+        .callout-box {
+            background-color: var(--header-dark);
+            color: #fff;
+            padding: 40px;
+            border-radius: 4px;
+            margin-top: 20px;
+            border-left: 6px solid var(--gowise-magenta);
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .callout-box.visible { opacity: 1; transform: translateY(0); }
+        .callout-box h4 { color: var(--gowise-cyan); font-size: 20px; margin-bottom: 15px; }
+        .callout-box p { color: #ddd; margin-bottom: 0; }
+
+        /* 4. Checklist Section */
+        .checklist-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+        .checklist-item {
+            background: #fff;
+            padding: 30px;
+            border-radius: 4px;
+            display: flex;
+            gap: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+        }
+        .checklist-item.visible { opacity: 1; transform: translateY(0); }
+        .check-icon {
+            flex-shrink: 0;
+            width: 30px;
+            height: 30px;
+            background-color: var(--gowise-magenta);
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 18px;
+        }
+        .check-content h4 { font-size: 20px; margin-bottom: 10px; color: var(--gowise-cyan); }
+        .check-content p { font-size: 15px; margin-bottom: 0; }
+
+        /* 5. Partner/Plan CTA Section */
+        .partner-cta-section { background-color: var(--gowise-cyan); color: #fff; padding: 80px 5%; text-align: center; }
+        .partner-cta-container { max-width: 900px; margin: 0 auto; }
+        .partner-cta-section h2 { color: #fff; font-size: 36px; margin-bottom: 20px; }
+        .partner-cta-section p { color: #fff; font-size: 18px; margin-bottom: 30px; }
+        .cta-actions { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+        .partner-cta-section .btn { background-color: var(--header-dark); color: #fff; }
+        .partner-cta-section .btn:hover { background-color: #111; }
+
+        /* Footer overrides */
+        footer { background: var(--header-dark); color: #fff; position: relative; overflow: hidden; padding: 60px 5%; }
+        .footer-header { margin-bottom: 40px; text-align: center; }
+        .footer-header h2 { color: var(--gowise-magenta); font-size: 32px; }
+        .footer-grid { display: flex; align-items: stretch; justify-content: space-between; gap: 40px; max-width: 1400px; margin: 0 auto; }
+        .footer-arrow-container { flex: 0 0 120px; display: flex; align-items: center; }
+        .footer-arrow { width: 100%; height: auto; transform: translateX(-150px); opacity: 0; transition: transform 1s cubic-bezier(0.25, 1, 0.5, 1), opacity 1s ease; }
+        .footer-arrow.slide-in { transform: translateX(0); opacity: 1; }
+        .footer-text-columns { flex: 1; display: flex; justify-content: flex-start; gap: 60px; font-size: 14px; line-height: 1.8; padding-top: 20px; }
+        .map-container { flex: 0 0 400px; height: 300px; background: #ddd; border-radius: 4px; overflow: hidden; }
+        .map-container iframe { width: 100%; height: 100%; border: none; }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .comparison-grid, .checklist-grid { grid-template-columns: 1fr; }
+            .footer-grid { flex-wrap: wrap; justify-content: center; text-align: center; }
+            .footer-arrow-container { display: none; }
+            .footer-text-columns { flex-direction: column; gap: 30px; align-items: center; }
+            .map-container { width: 100%; flex: 1 1 100%; }
+        }
+        @media (max-width: 768px) {
+            .inner-hero-content { padding: 30px 20px; margin: 0 5%; }
+            .top-bar { flex-direction: column; text-align: center; gap: 10px; }
+            header { flex-direction: column; gap: 15px; padding: 20px 5%; }
+            .main-nav { flex-wrap: wrap; justify-content: center; }
+            .dropdown { display: none !important; }
+            .cta-actions { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">
+        <span>Tel: +44 (0)1603 431304</span>
+        <span>print@gowise.co.uk</span>
+    </div>
+
+    <!-- Navigation -->
+    <header>
+        <a href="index.html" class="logo">
+            <img src="gowise-logo.png" alt="Gowise Print Logo">
+        </a>
+        <nav>
+            <ul class="main-nav">
+                <li><a href="index.html">HOME</a></li>
+                <li>
+                    <a href="services.html">SERVICES ▾</a>
+                    <ul class="dropdown">
+                        <li><a href="services.html#printing">Commercial Printing</a></li>
+                        <li><a href="services.html#binding">Book Binding & Finishing</a></li>
+                        <li><a href="services.html#design">Graphic Design & Artwork</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="plant-list.html">PLANT LIST & CAPABILITIES ▾</a>
+                    <ul class="dropdown">
+                        <li><a href="plant-list.html#digital">Digital Press</a></li>
+                        <li><a href="plant-list.html#litho">Lithographic Press</a></li>
+                        <li><a href="plant-list.html#finishing">Finishing & Binding</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="resources.html" class="active">PRINT RESOURCES ▾</a>
+                    <ul class="dropdown">
+                        <li><a href="resources.html#colour-guide">Understanding Colour (CMYK vs RGB)</a></li>
+                        <li><a href="resources.html#digital-vs-litho">Digital vs. Lithographic</a></li>
+                        <li><a href="resources.html#setup-checklist">Artwork Setup Checklist</a></li>
+                    </ul>
+                </li>
+                <li><a href="about.html">ABOUT US</a>
+<ul class="dropdown">
+                        <li><a href="#history">Our History</a></li>
+                        <li><a href="#sustainability">Sustainability</a></li>
+                        <li><a href="#insights">Print Insights</a></li>
+                        <li><a href="#team">The GoWise Team</a></li>
+                    </ul>
+                </li>
+                <li><a href="index.html#estimator" class="btn-quote">GET A QUOTE</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- 1. Hero Section -->
+        <section class="inner-hero" aria-label="Introduction">
+            <div class="hero-bg">
+                <img src="Resources-1.jpg" alt="Macro shot of a designer's screen showing crop marks and bleed margins" class="cover-img">
+            </div>
+            <div class="inner-hero-content">
+                <h1>Print Resources & Artwork Guide</h1>
+                <p>A flawless printed product starts with a perfectly prepared file. Explore our guides below to understand the fundamentals of commercial print, or use our interactive tools to plan your next project.</p>
+            </div>
+        </section>
+
+        <!-- 2. Intro Section -->
+        <section class="page-intro scroll-reveal">
+            <p>Whether you are submitting a corporate annual report, a heavily illustrated folklore zine, or a short run of bespoke merchandise, setting your artwork up correctly saves time and ensures the best possible result on the press.</p>
+        </section>
+
+        <!-- 3. Understanding Colour (CMYK vs RGB) -->
+        <section id="colour-guide" class="resource-section">
+            <div class="section-container">
+                <div class="section-header scroll-reveal">
+                    <h2>Understanding Colour: CMYK vs. RGB</h2>
+                    <p>The most common issue in pre-press is the difference between how colours look on a screen and how they look on physical paper.</p>
+                </div>
+                
+                <div class="comparison-grid">
+                    <div class="comparison-card scroll-reveal" style="transition-delay: 0s;">
+                        <h3>RGB (Red, Green, Blue)</h3>
+                        <p>This is the colour model used by digital screens (monitors, phones, TVs). Because screens emit light, RGB can produce incredibly bright, neon, and highly saturated colours. <strong>We cannot print directly from RGB files.</strong></p>
+                    </div>
+                    <div class="comparison-card scroll-reveal" style="transition-delay: 0.2s;">
+                        <h3>CMYK (Cyan, Magenta, Yellow, Key/Black)</h3>
+                        <p>This is the standard colour model for commercial printing. Presses combine these four ink colours to reproduce images. Because ink absorbs light rather than emitting it, CMYK has a smaller "colour gamut" than RGB.</p>
+                    </div>
+                </div>
+
+                <div class="callout-box scroll-reveal">
+                    <h4>The GoWise Solution</h4>
+                    <p>If your illustrations or designs rely on vibrant tones that standard CMYK struggles to hit, our <strong>Fujifilm 5UPER COLOUR© Digital Press</strong> utilizes an expanded colour gamut to simulate vivid RGB and exact Pantone® spot colours with exceptional accuracy.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. Digital vs Litho -->
+        <section id="digital-vs-litho" class="resource-section">
+            <div class="section-container">
+                <div class="section-header scroll-reveal">
+                    <h2>Digital vs. Lithographic Printing</h2>
+                    <p>Which is right for you? Choosing the right press depends entirely on your quantity, timeline, and quality requirements.</p>
+                </div>
+                
+                <div class="comparison-grid">
+                    <div class="comparison-card scroll-reveal" style="transition-delay: 0s; border-top-color: var(--gowise-magenta);">
+                        <h3>Digital Printing</h3>
+                        <p><strong>Best for short to medium runs (typically 1 to 500 units).</strong></p>
+                        <p>Because there are no traditional printing plates to set up, digital is incredibly fast and cost-effective for smaller batches, limited-edition art prints, and variable data projects.</p>
+                    </div>
+                    <div class="comparison-card scroll-reveal" style="transition-delay: 0.2s; border-top-color: var(--gowise-magenta);">
+                        <h3>Lithographic Printing (Litho)</h3>
+                        <p><strong>Best for high-volume commercial runs.</strong></p>
+                        <p>Litho uses wet ink and custom plates. The initial setup takes longer and costs more, but once the press is running, the cost-per-page drops drastically. Litho also allows us to use traditional Pantone® spot colours and print on much larger raw sheet sizes (such as 450x640mm) for maximum yield.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. Setup Checklist -->
+        <section id="setup-checklist" class="resource-section">
+            <div class="section-container">
+                <div class="section-header scroll-reveal">
+                    <h2>Essential Artwork Setup Checklist</h2>
+                    <p>To avoid delays and additional pre-press fees, please ensure your files meet the following criteria before submission.</p>
+                </div>
+                
+                <div class="checklist-grid">
+                    <div class="checklist-item scroll-reveal" style="transition-delay: 0s;">
+                        <div class="check-icon">✓</div>
+                        <div class="check-content">
+                            <h4>Resolution</h4>
+                            <p>All images and raster graphics must be at least <strong>300 DPI</strong> (Dots Per Inch) at their actual printed size.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="checklist-item scroll-reveal" style="transition-delay: 0.1s;">
+                        <div class="check-icon">✓</div>
+                        <div class="check-content">
+                            <h4>Bleed</h4>
+                            <p>If your design features colour or images that run right to the edge of the page, you must include a <strong>3mm bleed</strong> on all sides. This gives our finishing team the tolerance needed to trim your pages perfectly without leaving white borders.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="checklist-item scroll-reveal" style="transition-delay: 0.2s;">
+                        <div class="check-icon">✓</div>
+                        <div class="check-content">
+                            <h4>Safe Zone</h4>
+                            <p>Keep all important text and logos at least <strong>5mm away</strong> from the trim edge to ensure nothing gets cut off during the binding or guillotining process.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="checklist-item scroll-reveal" style="transition-delay: 0.3s;">
+                        <div class="check-icon">✓</div>
+                        <div class="check-content">
+                            <h4>File Formats</h4>
+                            <p>We strongly prefer <strong>Print-Ready PDFs</strong>. Please ensure all fonts are outlined or embedded, and transparency layers are flattened.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. Plan Your Project (CTA) -->
+        <section id="plan-project" class="partner-cta-section scroll-reveal">
+            <div class="partner-cta-container">
+                <h2>Plan Your Project</h2>
+                <p>Ready to see how different stocks, sizes, and binding methods affect your bottom line? Take the guesswork out of your print budget.</p>
+                <p style="margin-bottom: 30px;">Use our interactive HTML cost calculation tool to input your preferred specifications—from standard A-sizes to custom 320x450mm sheets—and get an instant, transparent estimate for your next run.</p>
+                <div class="cta-actions">
+                    <a href="index.html#estimator" class="btn">Launch Print Cost Calculator</a>
+                    <a href="#" class="btn btn-outline">Contact Our Pre-Press Team</a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-header">
+            <h2>Visit Our Norwich Print Shop</h2>
+            <p>GoWise Print proudly serves local businesses, independent creators, and trade partners across Norfolk and the UK.</p>
+        </div>
+        <div class="footer-grid">
+            
+            <div class="footer-arrow-container">
+                <svg class="footer-arrow" id="slideArrow" viewBox="0 0 100 50" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0,15 L60,15 L60,0 L100,25 L60,50 L60,35 L0,35 Z" fill="var(--gowise-magenta)"/>
+                </svg>
+            </div>
+            
+            <div class="footer-text-columns">
+                <div>
+                    <p style="font-size: 18px; margin-bottom: 15px; color: var(--gowise-cyan); font-weight: 600;">CONTACT INFO</p>
+                    <p><strong>Address:</strong><br>4 Belmore Road<br>Thorpe St Andrew<br>Norwich, Norfolk<br>NR7 0PT</p>
+                    <br>
+                    <p><strong>Phone:</strong> +44 (0)1603 431304</p>
+                    <p><strong>Email:</strong> print@gowise.co.uk</p>
+                </div>
+                
+                <div>
+                    <p style="font-size: 18px; margin-bottom: 15px; color: var(--gowise-cyan); font-weight: 600;">OPENING HOURS</p>
+                    <p>MONDAY: 08:30 – 17:00<br>TUESDAY: 08:30 – 17:00<br>WEDNESDAY: 08:30 – 17:00<br>THURSDAY: 08:30 – 17:00<br>FRIDAY: 08:30 – 17:00<br>SATURDAY: CLOSED<br>SUNDAY: CLOSED</p>
+                </div>
+            </div>
+            
+            <div class="map-container">
+                <iframe src="https://maps.google.com/maps?q=NR7%200PT&t=&z=14&ie=UTF8&iwloc=&output=embed" loading="lazy" allowfullscreen title="GoWise Print Location Map"></iframe>
+            </div>
+            
+        </div>
+    </footer>
+
+    <script>
+        // Scroll Animations
+        const createObserver = (selector, visibleClass, threshold = 0.15) => {
+            const elements = document.querySelectorAll(selector);
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add(visibleClass);
+                        observer.unobserve(entry.target); 
+                    }
+                });
+            }, { threshold: threshold });
+            
+            elements.forEach(el => observer.observe(el));
+        };
+
+        // Initialize scroll reveal on elements
+        createObserver('.scroll-reveal', 'visible', 0.15);
+
+        // Footer Arrow Animation
+        const arrow = document.getElementById('slideArrow');
+        const arrowObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    arrow.classList.add('slide-in');
+                } else {
+                    arrow.classList.remove('slide-in');
+                }
+            });
+        }, { threshold: 0.1 }); 
+        if(arrow) arrowObserver.observe(arrow);
+    </script>
+</body>
+</html>
