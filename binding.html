@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Optimization -->
+    <title>Professional Book Binding & Print Finishing in Norwich | Gowise Print</title>
+    <meta name="description" content="From robust PUR bound paperbacks to high-quality square-back zines and portfolios, we provide complete, in-house print finishing in Norwich, Norfolk.">
+    <meta name="keywords" content="Book Binding Norwich, PUR Perfect Binding, Square Back Binding, Wire Binding Norfolk, Print Finishing, Zine Printing">
+    <link rel="canonical" href="https://www.gowise.co.uk/binding.html">
+    
+    <!-- Open Graph for Social Sharing -->
+    <meta property="og:title" content="Professional Book Binding in Norwich | Gowise Print">
+    <meta property="og:description" content="Complete, in-house print finishing to ensure your publication feels exactly as good as it looks.">
+    <meta property="og:type" content="website">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+    <style>
+        /* Base Reset & Universal Font Enforcement */
+        * { 
+            box-sizing: border-box; 
+            margin: 0; 
+            padding: 0; 
+            font-family: "Roboto", -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; 
+            font-weight: 300; 
+        }
+        
+        body { color: #333; overflow-x: hidden; background-color: #fcfcfc; }
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+
+        /* Color Variables */
+        :root {
+            --gowise-magenta: #ff00ff;
+            --gowise-pink: #fd13f0;
+            --gowise-cyan: #009ee0; 
+            --header-dark: #333333;
+            --transition-speed: 0.4s;
+        }
+
+        /* Typography Styles */
+        h1, h2, h3, h4 { font-weight: 600; color: var(--header-dark); }
+        p { line-height: 1.8; color: #555; margin-bottom: 15px; }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: var(--gowise-magenta);
+            color: #fff;
+            text-transform: uppercase;
+            font-size: 14px;
+            font-weight: 600;
+            border-radius: 3px;
+            transition: background-color var(--transition-speed), transform 0.2s;
+            border: none;
+            cursor: pointer;
+        }
+        .btn:hover { background-color: var(--gowise-pink); transform: translateY(-2px); }
+        .btn-outline { background-color: transparent; border: 2px solid #fff; color: #fff; }
+        .btn-outline:hover { background-color: #fff; color: var(--gowise-magenta); }
+
+        /* Placeholders */
+        .img-placeholder {
+            background-color: var(--gowise-magenta);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+            font-weight: 400;
+            font-size: 16px;
+            width: 100%;
+            height: 100%;
+            border: 1px solid rgba(255,255,255,0.2);
+            position: relative;
+        }
+
+        /* Header & Nav */
+        .top-bar { background-color: var(--gowise-magenta); color: #fff; display: flex; justify-content: space-between; padding: 8px 5%; font-size: 13px; font-weight: 400; }
+        header { background-color: var(--header-dark); color: #fff; padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; }
+        .logo img { max-height: 60px; width: auto; transition: transform 0.3s ease; }
+        .logo:hover img { transform: scale(1.05); }
+        
+        .main-nav { display: flex; align-items: center; gap: 20px; font-size: 13px; font-weight: 300; }
+        .main-nav li { position: relative; padding: 10px 0; }
+        .main-nav a { padding: 5px 10px; transition: color 0.3s; text-transform: uppercase; }
+        .main-nav a:not(.btn-quote):hover, .main-nav a.active { color: var(--gowise-cyan); }
+        
+        .btn-quote { background-color: var(--gowise-magenta); color: #fff !important; padding: 10px 20px !important; border-radius: 3px; font-weight: 600; transition: background-color 0.3s ease, transform 0.2s ease; }
+        .btn-quote:hover { background-color: var(--gowise-pink); transform: translateY(-2px); }
+
+        .dropdown { display: none; position: absolute; top: 100%; left: 0; background-color: var(--gowise-cyan); min-width: 240px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); z-index: 99; }
+        .main-nav li:hover .dropdown { display: block; animation: dropFade 0.3s ease forwards; }
+        .dropdown li { padding: 0; }
+        .dropdown a { display: block; padding: 12px 15px; border-bottom: 1px solid rgba(255, 255, 255, 0.2); font-size: 12px; text-transform: none; color: #ffffff; }
+        .dropdown a:hover { background-color: rgba(0, 0, 0, 0.15); color: #fff; padding-left: 20px; transition: padding 0.3s ease, background-color 0.3s ease; }
+
+        @keyframes dropFade { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* 1. Inner Hero Section */
+        .inner-hero {
+            position: relative;
+            width: 100%;
+            min-height: 50vh;
+            display: flex;
+            align-items: center;
+            background-color: #111;
+            overflow: hidden;
+        }
+        .inner-hero-content {
+            position: relative;
+            z-index: 2;
+            padding: 60px 5%;
+            max-width: 900px;
+            color: #fff;
+        }
+        .inner-hero-content h1 { font-size: 42px; font-weight: 800; color: #fff; margin-bottom: 20px; line-height: 1.2; opacity: 0; transform: translateY(30px); animation: slideUpFade 0.8s forwards; }
+        .inner-hero-content p { font-size: 18px; color: #ddd; font-weight: 300; opacity: 0; transform: translateY(30px); animation: slideUpFade 0.8s 0.2s forwards; }
+        .hero-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; }
+        .hero-bg .img-placeholder { animation: kenBurns 20s infinite alternate ease-in-out; }
+
+        @keyframes slideUpFade { to { opacity: 1; transform: translateY(0); } }
+        @keyframes kenBurns { from { transform: scale(1); } to { transform: scale(1.1); } }
+
+        /* 2. Intro Section */
+        .page-intro { padding: 80px 5%; max-width: 1000px; margin: 0 auto; text-align: center; }
+        .page-intro h2 { font-size: 32px; color: var(--gowise-cyan); margin-bottom: 25px; }
+        .page-intro p { font-size: 18px; }
+
+        /* 3. Alternating Service Rows */
+        .services-detail-section { padding: 40px 5% 80px; max-width: 1400px; margin: 0 auto; }
+        
+        .service-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            margin-bottom: 80px;
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .service-row.visible { opacity: 1; transform: translateY(0); }
+        .service-row:nth-child(even) .service-text { order: -1; } /* Alternates the layout */
+        
+        .service-img-container { height: 400px; border-radius: 4px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        .service-img-container .img-placeholder { transition: transform 0.6s ease; }
+        .service-row:hover .service-img-container .img-placeholder { transform: scale(1.05); }
+        
+        .service-text h3 { font-size: 28px; margin-bottom: 20px; color: var(--gowise-magenta); }
+        .ideal-for { margin-top: 20px; padding: 20px; background-color: #f4f4f4; border-left: 4px solid var(--gowise-cyan); font-style: italic; }
+        .ideal-for strong { font-weight: 600; color: var(--header-dark); font-style: normal; display: block; margin-bottom: 5px; }
+
+        /* 4. Value Add / Cross Sell Section */
+        .value-add-section { background-color: #f4f4f4; padding: 80px 5%; }
+        .value-add-container { max-width: 1200px; margin: 0 auto; }
+        .value-add-header { text-align: center; margin-bottom: 50px; }
+        .value-add-header h2 { font-size: 32px; margin-bottom: 15px; }
+        
+        .value-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
+        .value-card { background: #fff; padding: 30px; border-radius: 4px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); border-top: 4px solid var(--gowise-magenta); opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+        .value-card.visible { opacity: 1; transform: translateY(0); }
+        .value-card h4 { font-size: 20px; margin-bottom: 15px; }
+
+        /* 5. Strong CTA Section */
+        .cta-section { background-color: var(--gowise-magenta); color: #fff; padding: 80px 5%; text-align: center; }
+        .cta-section h2 { color: #fff; font-size: 36px; margin-bottom: 20px; }
+        .cta-section p { color: #fff; font-size: 18px; max-width: 800px; margin: 0 auto 30px; }
+        .cta-actions { display: flex; justify-content: center; gap: 20px; }
+        .cta-section .btn { background-color: #fff; color: var(--gowise-magenta); }
+        .cta-section .btn:hover { background-color: #f4f4f4; }
+
+        /* Footer overrides */
+        footer { background: var(--header-dark); color: #fff; position: relative; overflow: hidden; padding: 60px 5%; }
+        .footer-header { margin-bottom: 40px; text-align: center; }
+        .footer-header h2 { color: var(--gowise-magenta); font-size: 32px; }
+        .footer-grid { display: flex; align-items: stretch; justify-content: space-between; gap: 40px; max-width: 1400px; margin: 0 auto; }
+        .footer-arrow-container { flex: 0 0 120px; display: flex; align-items: center; }
+        .footer-arrow { width: 100%; height: auto; transform: translateX(-150px); opacity: 0; transition: transform 1s cubic-bezier(0.25, 1, 0.5, 1), opacity 1s ease; }
+        .footer-arrow.slide-in { transform: translateX(0); opacity: 1; }
+        .footer-text-columns { flex: 1; display: flex; justify-content: flex-start; gap: 60px; font-size: 14px; line-height: 1.8; padding-top: 20px; }
+        .map-container { flex: 0 0 400px; height: 300px; background: #ddd; border-radius: 4px; overflow: hidden; }
+        .map-container iframe { width: 100%; height: 100%; border: none; }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .service-row { gap: 40px; }
+            .value-grid { grid-template-columns: 1fr; }
+            .footer-grid { flex-wrap: wrap; justify-content: center; text-align: center; }
+            .footer-arrow-container { display: none; }
+            .footer-text-columns { flex-direction: column; gap: 30px; align-items: center; }
+            .map-container { width: 100%; flex: 1 1 100%; }
+        }
+        @media (max-width: 768px) {
+            .service-row { grid-template-columns: 1fr; margin-bottom: 50px; }
+            .service-row:nth-child(even) .service-text { order: 0; } /* Reset order so image is always on top on mobile */
+            .service-img-container { height: 250px; }
+            .cta-actions { flex-direction: column; }
+            .top-bar { flex-direction: column; text-align: center; gap: 10px; }
+            header { flex-direction: column; gap: 15px; padding: 20px 5%; }
+            .main-nav { flex-wrap: wrap; justify-content: center; }
+            .dropdown { display: none !important; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">
+        <span>Tel: +44 (0)1603 431304</span>
+        <span>print@gowise.co.uk</span>
+    </div>
+
+    <!-- Navigation -->
+    <header>
+        <a href="index.html" class="logo">
+            <img src="gowise-logo.png" alt="Gowise Print Logo">
+        </a>
+        <nav>
+            <ul class="main-nav">
+                <li><a href="index.html">HOME</a></li>
+                <li>
+                    <a href="#" class="active">SERVICES ▾</a>
+                    <ul class="dropdown">
+                        <li><a href="#">Commercial Printing</a></li>
+                        <li><a href="binding.html">Book Binding & Finishing</a></li>
+                        <li><a href="#">Graphic Design & Artwork</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">PLANT LIST & CAPABILITIES</a></li>
+                <li><a href="#">PRINT RESOURCES</a></li>
+                <li><a href="#">ABOUT US</a></li>
+                <li><a href="index.html#estimator" class="btn-quote">GET A QUOTE</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- 1. Hero Section -->
+        <section class="inner-hero" aria-label="Introduction">
+            <div class="hero-bg">
+                <div class="img-placeholder">[1] Hero Image: A striking, high-contrast, close-up photograph showing a neatly stacked row of bound spines.</div>
+            </div>
+            <div class="inner-hero-content">
+                <h1>Professional Book Binding & Print Finishing in Norwich</h1>
+                <p>The perfect finish for every project. From robust PUR bound paperbacks to high-quality square-back zines and portfolios, we provide complete, in-house finishing to ensure your publication feels exactly as good as it looks.</p>
+            </div>
+        </section>
+
+        <!-- 2. Intro Section -->
+        <section class="page-intro scroll-reveal">
+            <h2>In-House Finishing You Can Trust</h2>
+            <p>A beautifully printed page is only half the journey. The way your project is bound dictates its durability, its presentation, and how it is experienced by your readers. Because we handle all our print finishing directly in our Thorpe St Andrew facility, we maintain complete quality control from the moment the ink hits the raw 320x450mm or 450x640mm paper sheets to the final trim. No outsourcing, no delays—just expert craftsmanship.</p>
+        </section>
+
+        <!-- 3. Core Services Breakdown (Alternating Layout) -->
+        <section class="services-detail-section">
+            
+            <!-- Item 1: Square Back Binding -->
+            <article class="service-row scroll-reveal">
+                <div class="service-img-container">
+                    <div class="img-placeholder">[2] Stylized, heavily illustrated independent zine lying open showing the squared-off spine.</div>
+                </div>
+                <div class="service-text">
+                    <h3>1. Square Back Binding (Folded & Stapled)</h3>
+                    <p>Get the premium, flat-spine look of a perfect-bound book with the cost-effectiveness of traditional saddle stitching. Square back binding presses the folded spine flat, eliminating the "spring" of a standard stapled booklet.</p>
+                    <div class="ideal-for">
+                        <strong>Ideal for:</strong> Independent zine creators, limited edition 500-unit merchandise runs, local history booklets, and heavily illustrated publications focusing on atmospheric art, folklore, or niche subjects where aesthetic presentation is everything.
+                    </div>
+                </div>
+            </article>
+
+            <!-- Item 2: PUR Perfect Binding -->
+            <article class="service-row scroll-reveal">
+                <div class="service-img-container">
+                    <div class="img-placeholder">[3] Thick, professional paperback book angled to show the smooth, solid glue line at the spine.</div>
+                </div>
+                <div class="service-text">
+                    <h3>2. PUR Perfect Binding</h3>
+                    <p>Polyurethane Reactive (PUR) binding is the gold standard for paperback books. PUR glue is significantly stronger and more flexible than traditional EVA glue. It won't crack when the book is opened flat, and it withstands extreme temperatures, making it incredibly durable regardless of the paper stock used.</p>
+                    <div class="ideal-for">
+                        <strong>Ideal for:</strong> Novels, thick corporate catalogues, high-end graphic novels, and annual reports.
+                    </div>
+                </div>
+            </article>
+
+            <!-- Item 3: Wire Binding -->
+            <article class="service-row scroll-reveal">
+                <div class="service-img-container">
+                    <div class="img-placeholder">[4] Sleek, wire-bound document with a clear acetate cover and heavy cardstock back, opened flat.</div>
+                </div>
+                <div class="service-text">
+                    <h3>3. Wire Binding</h3>
+                    <p>When your document needs to lay completely flat or fold back on itself 360 degrees, wire binding (or wire-o binding) is the most practical and professional choice. We offer a range of wire colours and capacities to suit the thickness of your document.</p>
+                    <div class="ideal-for">
+                        <strong>Ideal for:</strong> Technical manuals, custom sketchbooks, training documents, and presentation decks.
+                    </div>
+                </div>
+            </article>
+
+        </section>
+
+        <!-- 4. Value Add / Cross-Sell Section -->
+        <section class="value-add-section">
+            <div class="value-add-container">
+                <div class="value-add-header scroll-reveal">
+                    <h2>Beyond the Bind: Trimming, Creasing & Custom Finishing</h2>
+                    <p>A truly bespoke print run often requires a few extra touches. We don't just bind; we ensure every detail of your finishing is immaculate.</p>
+                </div>
+                <div class="value-grid">
+                    <div class="value-card scroll-reveal" style="transition-delay: 0s;">
+                        <h4>Precision Trimming</h4>
+                        <p>We cut down custom sheet sizes to your exact specifications, ensuring edge-to-edge bleed without a millimeter of error.</p>
+                    </div>
+                    <div class="value-card scroll-reveal" style="transition-delay: 0.2s;">
+                        <h4>Creasing & Scoring</h4>
+                        <p>Essential for heavier paper stocks (like 300gsm+ covers) to prevent the ink or paper fibers from cracking along the fold, keeping dark, rich colours and illustrations pristine.</p>
+                    </div>
+                    <div class="value-card scroll-reveal" style="transition-delay: 0.4s;">
+                        <h4>Lamination</h4>
+                        <p>Choose from matte, gloss, or soft-touch laminates to protect your covers and add a premium tactile feel.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. Call to Action Section -->
+        <section class="cta-section scroll-reveal">
+            <h2>Ready to cost out your publication?</h2>
+            <p>Whether you are planning a high-volume print run or a strictly limited edition batch of bespoke art zines, we can help you find the right paper stock and binding method for your budget.</p>
+            <div class="cta-actions">
+                <a href="index.html#estimator" class="btn">Launch Cost Calculator</a>
+                <a href="#" class="btn btn-outline">Contact Our Finishing Team</a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-header">
+            <h2>Visit Our Norwich Print Shop</h2>
+            <p>GoWise Print proudly serves local businesses, independent creators, and trade partners across Norfolk and the UK.</p>
+        </div>
+        <div class="footer-grid">
+            
+            <div class="footer-arrow-container">
+                <svg class="footer-arrow" id="slideArrow" viewBox="0 0 100 50" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0,15 L60,15 L60,0 L100,25 L60,50 L60,35 L0,35 Z" fill="var(--gowise-magenta)"/>
+                </svg>
+            </div>
+            
+            <div class="footer-text-columns">
+                <div>
+                    <p style="font-size: 18px; margin-bottom: 15px; color: var(--gowise-cyan); font-weight: 600;">CONTACT INFO</p>
+                    <p><strong>Address:</strong><br>4 Belmore Road<br>Thorpe St Andrew<br>Norwich, Norfolk<br>NR7 0PT</p>
+                    <br>
+                    <p><strong>Phone:</strong> +44 (0)1603 431304</p>
+                    <p><strong>Email:</strong> print@gowise.co.uk</p>
+                </div>
+                
+                <div>
+                    <p style="font-size: 18px; margin-bottom: 15px; color: var(--gowise-cyan); font-weight: 600;">OPENING HOURS</p>
+                    <p>MONDAY: 08:30 – 17:00<br>TUESDAY: 08:30 – 17:00<br>WEDNESDAY: 08:30 – 17:00<br>THURSDAY: 08:30 – 17:00<br>FRIDAY: 08:30 – 17:00<br>SATURDAY: CLOSED<br>SUNDAY: CLOSED</p>
+                </div>
+            </div>
+            
+            <div class="map-container">
+                <iframe src="https://maps.google.com/maps?q=NR7%200PT&t=&z=14&ie=UTF8&iwloc=&output=embed" loading="lazy" allowfullscreen title="GoWise Print Location Map"></iframe>
+            </div>
+            
+        </div>
+    </footer>
+
+    <script>
+        // Scroll Animations
+        const createObserver = (selector, visibleClass, threshold = 0.15) => {
+            const elements = document.querySelectorAll(selector);
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add(visibleClass);
+                        observer.unobserve(entry.target); 
+                    }
+                });
+            }, { threshold: threshold });
+            
+            elements.forEach(el => observer.observe(el));
+        };
+
+        createObserver('.scroll-reveal', 'visible', 0.15);
+
+        // Footer Arrow Animation
+        const arrow = document.getElementById('slideArrow');
+        const arrowObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    arrow.classList.add('slide-in');
+                } else {
+                    arrow.classList.remove('slide-in');
+                }
+            });
+        }, { threshold: 0.1 }); 
+        if(arrow) arrowObserver.observe(arrow);
+    </script>
+</body>
+</html>
