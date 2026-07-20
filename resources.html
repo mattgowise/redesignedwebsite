@@ -235,6 +235,24 @@
         .map-container { flex: 0 0 400px; height: 300px; background: #ddd; border-radius: 4px; overflow: hidden; }
         .map-container iframe { width: 100%; height: 100%; border: none; }
 
+        /* Modal Form Setup & Roundel */
+        .quote-roundel { position: fixed; top: 50%; right: 20px; transform: translateY(-50%); width: 90px; height: 90px; background-color: var(--gowise-pink); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-align: center; font-size: 14px; font-weight: 600; cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.3); z-index: 1000; transition: transform 0.3s ease, background-color 0.3s ease; text-transform: uppercase; line-height: 1.2; }
+        .quote-roundel:hover { transform: translateY(-50%) scale(1.08); background-color: var(--gowise-magenta); }
+
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 2000; display: none; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.4s ease; }
+        .modal-overlay.active { display: flex; opacity: 1; }
+        .modal-content { background: #fff; padding: 40px; border-radius: 4px; max-width: 500px; width: 90%; position: relative; transform: translateY(20px); transition: transform 0.4s ease; box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+        .modal-overlay.active .modal-content { transform: translateY(0); }
+        .close-modal { position: absolute; top: 15px; right: 20px; font-size: 32px; cursor: pointer; color: #888; transition: color 0.3s; line-height: 1; }
+        .close-modal:hover { color: var(--gowise-pink); }
+        .modal-content h3 { color: var(--gowise-magenta); margin-bottom: 20px; font-size: 28px; }
+        
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; font-weight: 600; margin-bottom: 8px; font-size: 14px; color: var(--header-dark); }
+        .form-group input, .form-group textarea { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 4px; font-size: 14px; font-family: inherit; transition: border-color 0.3s; }
+        .form-group textarea { resize: vertical; min-height: 120px; }
+        .form-group input:focus, .form-group textarea:focus { border-color: var(--gowise-magenta); outline: none; }
+
         /* Responsive */
         @media (max-width: 1024px) {
             .comparison-grid, .checklist-grid { grid-template-columns: 1fr; }
@@ -432,6 +450,45 @@
 
     </main>
 
+    <!-- Floating Quote Roundel -->
+    <div class="quote-roundel" id="quoteRoundel">
+        <span>Get a<br>Quote</span>
+    </div>
+
+    <!-- Quote Request Modal Window -->
+    <div class="modal-overlay" id="quoteModal">
+        <div class="modal-content">
+            <span class="close-modal" id="closeModal">&times;</span>
+            <h3>Request a Quote</h3>
+            <form id="asyncQuoteForm">
+                <input type="hidden" name="access_key" value="3c30689d-ea16-4629-92a1-5737b09d6f4c">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" placeholder="Your Name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" placeholder="your@email.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="details">Project Details</label>
+                    <textarea id="details" name="details" placeholder="Please describe your printing needs..." required></textarea>
+                </div>
+                <button type="submit" class="btn" id="submitQuoteBtn" style="width: 100%;">Send Request</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Submission Success Pop-Up -->
+    <div class="modal-overlay" id="successModal">
+        <div class="modal-content" style="max-width: 420px; text-align: center;">
+            <span class="close-modal" id="closeSuccessX">&times;</span>
+            <h3 style="color: var(--gowise-cyan); margin-bottom: 15px;">Thank You!</h3>
+            <p style="font-size: 16px; color: #444; margin-bottom: 25px;">Your quote request has been successfully submitted. Our production team will review your project details and get back to you shortly.</p>
+            <button type="button" class="btn" id="closeSuccessBtn" style="width: 100%; background-color: var(--gowise-cyan);">Close Window</button>
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer>
         <div class="footer-header">
@@ -499,6 +556,68 @@
             });
         }, { threshold: 0.1 }); 
         if(arrow) arrowObserver.observe(arrow);
+
+        // --- Modal & Form Logic ---
+        const roundel = document.getElementById('quoteRoundel');
+        const navQuoteBtn = document.getElementById('navQuoteBtn');
+        const quoteModal = document.getElementById('quoteModal');
+        const closeModal = document.getElementById('closeModal');
+        const asyncForm = document.getElementById('asyncQuoteForm');
+        const submitBtn = document.getElementById('submitQuoteBtn');
+        const successModal = document.getElementById('successModal');
+        const closeSuccessX = document.getElementById('closeSuccessX');
+        const closeSuccessBtn = document.getElementById('closeSuccessBtn');
+
+        const showQuoteModal = (e) => {
+            if(e) e.preventDefault();
+            quoteModal.style.display = 'flex';
+            setTimeout(() => quoteModal.classList.add('active'), 10);
+        };
+
+        if (roundel) roundel.addEventListener('click', showQuoteModal);
+        if (navQuoteBtn) navQuoteBtn.addEventListener('click', showQuoteModal);
+
+        const hideQuoteModal = () => {
+            quoteModal.classList.remove('active');
+            setTimeout(() => quoteModal.style.display = 'none', 400); 
+        };
+        if (closeModal) closeModal.addEventListener('click', hideQuoteModal);
+
+        const hideSuccessModal = () => {
+            successModal.classList.remove('active');
+            setTimeout(() => successModal.style.display = 'none', 400);
+        };
+        if (closeSuccessX) closeSuccessX.addEventListener('click', hideSuccessModal);
+        if (closeSuccessBtn) closeSuccessBtn.addEventListener('click', hideSuccessModal);
+
+        window.addEventListener('click', (e) => {
+            if (e.target === quoteModal) hideQuoteModal();
+            if (e.target === successModal) hideSuccessModal();
+        });
+
+        if (asyncForm) {
+            asyncForm.addEventListener('submit', function(e) {
+                e.preventDefault(); 
+                submitBtn.textContent = "Sending Request...";
+                submitBtn.disabled = true;
+
+                const formData = new FormData(asyncForm);
+                fetch('https://api.web3forms.com/submit', { method: 'POST', body: formData })
+                .then(async (response) => {
+                    let json = await response.json();
+                    if (response.status == 200) {
+                        hideQuoteModal();
+                        asyncForm.reset(); 
+                        successModal.style.display = 'flex';
+                        setTimeout(() => successModal.classList.add('active'), 10);
+                    } else {
+                        alert("Submission failed: " + json.message);
+                    }
+                })
+                .catch(error => { alert("Network error. Please try again."); })
+                .finally(() => { submitBtn.textContent = "Send Request"; submitBtn.disabled = false; });
+            });
+        }
     </script>
 </body>
 </html>
