@@ -107,22 +107,22 @@
 
         /* 1. Hero Carousel */
         .carousel-container { position: relative; width: 100%; min-height: 70vh; background-color: #111; overflow: hidden; display: flex; align-items: center; justify-content: center; }
-        .carousel-slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1.2s ease-in-out; display: flex; align-items: center; justify-content: flex-start; } /* Changed to flex-start for left alignment */
+        .carousel-slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1.2s ease-in-out; display: flex; align-items: center; justify-content: flex-start; } 
         .carousel-slide.active { opacity: 1; z-index: 1; }
         
-        .carousel-bg-img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; filter: brightness(0.65); /* Darken image slightly so text stands out */ }
+        .carousel-bg-img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; filter: brightness(0.65); }
         
         .carousel-content { 
             position: relative; 
             z-index: 2; 
             padding: 50px; 
-            margin-left: 5%; /* Aligned to the left */
+            margin-left: 5%; 
             max-width: 650px; 
             color: #fff; 
             background-color: rgba(0, 0, 0, 0.5); 
             border-radius: 8px;
             backdrop-filter: blur(8px);
-            text-align: left; /* Left justified text */
+            text-align: left; 
             transform: translateX(-30px);
             transition: transform 1.2s ease-out;
         }
@@ -142,12 +142,12 @@
         .pink-banner { background-color: var(--gowise-magenta); color: #fff; padding: 50px 5%; text-align: center; font-size: 36px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; opacity: 0; transform: scale(0.98); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
         .pink-banner.visible { opacity: 1; transform: scale(1); }
 
-        .intro-text-section { padding: 80px 5%; text-align: center; background-color: #fcfcfc; }
+        .intro-text-section { padding: 80px 5% 40px 5%; text-align: center; background-color: #fcfcfc; }
         .intro-text-section p { 
-            max-width: 1200px; /* Widened as requested */
+            max-width: 1200px; 
             margin: 0 auto; 
             font-size: 22px; 
-            font-weight: 300; /* Light font weight applied */
+            font-weight: 300; 
             line-height: 1.8; 
             color: #444; 
             opacity: 0; 
@@ -156,15 +156,31 @@
         }
         .intro-text-section p.visible { opacity: 1; transform: translateY(0); }
 
-        /* 4. Services Grid (5 in a line) */
-        .services-section { padding: 40px 5% 100px; max-width: 1500px; margin: 0 auto; }
+        /* Pink Divider */
+        .pink-divider {
+            width: 120px;
+            height: 3px;
+            background-color: var(--gowise-magenta);
+            border: none;
+            margin: 0 auto 50px auto;
+            opacity: 0;
+            transform: scaleX(0);
+            transition: transform 0.8s ease-out, opacity 0.8s ease-out;
+        }
+        .pink-divider.visible {
+            opacity: 1;
+            transform: scaleX(1);
+        }
+
+        /* 4. Services Grid */
+        .services-section { padding: 0 5% 100px; max-width: 1500px; margin: 0 auto; }
         .services-header { text-align: center; margin-bottom: 60px; opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
         .services-header.visible { opacity: 1; transform: translateY(0); }
         .services-header h2 { font-size: 36px; color: var(--header-dark); }
         
         .squares-grid { 
             display: grid; 
-            grid-template-columns: repeat(5, 1fr); /* Forces them into a single 5-column line */
+            grid-template-columns: repeat(5, 1fr); 
             gap: 30px; 
         }
         
@@ -172,7 +188,6 @@
             display: flex;
             flex-direction: column;
             gap: 20px;
-            /* Pop-in animation applied to the whole column */
             opacity: 0;
             transform: scale(0.8) translateY(30px);
             transition: opacity 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275), transform 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -186,7 +201,6 @@
             align-items: center; 
             justify-content: center; 
             text-align: center; 
-            color: #fff; 
             border-radius: 4px;
             box-shadow: 0 10px 20px rgba(0,0,0,0.1);
             transition: box-shadow 0.3s ease, transform 0.3s ease; 
@@ -194,37 +208,43 @@
         .service-square:hover { box-shadow: 0 15px 35px rgba(0,0,0,0.25); transform: translateY(-10px); z-index: 2; }
         .service-square h3 { color: #fff; font-size: 20px; margin: 0; line-height: 1.4; }
         
-        /* New styling for text beneath boxes */
         .service-desc { 
-            text-align: left; /* Left justified */
-            font-weight: 300; /* Light weight */
+            text-align: left; 
+            font-weight: 300; 
             font-size: 15px; 
             line-height: 1.6; 
             color: #444; 
             margin: 0; 
         }
 
-        .bg-cyan { background-color: var(--gowise-cyan); }
-        .bg-magenta { background-color: var(--gowise-magenta); } 
-        .bg-pink { background-color: var(--gowise-pink); }
+        /* Box Custom Colors */
+        .box-1 { background-color: #54abe9; }
+        .box-2 { background-color: #d6308a; }
+        .box-3 { background-color: #feea0a; }
+        .box-3 h3 { color: #221f20; } /* Forced dark text so it is readable on yellow */
+        .box-4 { background-color: #221f20; }
+        .box-5 { background-color: #e73ce9; }
 
         /* 5. Environmental Policy */
         .environment-banner { position: relative; padding: 100px 5%; text-align: center; color: #fff; overflow: hidden; opacity: 0; transition: opacity 1s ease-out; }
         .environment-banner.visible { opacity: 1; }
         
-        /* Utilizing IMG tag instead of CSS background to utilize native lazy loading */
         .env-bg-img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; }
         
         .environment-banner .overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.6); z-index: 2; }
         .environment-banner h2 { position: relative; z-index: 3; font-size: 42px; font-weight: 800; color: #fff; text-transform: uppercase; letter-spacing: 1px; transform: scale(0.9); opacity: 0; transition: all 0.8s ease-out 0.2s; }
         .environment-banner.visible h2 { transform: scale(1); opacity: 1; }
 
-        .environment-content { padding: 80px 5%; max-width: 900px; margin: 0 auto; opacity: 0; transform: translateY(40px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
+        .environment-content { padding: 80px 5%; max-width: 1200px; margin: 0 auto; opacity: 0; transform: translateY(40px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
         .environment-content.visible { opacity: 1; transform: translateY(0); }
         .environment-content p { font-size: 16px; margin-bottom: 25px; line-height: 1.8; color: #444; }
 
         /* 6. Footer & Location */
         footer { background: var(--header-dark); color: #fff; position: relative; overflow: hidden; padding: 60px 5%; }
+        
+        /* Force footer paragraphs to be pure white to override global grey text */
+        footer p { color: #ffffff; } 
+        
         .footer-header { margin-bottom: 40px; text-align: center; }
         .footer-header h2 { color: var(--gowise-magenta); font-size: 32px; }
         .footer-grid { display: flex; align-items: stretch; justify-content: space-between; gap: 40px; max-width: 1400px; margin: 0 auto; }
@@ -270,7 +290,6 @@
     <!-- Unified Navigation Structure -->
     <header>
         <a href="index.html" class="logo">
-            <!-- Lazy loading NOT applied here as it's the first thing the user sees -->
             <img src="gowise-logo.png" alt="Gowise Print Logo">
         </a>
         <nav>
@@ -319,7 +338,6 @@
         <section class="carousel-container" aria-label="Introduction">
             <!-- Slide 1 -->
             <div class="carousel-slide active">
-                <!-- Eagerly loaded image (no lazy load attribute) to prevent delay at top of page -->
                 <img src="Home-1.jpg" alt="Printing facility" class="carousel-bg-img">
                 <div class="carousel-content">
                     <h1>Now in our fifth decade of printing</h1>
@@ -328,7 +346,6 @@
             </div>
             <!-- Slide 2 -->
             <div class="carousel-slide">
-                <!-- Lazy loaded image to optimize speed -->
                 <img src="Home-7.jpg" alt="Independent Creators" class="carousel-bg-img" loading="lazy">
                 <div class="carousel-content">
                     <h1>A family run business</h1>
@@ -337,7 +354,6 @@
             </div>
             <!-- Slide 3 -->
             <div class="carousel-slide">
-                <!-- Lazy loaded image to optimize speed -->
                 <img src="Home-6.jpg" alt="Trade Printing" class="carousel-bg-img" loading="lazy">
                 <div class="carousel-content">
                     <h1>From 50 business cards to 10,000 leaflets</h1>
@@ -388,7 +404,10 @@
             </p>
         </section>
 
-        <!-- 4. Services Grid (5 Squares in a row with Pop-In animation) -->
+        <!-- Pink Divider -->
+        <hr class="pink-divider scroll-reveal">
+
+        <!-- 4. Services Grid -->
         <section id="services" class="services-section" aria-label="Our Services">
             <div class="services-header scroll-reveal">
                 <h2>Our Services</h2>
@@ -397,7 +416,7 @@
                 
                 <!-- Box 1 -->
                 <div class="service-column scroll-stagger" style="transition-delay: 0s;">
-                    <div class="service-square bg-cyan">
+                    <div class="service-square box-1">
                         <h3>Litho Printing &<br>Digital Printing</h3>
                     </div>
                     <p class="service-desc">What is lithographic and digital printing? Read about the difference.</p>
@@ -405,7 +424,7 @@
 
                 <!-- Box 2 -->
                 <div class="service-column scroll-stagger" style="transition-delay: 0.15s;">
-                    <div class="service-square bg-magenta">
+                    <div class="service-square box-2">
                         <h3>Pantone Spot Colour<br>Litho Printing</h3>
                     </div>
                     <p class="service-desc">Exact Pantone ink matching is a dying art and one we are very keen to preserve. We still offer traditional litho printed pantone matching and will for many years to come.</p>
@@ -413,7 +432,7 @@
 
                 <!-- Box 3 -->
                 <div class="service-column scroll-stagger" style="transition-delay: 0.3s;">
-                    <div class="service-square bg-cyan">
+                    <div class="service-square box-3">
                         <h3>Book<br>Binding</h3>
                     </div>
                     <p class="service-desc">We offer PUR binding (paperback books), wire binding and square back folded and stapled binding – all finished in house. Trade finishing service also available.</p>
@@ -421,7 +440,7 @@
 
                 <!-- Box 4 -->
                 <div class="service-column scroll-stagger" style="transition-delay: 0.45s;">
-                    <div class="service-square bg-cyan">
+                    <div class="service-square box-4">
                         <h3>Artwork &<br>Design</h3>
                     </div>
                     <p class="service-desc">Let us enhance your design and save you money by merging our printing knowledge with a wealth of design and artwork experience.</p>
@@ -429,7 +448,7 @@
 
                 <!-- Box 5 -->
                 <div class="service-column scroll-stagger" style="transition-delay: 0.6s;">
-                    <div class="service-square bg-pink">
+                    <div class="service-square box-5">
                         <h3>Five Colour<br>Digital Printing</h3>
                     </div>
                     <p class="service-desc">Fujifilm 5UPER COLOUR©. Achieve far more Pantone and RGB colours with our expanded colour gamut.</p>
@@ -501,10 +520,9 @@
             currentSlide = (currentSlide + 1) % slides.length;
             slides[currentSlide].classList.add('active');
         }
-        // Change slide every 6 seconds
         setInterval(nextSlide, 6000);
 
-        // --- 2. Scroll Animations (With custom bezier curve for pop-in effect) ---
+        // --- 2. Scroll Animations ---
         const createObserver = (selector, visibleClass, threshold = 0.15) => {
             const elements = document.querySelectorAll(selector);
             const observer = new IntersectionObserver((entries) => {
@@ -519,9 +537,9 @@
             elements.forEach(el => observer.observe(el));
         };
 
-        // Initialize scroll reveal on elements
         createObserver('.scroll-stagger', 'visible', 0.1);
         createObserver('.scroll-reveal', 'visible', 0.15);
+        createObserver('.pink-divider', 'visible', 1.0); // Animate divider when fully in view
 
         // --- 3. Footer Arrow Animation ---
         const arrow = document.getElementById('slideArrow');
