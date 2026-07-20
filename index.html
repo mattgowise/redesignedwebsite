@@ -8,7 +8,763 @@
     <title>Commercial Printers Norwich | Book Binding & Custom Litho Print</title>
     <meta name="description" content="Expert commercial printing in Norwich since 1983. We specialize in Pantone matching, professional book binding, and short-run digital. Get a quote today.">
     <meta name="keywords" content="Commercial Printers Norwich, Professional Book Binding Norfolk, Custom Litho Print, 5-Colour Digital Printing, Pantone Spot Colour Matching">
+    <link rel="canonical" href="https://www.gowise.co.uk/index.html"><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO & Location Optimization -->
+    <title>Commercial Printers Norwich | Book Binding & Custom Litho Print</title>
+    <meta name="description" content="Expert commercial printing in Norwich since 1983. We specialize in Pantone matching, professional book binding, and short-run digital. Get a quote today.">
+    <meta name="keywords" content="Commercial Printers Norwich, Professional Book Binding Norfolk, Custom Litho Print, 5-Colour Digital Printing, Pantone Spot Colour Matching">
     <link rel="canonical" href="https://www.gowise.co.uk/index.html">
+    
+    <!-- Open Graph for Social Sharing -->
+    <meta property="og:title" content="Commercial Printers Norwich | Book Binding & Custom Litho Print">
+    <meta property="og:description" content="Expert commercial printing in Norwich since 1983. We specialize in Pantone matching, professional book binding, and short-run digital. Get a quote today.">
+    <meta property="og:type" content="website">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+    <style>
+        /* Base Reset & Universal Font Enforcement */
+        * { 
+            box-sizing: border-box; 
+            margin: 0; 
+            padding: 0; 
+            font-family: "Roboto", -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; 
+            font-weight: 300; 
+        }
+        
+        /* Enable smooth scrolling for anchor links */
+        html { scroll-behavior: smooth; }
+        
+        body { color: #333; overflow-x: hidden; background-color: #fcfcfc; }
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+
+        /* Color Variables */
+        :root {
+            --gowise-magenta: #ff00ff;
+            --gowise-pink: #fd13f0;
+            --gowise-cyan: #009ee0; 
+            --header-dark: #333333;
+            --transition-speed: 0.4s;
+        }
+
+        /* Typography Styles */
+        h1, h2, h3 { font-weight: 600; color: var(--header-dark); }
+        p { line-height: 1.8; color: #555; }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: var(--gowise-magenta);
+            color: #fff;
+            text-transform: uppercase;
+            font-size: 14px;
+            font-weight: 600;
+            border-radius: 3px;
+            transition: background-color var(--transition-speed), transform 0.2s;
+            border: none;
+            cursor: pointer;
+        }
+        .btn:hover { background-color: var(--gowise-pink); transform: translateY(-2px); }
+        .btn-outline { background-color: transparent; border: 2px solid var(--gowise-magenta); color: var(--gowise-magenta); }
+        .btn-outline:hover { background-color: var(--gowise-magenta); color: #fff; }
+
+        /* Image Helpers */
+        .cover-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        .icon-img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+        }
+
+        /* Top Bar */
+        .top-bar { background-color: var(--gowise-magenta); color: #fff; display: flex; justify-content: space-between; padding: 8px 5%; font-size: 13px; font-weight: 400; }
+
+        /* Main Header & Nav */
+        header { background-color: var(--header-dark); color: #fff; padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; }
+        .logo img { max-height: 60px; width: auto; transition: transform 0.3s ease; }
+        .logo:hover img { transform: scale(1.05); }
+        
+        /* Unified Navigation Menu */
+        .main-nav { display: flex; align-items: center; gap: 20px; font-size: 13px; font-weight: 300; }
+        .main-nav li { position: relative; padding: 10px 0; }
+        .main-nav a { padding: 5px 10px; transition: color 0.3s; text-transform: uppercase; }
+        .main-nav a:not(.btn-quote):hover, .main-nav a.active { color: var(--gowise-cyan); }
+        
+        .btn-quote { background-color: var(--gowise-magenta); color: #fff !important; padding: 10px 20px !important; border-radius: 3px; font-weight: 600; transition: background-color 0.3s ease, transform 0.2s ease; }
+        .btn-quote:hover { background-color: var(--gowise-pink); transform: translateY(-2px); }
+
+        .dropdown { display: none; position: absolute; top: 100%; left: 0; background-color: var(--gowise-cyan); min-width: 240px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); z-index: 99; }
+        .main-nav li:hover .dropdown { display: block; animation: dropFade 0.3s ease forwards; }
+        .dropdown li { padding: 0; }
+        .dropdown a { display: block; padding: 12px 15px; border-bottom: 1px solid rgba(255, 255, 255, 0.2); font-size: 12px; text-transform: none; color: #ffffff; }
+        .dropdown a:hover { background-color: rgba(0, 0, 0, 0.15); color: #fff; padding-left: 20px; transition: padding 0.3s ease, background-color 0.3s ease; }
+
+        @keyframes dropFade { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* 1. Hero Carousel */
+        .carousel-container { position: relative; width: 100%; min-height: 70vh; background-color: #111; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+        .carousel-slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1.2s ease-in-out; display: flex; align-items: center; justify-content: flex-start; } 
+        .carousel-slide.active { opacity: 1; z-index: 1; }
+        
+        .carousel-bg-img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; filter: brightness(0.65); }
+        
+        .carousel-content { 
+            position: relative; 
+            z-index: 2; 
+            padding: 50px; 
+            margin-left: 5%; 
+            max-width: 650px; 
+            color: #fff; 
+            background-color: rgba(0, 0, 0, 0.5); 
+            border-radius: 8px;
+            backdrop-filter: blur(8px);
+            text-align: left; 
+            transform: translateX(-30px);
+            transition: transform 1.2s ease-out;
+        }
+        .carousel-slide.active .carousel-content { transform: translateX(0); }
+        .carousel-content h1 { font-size: 48px; font-weight: 800; color: #fff; margin-bottom: 20px; line-height: 1.2; }
+        .carousel-content p { font-size: 20px; color: #eee; font-weight: 300; }
+
+        /* 2. Trust Indicators */
+        .trust-bar { display: grid; grid-template-columns: repeat(3, 1fr); background-color: var(--header-dark); color: #fff; padding: 40px 5%; gap: 20px; position: relative; z-index: 10; }
+        .trust-item { display: flex; align-items: center; gap: 20px; opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+        .trust-item.visible { opacity: 1; transform: translateY(0); }
+        .trust-icon { width: 60px; height: 60px; flex-shrink: 0; }
+        .trust-text h4 { font-size: 16px; font-weight: 600; color: var(--gowise-cyan); margin-bottom: 5px; }
+        .trust-text p { font-size: 13px; color: #ccc; line-height: 1.4; }
+
+        /* 3. New Introduction Sections */
+        .pink-banner { background-color: var(--gowise-magenta); color: #fff; padding: 50px 5%; text-align: center; font-size: 36px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; opacity: 0; transform: scale(0.98); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
+        .pink-banner.visible { opacity: 1; transform: scale(1); }
+
+        .intro-text-section { padding: 80px 5% 40px 5%; text-align: center; background-color: #fcfcfc; }
+        .intro-text-section p { 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            font-size: 22px; 
+            font-weight: 300; 
+            line-height: 1.8; 
+            color: #444; 
+            opacity: 0; 
+            transform: translateY(30px); 
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out; 
+        }
+        .intro-text-section p.visible { opacity: 1; transform: translateY(0); }
+
+        /* Pink Divider */
+        .pink-divider {
+            width: 120px;
+            height: 3px;
+            background-color: var(--gowise-magenta);
+            border: none;
+            margin: 0 auto 50px auto;
+            opacity: 0;
+            transform: scaleX(0);
+            transition: transform 0.8s ease-out, opacity 0.8s ease-out;
+        }
+        .pink-divider.visible {
+            opacity: 1;
+            transform: scaleX(1);
+        }
+
+        /* 4. Our Services Grid */
+        .services-section { padding: 0 5% 100px; max-width: 1500px; margin: 0 auto; }
+        .services-header { text-align: center; margin-bottom: 60px; opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+        .services-header.visible { opacity: 1; transform: translateY(0); }
+        .services-header h2 { font-size: 36px; color: var(--header-dark); }
+        
+        .squares-grid { 
+            display: grid; 
+            grid-template-columns: repeat(5, 1fr); 
+            gap: 30px; 
+        }
+        
+        .service-column {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            opacity: 0;
+            transform: scale(0.8) translateY(30px);
+            transition: opacity 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275), transform 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .service-column.visible { opacity: 1; transform: scale(1) translateY(0); }
+
+        .service-square { 
+            aspect-ratio: 1 / 1; 
+            padding: 30px 15px; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            text-align: center; 
+            border-radius: 4px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            transition: box-shadow 0.3s ease, transform 0.3s ease; 
+        }
+        .service-square:hover { box-shadow: 0 15px 35px rgba(0,0,0,0.25); transform: translateY(-10px); z-index: 2; }
+        .service-square h3 { color: #fff; font-size: 20px; margin: 0; line-height: 1.4; }
+        
+        .service-desc { 
+            text-align: left; 
+            font-weight: 300; 
+            font-size: 15px; 
+            line-height: 1.6; 
+            color: #444; 
+            margin: 0; 
+        }
+
+        /* Box Custom Colors */
+        .box-1 { background-color: #00aae9; }
+        .box-2 { background-color: #d62f8a; }
+        .box-3 { background-color: #feea0a; }
+        .box-3 h3 { color: #221f20; } 
+        .box-4 { background-color: #221f20; }
+        .box-5 { background-color: #e73ce9; }
+
+        /* 5. Environmental Policy */
+        .environment-banner { position: relative; padding: 100px 5%; text-align: center; color: #fff; overflow: hidden; opacity: 0; transition: opacity 1s ease-out; }
+        .environment-banner.visible { opacity: 1; }
+        
+        .env-bg-img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; }
+        
+        .environment-banner .overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.6); z-index: 2; }
+        .environment-banner h2 { position: relative; z-index: 3; font-size: 42px; font-weight: 800; color: #fff; text-transform: uppercase; letter-spacing: 1px; transform: scale(0.9); opacity: 0; transition: all 0.8s ease-out 0.2s; }
+        .environment-banner.visible h2 { transform: scale(1); opacity: 1; }
+
+        .environment-content { padding: 80px 5%; max-width: 1200px; margin: 0 auto; opacity: 0; transform: translateY(40px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
+        .environment-content.visible { opacity: 1; transform: translateY(0); }
+        .environment-content p { font-size: 16px; margin-bottom: 25px; line-height: 1.8; color: #444; }
+
+        /* 6. Footer & Location */
+        footer { background: var(--header-dark); color: #fff; position: relative; overflow: hidden; padding: 60px 5%; }
+        footer p { color: #ffffff; } 
+        
+        .footer-header { margin-bottom: 40px; text-align: center; }
+        .footer-header h2 { color: var(--gowise-magenta); font-size: 32px; }
+        .footer-grid { display: flex; align-items: stretch; justify-content: space-between; gap: 40px; max-width: 1400px; margin: 0 auto; }
+        .footer-arrow-container { flex: 0 0 120px; display: flex; align-items: center; }
+        .footer-arrow { width: 100%; height: auto; transform: translateX(-150px); opacity: 0; transition: transform 1s cubic-bezier(0.25, 1, 0.5, 1), opacity 1s ease; }
+        .footer-arrow.slide-in { transform: translateX(0); opacity: 1; }
+        .footer-text-columns { flex: 1; display: flex; justify-content: flex-start; gap: 60px; font-size: 14px; line-height: 1.8; padding-top: 20px; }
+        .map-container { flex: 0 0 400px; height: 300px; background: #ddd; border-radius: 4px; overflow: hidden; }
+        .map-container iframe { width: 100%; height: 100%; border: none; }
+
+        /* 7. Roundel & Modals Setup */
+        .quote-roundel {
+            position: fixed;
+            top: 50%;
+            right: 20px;
+            transform: translateY(-50%);
+            width: 90px;
+            height: 90px;
+            background-color: var(--gowise-pink);
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            z-index: 1000;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            text-transform: uppercase;
+            line-height: 1.2;
+        }
+        .quote-roundel:hover {
+            transform: translateY(-50%) scale(1.08);
+            background-color: var(--gowise-magenta);
+        }
+
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.7);
+            z-index: 2000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        .modal-overlay.active {
+            display: flex;
+            opacity: 1;
+        }
+        .modal-content {
+            background: #fff;
+            padding: 40px;
+            border-radius: 4px;
+            max-width: 500px;
+            width: 90%;
+            position: relative;
+            transform: translateY(20px);
+            transition: transform 0.4s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        .modal-overlay.active .modal-content {
+            transform: translateY(0);
+        }
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 32px;
+            cursor: pointer;
+            color: #888;
+            transition: color 0.3s;
+            line-height: 1;
+        }
+        .close-modal:hover { color: var(--gowise-pink); }
+        .modal-content h3 { color: var(--gowise-magenta); margin-bottom: 20px; font-size: 28px; }
+        
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; font-weight: 600; margin-bottom: 8px; font-size: 14px; color: var(--header-dark); }
+        .form-group input, .form-group textarea { 
+            width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 4px; font-size: 14px; font-family: inherit; transition: border-color 0.3s; 
+        }
+        .form-group textarea { resize: vertical; min-height: 120px; }
+        .form-group input:focus, .form-group textarea:focus { border-color: var(--gowise-magenta); outline: none; }
+
+        /* Responsive Overrides */
+        @media (max-width: 1200px) {
+            .squares-grid { grid-template-columns: repeat(3, 1fr); }
+            .carousel-content { margin-left: 5%; max-width: 500px; }
+        }
+        @media (max-width: 768px) {
+            .squares-grid { grid-template-columns: 1fr; }
+            .carousel-slide { justify-content: center; }
+            .carousel-content { margin: 0 5%; max-width: 100%; text-align: center; transform: translateY(20px); }
+            .carousel-slide.active .carousel-content { transform: translateY(0); }
+            .trust-bar { grid-template-columns: 1fr; text-align: center; }
+            .trust-item { flex-direction: column; }
+            .top-bar { flex-direction: column; text-align: center; gap: 10px; }
+            header { flex-direction: column; gap: 15px; padding: 20px 5%; }
+            .main-nav { flex-wrap: wrap; justify-content: center; }
+            .dropdown { display: none !important; }
+            .pink-banner { font-size: 24px; padding: 30px 5%; }
+            .intro-text-section p { font-size: 18px; }
+            .footer-grid { flex-wrap: wrap; justify-content: center; text-align: center; }
+            .footer-arrow-container { display: none; }
+            .footer-text-columns { flex-direction: column; gap: 30px; align-items: center; }
+            .map-container { width: 100%; flex: 1 1 100%; }
+            .quote-roundel { width: 70px; height: 70px; font-size: 12px; right: 10px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">
+        <span>Tel: +44 (0)1603 431304</span>
+        <span>print@gowise.co.uk</span>
+    </div>
+
+    <!-- Unified Navigation Structure -->
+    <header>
+        <a href="index.html" class="logo">
+            <img src="gowise-logo.png" alt="Gowise Print Logo">
+        </a>
+        <nav>
+            <ul class="main-nav">
+                <li><a href="index.html" class="active">HOME</a></li>
+                <li>
+                    <a href="services.html">SERVICES ▾</a>
+                    <ul class="dropdown">
+                        <li><a href="services.html#printing">Commercial Printing</a></li>
+                        <li><a href="services.html#binding">Book Binding & Finishing</a></li>
+                        <li><a href="services.html#design">Graphic Design & Artwork</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="plant-list.html">PLANT LIST & CAPABILITIES ▾</a>
+                    <ul class="dropdown">
+                        <li><a href="plant-list.html#digital">Digital Press</a></li>
+                        <li><a href="plant-list.html#litho">Lithographic Press</a></li>
+                        <li><a href="plant-list.html#finishing">Finishing & Binding</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="resources.html">PRINT RESOURCES ▾</a>
+                    <ul class="dropdown">
+                        <li><a href="resources.html#colour-guide">Understanding Colour (CMYK vs RGB)</a></li>
+                        <li><a href="resources.html#digital-vs-litho">Digital vs. Lithographic</a></li>
+                        <li><a href="resources.html#setup-checklist">Artwork Setup Checklist</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="about.html">ABOUT US ▾</a>
+                    <ul class="dropdown">
+                        <li><a href="about.html#history">Our History</a></li>
+                        <li><a href="about.html#sustainability">Sustainability</a></li>
+                        <li><a href="about.html#insights">Print Insights</a></li>
+                        <li><a href="about.html#team">The GoWise Team</a></li>
+                    </ul>
+                </li>
+                <li><a href="services.html" class="btn-quote">GET A QUOTE</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- 1. Auto-fading Carousel -->
+        <section class="carousel-container" aria-label="Introduction">
+            <!-- Slide 1 -->
+            <div class="carousel-slide active">
+                <img src="Home-1.jpg" alt="Printing facility" class="carousel-bg-img">
+                <div class="carousel-content">
+                    <h1>Now in our fifth decade of printing</h1>
+                    <p>We have been proudly serving local businesses and independent creators with premium print and finishing services since 1983.</p>
+                </div>
+            </div>
+            <!-- Slide 2 -->
+            <div class="carousel-slide">
+                <img src="Home-7.jpg" alt="Independent Creators" class="carousel-bg-img" loading="lazy">
+                <div class="carousel-content">
+                    <h1>A family run business</h1>
+                    <p>We pride ourselves on being large enough to cope with your most demanding projects, yet small enough to care about every fine detail.</p>
+                </div>
+            </div>
+            <!-- Slide 3 -->
+            <div class="carousel-slide">
+                <img src="Home-6.jpg" alt="Trade Printing" class="carousel-bg-img" loading="lazy">
+                <div class="carousel-content">
+                    <h1>From 50 business cards to 10,000 leaflets</h1>
+                    <p>Whether you need a short bespoke run or a high-volume corporate rollout, our advanced machinery handles jobs of all sizes equally well.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. Trust Indicators -->
+        <section class="trust-bar" aria-label="Why Choose Us">
+            <div class="trust-item scroll-stagger" style="transition-delay: 0s;">
+                <div class="trust-icon">
+                    <img src="Home-2.svg" alt="Exact Colour Matching" class="icon-img" loading="lazy">
+                </div>
+                <div class="trust-text">
+                    <h4>Exact Colour Matching</h4>
+                    <p>Specialists in traditional Pantone spot colour & 5-colour digital.</p>
+                </div>
+            </div>
+            <div class="trust-item scroll-stagger" style="transition-delay: 0.15s;">
+                <div class="trust-icon">
+                    <img src="Home-3.svg" alt="40+ Years Experience" class="icon-img" loading="lazy">
+                </div>
+                <div class="trust-text">
+                    <h4>40+ Years Experience</h4>
+                    <p>Independent, family-run business in the heart of Norfolk.</p>
+                </div>
+            </div>
+            <div class="trust-item scroll-stagger" style="transition-delay: 0.3s;">
+                <div class="trust-icon">
+                    <img src="Home-4.svg" alt="Complete In-House Finishing" class="icon-img" loading="lazy">
+                </div>
+                <div class="trust-text">
+                    <h4>Complete In-House Finishing</h4>
+                    <p>No outsourcing—we handle your PUR, wire, and square-back binding.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Introduction Banners -->
+        <section class="pink-banner scroll-reveal">
+            Gowise Print. Expert Printers Norwich
+        </section>
+
+        <section class="intro-text-section">
+            <p class="scroll-reveal">
+                A long-standing, family business located to the east of Norwich. Decades of experience in lithographic print, including both Four Colour Process and Spot Colour Pantone printing, together with new FIVE COLOUR digital printing, variable data printing and in house book binding.
+            </p>
+        </section>
+
+        <!-- Pink Divider -->
+        <hr class="pink-divider scroll-reveal">
+
+        <!-- 4. Our Services Grid -->
+        <section id="services" class="services-section" aria-label="Our Services">
+            <div class="services-header scroll-reveal">
+                <h2>Our Services</h2>
+            </div>
+            <div class="squares-grid">
+                
+                <!-- Box 1 -->
+                <div class="service-column scroll-stagger" style="transition-delay: 0s;">
+                    <div class="service-square box-1">
+                        <h3>Litho Printing &<br>Digital Printing</h3>
+                    </div>
+                    <p class="service-desc">What is lithographic and digital printing? Read about the difference.</p>
+                </div>
+
+                <!-- Box 2 -->
+                <div class="service-column scroll-stagger" style="transition-delay: 0.15s;">
+                    <div class="service-square box-2">
+                        <h3>Pantone Spot Colour<br>Litho Printing</h3>
+                    </div>
+                    <p class="service-desc">Exact Pantone ink matching is a dying art and one we are very keen to preserve. We still offer traditional litho printed pantone matching and will for many years to come.</p>
+                </div>
+
+                <!-- Box 3 -->
+                <div class="service-column scroll-stagger" style="transition-delay: 0.3s;">
+                    <div class="service-square box-3">
+                        <h3>Book<br>Binding</h3>
+                    </div>
+                    <p class="service-desc">We offer PUR binding (paperback books), wire binding and square back folded and stapled binding – all finished in house. Trade finishing service also available.</p>
+                </div>
+
+                <!-- Box 4 -->
+                <div class="service-column scroll-stagger" style="transition-delay: 0.45s;">
+                    <div class="service-square box-4">
+                        <h3>Artwork &<br>Design</h3>
+                    </div>
+                    <p class="service-desc">Let us enhance your design and save you money by merging our printing knowledge with a wealth of design and artwork experience.</p>
+                </div>
+
+                <!-- Box 5 -->
+                <div class="service-column scroll-stagger" style="transition-delay: 0.6s;">
+                    <div class="service-square box-5">
+                        <h3>Five Colour<br>Digital Printing</h3>
+                    </div>
+                    <p class="service-desc">Fujifilm 5UPER COLOUR©. Achieve far more Pantone and RGB colours with our expanded colour gamut.</p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 5. Environmental Policy -->
+        <section class="environment-banner scroll-reveal">
+            <img src="Environmental-Header-Image.jpg" alt="Environmental sustainability printing" class="env-bg-img" loading="lazy">
+            <div class="overlay"></div>
+            <h2>Our Environment Policy</h2>
+        </section>
+
+        <section class="environment-content scroll-reveal">
+            <p>Our company has always operated out of a relatively small group of units and our physical size gives us a naturally low ‘carbon footprint’. We were the second printer in the country to take advantage of a scheme from one of our paper suppliers. The scheme is in conjunction with the Woodland Trust. Through it, we are assessed for and fully offset the CO2 produced by our entire operation. This also includes the production and delivery of our paper.</p>
+            
+            <p>We take our impact on the environment very seriously; during production, before (paper manufacture) and after (our waste). As well as our own policies, we also continually monitor the environmental considerations of our suppliers and sub-contractors.</p>
+            
+            <p>Our policy is not static. We believe a permanent commitment to the environment is essential for a modern business. Our processes must be frequently reviewed. It is not just about recycling and reducing waste, but consideration in every aspect of our operation. This is a subject we are always willing to discuss at length with our customers, suppliers and other stakeholders.</p>
+        </section>
+
+    </main>
+
+    <!-- Floating Quote Roundel -->
+    <div class="quote-roundel" id="quoteRoundel">
+        <span>Get a<br>Quote</span>
+    </div>
+
+    <!-- Quote Request Modal Window -->
+    <div class="modal-overlay" id="quoteModal">
+        <div class="modal-content">
+            <span class="close-modal" id="closeModal">&times;</span>
+            <h3>Request a Quote</h3>
+            
+            <!-- JavaScript intercepts this form submission below -->
+            <form id="asyncQuoteForm">
+                <!-- Replace value string with your real Web3Forms Access Key -->
+                <input type="hidden" name="access_key" value="3c30689d-ea16-4629-92a1-5737b09d6f4c">
+                
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" placeholder="Your Name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" placeholder="your@email.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="details">Project Details</label>
+                    <textarea id="details" name="details" placeholder="Please describe your printing needs (dimensions, quantity, paper stock, binding styles, etc.)..." required></textarea>
+                </div>
+                <button type="submit" class="btn" id="submitQuoteBtn" style="width: 100%;">Send Request</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Submission Success Pop-Up Window -->
+    <div class="modal-overlay" id="successModal">
+        <div class="modal-content" style="max-width: 420px; text-align: center;">
+            <span class="close-modal" id="closeSuccessX">&times;</span>
+            <h3 style="color: #00aae9; margin-bottom: 15px;">Thank You!</h3>
+            <p style="font-size: 16px; color: #444; margin-bottom: 25px;">Your quote request has been successfully submitted. Our production team will review your project details and get back to you shortly.</p>
+            <button type="button" class="btn box-1" id="closeSuccessBtn" style="width: 100%; color: #fff;">Close Window</button>
+        </div>
+    </div>
+
+    <!-- 6. Footer -->
+    <footer>
+        <div class="footer-header">
+            <h2>Visit Our Norwich Print Shop</h2>
+            <p>GoWise Print proudly serves local businesses, independent creators, and trade partners across Norfolk and the UK.</p>
+        </div>
+        <div class="footer-grid">
+            
+            <div class="footer-arrow-container">
+                <svg class="footer-arrow" id="slideArrow" viewBox="0 0 100 50" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0,15 L60,15 L60,0 L100,25 L60,50 L60,35 L0,35 Z" fill="var(--gowise-magenta)"/>
+                </svg>
+            </div>
+            
+            <div class="footer-text-columns">
+                <div>
+                    <p style="font-size: 18px; margin-bottom: 15px; color: var(--gowise-cyan); font-weight: 600;">CONTACT INFO</p>
+                    <p><strong>Address:</strong><br>4 Belmore Road<br>Thorpe St Andrew<br>Norwich, Norfolk<br>NR7 0PT</p>
+                    <br>
+                    <p><strong>Phone:</strong> +44 (0)1603 431304</p>
+                    <p><strong>Email:</strong> print@gowise.co.uk</p>
+                </div>
+                
+                <div>
+                    <p style="font-size: 18px; margin-bottom: 15px; color: var(--gowise-cyan); font-weight: 600;">OPENING HOURS</p>
+                    <p>MONDAY: 08:30 – 17:00<br>TUESDAY: 08:30 – 17:00<br>WEDNESDAY: 08:30 – 17:00<br>THURSDAY: 08:30 – 17:00<br>FRIDAY: 08:30 – 17:00<br>SATURDAY: CLOSED<br>SUNDAY: CLOSED</p>
+                </div>
+            </div>
+            
+            <div class="map-container">
+                <iframe src="https://maps.google.com/maps?q=NR7%200PT&t=&z=14&ie=UTF8&iwloc=&output=embed" loading="lazy" allowfullscreen title="GoWise Print Location Map"></iframe>
+            </div>
+            
+        </div>
+    </footer>
+
+    <script>
+        // --- 1. Auto-fading Carousel Logic ---
+        const slides = document.querySelectorAll('.carousel-slide');
+        let currentSlide = 0;
+
+        function nextSlide() {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }
+        setInterval(nextSlide, 6000);
+
+        // --- 2. Scroll Animations ---
+        const createObserver = (selector, visibleClass, threshold = 0.15) => {
+            const elements = document.querySelectorAll(selector);
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add(visibleClass);
+                        observer.unobserve(entry.target); 
+                    }
+                });
+            }, { threshold: threshold });
+            
+            elements.forEach(el => observer.observe(el));
+        };
+
+        createObserver('.scroll-stagger', 'visible', 0.1);
+        createObserver('.scroll-reveal', 'visible', 0.15);
+        createObserver('.pink-divider', 'visible', 1.0);
+
+        // --- 3. Footer Arrow Animation ---
+        const arrow = document.getElementById('slideArrow');
+        const arrowObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    arrow.classList.add('slide-in');
+                } else {
+                    arrow.classList.remove('slide-in');
+                }
+            });
+        }, { threshold: 0.1 }); 
+        if(arrow) arrowObserver.observe(arrow);
+
+        // --- 4. Request Form & Success Modals Interactivity ---
+        const roundel = document.getElementById('quoteRoundel');
+        const quoteModal = document.getElementById('quoteModal');
+        const closeModal = document.getElementById('closeModal');
+        
+        const asyncForm = document.getElementById('asyncQuoteForm');
+        const submitBtn = document.getElementById('submitQuoteBtn');
+        
+        const successModal = document.getElementById('successModal');
+        const closeSuccessX = document.getElementById('closeSuccessX');
+        const closeSuccessBtn = document.getElementById('closeSuccessBtn');
+
+        // Reveal Form Modal
+        roundel.addEventListener('click', () => {
+            quoteModal.style.display = 'flex';
+            setTimeout(() => quoteModal.classList.add('active'), 10);
+        });
+
+        // Hide Form Modal Function
+        const hideQuoteModal = () => {
+            quoteModal.classList.remove('active');
+            setTimeout(() => quoteModal.style.display = 'none', 400); 
+        };
+        closeModal.addEventListener('click', hideQuoteModal);
+
+        // Hide Success Modal Function
+        const hideSuccessModal = () => {
+            successModal.classList.remove('active');
+            setTimeout(() => successModal.style.display = 'none', 400);
+        };
+        closeSuccessX.addEventListener('click', hideSuccessModal);
+        closeSuccessBtn.addEventListener('click', hideSuccessModal);
+
+        // Background click processing to close elements
+        window.addEventListener('click', (e) => {
+            if (e.target === quoteModal) hideQuoteModal();
+            if (e.target === successModal) hideSuccessModal();
+        });
+
+        // Asynchronous Messaging API Route Submission Processing
+        asyncForm.addEventListener('submit', function(e) {
+            e.preventDefault(); // Stop page routing/reloads
+            
+            // Set dynamic loading states
+            submitBtn.textContent = "Sending Request...";
+            submitBtn.disabled = true;
+
+            const formData = new FormData(asyncForm);
+
+            fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                body: formData
+            })
+            .then(async (response) => {
+                let json = await response.json();
+                if (response.status == 200) {
+                    // Step A: Close the entry form seamlessly
+                    hideQuoteModal();
+                    asyncForm.reset(); // Wipe inputs
+                    
+                    // Step B: Pop open the Confirmation Window overlay
+                    successModal.style.display = 'flex';
+                    setTimeout(() => successModal.classList.add('active'), 10);
+                } else {
+                    // Fallback configuration if API validation fails
+                    alert("Submission failed: " + json.message);
+                }
+            })
+            .catch(error => {
+                alert("Network error. Please confirm server connectivity or reach out directly to print@gowise.co.uk.");
+            })
+            .finally(() => {
+                // Restore primary CTA interface elements
+                submitBtn.textContent = "Send Request";
+                submitBtn.disabled = false;
+            });
+        });
+    </script>
+</body>
+</html>
     
     <!-- Open Graph for Social Sharing -->
     <meta property="og:title" content="Commercial Printers Norwich | Book Binding & Custom Litho Print">
