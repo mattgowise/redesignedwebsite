@@ -78,7 +78,6 @@
         /* Hero */
         .inner-hero { position: relative; width: 100%; min-height: 50vh; display: flex; align-items: center; background-color: #111; overflow: hidden; }
         
-        /* Frosted Glass Background applied here */
         .inner-hero-content { 
             position: relative; 
             z-index: 2; 
@@ -104,7 +103,8 @@
         .page-intro { padding: 80px 5%; max-width: 1400px; margin: 0 auto; text-align: center; }
         .page-intro p { font-size: 18px; }
 
-        .plant-list-section { padding: 20px 5% 40px; max-width: 1400px; margin: 0 auto; }
+        .section-container { max-width: 1400px; margin: 0 auto; }
+        .plant-list-section { padding: 20px 5% 40px; }
         .magenta-divider { border: none; height: 4px; background-color: var(--gowise-magenta); width: 100%; margin: 0 auto 60px auto; }
         
         .service-row {
@@ -118,6 +118,7 @@
             transition: opacity 0.8s ease-out, transform 0.8s ease-out;
             scroll-margin-top: 120px; 
         }
+        .service-row:last-child { margin-bottom: 0; }
         .service-row.visible { opacity: 1; transform: translateY(0); }
         .service-row:nth-child(even) .service-text { order: -1; } 
         
@@ -133,8 +134,11 @@
         .capabilities-list strong { display: block; font-size: 16px; font-weight: 600; color: var(--gowise-cyan); margin-bottom: 5px; }
 
         /* Equipment Inventory Section */
-        .equipment-inventory-section { background-color: var(--header-dark); padding: 80px 5%; margin-bottom: 60px; }
-        .equipment-container { max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
+        .equipment-inventory-section { background-color: var(--header-dark); padding: 40px 5% 80px; margin-bottom: 0; }
+        .equipment-header { text-align: center; margin-bottom: 50px; }
+        .equipment-header h2 { font-size: 36px; color: var(--gowise-magenta); }
+        
+        .equipment-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
         .equipment-column h3 { font-size: 28px; color: #fff; margin-bottom: 20px; font-weight: 400; }
         .equipment-column h3.sub-heading { margin-top: 40px; }
         .equipment-list { list-style: none; padding: 0; }
@@ -179,7 +183,7 @@
 
         @media (max-width: 1024px) {
             .service-row { gap: 40px; }
-            .equipment-container { grid-template-columns: 1fr 1fr; gap: 50px; }
+            .equipment-grid { grid-template-columns: 1fr 1fr; gap: 50px; }
             .footer-grid { flex-wrap: wrap; justify-content: center; text-align: center; }
             .footer-arrow-container { display: none; }
             .footer-text-columns { flex-direction: column; gap: 30px; align-items: center; }
@@ -189,7 +193,7 @@
             .inner-hero-content { padding: 30px 20px; margin: 0 5%; }
             .service-row { grid-template-columns: 1fr; margin-bottom: 50px; }
             .service-row:nth-child(even) .service-text { order: 0; } 
-            .equipment-container { grid-template-columns: 1fr; gap: 40px; }
+            .equipment-grid { grid-template-columns: 1fr; gap: 40px; }
             .top-bar { flex-direction: column; text-align: center; gap: 10px; }
             header { flex-direction: column; gap: 15px; padding: 20px 5%; }
             .main-nav { flex-wrap: wrap; justify-content: center; }
@@ -267,110 +271,115 @@
         </section>
 
         <section class="plant-list-section">
-            
-            <hr class="magenta-divider">
-            
-            <!-- Digital Press -->
-            <article id="digital" class="service-row scroll-reveal">
-                <div class="service-img-container">
-                    <img src="Plant-2.jpg" alt="Fujifilm 5UPER COLOUR digital press control panel" class="cover-img">
-                </div>
-                <div class="service-text">
-                    <h2>Digital Press Capabilities</h2>
-                    <p>Our digital suite is built for speed, variable data, and colour reproduction that standard CMYK digital presses simply cannot achieve.</p>
-                    <ul class="capabilities-list">
-                        <li><strong>Fujifilm 5UPER COLOUR© Digital Press:</strong> Our flagship 5-colour system hits specific RGB tones and simulates Pantone® colours with exceptional accuracy.</li>
-                        <li><strong>Variable Data Printing (VDP):</strong> Full capability to swap text, numbering, and imagery sheet-to-sheet.</li>
-                        <li><strong>Short-Run Efficiency:</strong> Cost-effective for runs up to 500 units and bespoke merchandise.</li>
-                        <li><strong>Custom Sheet Handling:</strong> Configured for custom raw sizes like 320x450mm.</li>
-                    </ul>
-                </div>
-            </article>
+            <div class="section-container">
+                <hr class="magenta-divider">
+                
+                <!-- Digital Press -->
+                <article id="digital" class="service-row scroll-reveal">
+                    <div class="service-img-container">
+                        <img src="Plant-2.jpg" alt="Fujifilm 5UPER COLOUR digital press control panel" class="cover-img">
+                    </div>
+                    <div class="service-text">
+                        <h2>Digital Press Capabilities</h2>
+                        <p>Our digital suite is built for speed, variable data, and colour reproduction that standard CMYK digital presses simply cannot achieve.</p>
+                        <ul class="capabilities-list">
+                            <li><strong>Fujifilm 5UPER COLOUR© Digital Press:</strong> Our flagship 5-colour system hits specific RGB tones and simulates Pantone® colours with exceptional accuracy.</li>
+                            <li><strong>Variable Data Printing (VDP):</strong> Full capability to swap text, numbering, and imagery sheet-to-sheet.</li>
+                            <li><strong>Short-Run Efficiency:</strong> Cost-effective for runs up to 500 units and bespoke merchandise.</li>
+                            <li><strong>Custom Sheet Handling:</strong> Configured for custom raw sizes like 320x450mm.</li>
+                        </ul>
+                    </div>
+                </article>
 
-            <!-- Litho Press -->
-            <article id="litho" class="service-row scroll-reveal">
-                <div class="service-img-container">
-                    <img src="Plant-3.jpg" alt="Traditional litho press ink rollers in motion" class="cover-img">
-                </div>
-                <div class="service-text">
-                    <h2>Lithographic Press Capabilities</h2>
-                    <p>For long runs and exact brand colour matching, traditional litho remains unbeatable.</p>
-                    <ul class="capabilities-list">
-                        <li><strong>Four-Colour Process (CMYK) Litho:</strong> High-accuracy production for catalogues, brochures, and commercial flyers.</li>
-                        <li><strong>Spot Colour Pantone® Matching:</strong> Exact ink mixing before the press runs for absolute colour fidelity.</li>
-                        <li><strong>Large Format Sheet Yields:</strong> Capacity to process larger raw stock sizes, such as 450x640mm.</li>
-                    </ul>
-                </div>
-            </article>
+                <!-- Litho Press -->
+                <article id="litho" class="service-row scroll-reveal">
+                    <div class="service-img-container">
+                        <img src="Plant-3.jpg" alt="Traditional litho press ink rollers in motion" class="cover-img">
+                    </div>
+                    <div class="service-text">
+                        <h2>Lithographic Press Capabilities</h2>
+                        <p>For long runs and exact brand colour matching, traditional litho remains unbeatable.</p>
+                        <ul class="capabilities-list">
+                            <li><strong>Four-Colour Process (CMYK) Litho:</strong> High-accuracy production for catalogues, brochures, and commercial flyers.</li>
+                            <li><strong>Spot Colour Pantone® Matching:</strong> Exact ink mixing before the press runs for absolute colour fidelity.</li>
+                            <li><strong>Large Format Sheet Yields:</strong> Capacity to process larger raw stock sizes, such as 450x640mm.</li>
+                        </ul>
+                    </div>
+                </article>
 
-            <!-- Finishing -->
-            <article id="finishing" class="service-row scroll-reveal">
-                <div class="service-img-container">
-                    <img src="Plant-4.jpg" alt="Heavy-duty automated bindery equipment" class="cover-img">
-                </div>
-                <div class="service-text">
-                    <h2>In-House Finishing & Book Binding</h2>
-                    <p>We do not outsource our binding. Our fully equipped finishing department operates as a dedicated trade finishing service.</p>
-                    <ul class="capabilities-list">
-                        <li><strong>PUR Perfect Binding:</strong> Polyurethane Reactive adhesive for superior page pull strength and lay-flat flexibility.</li>
-                        <li><strong>Square Back Binding:</strong> Automated folding and stapling that presses the spine flat, mimicking a perfect-bound look.</li>
-                        <li><strong>Wire-O Binding:</strong> Precision punching for manuals requiring a 360-degree fold.</li>
-                        <li><strong>Pre-Press & Artwork:</strong> Full in-house department to inspect bleeds, colour profiles, and imposition layouts.</li>
-                    </ul>
-                </div>
-            </article>
-
+                <!-- Finishing -->
+                <article id="finishing" class="service-row scroll-reveal">
+                    <div class="service-img-container">
+                        <img src="Plant-4.jpg" alt="Heavy-duty automated bindery equipment" class="cover-img">
+                    </div>
+                    <div class="service-text">
+                        <h2>In-House Finishing & Book Binding</h2>
+                        <p>We do not outsource our binding. Our fully equipped finishing department operates as a dedicated trade finishing service.</p>
+                        <ul class="capabilities-list">
+                            <li><strong>PUR Perfect Binding:</strong> Polyurethane Reactive adhesive for superior page pull strength and lay-flat flexibility.</li>
+                            <li><strong>Square Back Binding:</strong> Automated folding and stapling that presses the spine flat, mimicking a perfect-bound look.</li>
+                            <li><strong>Wire-O Binding:</strong> Precision punching for manuals requiring a 360-degree fold.</li>
+                            <li><strong>Pre-Press & Artwork:</strong> Full in-house department to inspect bleeds, colour profiles, and imposition layouts.</li>
+                        </ul>
+                    </div>
+                </article>
+            </div>
         </section>
 
-        <!-- NEW: Full Equipment List Section -->
+        <!-- Full Equipment List Section -->
         <section class="equipment-inventory-section scroll-reveal">
-            <div class="equipment-container">
-                
-                <div class="equipment-column">
-                    <h3>Pre Press</h3>
-                    <ul class="equipment-list">
-                        <li>Apple iMac 27" 3.2ghz</li>
-                        <li>Apple Mac Mini M4</li>
-                        <li>PC's x 3</li>
-                        <li>Agfa Acento S (CTP)<br>with Studiorip 3.9</li>
-                    </ul>
+            <div class="section-container">
+                <div class="equipment-header">
+                    <h2>A Full List of Our Equipment</h2>
                 </div>
-                
-                <div class="equipment-column">
-                    <h3>Digital Print Room</h3>
-                    <ul class="equipment-list">
-                        <li>Fujifilm Revoria SC285S Five Colour</li>
-                        <li>Xerox Versant 180 CMYK</li>
-                    </ul>
+                <div class="equipment-grid">
+                    
+                    <div class="equipment-column">
+                        <h3>Pre Press</h3>
+                        <ul class="equipment-list">
+                            <li>Apple iMac 27" 3.2ghz</li>
+                            <li>Apple Mac Mini M4</li>
+                            <li>PC's x 3</li>
+                            <li>Agfa Acento S (CTP)<br>with Studiorip 3.9</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="equipment-column">
+                        <h3>Digital Print Room</h3>
+                        <ul class="equipment-list">
+                            <li>Fujifilm Revoria SC285S Five Colour</li>
+                            <li>Xerox Versant 180 CMYK</li>
+                        </ul>
 
-                    <h3 class="sub-heading">Print Room</h3>
-                    <ul class="equipment-list">
-                        <li>Heidelberg Speedmaster (B3)</li>
-                        <li>Heidelberg GTO46 (SRA3)</li>
-                    </ul>
-                </div>
-                
-                <div class="equipment-column">
-                    <h3>Finishing</h3>
-                    <ul class="equipment-list">
-                        <li>Renz Autopunch 360</li>
-                        <li>Renz Mobi 500</li>
-                        <li>Renz DTP 340M</li>
-                        <li>KB4000 PUR binder</li>
-                        <li>Speedbind 420 Planamelt Binder</li>
-                        <li>Watkiss PowerSquare 224</li>
-                        <li>Duplo 618 creaser/slitter</li>
-                        <li>Heidelberg Platen (SRA3)</li>
-                        <li>EBA 721 Guillotine</li>
-                        <li>D&K Neptune B3 Laminator</li>
-                        <li>Watkiss Vario Booklet Maker</li>
-                        <li>Morgana Autocreaser 500</li>
-                        <li>Morgana Autofold Pro</li>
-                        <li>Morgana Double Head Stitcher</li>
-                        <li>Filepecker IV double head drill</li>
-                    </ul>
-                </div>
+                        <h3 class="sub-heading">Print Room</h3>
+                        <ul class="equipment-list">
+                            <li>Heidelberg Speedmaster (B3)</li>
+                            <li>Heidelberg GTO46 (SRA3)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="equipment-column">
+                        <h3>Finishing</h3>
+                        <ul class="equipment-list">
+                            <li>Renz Autopunch 360</li>
+                            <li>Renz Mobi 500</li>
+                            <li>Renz DTP 340M</li>
+                            <li>KB4000 PUR binder</li>
+                            <li>Speedbind 420 Planamelt Binder</li>
+                            <li>Watkiss PowerSquare 224</li>
+                            <li>Duplo 618 creaser/slitter</li>
+                            <li>Heidelberg Platen (SRA3)</li>
+                            <li>EBA 721 Guillotine</li>
+                            <li>D&K Neptune B3 Laminator</li>
+                            <li>Watkiss Vario Booklet Maker</li>
+                            <li>Morgana Autocreaser 500</li>
+                            <li>Morgana Autofold Pro</li>
+                            <li>Morgana Double Head Stitcher</li>
+                            <li>Filepecker IV double head drill</li>
+                        </ul>
+                    </div>
 
+                </div>
             </div>
         </section>
 
