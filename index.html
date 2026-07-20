@@ -5,14 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- SEO & Location Optimization -->
-    <title>Commercial Printers Norwich | Custom Litho & Book Binding Norfolk | Gowise Print</title>
-    <meta name="description" content="Professional book binding and custom litho printing in Norfolk. From high-volume corporate printing to bespoke zine runs and art prints for independent creators.">
+    <title>Commercial Printers Norwich | Book Binding & Custom Litho Print</title>
+    <meta name="description" content="Expert commercial printing in Norwich since 1983. We specialize in Pantone matching, professional book binding, and short-run digital. Get a quote today.">
     <meta name="keywords" content="Commercial Printers Norwich, Professional Book Binding Norfolk, Custom Litho Print, 5-Colour Digital Printing, Pantone Spot Colour Matching">
     <link rel="canonical" href="https://www.gowise.co.uk/index.html">
     
     <!-- Open Graph for Social Sharing -->
-    <meta property="og:title" content="Commercial Printers Norwich | Book Binding Norfolk | Gowise Print">
-    <meta property="og:description" content="Precision litho print, exact Pantone matching, and in-house finishing from Norfolk’s trusted printers since 1983.">
+    <meta property="og:title" content="Commercial Printers Norwich | Book Binding & Custom Litho Print">
+    <meta property="og:description" content="Expert commercial printing in Norwich since 1983. We specialize in Pantone matching, professional book binding, and short-run digital. Get a quote today.">
     <meta property="og:type" content="website">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -105,76 +105,97 @@
 
         @keyframes dropFade { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* 1. Hero Section */
-        .hero-section { position: relative; width: 100%; min-height: 80vh; display: flex; align-items: center; background-color: #111; overflow: hidden; }
+        /* 1. Hero Carousel */
+        .carousel-container { position: relative; width: 100%; min-height: 70vh; background-color: #111; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+        .carousel-slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1.2s ease-in-out; display: flex; align-items: center; justify-content: center; }
+        .carousel-slide.active { opacity: 1; z-index: 1; }
         
-        /* Added transparent background block for legibility */
-        .hero-content { 
+        .carousel-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; }
+        .carousel-slide:nth-child(1) .carousel-bg { background-color: #2b2b2b; } /* Slide 1 Placeholder Color */
+        .carousel-slide:nth-child(2) .carousel-bg { background-color: #1a4f66; } /* Slide 2 Placeholder Color */
+        .carousel-slide:nth-child(3) .carousel-bg { background-color: #4a194a; } /* Slide 3 Placeholder Color */
+
+        .carousel-content { 
             position: relative; 
             z-index: 2; 
-            padding: 40px; 
+            padding: 50px; 
             margin: 0 5%;
-            max-width: 850px; 
+            max-width: 800px; 
             color: #fff; 
-            background-color: rgba(0, 0, 0, 0.65); 
+            background-color: rgba(0, 0, 0, 0.5); 
             border-radius: 8px;
-            backdrop-filter: blur(5px);
+            backdrop-filter: blur(8px);
+            text-align: center;
+            transform: translateY(20px);
+            transition: transform 1.2s ease-out;
         }
-        
-        .hero-content h1, .hero-content p, .hero-actions { opacity: 0; transform: translateY(30px); animation: slideUpFade 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; }
-        .hero-content h1 { animation-delay: 0.1s; font-size: 48px; font-weight: 800; color: #fff; margin-bottom: 20px; line-height: 1.2; }
-        .hero-content p { animation-delay: 0.3s; font-size: 18px; color: #ddd; margin-bottom: 30px; font-weight: 300; }
-        .hero-actions { animation-delay: 0.5s; display: flex; gap: 15px; }
-
-        @keyframes slideUpFade { to { opacity: 1; transform: translateY(0); } }
-        .hero-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; }
-        .hero-bg img { animation: kenBurns 20s infinite alternate ease-in-out; }
-        @keyframes kenBurns { from { transform: scale(1); } to { transform: scale(1.1); } }
+        .carousel-slide.active .carousel-content { transform: translateY(0); }
+        .carousel-content h1 { font-size: 48px; font-weight: 800; color: #fff; margin-bottom: 20px; line-height: 1.2; }
+        .carousel-content p { font-size: 20px; color: #eee; font-weight: 300; }
 
         /* 2. Trust Indicators */
-        .trust-bar { display: grid; grid-template-columns: repeat(3, 1fr); background-color: var(--header-dark); color: #fff; padding: 40px 5%; gap: 20px; }
+        .trust-bar { display: grid; grid-template-columns: repeat(3, 1fr); background-color: var(--header-dark); color: #fff; padding: 40px 5%; gap: 20px; position: relative; z-index: 10; }
         .trust-item { display: flex; align-items: center; gap: 20px; opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
         .trust-item.visible { opacity: 1; transform: translateY(0); }
         .trust-icon { width: 60px; height: 60px; flex-shrink: 0; }
         .trust-text h4 { font-size: 16px; font-weight: 600; color: var(--gowise-cyan); margin-bottom: 5px; }
         .trust-text p { font-size: 13px; color: #ccc; line-height: 1.4; }
 
-        /* 3. Customer Pathways */
-        .services-section { padding: 80px 5%; max-width: 1500px; margin: 0 auto; }
-        .services-header { text-align: center; margin-bottom: 60px; }
-        .services-header h2 { font-size: 36px; color: var(--gowise-magenta); position: relative; display: inline-block; }
-        
-        .pathways-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
-        .pathway-card { background: #fff; border-radius: 4px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); overflow: hidden; display: flex; flex-direction: column; opacity: 0; transform: translateY(40px); transition: opacity 0.8s ease-out, transform 0.8s ease-out, box-shadow 0.4s ease; }
-        .pathway-card.visible { opacity: 1; transform: translateY(0); }
-        .pathway-card.visible:hover { transform: translateY(-10px); box-shadow: 0 15px 35px rgba(0,0,0,0.15); }
-        .pathway-img-wrapper { height: 250px; overflow: hidden; }
-        .pathway-img-wrapper img { transition: transform 0.6s ease; }
-        .pathway-card:hover .pathway-img-wrapper img { transform: scale(1.05); }
-        .pathway-content { padding: 30px; display: flex; flex-direction: column; flex: 1; }
-        .pathway-content h3 { font-size: 22px; margin-bottom: 15px; }
-        .pathway-content p { font-size: 15px; margin-bottom: 25px; flex: 1; }
-        
-        /* 4. Interactive Print Estimator */
-        .estimator-section { background-color: #f4f4f4; padding: 80px 5%; overflow: hidden; scroll-margin-top: 50px; }
-        .estimator-container { max-width: 1500px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
-        .estimator-copy { opacity: 0; transform: translateX(-50px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
-        .estimator-ui { background: #fff; padding: 40px; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); position: relative; opacity: 0; transform: translateX(50px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
-        .estimator-copy.visible, .estimator-ui.visible { opacity: 1; transform: translateX(0); }
-        .estimator-copy h2 { font-size: 36px; color: var(--gowise-cyan); margin-bottom: 20px; }
-        .estimator-copy p { font-size: 16px; margin-bottom: 30px; }
-        
-        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
-        .form-group { margin-bottom: 20px; }
-        .form-group label { display: block; font-weight: 600; margin-bottom: 8px; font-size: 14px; }
-        .form-group select, .form-group input { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 4px; font-size: 14px; font-family: inherit; transition: border-color 0.3s; }
-        .form-group select:focus, .form-group input:focus { border-color: var(--gowise-magenta); outline: none; }
-        
-        .estimate-result { margin-top: 25px; padding: 20px; background: rgba(0, 158, 224, 0.1); border-left: 4px solid var(--gowise-cyan); display: none; animation: fadeUp 0.4s ease-out forwards; }
-        .estimate-result h4 { color: var(--header-dark); font-size: 18px; margin-bottom: 5px; }
-        .estimate-result .price { font-size: 28px; font-weight: 800; color: var(--gowise-magenta); }
+        /* 3. New Introduction Sections */
+        .pink-banner { background-color: var(--gowise-magenta); color: #fff; padding: 50px 5%; text-align: center; font-size: 36px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; opacity: 0; transform: scale(0.98); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
+        .pink-banner.visible { opacity: 1; transform: scale(1); }
 
-        /* 5. Footer & Location */
+        .intro-text-section { padding: 80px 5%; text-align: center; background-color: #fcfcfc; }
+        .intro-text-section p { max-width: 900px; margin: 0 auto; font-size: 22px; font-weight: 400; line-height: 1.8; color: #444; opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
+        .intro-text-section p.visible { opacity: 1; transform: translateY(0); }
+
+        /* 4. Services Grid (5 Squares) */
+        .services-section { padding: 40px 5% 100px; max-width: 1400px; margin: 0 auto; }
+        .services-header { text-align: center; margin-bottom: 60px; opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+        .services-header.visible { opacity: 1; transform: translateY(0); }
+        .services-header h2 { font-size: 36px; color: var(--header-dark); }
+        
+        .squares-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; }
+        .service-square { 
+            flex: 0 0 calc(33.333% - 20px); 
+            aspect-ratio: 1 / 1; 
+            padding: 40px; 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: center; 
+            align-items: center; 
+            text-align: center; 
+            color: #fff; 
+            border-radius: 4px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            opacity: 0; 
+            transform: translateY(40px); 
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out, box-shadow 0.3s ease; 
+        }
+        .service-square.visible { opacity: 1; transform: translateY(0); }
+        .service-square:hover { box-shadow: 0 15px 35px rgba(0,0,0,0.25); transform: translateY(-10px); z-index: 2; }
+        
+        .service-square h3 { color: #fff; font-size: 24px; margin-bottom: 20px; line-height: 1.3; }
+        .service-square p { color: rgba(255,255,255,0.9); font-size: 16px; line-height: 1.6; font-weight: 400; margin: 0; }
+
+        .bg-cyan { background-color: var(--gowise-cyan); }
+        .bg-magenta { background-color: var(--header-dark); } /* Adjusted magenta to dark to avoid clashing with pink/cyan directly, or use var as requested: */
+        .bg-magenta-true { background-color: #d100d1; } /* Darker magenta for contrast */
+        .bg-pink { background-color: var(--gowise-pink); }
+
+        /* 5. Environmental Policy */
+        .environment-banner { position: relative; padding: 100px 5%; text-align: center; color: #fff; overflow: hidden; opacity: 0; transition: opacity 1s ease-out; }
+        .environment-banner.visible { opacity: 1; }
+        .environment-banner .bg-image { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: url('Environmental-Header-Image.jpg'); background-size: cover; background-position: center; z-index: 1; }
+        .environment-banner .overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.6); z-index: 2; }
+        .environment-banner h2 { position: relative; z-index: 3; font-size: 42px; font-weight: 800; color: #fff; text-transform: uppercase; letter-spacing: 1px; transform: scale(0.9); opacity: 0; transition: all 0.8s ease-out 0.2s; }
+        .environment-banner.visible h2 { transform: scale(1); opacity: 1; }
+
+        .environment-content { padding: 80px 5%; max-width: 900px; margin: 0 auto; opacity: 0; transform: translateY(40px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
+        .environment-content.visible { opacity: 1; transform: translateY(0); }
+        .environment-content p { font-size: 16px; margin-bottom: 25px; line-height: 1.8; color: #444; }
+
+        /* 6. Footer & Location */
         footer { background: var(--header-dark); color: #fff; position: relative; overflow: hidden; padding: 60px 5%; }
         .footer-header { margin-bottom: 40px; text-align: center; }
         .footer-header h2 { color: var(--gowise-magenta); font-size: 32px; }
@@ -186,25 +207,27 @@
         .map-container { flex: 0 0 400px; height: 300px; background: #ddd; border-radius: 4px; overflow: hidden; }
         .map-container iframe { width: 100%; height: 100%; border: none; }
 
-        /* Responsive */
+        /* Responsive Overrides */
         @media (max-width: 1024px) {
-            .pathways-grid, .estimator-container { grid-template-columns: 1fr; }
-            .hero-content h1 { font-size: 38px; }
+            .service-square { flex: 0 0 calc(50% - 15px); }
+            .carousel-content h1 { font-size: 38px; }
             .footer-grid { flex-wrap: wrap; justify-content: center; text-align: center; }
             .footer-arrow-container { display: none; }
             .footer-text-columns { flex-direction: column; gap: 30px; align-items: center; }
             .map-container { width: 100%; flex: 1 1 100%; }
         }
         @media (max-width: 768px) {
-            .hero-content { padding: 30px 20px; margin: 0 5%; }
+            .carousel-content h1 { font-size: 32px; }
+            .carousel-content p { font-size: 16px; }
+            .service-square { flex: 0 0 100%; aspect-ratio: auto; min-height: 300px; padding: 40px 20px; }
             .trust-bar { grid-template-columns: 1fr; text-align: center; }
             .trust-item { flex-direction: column; }
-            .hero-actions { flex-direction: column; }
             .top-bar { flex-direction: column; text-align: center; gap: 10px; }
             header { flex-direction: column; gap: 15px; padding: 20px 5%; }
             .main-nav { flex-wrap: wrap; justify-content: center; }
             .dropdown { display: none !important; }
-            .form-row { grid-template-columns: 1fr; }
+            .pink-banner { font-size: 24px; padding: 30px 5%; }
+            .intro-text-section p { font-size: 18px; }
         }
     </style>
 </head>
@@ -247,31 +270,47 @@
                         <li><a href="resources.html#setup-checklist">Artwork Setup Checklist</a></li>
                     </ul>
                 </li>
-                <li><a href="about.html">ABOUT US ▾</a>
-<ul class="dropdown">
-                        <li><a href="#history">Our History</a></li>
-                        <li><a href="#sustainability">Sustainability</a></li>
-                        <li><a href="#insights">Print Insights</a></li>
-                        <li><a href="#team">The GoWise Team</a></li>
+                <li>
+                    <a href="about.html">ABOUT US ▾</a>
+                    <ul class="dropdown">
+                        <li><a href="about.html#history">Our History</a></li>
+                        <li><a href="about.html#sustainability">Sustainability</a></li>
+                        <li><a href="about.html#insights">Print Insights</a></li>
+                        <li><a href="about.html#team">The GoWise Team</a></li>
                     </ul>
                 </li>
-                <li><a href="#estimator" class="btn-quote">GET A QUOTE</a></li>
+                <li><a href="services.html" class="btn-quote">GET A QUOTE</a></li>
             </ul>
         </nav>
     </header>
 
     <main>
-        <!-- 1. The Hero Section -->
-        <section class="hero-section" aria-label="Introduction">
-            <div class="hero-bg">
-                <img src="Home-1.jpg" alt="Printing facility at GoWise Print" class="cover-img">
+        <!-- 1. Auto-fading Carousel -->
+        <section class="carousel-container" aria-label="Introduction">
+            <!-- Slide 1 -->
+            <div class="carousel-slide active">
+                <div class="carousel-bg">
+                    <!-- Replace with <img src="slide1.jpg" class="cover-img"> when you have photos -->
+                </div>
+                <div class="carousel-content">
+                    <h1>Now in our fifth decade of printing</h1>
+                    <p>We have been proudly serving local businesses and independent creators with premium print and finishing services since 1983.</p>
+                </div>
             </div>
-            <div class="hero-content">
-                <h1>Expert Commercial Printing & Book Binding in Norwich</h1>
-                <p>From high-volume corporate litho to bespoke, short-run art prints and custom publications. Precision printing, exact Pantone matching, and in-house finishing from Norfolk’s trusted family printers since 1983.</p>
-                <div class="hero-actions">
-                    <a href="#estimator" class="btn">Calculate Your Print Costs</a>
-                    <a href="services.html" class="btn btn-outline">View Our Services</a>
+            <!-- Slide 2 -->
+            <div class="carousel-slide">
+                <div class="carousel-bg"></div>
+                <div class="carousel-content">
+                    <h1>A family run business</h1>
+                    <p>We pride ourselves on being large enough to cope with your most demanding projects, yet small enough to care about every fine detail.</p>
+                </div>
+            </div>
+            <!-- Slide 3 -->
+            <div class="carousel-slide">
+                <div class="carousel-bg"></div>
+                <div class="carousel-content">
+                    <h1>From 50 business cards to 10,000 leaflets</h1>
+                    <p>Whether you need a short bespoke run or a high-volume corporate rollout, our advanced machinery handles jobs of all sizes equally well.</p>
                 </div>
             </div>
         </section>
@@ -307,127 +346,75 @@
             </div>
         </section>
 
-        <!-- 3. Customer Pathways -->
-        <section id="services" class="services-section" aria-label="Our Core Services">
-            <div class="services-header">
-                <h2>Tailored Solutions For Every Project</h2>
+        <!-- 3. Introduction Banners -->
+        <section class="pink-banner scroll-reveal">
+            Gowise Print. Expert Printers Norwich
+        </section>
+
+        <section class="intro-text-section">
+            <p class="scroll-reveal">
+                A long-standing, family business located to the east of Norwich. Decades of experience in lithographic print, including both Four Colour Process and Spot Colour Pantone printing, together with new FIVE COLOUR digital printing, variable data printing and in house book binding.
+            </p>
+        </section>
+
+        <!-- 4. Services Grid (5 Squares) -->
+        <section id="services" class="services-section" aria-label="Our Services">
+            <div class="services-header scroll-reveal">
+                <h2>Our Services</h2>
             </div>
-            <div class="pathways-grid">
+            <div class="squares-grid">
                 
-                <!-- Pathway 1: Corporate -->
-                <article class="pathway-card scroll-reveal" style="transition-delay: 0s;">
-                    <div class="pathway-img-wrapper">
-                        <img src="Home-5.jpg" alt="Corporate Print Solutions" class="cover-img">
-                    </div>
-                    <div class="pathway-content">
-                        <h3>Corporate Print Solutions</h3>
-                        <p>High-volume litho and advanced 5-colour digital printing designed for corporate brochures, catalogues, and direct mail. We ensure exact brand consistency across every run, hitting your precise Pantone spot colours with flawless accuracy.</p>
-                        <a href="services.html" class="btn btn-outline">Corporate Services</a>
-                    </div>
-                </article>
+                <!-- Box 1 -->
+                <div class="service-square bg-cyan scroll-stagger" style="transition-delay: 0s;">
+                    <h3>Litho Printing &<br>Digital Printing</h3>
+                    <p>Discover the perfect balance for your project. Learn the key differences between our high-volume lithographic presses and agile digital printing solutions to maximize your budget.</p>
+                </div>
 
-                <!-- Pathway 2: Trade -->
-                <article class="pathway-card scroll-reveal" style="transition-delay: 0.2s;">
-                    <div class="pathway-img-wrapper">
-                        <img src="Home-6.jpg" alt="Trade Print Partnerships" class="cover-img">
-                    </div>
-                    <div class="pathway-content">
-                        <h3>Trade Print Partnerships</h3>
-                        <p>Need reliable overflow capacity or specialized print finishing? We partner with the trade to provide heavy-duty lithographic printing, complex laminating, and in-house PUR and wire binding for projects that require a quick turnaround.</p>
-                        <a href="plant-list.html" class="btn btn-outline">Plant List & Capabilities</a>
-                    </div>
-                </article>
+                <!-- Box 2 -->
+                <div class="service-square bg-magenta-true scroll-stagger" style="transition-delay: 0.15s;">
+                    <h3>Pantone Spot Colour<br>Litho Printing</h3>
+                    <p>Exact Pantone ink matching is a specialized craft we proudly preserve. We continue to offer traditional spot colour lithographic printing to ensure absolute brand consistency.</p>
+                </div>
 
-                <!-- Pathway 3: Independent Creators -->
-                <article class="pathway-card scroll-reveal" style="transition-delay: 0.4s;">
-                    <div class="pathway-img-wrapper">
-                        <img src="Home-7.jpg" alt="Independent Creators & Publishers" class="cover-img">
-                    </div>
-                    <div class="pathway-content">
-                        <h3>Independent Creators & Publishers</h3>
-                        <p>Perfect for artists, designers, and small businesses. Whether you are publishing the next issue of a local zine or limiting a bespoke art print and merchandise run to 500 units, we guarantee exacting quality control and premium paper stocks.</p>
-                        <a href="services.html#printing" class="btn btn-outline">Bespoke Printing</a>
-                    </div>
-                </article>
+                <!-- Box 3 -->
+                <div class="service-square bg-cyan scroll-stagger" style="transition-delay: 0.3s;">
+                    <h3>Book<br>Binding</h3>
+                    <p>We provide robust PUR binding for paperbacks, versatile wire binding, and square-back folded finishes. All binding is completed entirely in-house, alongside our dedicated trade finishing.</p>
+                </div>
+
+                <!-- Box 4 -->
+                <div class="service-square bg-cyan scroll-stagger" style="transition-delay: 0.45s;">
+                    <h3>Artwork &<br>Design</h3>
+                    <p>Maximize your print budget with our expert prepress team. We blend technical printing knowledge with deep creative experience to perfectly enhance and optimize your artwork.</p>
+                </div>
+
+                <!-- Box 5 -->
+                <div class="service-square bg-pink scroll-stagger" style="transition-delay: 0.6s;">
+                    <h3>Five Colour<br>Digital Printing</h3>
+                    <p>Experience the Fujifilm 5UPER COLOUR© digital press. By utilizing an expanded colour gamut, we achieve extraordinarily rich RGB tones and highly accurate Pantone colour simulations.</p>
+                </div>
 
             </div>
         </section>
 
-        <!-- 4. Interactive Element: The Print Estimator -->
-        <section id="estimator" class="estimator-section" aria-label="Print Cost Estimator">
-            <div class="estimator-container">
-                <div class="estimator-copy anim-left">
-                    <h2>Transparent Pricing, Instantly</h2>
-                    <p>Stop waiting days for a custom quote. Use our interactive print estimator to calculate your costs in seconds. Input your specific paper size, select your stock weight, and choose your preferred binding method to generate an immediate baseline estimate.</p>
-                    <div style="height: 250px; margin-top: 30px; overflow: hidden; border-radius: 4px;">
-                        <img src="Home-8.jpg" alt="Stacked uncut paper reams for print estimation" class="cover-img">
-                    </div>
-                </div>
-                
-                <!-- Expanded Estimator Form -->
-                <div class="estimator-ui anim-right">
-                    <h3 style="margin-bottom: 20px; font-size: 22px; color: var(--gowise-magenta);">Quick Cost Calculator</h3>
-                    <form id="printCalculator">
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="printQty">Quantity</label>
-                                <input type="number" id="printQty" min="50" step="50" value="500">
-                            </div>
-                            <div class="form-group">
-                                <label for="printSize">Sheet Dimensions</label>
-                                <select id="printSize">
-                                    <option value="1">A5 (148 x 210mm)</option>
-                                    <option value="1.5">A4 (210 x 297mm)</option>
-                                    <option value="2">Custom Raw (320 x 450mm)</option>
-                                    <option value="3">Large Format (450 x 640mm)</option>
-                                </select>
-                            </div>
-                        </div>
-                        
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="paperWeight">Paper Weight (GSM)</label>
-                                <select id="paperWeight">
-                                    <option value="0.1">130gsm (Standard Gloss/Silk)</option>
-                                    <option value="0.15">170gsm (Premium Inner Pages)</option>
-                                    <option value="0.25">300gsm (Heavyweight/Covers)</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="specialtyInks">Inks / Gamut</label>
-                                <select id="specialtyInks">
-                                    <option value="1">Standard CMYK</option>
-                                    <option value="1.3">5-Colour Digital + Clear</option>
-                                    <option value="1.5">Pantone Spot Colour</option>
-                                </select>
-                            </div>
-                        </div>
+        <!-- 5. Environmental Policy -->
+        <section class="environment-banner scroll-reveal">
+            <div class="bg-image"></div>
+            <div class="overlay"></div>
+            <h2>Our Environment Policy</h2>
+        </section>
 
-                        <div class="form-group">
-                            <label for="printFinish">Binding / Finishing</label>
-                            <select id="printFinish">
-                                <option value="0">Loose Leaf / No Finish</option>
-                                <option value="0.2">Square-Back Fold & Staple</option>
-                                <option value="0.8">Wire Binding</option>
-                                <option value="1.5">PUR Perfect Binding</option>
-                            </select>
-                        </div>
-
-                        <button type="button" class="btn" onclick="calculateEstimate()" style="width: 100%;">Calculate Estimate</button>
-                    </form>
-                    
-                    <div id="estimateResult" class="estimate-result">
-                        <h4>Baseline Estimate:</h4>
-                        <div class="price" id="priceDisplay">£0.00</div>
-                        <p style="font-size: 12px; margin-top: 10px; color: #666;">*This is an automated baseline estimate. Final costs will vary based on specific stock selections and artwork complexity. <a href="#" style="color: var(--gowise-cyan); text-decoration: underline;">Contact us</a> to formalize your quote.</p>
-                    </div>
-                </div>
-            </div>
+        <section class="environment-content scroll-reveal">
+            <p>Our company has always operated out of a relatively small group of units and our physical size gives us a naturally low ‘carbon footprint’. We were the second printer in the country to take advantage of a scheme from one of our paper suppliers. The scheme is in conjunction with the Woodland Trust. Through it, we are assessed for and fully offset the CO2 produced by our entire operation. This also includes the production and delivery of our paper.</p>
+            
+            <p>We take our impact on the environment very seriously; during production, before (paper manufacture) and after (our waste). As well as our own policies, we also continually monitor the environmental considerations of our suppliers and sub-contractors.</p>
+            
+            <p>Our policy is not static. We believe a permanent commitment to the environment is essential for a modern business. Our processes must be frequently reviewed. It is not just about recycling and reducing waste, but consideration in every aspect of our operation. This is a subject we are always willing to discuss at length with our customers, suppliers and other stakeholders.</p>
         </section>
 
     </main>
 
-    <!-- 5. SEO & Location Footer -->
+    <!-- 6. Footer -->
     <footer>
         <div class="footer-header">
             <h2>Visit Our Norwich Print Shop</h2>
@@ -464,28 +451,17 @@
     </footer>
 
     <script>
-        // --- 1. Expanded Print Estimator Logic ---
-        function calculateEstimate() {
-            const qty = parseInt(document.getElementById('printQty').value);
-            const sizeMultiplier = parseFloat(document.getElementById('printSize').value);
-            const paperWeightCost = parseFloat(document.getElementById('paperWeight').value);
-            const inkMultiplier = parseFloat(document.getElementById('specialtyInks').value);
-            const finishCostPerUnit = parseFloat(document.getElementById('printFinish').value);
-            
-            const setupFee = 45.00 * inkMultiplier; // Specialized inks increase setup
-            const paperCostPerUnit = (0.15 + paperWeightCost) * sizeMultiplier;
-            const totalCost = setupFee + (qty * paperCostPerUnit * inkMultiplier) + (qty * finishCostPerUnit);
-            
-            const resultDiv = document.getElementById('estimateResult');
-            const priceDisplay = document.getElementById('priceDisplay');
-            
-            resultDiv.style.animation = 'none';
-            resultDiv.offsetHeight; 
-            resultDiv.style.animation = null;
-            
-            priceDisplay.textContent = `£${totalCost.toFixed(2)} - £${(totalCost * 1.15).toFixed(2)}`;
-            resultDiv.style.display = 'block';
+        // --- 1. Auto-fading Carousel Logic ---
+        const slides = document.querySelectorAll('.carousel-slide');
+        let currentSlide = 0;
+
+        function nextSlide() {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add('active');
         }
+        // Change slide every 6 seconds
+        setInterval(nextSlide, 6000);
 
         // --- 2. Scroll Animations ---
         const createObserver = (selector, visibleClass, threshold = 0.15) => {
@@ -502,11 +478,11 @@
             elements.forEach(el => observer.observe(el));
         };
 
-        createObserver('.scroll-stagger', 'visible', 0.2);
+        // Initialize scroll reveal on elements
+        createObserver('.scroll-stagger', 'visible', 0.1);
         createObserver('.scroll-reveal', 'visible', 0.15);
-        createObserver('.anim-left', 'visible', 0.2);     
-        createObserver('.anim-right', 'visible', 0.2);    
 
+        // --- 3. Footer Arrow Animation ---
         const arrow = document.getElementById('slideArrow');
         const arrowObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
