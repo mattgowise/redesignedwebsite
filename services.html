@@ -133,13 +133,14 @@
         .page-intro p { font-size: 18px; }
 
         /* 3. Alternating Service Rows */
-        .services-detail-section { padding: 20px 5% 40px; max-width: 1400px; margin: 0 auto; }
+        .services-detail-section { padding: 20px 5% 40px; }
+        .magenta-divider { border: none; height: 4px; background-color: var(--gowise-magenta); width: 100%; margin: 0 auto 60px auto; }
         
         .service-row {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 40px;
-            align-items: center;
+            align-items: start; /* Aligns the tops perfectly */
             margin-bottom: 80px;
             opacity: 0;
             transform: translateY(40px);
@@ -153,15 +154,16 @@
         .service-img-container img { transition: transform 0.6s ease; }
         .service-row:hover .service-img-container img { transform: scale(1.05); }
         
-        .service-text h2 { font-size: 32px; margin-bottom: 20px; color: var(--gowise-magenta); }
-        .service-text > p { font-size: 16px; margin-bottom: 25px; font-weight: 400; color: #444; }
+        .service-text h2 { font-size: 32px; margin-bottom: 20px; color: var(--gowise-magenta); line-height: 1.2; }
+        /* Tighter line spacing for the opening paragraphs */
+        .service-text > p { font-size: 16px; margin-bottom: 25px; font-weight: 400; color: #444; line-height: 1.4; }
         
         /* Service Sub-Features Formatting */
         .service-features { list-style: none; padding: 0; }
         .service-features li { position: relative; margin-bottom: 20px; }
         .service-features strong { display: block; font-size: 16px; font-weight: 600; color: var(--gowise-cyan); margin-bottom: 5px; }
 
-        /* 4. Comparison Cards (Digital/Litho) added from Resources */
+        /* 4. Comparison Cards (Digital/Litho) */
         .resource-section { padding: 60px 5% 100px; scroll-margin-top: 100px; background-color: #f4f4f4; border-top: 1px solid #eaeaea; }
         .section-container { max-width: 1400px; margin: 0 auto; }
         .section-header { text-align: center; margin-bottom: 50px; }
@@ -198,10 +200,7 @@
         .map-container { flex: 0 0 400px; height: 300px; background: #ddd; border-radius: 4px; overflow: hidden; }
         .map-container iframe { width: 100%; height: 100%; border: none; }
 
-        /* Modal Form Setup & Roundel */
-        .quote-roundel { position: fixed; top: 50%; right: 20px; transform: translateY(-50%); width: 90px; height: 90px; background-color: var(--gowise-pink); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-align: center; font-size: 14px; font-weight: 600; cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.3); z-index: 1000; transition: transform 0.3s ease, background-color 0.3s ease; text-transform: uppercase; line-height: 1.2; }
-        .quote-roundel:hover { transform: translateY(-50%) scale(1.08); background-color: var(--gowise-magenta); }
-
+        /* Modal Form Setup */
         .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 2000; display: none; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.4s ease; }
         .modal-overlay.active { display: flex; opacity: 1; }
         .modal-content { background: #fff; padding: 40px; border-radius: 4px; max-width: 500px; width: 90%; position: relative; transform: translateY(20px); transition: transform 0.4s ease; box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
@@ -309,85 +308,89 @@
 
         <!-- 3. Services Core Breakdown (Alternating Layout) -->
         <section class="services-detail-section">
-            
-            <!-- Category 1: Printing -->
-            <article id="printing" class="service-row scroll-reveal">
-                <div class="service-img-container">
-                    <img src="Services-2.jpg" alt="Dynamic image showcasing vivid spot colors on a heavy-stock print sheet rolling off the litho press" class="cover-img">
-                </div>
-                <div class="service-text">
-                    <h2>1. Commercial & Independent Printing</h2>
-                    <p>We don't believe in a one-size-fits-all approach to ink and paper. We match your specific run size, budget, and colour requirements with the ideal printing press, ensuring flawless detail and maximum cost-efficiency.</p>
-                    
-                    <ul class="service-features">
-                        <li>
-                            <strong>Spot Colour Lithographic Printing</strong>
-                            When brand consistency is paramount, our traditional litho presses deliver. We are specialists in exact Pantone® ink matching, making this the perfect choice for corporate stationery, packaging, and high-volume runs where extreme precision and vibrant solid colours are non-negotiable.
-                        </li>
-                        <li>
-                            <strong>5-Colour Digital Printing</strong>
-                            Our cutting-edge Fujifilm 5UPER COLOUR© press goes far beyond standard CMYK. By utilizing an expanded colour gamut, we achieve incredibly rich RGB tones and simulate Pantone colours with stunning accuracy. Digital is fast, cost-effective for shorter runs, and perfect for variable data printing.
-                        </li>
-                        <li>
-                            <strong>Custom Formats & Stocks</strong>
-                            We optimize your artwork for both standard and custom raw sheet sizes (including 320x450mm and 450x640mm) to reduce waste and keep your costs down, whether you're printing heavy-stock art prints or high-volume flyers.
-                        </li>
-                    </ul>
-                </div>
-            </article>
+            <div class="section-container">
+                
+                <hr class="magenta-divider">
+                
+                <!-- Category 1: Printing -->
+                <article id="printing" class="service-row scroll-reveal">
+                    <div class="service-img-container">
+                        <img src="Services-2.jpg" alt="Dynamic image showcasing vivid spot colors on a heavy-stock print sheet rolling off the litho press" class="cover-img">
+                    </div>
+                    <div class="service-text">
+                        <h2>1. Commercial & Independent Printing</h2>
+                        <p>We don't believe in a one-size-fits-all approach to ink and paper. We match your specific run size, budget, and colour requirements with the ideal printing press, ensuring flawless detail and maximum cost-efficiency.</p>
+                        
+                        <ul class="service-features">
+                            <li>
+                                <strong>Spot Colour Lithographic Printing</strong>
+                                When brand consistency is paramount, our traditional litho presses deliver. We are specialists in exact Pantone® ink matching, making this the perfect choice for corporate stationery, packaging, and high-volume runs where extreme precision and vibrant solid colours are non-negotiable.
+                            </li>
+                            <li>
+                                <strong>5-Colour Digital Printing</strong>
+                                Our cutting-edge Fujifilm 5UPER COLOUR© press goes far beyond standard CMYK. By utilizing an expanded colour gamut, we achieve incredibly rich RGB tones and simulate Pantone colours with stunning accuracy. Digital is fast, cost-effective for shorter runs, and perfect for variable data printing.
+                            </li>
+                            <li>
+                                <strong>Custom Formats & Stocks</strong>
+                                We optimize your artwork for both standard and custom raw sheet sizes (including 320x450mm and 450x640mm) to reduce waste and keep your costs down, whether you're printing heavy-stock art prints or high-volume flyers.
+                            </li>
+                        </ul>
+                    </div>
+                </article>
 
-            <!-- Category 2: Binding -->
-            <article id="binding" class="service-row scroll-reveal">
-                <div class="service-img-container">
-                    <img src="Services-3.jpg" alt="Close-up showing the varied textures of PUR binding, square back folding, and wire binding laid side-by-side" class="cover-img">
-                </div>
-                <div class="service-text">
-                    <h2>2. Book Binding & In-House Finishing</h2>
-                    <p>A beautifully printed page is only half the journey; the finish dictates how your publication is experienced. Because we handle all our binding in-house, we maintain complete quality control without the delays of outsourcing.</p>
-                    
-                    <ul class="service-features">
-                        <li>
-                            <strong>PUR Perfect Binding</strong>
-                            The gold standard for paperback books, thick catalogues, and graphic novels. Polyurethane Reactive (PUR) glue is significantly stronger and more flexible than standard adhesives, ensuring your book won't crack even when opened completely flat.
-                        </li>
-                        <li>
-                            <strong>Square Back Binding</strong>
-                            Get the premium, flat-spine look of a perfect-bound book with the cost-effectiveness of stapling. Ideal for independent creators, atmospheric folklore zines, and limited-edition lookbooks, this method presses the folded spine flat so your publication stacks and presents beautifully.
-                        </li>
-                        <li>
-                            <strong>Wire Binding</strong>
-                            When your manual, sketchbook, or presentation deck needs to lay entirely flat or fold back 360 degrees, our durable wire-o binding offers the most practical and professional finish.
-                        </li>
-                    </ul>
+                <!-- Category 2: Binding -->
+                <article id="binding" class="service-row scroll-reveal">
+                    <div class="service-img-container">
+                        <img src="Services-3.jpg" alt="Close-up showing the varied textures of PUR binding, square back folding, and wire binding laid side-by-side" class="cover-img">
+                    </div>
+                    <div class="service-text">
+                        <h2>2. Book Binding & In-House Finishing</h2>
+                        <p>A beautifully printed page is only half the journey; the finish dictates how your publication is experienced. Because we handle all our binding in-house, we maintain complete quality control without the delays of outsourcing.</p>
+                        
+                        <ul class="service-features">
+                            <li>
+                                <strong>PUR Perfect Binding</strong>
+                                The gold standard for paperback books, thick catalogues, and graphic novels. Polyurethane Reactive (PUR) glue is significantly stronger and more flexible than standard adhesives, ensuring your book won't crack even when opened completely flat.
+                            </li>
+                            <li>
+                                <strong>Square Back Binding</strong>
+                                Get the premium, flat-spine look of a perfect-bound book with the cost-effectiveness of stapling. Ideal for independent creators, atmospheric folklore zines, and limited-edition lookbooks, this method presses the folded spine flat so your publication stacks and presents beautifully.
+                            </li>
+                            <li>
+                                <strong>Wire Binding</strong>
+                                When your manual, sketchbook, or presentation deck needs to lay entirely flat or fold back 360 degrees, our durable wire-o binding offers the most practical and professional finish.
+                            </li>
+                        </ul>
 
-                    <a href="binding.html" class="btn">View Our Finishing Options</a>
-                </div>
-            </article>
+                        <a href="binding.html" class="btn">View Our Finishing Options</a>
+                    </div>
+                </article>
 
-            <!-- Category 3: Design -->
-            <article id="design" class="service-row scroll-reveal">
-                <div class="service-img-container">
-                    <img src="Services-4.jpg" alt="A graphic designer inspecting a digital proof on a large monitor alongside physical Pantone swatch books" class="cover-img">
-                </div>
-                <div class="service-text">
-                    <h2>3. Graphic Design & Artwork Setup</h2>
-                    <p>Even the best presses can't fix poorly prepared files. Our full in-house graphic design and pre-press team is here to bridge the gap between your screen and our printers.</p>
-                    
-                    <ul class="service-features">
-                        <li>
-                            <strong>Print-Ready File Setup</strong>
-                            Let us take the stress out of commercial print preparation. We can review your files to ensure perfect CMYK conversions, correct bleed margins, and proper resolution, so your final product looks exactly as you envisioned.
-                        </li>
-                        <li>
-                            <strong>Creative Design Services</strong>
-                            Bring us a rough concept, and our experienced designers will bring it to life. From striking corporate branding to layout design for multi-page publications, we merge deep technical printing knowledge with a wealth of creative experience to save you time and money.
-                        </li>
-                    </ul>
+                <!-- Category 3: Design -->
+                <article id="design" class="service-row scroll-reveal">
+                    <div class="service-img-container">
+                        <img src="Services-4.jpg" alt="A graphic designer inspecting a digital proof on a large monitor alongside physical Pantone swatch books" class="cover-img">
+                    </div>
+                    <div class="service-text">
+                        <h2>3. Graphic Design & Artwork Setup</h2>
+                        <p>Even the best presses can't fix poorly prepared files. Our full in-house graphic design and pre-press team is here to bridge the gap between your screen and our printers.</p>
+                        
+                        <ul class="service-features">
+                            <li>
+                                <strong>Print-Ready File Setup</strong>
+                                Let us take the stress out of commercial print preparation. We can review your files to ensure perfect CMYK conversions, correct bleed margins, and proper resolution, so your final product looks exactly as you envisioned.
+                            </li>
+                            <li>
+                                <strong>Creative Design Services</strong>
+                                Bring us a rough concept, and our experienced designers will bring it to life. From striking corporate branding to layout design for multi-page publications, we merge deep technical printing knowledge with a wealth of creative experience to save you time and money.
+                            </li>
+                        </ul>
 
-                    <a href="resources.html" class="btn">Read Our Artwork Guide</a>
-                </div>
-            </article>
+                        <a href="resources.html" class="btn">Read Our Artwork Guide</a>
+                    </div>
+                </article>
 
+            </div>
         </section>
 
         <!-- 4. Digital vs Litho Section Moved Here -->
@@ -414,11 +417,6 @@
         </section>
         
     </main>
-
-    <!-- Floating Quote Roundel -->
-    <div class="quote-roundel" id="quoteRoundel">
-        <span>Get a<br>Quote</span>
-    </div>
 
     <!-- Quote Request Modal Window -->
     <div class="modal-overlay" id="quoteModal">
@@ -523,7 +521,6 @@
         if(arrow) arrowObserver.observe(arrow);
 
         // --- Modal & Form Logic ---
-        const roundel = document.getElementById('quoteRoundel');
         const navQuoteBtn = document.getElementById('navQuoteBtn');
         const quoteModal = document.getElementById('quoteModal');
         const closeModal = document.getElementById('closeModal');
@@ -539,7 +536,6 @@
             setTimeout(() => quoteModal.classList.add('active'), 10);
         };
 
-        if (roundel) roundel.addEventListener('click', showQuoteModal);
         if (navQuoteBtn) navQuoteBtn.addEventListener('click', showQuoteModal);
 
         const hideQuoteModal = () => {
