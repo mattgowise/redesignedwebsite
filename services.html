@@ -134,13 +134,28 @@
 
         /* 3. Alternating Service Rows */
         .services-detail-section { padding: 20px 5% 40px; }
-        .magenta-divider { border: none; height: 4px; background-color: var(--gowise-magenta); width: 100%; margin: 0 auto 60px auto; }
         
+        /* Animated Magenta Divider */
+        .magenta-divider { 
+            border: none; 
+            height: 4px; 
+            background-color: var(--gowise-magenta); 
+            width: 0; 
+            margin: 0 auto 60px auto; 
+            opacity: 0;
+            transition: width 1s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.8s ease-out; 
+        }
+        .magenta-divider.visible {
+            width: 120px;
+            opacity: 1;
+        }
+        
+        .section-container { max-width: 1400px; margin: 0 auto; }
         .service-row {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 40px;
-            align-items: start; /* Aligns the tops perfectly */
+            align-items: start;
             margin-bottom: 80px;
             opacity: 0;
             transform: translateY(40px);
@@ -155,17 +170,14 @@
         .service-row:hover .service-img-container img { transform: scale(1.05); }
         
         .service-text h2 { font-size: 32px; margin-bottom: 20px; color: var(--gowise-magenta); line-height: 1.2; }
-        /* Tighter line spacing for the opening paragraphs */
         .service-text > p { font-size: 16px; margin-bottom: 25px; font-weight: 400; color: #444; line-height: 1.4; }
         
-        /* Service Sub-Features Formatting */
         .service-features { list-style: none; padding: 0; }
         .service-features li { position: relative; margin-bottom: 20px; }
         .service-features strong { display: block; font-size: 16px; font-weight: 600; color: var(--gowise-cyan); margin-bottom: 5px; }
 
         /* 4. Comparison Cards (Digital/Litho) */
         .resource-section { padding: 60px 5% 100px; scroll-margin-top: 100px; background-color: #f4f4f4; border-top: 1px solid #eaeaea; }
-        .section-container { max-width: 1400px; margin: 0 auto; }
         .section-header { text-align: center; margin-bottom: 50px; }
         .section-header h2 { font-size: 36px; color: var(--gowise-magenta); margin-bottom: 15px; }
         .section-header p { font-size: 18px; max-width: 1200px; margin: 0 auto; }
@@ -310,7 +322,7 @@
         <section class="services-detail-section">
             <div class="section-container">
                 
-                <hr class="magenta-divider">
+                <hr class="magenta-divider scroll-reveal">
                 
                 <!-- Category 1: Printing -->
                 <article id="printing" class="service-row scroll-reveal">
@@ -393,7 +405,7 @@
             </div>
         </section>
 
-        <!-- 4. Digital vs Litho Section Moved Here -->
+        <!-- 4. Digital vs Litho Section -->
         <section id="digital-vs-litho" class="resource-section">
             <div class="section-container">
                 <div class="section-header scroll-reveal">
@@ -452,20 +464,17 @@
         </div>
     </div>
 
-    <!-- Footer -->
     <footer>
         <div class="footer-header">
             <h2>Visit Our Norwich Print Shop</h2>
             <p>GoWise Print proudly serves local businesses, independent creators, and trade partners across Norfolk and the UK.</p>
         </div>
         <div class="footer-grid">
-            
             <div class="footer-arrow-container">
                 <svg class="footer-arrow" id="slideArrow" viewBox="0 0 100 50" xmlns="http://www.w3.org/2000/svg">
                     <path d="M0,15 L60,15 L60,0 L100,25 L60,50 L60,35 L0,35 Z" fill="var(--gowise-magenta)"/>
                 </svg>
             </div>
-            
             <div class="footer-text-columns">
                 <div>
                     <p style="font-size: 18px; margin-bottom: 15px; color: var(--gowise-cyan); font-weight: 600;">CONTACT INFO</p>
@@ -474,17 +483,14 @@
                     <p><strong>Phone:</strong> +44 (0)1603 431304</p>
                     <p><strong>Email:</strong> print@gowise.co.uk</p>
                 </div>
-                
                 <div>
                     <p style="font-size: 18px; margin-bottom: 15px; color: var(--gowise-cyan); font-weight: 600;">OPENING HOURS</p>
                     <p>MONDAY: 08:30 – 17:00<br>TUESDAY: 08:30 – 17:00<br>WEDNESDAY: 08:30 – 17:00<br>THURSDAY: 08:30 – 17:00<br>FRIDAY: 08:30 – 17:00<br>SATURDAY: CLOSED<br>SUNDAY: CLOSED</p>
                 </div>
             </div>
-            
             <div class="map-container">
                 <iframe src="https://maps.google.com/maps?q=NR7%200PT&t=&z=14&ie=UTF8&iwloc=&output=embed" loading="lazy" allowfullscreen title="GoWise Print Location Map"></iframe>
             </div>
-            
         </div>
     </footer>
 
@@ -504,7 +510,6 @@
             elements.forEach(el => observer.observe(el));
         };
 
-        // Initialize scroll reveal on elements
         createObserver('.scroll-reveal', 'visible', 0.15);
 
         // Footer Arrow Animation
