@@ -99,9 +99,21 @@
         .news-entry { background: #fff; border-radius: 4px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); overflow: hidden; display: flex; flex-direction: column; opacity: 0; transform: translateY(20px); animation: fadeUp 0.6s forwards; }
         @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
 
+        /* Standard Single Image Layout */
         .entry-image { width: 100%; height: 350px; object-fit: cover; display: block; background: #eee; }
-        .entry-content { padding: 40px; }
+
+        /* Dynamic Inline Slider Layout */
+        .entry-slider-container { position: relative; width: 100%; height: 350px; overflow: hidden; background: #eee; }
+        .slider-wrapper { display: flex; width: 100%; height: 100%; transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1); }
+        .slider-slide { min-width: 100%; height: 100%; }
+        .slider-slide img { width: 100%; height: 100%; object-fit: cover; display: block; }
         
+        .slider-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0, 0, 0, 0.6); color: #fff; border: none; width: 44px; height: 44px; border-radius: 50%; cursor: pointer; z-index: 10; display: flex; align-items: center; justify-content: center; font-size: 20px; font-weight: bold; transition: background 0.3s, color 0.3s; user-select: none; }
+        .slider-btn:hover { background: #fff; color: var(--header-dark); }
+        .slider-btn.prev { left: 20px; }
+        .slider-btn.next { right: 20px; }
+
+        .entry-content { padding: 40px; }
         .entry-date { color: var(--gowise-magenta); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; font-size: 13px; margin-bottom: 10px; display: block; }
         .entry-title { font-size: 32px; margin: 0 0 20px 0; line-height: 1.3; color: var(--header-dark); }
         .entry-text p { font-size: 16px; line-height: 1.8; color: #444; margin-bottom: 20px; }
@@ -189,9 +201,7 @@
                         <li><a href="about.html#team">The GoWise Team</a></li>
                     </ul>
                 </li>
-                <!-- NEW NEWS TAB ADDED HERE -->
                 <li><a href="news.html" class="active">NEWS</a></li>
-                
                 <li><a href="#" id="navQuoteBtn" class="btn-quote">GET A QUOTE</a></li>
             </ul>
         </nav>
@@ -207,17 +217,14 @@
             <!-- Sidebar Filters -->
             <aside class="news-sidebar">
                 <h3>Filter Articles</h3>
-                
                 <div class="sidebar-group">
                     <label for="search-input">Search Keywords</label>
                     <input type="text" id="search-input" placeholder="Search news...">
                 </div>
-
                 <div class="sidebar-group">
                     <label for="year-select">Filter by Year</label>
                     <select id="year-select">
                         <option value="all">All Years</option>
-                        <!-- Years injected dynamically by Javascript -->
                     </select>
                 </div>
             </aside>
@@ -239,10 +246,8 @@
         <div class="modal-content">
             <span class="close-modal" id="closeModal">&times;</span>
             <h3>Request a Quote</h3>
-            
             <form id="asyncQuoteForm">
                 <input type="hidden" name="access_key" value="3c30689d-ea16-4629-92a1-5737b09d6f4c">
-                
                 <div class="form-group">
                     <label for="name">Name</label>
                     <input type="text" id="name" name="name" placeholder="Your Name" required>
@@ -296,9 +301,9 @@
         </div>
     </footer>
 
-    <!-- JS Scripts for Modals and News Fetching -->
+    <!-- Scripts -->
     <script>
-        // --- 1. MODAL LOGIC ---
+        // --- 1. MODAL CAPABILITIES ---
         const roundel = document.getElementById('quoteRoundel');
         const navQuoteBtn = document.getElementById('navQuoteBtn');
         const quoteModal = document.getElementById('quoteModal');
@@ -354,11 +359,11 @@
                     alert("Submission failed: " + json.message);
                 }
             })
-            .catch(error => { alert("Network error. Please reach out directly to print@gowise.co.uk."); })
+            .catch(error => { alert("Network error. Please try again."); })
             .finally(() => { submitBtn.textContent = "Send Request"; submitBtn.disabled = false; });
         });
 
-        // --- 2. NEWS FETCH & RENDER LOGIC ---
+        // --- 2. ASYNC MULTI-IMAGE PARSER ENGINE (WITH DD-MM-YYYY) ---
         document.addEventListener("DOMContentLoaded", async () => {
             const feedContainer = document.getElementById('news-feed');
             const searchInput = document.getElementById('search-input');
@@ -368,16 +373,14 @@
             let uniqueYears = new Set();
             let currentIndex = 1;
 
-            // Notice: The file naming structure is updated to NEWS-1.txt, NEWS-2.txt, etc.
             while (true) {
                 try {
                     const response = await fetch(`NEWS-${currentIndex}.txt`, { cache: 'no-store' });
-                    
-                    if (!response.ok) break; // Stops loop when it can't find the next number
+                    if (!response.ok) break; 
                     
                     const text = await response.text();
                     const lines = text.split('\n');
-                    let entry = { textHtml: '', keywords: [] };
+                    let entry = { textHtml: '', keywords: [], images: [] };
                     let isParsingText = false;
 
                     lines.forEach(line => {
@@ -388,17 +391,30 @@
                                 const value = line.slice(sepIndex + 1).trim();
                                 
                                 if (key === 'date') {
-                                    entry.date = value;
-                                    const year = value.split('-')[0];
-                                    if(year) uniqueYears.add(year);
+                                    // User inputs DD-MM-YYYY (e.g. 20-07-2026)
+                                    entry.displayDate = value; 
+                                    
+                                    const parts = value.split('-');
+                                    if(parts.length === 3) {
+                                        // Reformat to YYYY-MM-DD for accurate chronological sorting
+                                        entry.sortDate = new Date(`${parts[2]}-${parts[1]}-${parts[0]}`);
+                                        entry.year = parts[2];
+                                        uniqueYears.add(parts[2]);
+                                    } else {
+                                        // Fallback if typed incorrectly
+                                        entry.sortDate = new Date(0);
+                                        entry.year = "Unknown";
+                                    }
                                 }
                                 else if (key === 'title') entry.title = value;
-                                else if (key === 'image') entry.image = value;
+                                // Handles multiple image inputs separated by commas
+                                else if (key === 'image') {
+                                    entry.images = value.split(',').map(img => img.trim()).filter(img => img !== '');
+                                }
                                 else if (key === 'keywords') entry.keywords = value.split(',').map(k => k.trim());
                                 else if (key === 'text') {
                                     isParsingText = true;
-                                    const firstLineText = value; 
-                                    if(firstLineText) entry.textHtml += `<p>${firstLineText}</p>`;
+                                    if(value) entry.textHtml += `<p>${value}</p>`;
                                 }
                             }
                         } else {
@@ -415,52 +431,57 @@
                     currentIndex++;
 
                 } catch (error) {
-                    console.error("Finished loading entries or error occurred.");
                     break;
                 }
             }
 
-            // Init UI
             if (allEntries.length === 0) {
-                feedContainer.innerHTML = '<div class="no-results">No news articles found. Please add your first file as "NEWS-1.txt".</div>';
+                feedContainer.innerHTML = '<div class="no-results">No news articles found. Add "NEWS-1.txt" to start.</div>';
             } else {
-                allEntries.sort((a, b) => new Date(b.date) - new Date(a.date));
-                
+                // Sort by the background parsed sortDate from newest to oldest
+                allEntries.sort((a, b) => b.sortDate - a.sortDate);
                 Array.from(uniqueYears).sort().reverse().forEach(year => {
                     yearSelect.innerHTML += `<option value="${year}">${year}</option>`;
                 });
-
                 renderEntries(allEntries);
             }
 
-            // Render function
             function renderEntries(entriesToRender) {
                 feedContainer.innerHTML = '';
-                
                 if (entriesToRender.length === 0) {
                     feedContainer.innerHTML = '<div class="no-results">No articles match your search criteria.</div>';
                     return;
                 }
 
                 entriesToRender.forEach((entry, index) => {
-                    const dateObj = new Date(entry.date);
-                    const formattedDate = dateObj.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
-
-                    let imageHtml = entry.image && entry.image !== '' ? `<img src="${entry.image}" alt="${entry.title}" class="entry-image">` : '';
+                    let visualHtml = '';
+                    if (entry.images && entry.images.length > 0) {
+                        if (entry.images.length === 1) {
+                            visualHtml = `<img src="${entry.images[0]}" alt="${entry.title}" class="entry-image">`;
+                        } else {
+                            visualHtml = `
+                                <div class="entry-slider-container" data-current-slide="0">
+                                    <button class="slider-btn prev" aria-label="Previous Image">&lt;</button>
+                                    <button class="slider-btn next" aria-label="Next Image">&gt;</button>
+                                    <div class="slider-wrapper">
+                                        ${entry.images.map(img => `<div class="slider-slide"><img src="${img}" alt="${entry.title}"></div>`).join('')}
+                                    </div>
+                                </div>
+                            `;
+                        }
+                    }
                     
                     let keywordsHtml = '';
-                    if (entry.keywords.length > 0 && entry.keywords[0] !== "") {
+                    if (entry.keywords && entry.keywords.length > 0 && entry.keywords[0] !== "") {
                         keywordsHtml = `<div class="entry-keywords">` + entry.keywords.map(k => `<span class="keyword-tag">${k}</span>`).join('') + `</div>`;
                     }
 
-                    // Calculate animation delay for staggered loading
                     const delay = index * 0.15;
-
                     feedContainer.innerHTML += `
                         <article class="news-entry" style="animation-delay: ${delay}s;">
-                            ${imageHtml}
+                            ${visualHtml}
                             <div class="entry-content">
-                                <span class="entry-date">${formattedDate}</span>
+                                <span class="entry-date">${entry.displayDate}</span>
                                 <h2 class="entry-title">${entry.title}</h2>
                                 <div class="entry-text">${entry.textHtml}</div>
                                 ${keywordsHtml}
@@ -470,21 +491,36 @@
                 });
             }
 
-            // Filter logic
+            feedContainer.addEventListener('click', (e) => {
+                if (e.target.classList.contains('slider-btn')) {
+                    const container = e.target.closest('.entry-slider-container');
+                    const wrapper = container.querySelector('.slider-wrapper');
+                    const slidesCount = wrapper.children.length;
+                    let currentSlide = parseInt(container.getAttribute('data-current-slide'), 10);
+                    
+                    if (e.target.classList.contains('next')) {
+                        currentSlide = (currentSlide + 1) % slidesCount;
+                    } else if (e.target.classList.contains('prev')) {
+                        currentSlide = (currentSlide - 1 + slidesCount) % slidesCount;
+                    }
+                    
+                    container.setAttribute('data-current-slide', currentSlide);
+                    wrapper.style.transform = `translateX(-${currentSlide * 100}%)`;
+                }
+            });
+
             function filterNews() {
                 const searchTerm = searchInput.value.toLowerCase();
                 const selectedYear = yearSelect.value;
 
                 const filtered = allEntries.filter(entry => {
-                    const matchesYear = selectedYear === 'all' || entry.date.startsWith(selectedYear);
+                    const matchesYear = selectedYear === 'all' || entry.year === selectedYear;
                     const matchesSearch = searchTerm === '' || 
                         entry.title.toLowerCase().includes(searchTerm) || 
                         entry.textHtml.toLowerCase().includes(searchTerm) ||
-                        entry.keywords.some(k => k.toLowerCase().includes(searchTerm));
-
+                        (entry.keywords && entry.keywords.some(k => k.toLowerCase().includes(searchTerm)));
                     return matchesYear && matchesSearch;
                 });
-
                 renderEntries(filtered);
             }
 
