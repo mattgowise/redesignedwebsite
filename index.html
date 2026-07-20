@@ -218,10 +218,10 @@
         }
 
         /* Box Custom Colors */
-        .box-1 { background-color: #54abe9; }
-        .box-2 { background-color: #d6308a; }
+        .box-1 { background-color: #00aae9; }
+        .box-2 { background-color: #d62f8a; }
         .box-3 { background-color: #feea0a; }
-        .box-3 h3 { color: #221f20; } /* Forced dark text so it is readable on yellow */
+        .box-3 h3 { color: #221f20; } 
         .box-4 { background-color: #221f20; }
         .box-5 { background-color: #e73ce9; }
 
@@ -242,7 +242,6 @@
         /* 6. Footer & Location */
         footer { background: var(--header-dark); color: #fff; position: relative; overflow: hidden; padding: 60px 5%; }
         
-        /* Force footer paragraphs to be pure white to override global grey text */
         footer p { color: #ffffff; } 
         
         .footer-header { margin-bottom: 40px; text-align: center; }
@@ -254,6 +253,85 @@
         .footer-text-columns { flex: 1; display: flex; justify-content: flex-start; gap: 60px; font-size: 14px; line-height: 1.8; padding-top: 20px; }
         .map-container { flex: 0 0 400px; height: 300px; background: #ddd; border-radius: 4px; overflow: hidden; }
         .map-container iframe { width: 100%; height: 100%; border: none; }
+
+        /* 7. Roundel & Modal Form */
+        .quote-roundel {
+            position: fixed;
+            top: 50%;
+            right: 20px;
+            transform: translateY(-50%);
+            width: 90px;
+            height: 90px;
+            background-color: var(--gowise-pink);
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            z-index: 1000;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            text-transform: uppercase;
+            line-height: 1.2;
+        }
+        .quote-roundel:hover {
+            transform: translateY(-50%) scale(1.08);
+            background-color: var(--gowise-magenta);
+        }
+
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.7);
+            z-index: 2000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        .modal-overlay.active {
+            display: flex;
+            opacity: 1;
+        }
+        .modal-content {
+            background: #fff;
+            padding: 40px;
+            border-radius: 4px;
+            max-width: 500px;
+            width: 90%;
+            position: relative;
+            transform: translateY(20px);
+            transition: transform 0.4s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        .modal-overlay.active .modal-content {
+            transform: translateY(0);
+        }
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 32px;
+            cursor: pointer;
+            color: #888;
+            transition: color 0.3s;
+            line-height: 1;
+        }
+        .close-modal:hover { color: var(--gowise-pink); }
+        .modal-content h3 { color: var(--gowise-magenta); margin-bottom: 20px; font-size: 28px; }
+        
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; font-weight: 600; margin-bottom: 8px; font-size: 14px; color: var(--header-dark); }
+        .form-group input, .form-group textarea { 
+            width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 4px; font-size: 14px; font-family: inherit; transition: border-color 0.3s; 
+        }
+        .form-group textarea { resize: vertical; min-height: 120px; }
+        .form-group input:focus, .form-group textarea:focus { border-color: var(--gowise-magenta); outline: none; }
 
         /* Responsive Overrides */
         @media (max-width: 1200px) {
@@ -277,6 +355,7 @@
             .footer-arrow-container { display: none; }
             .footer-text-columns { flex-direction: column; gap: 30px; align-items: center; }
             .map-container { width: 100%; flex: 1 1 100%; }
+            .quote-roundel { width: 70px; height: 70px; font-size: 12px; right: 10px; }
         }
     </style>
 </head>
@@ -474,6 +553,34 @@
 
     </main>
 
+    <!-- Floating Quote Roundel -->
+    <div class="quote-roundel" id="quoteRoundel">
+        <span>Get a<br>Quote</span>
+    </div>
+
+    <!-- Quote Request Modal -->
+    <div class="modal-overlay" id="quoteModal">
+        <div class="modal-content">
+            <span class="close-modal" id="closeModal">&times;</span>
+            <h3>Request a Quote</h3>
+            <form action="mailto:matt@gowise.co.uk" method="POST" enctype="text/plain">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="Name" placeholder="Your Name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="Email" placeholder="your@email.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="details">Project Details</label>
+                    <textarea id="details" name="Project Details" placeholder="Please describe your printing needs (size, quantity, finishes, etc.)..." required></textarea>
+                </div>
+                <button type="submit" class="btn" style="width: 100%;">Send Request</button>
+            </form>
+        </div>
+    </div>
+
     <!-- 6. Footer -->
     <footer>
         <div class="footer-header">
@@ -539,7 +646,7 @@
 
         createObserver('.scroll-stagger', 'visible', 0.1);
         createObserver('.scroll-reveal', 'visible', 0.15);
-        createObserver('.pink-divider', 'visible', 1.0); // Animate divider when fully in view
+        createObserver('.pink-divider', 'visible', 1.0);
 
         // --- 3. Footer Arrow Animation ---
         const arrow = document.getElementById('slideArrow');
@@ -554,6 +661,35 @@
         }, { threshold: 0.1 }); 
         if(arrow) arrowObserver.observe(arrow);
 
+        // --- 4. Modal Logic ---
+        const roundel = document.getElementById('quoteRoundel');
+        const modal = document.getElementById('quoteModal');
+        const closeBtn = document.getElementById('closeModal');
+
+        roundel.addEventListener('click', () => {
+            modal.style.display = 'flex';
+            // Slight delay to allow display: flex to apply before opacity transition
+            setTimeout(() => {
+                modal.classList.add('active');
+            }, 10);
+        });
+
+        const hideModal = () => {
+            modal.classList.remove('active');
+            // Wait for transition to finish before hiding display
+            setTimeout(() => {
+                modal.style.display = 'none';
+            }, 400); 
+        };
+
+        closeBtn.addEventListener('click', hideModal);
+        
+        // Close if clicking outside the modal content
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                hideModal();
+            }
+        });
     </script>
 </body>
 </html>
