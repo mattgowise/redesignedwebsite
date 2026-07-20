@@ -132,6 +132,14 @@
         .capabilities-list li { position: relative; margin-bottom: 20px; font-size: 15px; line-height: 1.6; }
         .capabilities-list strong { display: block; font-size: 16px; font-weight: 600; color: var(--gowise-cyan); margin-bottom: 5px; }
 
+        /* Equipment Inventory Section */
+        .equipment-inventory-section { background-color: var(--header-dark); padding: 80px 5%; margin-bottom: 60px; }
+        .equipment-container { max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
+        .equipment-column h3 { font-size: 28px; color: #fff; margin-bottom: 20px; font-weight: 400; }
+        .equipment-column h3.sub-heading { margin-top: 40px; }
+        .equipment-list { list-style: none; padding: 0; }
+        .equipment-list li { margin-bottom: 8px; font-size: 16px; color: #bbb; font-weight: 300; line-height: 1.5; }
+
         .partner-cta-section { background-color: var(--gowise-cyan); color: #fff; padding: 80px 5%; text-align: center; margin-bottom: 60px; }
         .partner-cta-container { max-width: 900px; margin: 0 auto; }
         .partner-cta-section h2 { color: #fff; font-size: 36px; margin-bottom: 20px; }
@@ -171,6 +179,7 @@
 
         @media (max-width: 1024px) {
             .service-row { gap: 40px; }
+            .equipment-container { grid-template-columns: 1fr 1fr; gap: 50px; }
             .footer-grid { flex-wrap: wrap; justify-content: center; text-align: center; }
             .footer-arrow-container { display: none; }
             .footer-text-columns { flex-direction: column; gap: 30px; align-items: center; }
@@ -180,6 +189,7 @@
             .inner-hero-content { padding: 30px 20px; margin: 0 5%; }
             .service-row { grid-template-columns: 1fr; margin-bottom: 50px; }
             .service-row:nth-child(even) .service-text { order: 0; } 
+            .equipment-container { grid-template-columns: 1fr; gap: 40px; }
             .top-bar { flex-direction: column; text-align: center; gap: 10px; }
             header { flex-direction: column; gap: 15px; padding: 20px 5%; }
             .main-nav { flex-wrap: wrap; justify-content: center; }
@@ -310,6 +320,58 @@
                 </div>
             </article>
 
+        </section>
+
+        <!-- NEW: Full Equipment List Section -->
+        <section class="equipment-inventory-section scroll-reveal">
+            <div class="equipment-container">
+                
+                <div class="equipment-column">
+                    <h3>Pre Press</h3>
+                    <ul class="equipment-list">
+                        <li>Apple iMac 27" 3.2ghz</li>
+                        <li>Apple Mac Mini M4</li>
+                        <li>PC's x 3</li>
+                        <li>Agfa Acento S (CTP)<br>with Studiorip 3.9</li>
+                    </ul>
+                </div>
+                
+                <div class="equipment-column">
+                    <h3>Digital Print Room</h3>
+                    <ul class="equipment-list">
+                        <li>Fujifilm Revoria SC285S Five Colour</li>
+                        <li>Xerox Versant 180 CMYK</li>
+                    </ul>
+
+                    <h3 class="sub-heading">Print Room</h3>
+                    <ul class="equipment-list">
+                        <li>Heidelberg Speedmaster (B3)</li>
+                        <li>Heidelberg GTO46 (SRA3)</li>
+                    </ul>
+                </div>
+                
+                <div class="equipment-column">
+                    <h3>Finishing</h3>
+                    <ul class="equipment-list">
+                        <li>Renz Autopunch 360</li>
+                        <li>Renz Mobi 500</li>
+                        <li>Renz DTP 340M</li>
+                        <li>KB4000 PUR binder</li>
+                        <li>Speedbind 420 Planamelt Binder</li>
+                        <li>Watkiss PowerSquare 224</li>
+                        <li>Duplo 618 creaser/slitter</li>
+                        <li>Heidelberg Platen (SRA3)</li>
+                        <li>EBA 721 Guillotine</li>
+                        <li>D&K Neptune B3 Laminator</li>
+                        <li>Watkiss Vario Booklet Maker</li>
+                        <li>Morgana Autocreaser 500</li>
+                        <li>Morgana Autofold Pro</li>
+                        <li>Morgana Double Head Stitcher</li>
+                        <li>Filepecker IV double head drill</li>
+                    </ul>
+                </div>
+
+            </div>
         </section>
 
         <section class="partner-cta-section scroll-reveal">
