@@ -129,7 +129,7 @@
         @keyframes kenBurns { from { transform: scale(1); } to { transform: scale(1.1); } }
 
         /* 2. Intro Section */
-        .page-intro { padding: 80px 5%; max-width: 1000px; margin: 0 auto; text-align: center; }
+        .page-intro { padding: 80px 5%; max-width: 1400px; margin: 0 auto; text-align: center; }
         .page-intro p { font-size: 18px; }
 
         /* 3. Alternating Service Rows */
@@ -138,7 +138,7 @@
         .service-row {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 60px;
+            gap: 40px;
             align-items: center;
             margin-bottom: 80px;
             opacity: 0;
@@ -149,7 +149,7 @@
         .service-row.visible { opacity: 1; transform: translateY(0); }
         .service-row:nth-child(even) .service-text { order: -1; } 
         
-        .service-img-container { height: 100%; min-height: 450px; border-radius: 4px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        .service-img-container { width: 100%; aspect-ratio: 3 / 2; height: auto; border-radius: 4px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
         .service-img-container img { transition: transform 0.6s ease; }
         .service-row:hover .service-img-container img { transform: scale(1.05); }
         
@@ -158,15 +158,15 @@
         
         /* Service Sub-Features Formatting */
         .service-features { list-style: none; padding: 0; }
-        .service-features li { position: relative; padding-left: 20px; border-left: 3px solid var(--gowise-cyan); margin-bottom: 20px; }
-        .service-features strong { display: block; font-size: 16px; font-weight: 600; color: var(--header-dark); margin-bottom: 5px; }
+        .service-features li { position: relative; margin-bottom: 20px; }
+        .service-features strong { display: block; font-size: 16px; font-weight: 600; color: var(--gowise-cyan); margin-bottom: 5px; }
 
         /* 4. Comparison Cards (Digital/Litho) added from Resources */
         .resource-section { padding: 60px 5% 100px; scroll-margin-top: 100px; background-color: #f4f4f4; border-top: 1px solid #eaeaea; }
         .section-container { max-width: 1400px; margin: 0 auto; }
         .section-header { text-align: center; margin-bottom: 50px; }
         .section-header h2 { font-size: 36px; color: var(--gowise-magenta); margin-bottom: 15px; }
-        .section-header p { font-size: 18px; max-width: 800px; margin: 0 auto; }
+        .section-header p { font-size: 18px; max-width: 1200px; margin: 0 auto; }
 
         .comparison-grid {
             display: grid;
@@ -229,7 +229,6 @@
             .inner-hero-content { padding: 30px 20px; margin: 0 5%; }
             .service-row { grid-template-columns: 1fr; margin-bottom: 50px; }
             .service-row:nth-child(even) .service-text { order: 0; } 
-            .service-img-container { min-height: 250px; }
             .top-bar { flex-direction: column; text-align: center; gap: 10px; }
             header { flex-direction: column; gap: 15px; padding: 20px 5%; }
             .main-nav { flex-wrap: wrap; justify-content: center; }
@@ -334,8 +333,6 @@
                             We optimize your artwork for both standard and custom raw sheet sizes (including 320x450mm and 450x640mm) to reduce waste and keep your costs down, whether you're printing heavy-stock art prints or high-volume flyers.
                         </li>
                     </ul>
-                    
-                    <a href="index.html#estimator" class="btn">Calculate Your Print Costs</a>
                 </div>
             </article>
 
