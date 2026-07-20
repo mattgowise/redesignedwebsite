@@ -64,10 +64,6 @@
             text-align: center;
         }
         .btn:hover { background-color: var(--gowise-pink); transform: translateY(-2px); }
-        .btn-outline { background-color: transparent; border: 2px solid #fff; color: #fff; }
-        .btn-outline:hover { background-color: #fff; color: var(--gowise-magenta); }
-        .btn-outline-dark { background-color: transparent; border: 2px solid var(--gowise-magenta); color: var(--gowise-magenta); font-weight: 600; }
-        .btn-outline-dark:hover { background-color: var(--gowise-magenta); color: #fff; }
 
         /* Image Helpers */
         .cover-img {
@@ -103,14 +99,13 @@
         .inner-hero {
             position: relative;
             width: 100%;
-            min-height: 40vh;
+            min-height: 100vh; /* Set to 100vh to match Index page */
             display: flex;
             align-items: center;
             background-color: #111;
             overflow: hidden;
         }
         
-        /* Frosted Glass Background added here */
         .inner-hero-content {
             position: relative;
             z-index: 2;
@@ -133,8 +128,31 @@
         @keyframes kenBurns { from { transform: scale(1); } to { transform: scale(1.1); } }
 
         /* 2. Intro Section */
-        .page-intro { padding: 60px 5%; max-width: 1000px; margin: 0 auto; text-align: center; }
+        .page-intro { padding: 60px 5% 40px; max-width: 1000px; margin: 0 auto; text-align: center; }
         .page-intro p { font-size: 18px; }
+
+        /* Animated Dividers */
+        .magenta-divider { 
+            border: none; 
+            height: 4px; 
+            background-color: var(--gowise-magenta); 
+            width: 0; 
+            margin: 0 auto 60px auto; 
+            opacity: 0;
+            transition: width 1s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.8s ease-out; 
+        }
+        .magenta-divider.visible { width: 120px; opacity: 1; }
+
+        .cyan-divider { 
+            border: none; 
+            height: 4px; 
+            background-color: var(--gowise-cyan); 
+            width: 0; 
+            margin: 30px auto; 
+            opacity: 0;
+            transition: width 1s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.8s ease-out; 
+        }
+        .cyan-divider.visible { width: 120px; opacity: 1; }
 
         /* Section Layout Helpers */
         .resource-section { padding: 80px 5%; scroll-margin-top: 100px; }
@@ -144,7 +162,38 @@
         .section-header h2 { font-size: 36px; color: var(--gowise-magenta); margin-bottom: 15px; }
         .section-header p { font-size: 18px; max-width: 800px; margin: 0 auto; }
 
-        /* 3. Comparison Cards (CMYK/RGB & Digital/Litho) */
+        /* 3. Understanding Colour (CMYK/RGB) Custom Layout */
+        #colour-guide { padding-top: 0; } /* Adjusted to accommodate the magenta-divider margin */
+        .colour-grid {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        .color-card {
+            background: transparent;
+            padding: 20px;
+            border: none;
+            box-shadow: none;
+            text-align: center;
+            max-width: 800px;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .color-card.visible { opacity: 1; transform: translateY(0); }
+        .color-card h3 { font-size: 24px; margin-bottom: 20px; color: var(--header-dark); }
+        
+        .color-placeholder {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: #e0e0e0;
+            margin: 0 auto 25px auto;
+        }
+
+        /* 4. Comparison Cards (Digital/Litho) */
         .comparison-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -163,58 +212,64 @@
         }
         .comparison-card.visible { opacity: 1; transform: translateY(0); }
         .comparison-card h3 { font-size: 24px; margin-bottom: 20px; color: var(--header-dark); }
-        
+
         /* Highlight Callout Box */
         .callout-box {
-            background-color: var(--header-dark);
-            color: #fff;
+            background-color: #f4f4f4;
+            color: var(--header-dark);
             padding: 40px;
             border-radius: 4px;
             margin-top: 20px;
-            border-left: 6px solid var(--gowise-magenta);
+            border-left: none; /* Removed the magenta line */
+            text-align: center;
             opacity: 0;
             transform: translateY(30px);
             transition: opacity 0.6s ease-out, transform 0.6s ease-out;
         }
         .callout-box.visible { opacity: 1; transform: translateY(0); }
         .callout-box h4 { color: var(--gowise-cyan); font-size: 20px; margin-bottom: 15px; }
-        .callout-box p { color: #ddd; margin-bottom: 0; }
+        .callout-box p { color: #444; margin-bottom: 0; }
 
-        /* 4. Checklist Section */
+        /* 5. Checklist Section */
+        #setup-checklist {
+            background-color: var(--header-dark);
+            color: #fff;
+        }
+        #setup-checklist .section-header h2 { color: #fff; }
+        #setup-checklist .section-header p { color: #ddd; }
+        
         .checklist-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(4, 1fr);
             gap: 30px;
         }
         .checklist-item {
-            background: #fff;
-            padding: 30px;
-            border-radius: 4px;
+            background: transparent;
+            padding: 20px 0;
+            border-radius: 0;
             display: flex;
-            gap: 20px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 15px;
+            box-shadow: none;
             opacity: 0;
             transform: translateY(20px);
             transition: opacity 0.5s ease-out, transform 0.5s ease-out;
         }
         .checklist-item.visible { opacity: 1; transform: translateY(0); }
-        .check-icon {
-            flex-shrink: 0;
-            width: 30px;
-            height: 30px;
-            background-color: var(--gowise-magenta);
-            color: #fff;
+        
+        .icon-placeholder {
+            width: 80px;
+            height: 80px;
             border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            font-size: 18px;
+            background-color: #555;
+            margin-bottom: 10px;
         }
         .check-content h4 { font-size: 20px; margin-bottom: 10px; color: var(--gowise-cyan); }
-        .check-content p { font-size: 15px; margin-bottom: 0; }
+        .check-content p { font-size: 15px; margin-bottom: 0; color: #ccc; }
 
-        /* 5. Partner/Plan CTA Section */
+        /* 6. Partner/Plan CTA Section */
         .partner-cta-section { background-color: var(--gowise-cyan); color: #fff; padding: 80px 5%; text-align: center; }
         .partner-cta-container { max-width: 900px; margin: 0 auto; }
         .partner-cta-section h2 { color: #fff; font-size: 36px; margin-bottom: 20px; }
@@ -225,6 +280,7 @@
 
         /* Footer overrides */
         footer { background: var(--header-dark); color: #fff; position: relative; overflow: hidden; padding: 60px 5%; }
+        footer p { color: #ffffff !important; }
         .footer-header { margin-bottom: 40px; text-align: center; }
         .footer-header h2 { color: var(--gowise-magenta); font-size: 32px; }
         .footer-grid { display: flex; align-items: stretch; justify-content: space-between; gap: 40px; max-width: 1400px; margin: 0 auto; }
@@ -235,10 +291,7 @@
         .map-container { flex: 0 0 400px; height: 300px; background: #ddd; border-radius: 4px; overflow: hidden; }
         .map-container iframe { width: 100%; height: 100%; border: none; }
 
-        /* Modal Form Setup & Roundel */
-        .quote-roundel { position: fixed; top: 50%; right: 20px; transform: translateY(-50%); width: 90px; height: 90px; background-color: var(--gowise-pink); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-align: center; font-size: 14px; font-weight: 600; cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.3); z-index: 1000; transition: transform 0.3s ease, background-color 0.3s ease; text-transform: uppercase; line-height: 1.2; }
-        .quote-roundel:hover { transform: translateY(-50%) scale(1.08); background-color: var(--gowise-magenta); }
-
+        /* Modal Form Setup */
         .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 2000; display: none; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.4s ease; }
         .modal-overlay.active { display: flex; opacity: 1; }
         .modal-content { background: #fff; padding: 40px; border-radius: 4px; max-width: 500px; width: 90%; position: relative; transform: translateY(20px); transition: transform 0.4s ease; box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
@@ -255,7 +308,8 @@
 
         /* Responsive */
         @media (max-width: 1024px) {
-            .comparison-grid, .checklist-grid { grid-template-columns: 1fr; }
+            .comparison-grid { grid-template-columns: 1fr; }
+            .checklist-grid { grid-template-columns: 1fr 1fr; }
             .footer-grid { flex-wrap: wrap; justify-content: center; text-align: center; }
             .footer-arrow-container { display: none; }
             .footer-text-columns { flex-direction: column; gap: 30px; align-items: center; }
@@ -268,6 +322,7 @@
             .main-nav { flex-wrap: wrap; justify-content: center; }
             .dropdown { display: none !important; }
             .cta-actions { flex-direction: column; }
+            .checklist-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -342,6 +397,8 @@
             <p>Whether you are submitting a corporate annual report, a heavily illustrated folklore zine, or a short run of bespoke merchandise, setting your artwork up correctly saves time and ensures the best possible result on the press.</p>
         </section>
 
+        <hr class="magenta-divider scroll-reveal">
+
         <!-- 3. Understanding Colour (CMYK vs RGB) -->
         <section id="colour-guide" class="resource-section">
             <div class="section-container">
@@ -350,12 +407,17 @@
                     <p>The most common issue in pre-press is the difference between how colours look on a screen and how they look on physical paper.</p>
                 </div>
                 
-                <div class="comparison-grid">
-                    <div class="comparison-card scroll-reveal" style="transition-delay: 0s;">
+                <div class="colour-grid">
+                    <div class="color-card scroll-reveal" style="transition-delay: 0s;">
+                        <div class="color-placeholder"></div>
                         <h3>RGB (Red, Green, Blue)</h3>
                         <p>This is the colour model used by digital screens (monitors, phones, TVs). Because screens emit light, RGB can produce incredibly bright, neon, and highly saturated colours. <strong>We cannot print directly from RGB files.</strong></p>
                     </div>
-                    <div class="comparison-card scroll-reveal" style="transition-delay: 0.2s;">
+                    
+                    <hr class="cyan-divider scroll-reveal">
+                    
+                    <div class="color-card scroll-reveal" style="transition-delay: 0.2s;">
+                        <div class="color-placeholder"></div>
                         <h3>CMYK (Cyan, Magenta, Yellow, Key/Black)</h3>
                         <p>This is the standard colour model for commercial printing. Presses combine these four ink colours to reproduce images. Because ink absorbs light rather than emitting it, CMYK has a smaller "colour gamut" than RGB.</p>
                     </div>
@@ -401,7 +463,7 @@
                 
                 <div class="checklist-grid">
                     <div class="checklist-item scroll-reveal" style="transition-delay: 0s;">
-                        <div class="check-icon">✓</div>
+                        <div class="icon-placeholder"></div>
                         <div class="check-content">
                             <h4>Resolution</h4>
                             <p>All images and raster graphics must be at least <strong>300 DPI</strong> (Dots Per Inch) at their actual printed size.</p>
@@ -409,7 +471,7 @@
                     </div>
                     
                     <div class="checklist-item scroll-reveal" style="transition-delay: 0.1s;">
-                        <div class="check-icon">✓</div>
+                        <div class="icon-placeholder"></div>
                         <div class="check-content">
                             <h4>Bleed</h4>
                             <p>If your design features colour or images that run right to the edge of the page, you must include a <strong>3mm bleed</strong> on all sides. This gives our finishing team the tolerance needed to trim your pages perfectly without leaving white borders.</p>
@@ -417,7 +479,7 @@
                     </div>
                     
                     <div class="checklist-item scroll-reveal" style="transition-delay: 0.2s;">
-                        <div class="check-icon">✓</div>
+                        <div class="icon-placeholder"></div>
                         <div class="check-content">
                             <h4>Safe Zone</h4>
                             <p>Keep all important text and logos at least <strong>5mm away</strong> from the trim edge to ensure nothing gets cut off during the binding or guillotining process.</p>
@@ -425,7 +487,7 @@
                     </div>
                     
                     <div class="checklist-item scroll-reveal" style="transition-delay: 0.3s;">
-                        <div class="check-icon">✓</div>
+                        <div class="icon-placeholder"></div>
                         <div class="check-content">
                             <h4>File Formats</h4>
                             <p>We strongly prefer <strong>Print-Ready PDFs</strong>. Please ensure all fonts are outlined or embedded, and transparency layers are flattened.</p>
@@ -443,17 +505,12 @@
                 <p style="margin-bottom: 30px;">Use our interactive HTML cost calculation tool to input your preferred specifications—from standard A-sizes to custom 320x450mm sheets—and get an instant, transparent estimate for your next run.</p>
                 <div class="cta-actions">
                     <a href="index.html#estimator" class="btn">Launch Print Cost Calculator</a>
-                    <a href="#" class="btn btn-outline">Contact Our Pre-Press Team</a>
+                    <a href="#" class="btn">Contact Our Pre-Press Team</a>
                 </div>
             </div>
         </section>
 
     </main>
-
-    <!-- Floating Quote Roundel -->
-    <div class="quote-roundel" id="quoteRoundel">
-        <span>Get a<br>Quote</span>
-    </div>
 
     <!-- Quote Request Modal Window -->
     <div class="modal-overlay" id="quoteModal">
@@ -558,7 +615,6 @@
         if(arrow) arrowObserver.observe(arrow);
 
         // --- Modal & Form Logic ---
-        const roundel = document.getElementById('quoteRoundel');
         const navQuoteBtn = document.getElementById('navQuoteBtn');
         const quoteModal = document.getElementById('quoteModal');
         const closeModal = document.getElementById('closeModal');
@@ -574,7 +630,6 @@
             setTimeout(() => quoteModal.classList.add('active'), 10);
         };
 
-        if (roundel) roundel.addEventListener('click', showQuoteModal);
         if (navQuoteBtn) navQuoteBtn.addEventListener('click', showQuoteModal);
 
         const hideQuoteModal = () => {
