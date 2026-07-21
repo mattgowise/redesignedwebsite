@@ -366,7 +366,7 @@
             .finally(() => { submitBtn.textContent = "Send Request"; submitBtn.disabled = false; });
         });
 
-        // --- 2. ASYNC MULTI-IMAGE PARSER ENGINE (WITH DD-MM-YYYY) ---
+        // --- 2. ASYNC MULTI-IMAGE PARSER ENGINE (ROBUST DATE SORTING) ---
         document.addEventListener("DOMContentLoaded", async () => {
             const feedContainer = document.getElementById('news-feed');
             const searchInput = document.getElementById('search-input');
@@ -397,11 +397,12 @@
                                     entry.displayDate = value; 
                                     const parts = value.split('-');
                                     if(parts.length === 3) {
-                                        entry.sortDate = new Date(`${parts[2]}-${parts[1]}-${parts[0]}`);
+                                        // Robust Javascript cross-browser date parsing for correct strict descending sort
+                                        entry.sortDate = new Date(parseInt(parts[2]), parseInt(parts[1]) - 1, parseInt(parts[0])).getTime();
                                         entry.year = parts[2];
                                         uniqueYears.add(parts[2]);
                                     } else {
-                                        entry.sortDate = new Date(0);
+                                        entry.sortDate = 0;
                                         entry.year = "Unknown";
                                     }
                                 }
@@ -436,7 +437,9 @@
             if (allEntries.length === 0) {
                 feedContainer.innerHTML = '<div class="no-results">No news articles found. Add "NEWS-1.txt" to start.</div>';
             } else {
+                // Strict descending sort based on the timestamp calculated during parsing
                 allEntries.sort((a, b) => b.sortDate - a.sortDate);
+                
                 Array.from(uniqueYears).sort().reverse().forEach(year => {
                     yearSelect.innerHTML += `<option value="${year}">${year}</option>`;
                 });
