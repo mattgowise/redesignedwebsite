@@ -1,7 +1,7 @@
 Date: 2026-07-21
-Title: Test article
+Title: Test
 Images: About-2.jpg
-Keywords: test
+Keywords: Test
 
 Text:
-This is a test post to see if my uploader works
+This is a test article to see if my uploader works
