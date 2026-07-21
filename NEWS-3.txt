@@ -4,4 +4,4 @@ Images: About-2.jpg
 Keywords: Test
 
 Text:
-This is a test article to see if my uploader works
+This is a test to see if the uploader works
