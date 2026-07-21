@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub News Uploader</title>
+    <!-- Load Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom scrollbar and subtle transitions */
+        body { font-family: 'Inter', sans-serif; }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+        .toast-enter { animation: slideIn 0.3s ease-out forwards; }
+        .toast-exit { animation: slideOut 0.3s ease-in forwards; }
+        @keyframes slideIn { from { transform: translateX(100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+        @keyframes slideOut { from { transform: translateX(0); opacity: 1; } to { transform: translateX(100%); opacity: 0; } }
+    </style>
+</head>
+<body class="bg-slate-50 min-h-screen text-slate-800 p-4 md:p-8">
+
+    <div class="max-w-6xl mx-auto">
+        <header class="mb-8">
+            <h1 class="text-3xl font-bold text-slate-900">GitHub News File Generator</h1>
+            <p class="text-slate-500 mt-2">Auto-detects the latest file from GitHub, attaches images, and pushes updates.</p>
+        </header>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+            
+            <div class="lg:col-span-7 space-y-6">
+                
+                <!-- Document Content Card -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+                    <h2 class="text-lg font-semibold mb-4 flex items-center">
+                        <svg class="w-5 h-5 mr-2 text-slate-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                        Document Content
+                    </h2>
+                    
+                    <div class="space-y-4">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-medium text-slate-700 mb-1">
+                                    Number <span id="latestIndicator" class="text-xs text-blue-600 font-normal ml-1"></span>
+                                </label>
+                                <input type="number" id="docNumber" value="1" min="1" class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-slate-700 mb-1">Date</label>
+                                <input type="date" id="docDate" class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-slate-700 mb-1">Title</label>
+                            <input type="text" id="docTitle" placeholder="Enter article title" class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                        </div>
+
+                        <!-- Local Image Upload Field -->
+                        <div>
+                            <label class="block text-sm font-medium text-slate-700 mb-1">Upload Image (Optional)</label>
+                            <div class="flex items-center space-x-4">
+                                <input type="file" id="localImage" accept="image/png, image/jpeg, image/webp, image/gif" class="block w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100 transition-colors">
+                                <button type="button" id="clearImageBtn" class="hidden text-sm text-slate-500 hover:text-rose-600">Clear</button>
+                            </div>
+                            <p class="text-xs text-slate-500 mt-1">Image will be uploaded to the main folder automatically.</p>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-slate-700 mb-1">Keywords (comma separated)</label>
+                            <input type="text" id="docKeywords" placeholder="news, update, feature" class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-slate-700 mb-1">Text / Body</label>
+                            <textarea id="docText" rows="6" placeholder="Enter your main content here..." class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lg:col-span-5 space-y-6">
+                
+                <!-- Preview Card -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 sticky top-8">
+                    <div class="flex justify-between items-end mb-4">
+                        <h2 class="text-lg font-semibold flex items-center">
+                            <svg class="w-5 h-5 mr-2 text-slate-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
+                            Live Preview
+                        </h2>
+                        <span id="previewFilename" class="text-sm font-mono text-blue-600 font-medium">NEWS-1.txt</span>
+                    </div>
+                    
+                    <div class="bg-slate-50 border border-slate-200 rounded-lg p-4 h-[400px] overflow-y-auto">
+                        <pre id="previewOutput" class="text-sm font-mono text-slate-700 whitespace-pre-wrap break-words">Date: 
+Title: 
+Images: 
+Keywords: 
+Text: </pre>
+                    </div>
+
+                    <div class="mt-6">
+                        <button id="uploadBtn" class="w-full bg-slate-900 hover:bg-slate-800 text-white font-medium py-3 px-4 rounded-lg transition-colors flex justify-center items-center">
+                            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"></path></svg>
+                            Approve & Upload to GitHub
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Container -->
+    <div id="toastContainer" class="fixed bottom-4 right-4 flex flex-col gap-2 z-50 pointer-events-none"></div>
+
+    <script>
+        // --- HARDCODED GITHUB CONFIGURATION ---
+        // REPLACE THESE VALUES WITH YOUR CLIENT's DETAILS
+        const HARDCODED_CONFIG = {
+            owner: "REPLACE_WITH_REPO_OWNER", // e.g., "octocat"
+            name: "REPLACE_WITH_REPO_NAME",   // e.g., "my-website"
+            token: "REPLACE_WITH_GITHUB_PAT"  // e.g., "ghp_xxxxxxxxxxxxxxxxxxxx"
+        };
+        // --------------------------------------
+
+        // DOM Elements
+        const inputs = {
+            num: document.getElementById('docNumber'),
+            date: document.getElementById('docDate'),
+            title: document.getElementById('docTitle'),
+            keywords: document.getElementById('docKeywords'),
+            text: document.getElementById('docText')
+        };
+        
+        const localImageInput = document.getElementById('localImage');
+        const clearImageBtn = document.getElementById('clearImageBtn');
+        const previewOutput = document.getElementById('previewOutput');
+        const previewFilename = document.getElementById('previewFilename');
+        const uploadBtn = document.getElementById('uploadBtn');
+        const toastContainer = document.getElementById('toastContainer');
+        const latestIndicator = document.getElementById('latestIndicator');
+
+        // Set today's date as default
+        inputs.date.valueAsDate = new Date();
+
+        // --- FETCH LATEST NEWS NUMBER FROM GITHUB ON LOAD ---
+        async function fetchLatestNewsNumber() {
+            const { owner, name: repo, token } = HARDCODED_CONFIG;
+            if (owner === "REPLACE_WITH_REPO_OWNER" || !token) return;
+
+            try {
+                const apiUrl = `https://api.github.com/repos/${owner}/${repo}/contents`;
+                const response = await fetch(apiUrl, {
+                    headers: { 'Authorization': `Bearer ${token}` }
+                });
+
+                if (response.ok) {
+                    const files = await response.json();
+                    let maxNum = 0;
+
+                    // Scan files for pattern NEWS-X.txt
+                    files.forEach(file => {
+                        const match = file.name.match(/^NEWS-(\d+)\.txt$/i);
+                        if (match) {
+                            const num = parseInt(match[1], 10);
+                            if (num > maxNum) maxNum = num;
+                        }
+                    });
+
+                    if (maxNum > 0) {
+                        latestIndicator.textContent = `(Previous: NEWS-${maxNum}.txt)`;
+                        inputs.num.value = maxNum + 1;
+                        updatePreview();
+                    } else {
+                        latestIndicator.textContent = `(No existing news found)`;
+                    }
+                }
+            } catch (error) {
+                console.error("Could not fetch repo contents:", error);
+            }
+        }
+
+        // Run the fetch on page load
+        fetchLatestNewsNumber();
+        // ----------------------------------------------------
+
+        // Update preview whenever any input changes
+        function updatePreview() {
+            const num = inputs.num.value || '1';
+            previewFilename.textContent = `NEWS-${num}.txt`;
+
+            // Determine image path for the text file
+            let imagePathLine = "Images: ";
+            if (localImageInput.files.length > 0) {
+                const file = localImageInput.files[0];
+                imagePathLine = `Images: ${file.name}`;
+            }
+
+            const content = 
+`Date: ${inputs.date.value}
+Title: ${inputs.title.value}
+${imagePathLine}
+Keywords: ${inputs.keywords.value}
+
+Text:
+${inputs.text.value}`;
+
+            previewOutput.textContent = content;
+            return content;
+        }
+
+        // Attach event listeners to all text inputs
+        Object.values(inputs).forEach(input => {
+            input.addEventListener('input', updatePreview);
+        });
+
+        // Handle image selection changes
+        localImageInput.addEventListener('change', () => {
+            if (localImageInput.files.length > 0) {
+                clearImageBtn.classList.remove('hidden');
+            } else {
+                clearImageBtn.classList.add('hidden');
+            }
+            updatePreview();
+        });
+
+        // Handle clearing the image
+        clearImageBtn.addEventListener('click', () => {
+            localImageInput.value = ''; // Clear file input
+            clearImageBtn.classList.add('hidden');
+            updatePreview();
+        });
+
+        // Initialize preview on load
+        updatePreview();
+
+
+        function showToast(message, type = 'info') {
+            const toast = document.createElement('div');
+            let bgClass = 'bg-slate-800';
+            let icon = '';
+            
+            if (type === 'success') {
+                bgClass = 'bg-emerald-600';
+                icon = '<svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>';
+            } else if (type === 'error') {
+                bgClass = 'bg-rose-600';
+                icon = '<svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>';
+            }
+
+            toast.className = `toast-enter flex items-center text-white px-4 py-3 rounded-lg shadow-lg pointer-events-auto ${bgClass}`;
+            toast.innerHTML = `${icon} <span>${message}</span>`;
+            
+            toastContainer.appendChild(toast);
+
+            setTimeout(() => {
+                toast.classList.replace('toast-enter', 'toast-exit');
+                setTimeout(() => toast.remove(), 300);
+            }, 4000);
+        }
+
+        // Safely encode text to Base64 (handles Unicode characters properly)
+        function utf8ToBase64(str) {
+            return btoa(unescape(encodeURIComponent(str)));
+        }
+
+        // Helper function to read a file as a Base64 string
+        function readFileAsBase64(file) {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.onload = () => {
+                    const base64Data = reader.result.split(',')[1]; 
+                    resolve(base64Data);
+                };
+                reader.onerror = error => reject(error);
+                reader.readAsDataURL(file);
+            });
+        }
+
+        // Helper function to upload a single file to GitHub
+        async function uploadToGitHub(owner, repo, token, path, base64Content, message) {
+            const apiUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${path}`;
+            
+            let sha = null;
+            const checkResponse = await fetch(apiUrl, {
+                headers: { 'Authorization': `Bearer ${token}` }
+            });
+
+            if (checkResponse.ok) {
+                const existingData = await checkResponse.json();
+                sha = existingData.sha;
+            }
+
+            const payload = {
+                message: message,
+                content: base64Content
+            };
+            if (sha) payload.sha = sha;
+
+            const uploadResponse = await fetch(apiUrl, {
+                method: 'PUT',
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(payload)
+            });
+
+            if (!uploadResponse.ok) {
+                const errorData = await uploadResponse.json();
+                throw new Error(errorData.message);
+            }
+            
+            return true;
+        }
+
+        uploadBtn.addEventListener('click', async () => {
+            const owner = HARDCODED_CONFIG.owner;
+            const repo = HARDCODED_CONFIG.name;
+            const token = HARDCODED_CONFIG.token;
+
+            if (owner === "REPLACE_WITH_REPO_OWNER" || repo === "REPLACE_WITH_REPO_NAME" || token === "REPLACE_WITH_GITHUB_PAT") {
+                showToast("Developer Error: Hardcoded GitHub details have not been set in the code.", "error");
+                return;
+            }
+
+            const filename = previewFilename.textContent;
+            const fileContent = updatePreview();
+            const apiUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${filename}`;
+
+            const originalBtnText = uploadBtn.innerHTML;
+            uploadBtn.disabled = true;
+            uploadBtn.innerHTML = `
+                <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                Uploading...
+            `;
+
+            try {
+                if (localImageInput.files.length > 0) {
+                    const imageFile = localImageInput.files[0];
+                    showToast(`Uploading image: ${imageFile.name}...`, "info");
+                    
+                    const base64Image = await readFileAsBase64(imageFile);
+                    await uploadToGitHub(owner, repo, token, imageFile.name, base64Image, `Upload image ${imageFile.name} via Web App`);
+                }
+
+                showToast(`Uploading text file: ${filename}...`, "info");
+                const base64Text = utf8ToBase64(fileContent); 
+                
+                await uploadToGitHub(owner, repo, token, filename, base64Text, `Create/Update ${filename} via Web App`);
+
+                showToast(`Success! All files uploaded to GitHub.`, "success");
+                
+                // Clear local image selection and re-fetch next number
+                localImageInput.value = '';
+                clearImageBtn.classList.add('hidden');
+                fetchLatestNewsNumber();
+
+            } catch (error) {
+                console.error("Upload error:", error);
+                showToast(`Error: ${error.message || "Could not reach GitHub."}`, "error");
+            } finally {
+                uploadBtn.disabled = false;
+                uploadBtn.innerHTML = originalBtnText;
+            }
+        });
+    </script>
+</body>
+</html>
