@@ -427,10 +427,10 @@ ${inputs.text.value}`;
             const repo = HARDCODED_CONFIG.name;
             const token = HARDCODED_CONFIG.token;
 
-            if (owner === "mattgowise" || repo === "redesignedwebsite" || token === "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") {
-                showToast("Developer Error: Hardcoded GitHub details have not been set in the code.", "error");
-                return;
-            }
+            if (owner === "REPLACE_WITH_REPO_OWNER" || repo === "REPLACE_WITH_REPO_NAME" || token === "REPLACE_WITH_GITHUB_PAT") {
+    showToast("Developer Error: Hardcoded GitHub details have not been set in the code.", "error");
+    return;
+}
 
             const filename = previewFilename.textContent;
             const fileContent = updatePreview();
