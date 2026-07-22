@@ -80,7 +80,8 @@
         .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px; }
         .form-group { margin-bottom: 20px; }
         .form-group label { display: block; font-weight: 600; margin-bottom: 8px; font-size: 14px; color: var(--header-dark); }
-        .indicator-text { color: var(--gowise-cyan); font-weight: 400; font-size: 12px; margin-left: 5px; }
+        .indicator-text { color: var(--gowise-pink); font-weight: 600; font-size: 12px; margin-left: 10px; }
+        .indicator-text.success { color: var(--gowise-cyan); }
         
         .form-group input, .form-group textarea { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 4px; font-size: 14px; font-family: inherit; transition: border-color 0.3s; }
         .form-group textarea { resize: vertical; min-height: 150px; }
@@ -181,7 +182,6 @@
                     <input type="text" id="docTitle" placeholder="Enter article title">
                 </div>
 
-                <!-- NEW: Styled Image Upload Area -->
                 <div class="form-group">
                     <label>Upload Image (Optional)</label>
                     <div class="image-upload-area">
@@ -230,8 +230,8 @@ Text: </div>
     <script>
         // --- HARDCODED GITHUB CONFIGURATION ---
         const HARDCODED_CONFIG = {
-            owner: "mattgowise", // e.g., "octocat"
-            name: "redesignedwebsite",   // e.g., "my-website"
+            owner: "mattgowise", // e.g., "mattgowise"
+            name: "redesignedwebsite",   // e.g., "redesignedwebsite"
             token: "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"  // e.g., "ghp_xxxxxxxxxxxxxxxxxxxx"
         };
         // --------------------------------------
@@ -264,12 +264,18 @@ Text: </div>
             return dateString;
         }
 
-        // --- FETCH LATEST NEWS NUMBER FROM GITHUB ON LOAD ---
+        // --- FETCH LATEST NEWS NUMBER FROM GITHUB ON LOAD WITH DIAGNOSTICS ---
         async function fetchLatestNewsNumber() {
             const { owner, name: repo, token } = HARDCODED_CONFIG;
-            if (owner === "REPLACE_WITH_REPO_OWNER" || !token) return;
+            if (owner === "REPLACE_WITH_REPO_OWNER" || !token) {
+                latestIndicator.textContent = "(Waiting for Config Details)";
+                return;
+            }
 
             try {
+                latestIndicator.textContent = "(Connecting to GitHub...)";
+                latestIndicator.classList.remove("success");
+                
                 const apiUrl = `https://api.github.com/repos/${owner}/${repo}/contents`;
                 const response = await fetch(apiUrl, {
                     headers: { 'Authorization': `Bearer ${token}` }
@@ -280,7 +286,8 @@ Text: </div>
                     let maxNum = 0;
 
                     files.forEach(file => {
-                        const match = file.name.match(/^NEWS-(\d+)\.txt$/i);
+                        // Loosened Regex to catch typos (e.g. NEWS1.txt, NEWS 2.txt, NEWS-3.txt)
+                        const match = file.name.match(/^NEWS[- _]?(\d+)\.txt$/i);
                         if (match) {
                             const num = parseInt(match[1], 10);
                             if (num > maxNum) maxNum = num;
@@ -289,14 +296,20 @@ Text: </div>
 
                     if (maxNum > 0) {
                         latestIndicator.textContent = `(Previous: NEWS-${maxNum}.txt)`;
+                        latestIndicator.classList.add("success");
                         inputs.num.value = maxNum + 1;
                         updatePreview();
                     } else {
-                        latestIndicator.textContent = `(No existing news found)`;
+                        latestIndicator.textContent = `(Connected. No NEWS-X.txt files found in root folder)`;
                     }
+                } else {
+                    const errorData = await response.json();
+                    latestIndicator.textContent = `(GitHub Error: ${response.status} - ${errorData.message})`;
+                    showToast(`Connection failed: ${errorData.message}`, "error");
                 }
             } catch (error) {
                 console.error("Could not fetch repo contents:", error);
+                latestIndicator.textContent = `(Network Error - Check console)`;
             }
         }
 
@@ -428,9 +441,9 @@ ${inputs.text.value}`;
             const token = HARDCODED_CONFIG.token;
 
             if (owner === "REPLACE_WITH_REPO_OWNER" || repo === "REPLACE_WITH_REPO_NAME" || token === "REPLACE_WITH_GITHUB_PAT") {
-    showToast("Developer Error: Hardcoded GitHub details have not been set in the code.", "error");
-    return;
-}
+                showToast("Developer Error: Hardcoded GitHub details have not been set in the code.", "error");
+                return;
+            }
 
             const filename = previewFilename.textContent;
             const fileContent = updatePreview();
