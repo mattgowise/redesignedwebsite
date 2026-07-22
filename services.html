@@ -5,14 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- SEO Optimization -->
-    <title>Complete Print, Binding & Design Services in Norwich | Gowise Print</title>
-    <meta name="description" content="From corporate brochure rollouts to specialized 500-unit independent zines, GoWise Print delivers uncompromising quality printing, binding, and design in Norwich.">
-    <meta name="keywords" content="Print Services Norwich, Lithographic Printing, 5-Colour Digital Print, Book Binding, Graphic Design Norwich, Zine Printing">
-    <link rel="canonical" href="https://www.gowise.co.uk/services.html">
+    <title>Print Resources & Artwork Setup Guide | Gowise Print Norwich</title>
+    <meta name="description" content="Learn how to prepare your artwork for commercial printing. Discover the difference between CMYK and RGB, Digital vs Litho, and our pre-press checklist.">
+    <meta name="keywords" content="Artwork Setup Guide, Print Resources, CMYK vs RGB, Litho vs Digital Print, Print Ready PDF, Bleed and Crop Marks, Norwich Printers">
+    <link rel="canonical" href="https://www.gowise.co.uk/resources.html">
     
     <!-- Open Graph for Social Sharing -->
-    <meta property="og:title" content="Complete Print, Binding & Design Services in Norwich">
-    <meta property="og:description" content="Advanced printing technology, comprehensive book binding, and expert pre-press design under one roof.">
+    <meta property="og:title" content="Print Resources & Artwork Setup Guide | Gowise Print">
+    <meta property="og:description" content="A flawless printed product starts with a perfectly prepared file. Read our pre-press guides to get your artwork press-ready.">
     <meta property="og:type" content="website">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -31,7 +31,7 @@
         
         /* Enable smooth scrolling for anchor links */
         html { scroll-behavior: smooth; }
-
+        
         body { color: #333; overflow-x: hidden; background-color: #fcfcfc; }
         a { text-decoration: none; color: inherit; }
         ul { list-style: none; }
@@ -47,7 +47,7 @@
 
         /* Typography Styles */
         h1, h2, h3, h4 { font-weight: 600; color: var(--header-dark); }
-        p { line-height: 1.8; color: #555; margin-bottom: 15px; font-weight: 300; font-size: 16px; }
+        p { line-height: 1.8; color: #555; margin-bottom: 15px; font-weight: 300; }
         
         .btn {
             display: inline-block;
@@ -61,7 +61,7 @@
             transition: background-color var(--transition-speed), transform 0.2s;
             border: none;
             cursor: pointer;
-            margin-top: 15px;
+            text-align: center;
         }
         .btn:hover { background-color: var(--gowise-pink); transform: translateY(-2px); }
 
@@ -111,7 +111,7 @@
             z-index: 2;
             padding: 40px;
             margin: 0 5%;
-            max-width: 900px;
+            max-width: 1000px;
             color: #fff;
             background-color: rgba(0, 0, 0, 0.65);
             border-radius: 8px;
@@ -127,14 +127,30 @@
         @keyframes slideUpFade { to { opacity: 1; transform: translateY(0); } }
         @keyframes kenBurns { from { transform: scale(1); } to { transform: scale(1.1); } }
 
-        /* 2. Intro Section */
-        .page-intro { padding: 60px 5% 40px; max-width: 1400px; margin: 0 auto; text-align: center; }
-        .page-intro p { font-size: 18px; line-height: 1.8; color: #555; max-width: 1100px; margin: 0 auto; }
+        /* 2. Intro Section (Matched to Services Page) */
+        .page-intro { 
+            padding: 60px 5% 40px; 
+            max-width: 1400px; 
+            margin: 0 auto; 
+            text-align: center; 
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .page-intro.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .page-intro p { 
+            font-size: 18px; 
+            font-weight: 300;
+            line-height: 1.8; 
+            color: #555; 
+            max-width: 1100px; 
+            margin: 0 auto; 
+        }
 
-        /* 3. Alternating Service Rows */
-        .services-detail-section { padding: 0 5% 40px; }
-        
-        /* Animated Magenta Divider */
+        /* Animated Dividers */
         .magenta-divider { 
             border: none; 
             height: 4px; 
@@ -144,47 +160,63 @@
             opacity: 0;
             transition: width 1s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.8s ease-out; 
         }
-        .magenta-divider.visible {
-            width: 120px;
-            opacity: 1;
-        }
-        
-        .section-container { max-width: 1400px; margin: 0 auto; }
-        .service-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            align-items: start;
-            margin-bottom: 80px;
-            opacity: 0;
-            transform: translateY(40px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-            scroll-margin-top: 120px; 
-        }
-        .service-row.visible { opacity: 1; transform: translateY(0); }
-        .service-row:nth-child(even) .service-text { order: -1; } 
-        
-        .service-img-container { width: 100%; aspect-ratio: 3 / 2; height: auto; border-radius: 4px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
-        .service-img-container img { transition: transform 0.6s ease; }
-        .service-row:hover .service-img-container img { transform: scale(1.05); }
-        
-        .service-text h2 { font-size: 32px; margin-bottom: 20px; color: var(--gowise-magenta); line-height: 1.2; }
-        .service-text > p { font-size: 16px; margin-bottom: 25px; font-weight: 300; color: #555; line-height: 1.8; }
-        
-        .service-features { list-style: none; padding: 0; }
-        .service-features li { position: relative; margin-bottom: 20px; font-size: 16px; font-weight: 300; line-height: 1.8; color: #555; }
-        .service-features strong { display: block; font-size: 16px; font-weight: 600; color: var(--gowise-cyan); margin-bottom: 5px; }
+        .magenta-divider.visible { width: 120px; opacity: 1; }
 
-        /* 4. Comparison Cards (Digital/Litho) */
-        .resource-section { padding: 60px 5% 100px; scroll-margin-top: 100px; background-color: #f4f4f4; border-top: 1px solid #eaeaea; }
+        .cyan-divider { 
+            border: none; 
+            height: 4px; 
+            background-color: var(--gowise-cyan); 
+            width: 0; 
+            margin: 30px auto; 
+            opacity: 0;
+            transition: width 1s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.8s ease-out; 
+        }
+        .cyan-divider.visible { width: 120px; opacity: 1; }
+
+        /* Section Layout Helpers */
+        .resource-section { padding: 80px 5%; scroll-margin-top: 100px; }
+        .resource-section:nth-child(even) { background-color: #f4f4f4; }
+        .section-container { max-width: 1400px; margin: 0 auto; }
         .section-header { text-align: center; margin-bottom: 50px; }
         .section-header h2 { font-size: 36px; color: var(--gowise-magenta); margin-bottom: 15px; }
-        .section-header p { font-size: 18px; max-width: 1200px; margin: 0 auto; }
+        .section-header p { font-size: 18px; max-width: 1200px; margin: 0 auto; font-weight: 300; }
 
+        /* 3. Understanding Colour (CMYK/RGB) Custom Layout */
+        .colour-grid {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        .color-card {
+            background: transparent;
+            padding: 20px;
+            border: none;
+            box-shadow: none;
+            text-align: center;
+            max-width: 1000px;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .color-card.visible { opacity: 1; transform: translateY(0); }
+        .color-card h3 { font-size: 24px; margin-bottom: 20px; color: var(--header-dark); }
+        
+        .color-placeholder {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: #e0e0e0;
+            margin: 0 auto 25px auto;
+        }
+
+        /* 4. Comparison Cards (Digital/Litho) */
         .comparison-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 40px;
+            margin-bottom: 40px;
         }
         .comparison-card {
             background: #fff;
@@ -198,11 +230,76 @@
         }
         .comparison-card.visible { opacity: 1; transform: translateY(0); }
         .comparison-card h3 { font-size: 24px; margin-bottom: 20px; color: var(--header-dark); }
-        .comparison-card p { font-size: 16px; font-weight: 300; line-height: 1.8; color: #555; margin-bottom: 15px; }
-        .comparison-card strong { font-weight: 600; color: var(--header-dark); }
+
+        /* Highlight Callout Box */
+        .callout-box {
+            background-color: #f4f4f4;
+            color: var(--header-dark);
+            padding: 40px;
+            border-radius: 4px;
+            max-width: 1000px;
+            margin: 20px auto 0 auto;
+            border-left: none; 
+            text-align: center;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .callout-box.visible { opacity: 1; transform: translateY(0); }
+        .callout-box h4 { color: var(--gowise-cyan); font-size: 20px; margin-bottom: 15px; }
+        .callout-box p { color: #444; margin-bottom: 0; }
+
+        /* 5. Checklist Section */
+        #setup-checklist {
+            background-color: var(--header-dark);
+            color: #fff;
+        }
+        #setup-checklist .section-header h2 { color: #fff; }
+        #setup-checklist .section-header p { color: #ddd; }
+        
+        .checklist-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+        .checklist-item {
+            background: transparent;
+            padding: 20px 0;
+            border-radius: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 15px;
+            box-shadow: none;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+        }
+        .checklist-item.visible { opacity: 1; transform: translateY(0); }
+        
+        .icon-placeholder {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background-color: #555;
+            margin-bottom: 10px;
+        }
+        .check-content h4 { font-size: 20px; margin-bottom: 10px; color: var(--gowise-cyan); }
+        .check-content p { font-size: 15px; margin-bottom: 0; color: #ccc; }
+
+        /* 6. Partner/Plan CTA Section */
+        .partner-cta-section { background-color: var(--gowise-cyan); color: #fff; padding: 80px 5%; text-align: center; }
+        .partner-cta-container { max-width: 900px; margin: 0 auto; }
+        .partner-cta-section h2 { color: #fff; font-size: 36px; margin-bottom: 20px; }
+        .partner-cta-section p { color: #fff; font-size: 18px; margin-bottom: 30px; }
+        .cta-actions { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+        .partner-cta-section .btn { background-color: var(--header-dark); color: #fff; }
+        .partner-cta-section .btn:hover { background-color: #111; }
 
         /* Footer overrides */
         footer { background: var(--header-dark); color: #fff; position: relative; overflow: hidden; padding: 60px 5%; }
+        footer p { color: #ffffff !important; }
         .footer-header { margin-bottom: 40px; text-align: center; }
         .footer-header h2 { color: var(--gowise-magenta); font-size: 32px; }
         .footer-grid { display: flex; align-items: stretch; justify-content: space-between; gap: 40px; max-width: 1400px; margin: 0 auto; }
@@ -230,8 +327,8 @@
 
         /* Responsive */
         @media (max-width: 1024px) {
-            .service-row { gap: 40px; }
             .comparison-grid { grid-template-columns: 1fr; }
+            .checklist-grid { grid-template-columns: 1fr 1fr; }
             .footer-grid { flex-wrap: wrap; justify-content: center; text-align: center; }
             .footer-arrow-container { display: none; }
             .footer-text-columns { flex-direction: column; gap: 30px; align-items: center; }
@@ -239,12 +336,12 @@
         }
         @media (max-width: 768px) {
             .inner-hero-content { padding: 30px 20px; margin: 0 5%; }
-            .service-row { grid-template-columns: 1fr; margin-bottom: 50px; }
-            .service-row:nth-child(even) .service-text { order: 0; } 
             .top-bar { flex-direction: column; text-align: center; gap: 10px; }
             header { flex-direction: column; gap: 15px; padding: 20px 5%; }
             .main-nav { flex-wrap: wrap; justify-content: center; }
             .dropdown { display: none !important; }
+            .cta-actions { flex-direction: column; }
+            .checklist-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -264,7 +361,7 @@
             <ul class="main-nav">
                 <li><a href="index.html">HOME</a></li>
                 <li>
-                    <a href="services.html" class="active">SERVICES ▾</a>
+                    <a href="services.html">SERVICES ▾</a>
                     <ul class="dropdown">
                         <li><a href="services.html#printing">Commercial Printing</a></li>
                         <li><a href="services.html#binding">Book Binding & Finishing</a></li>
@@ -280,7 +377,7 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="resources.html">PRINT RESOURCES ▾</a>
+                    <a href="resources.html" class="active">PRINT RESOURCES ▾</a>
                     <ul class="dropdown">
                         <li><a href="resources.html#colour-guide">Understanding Colour (CMYK vs RGB)</a></li>
                         <li><a href="resources.html#digital-vs-litho">Digital vs. Lithographic</a></li>
@@ -306,105 +403,53 @@
         <!-- 1. Hero Section -->
         <section class="inner-hero" aria-label="Introduction">
             <div class="hero-bg">
-                <img src="Services-1.jpg" alt="Dynamic wide shot of the GoWise print facility blending traditional machinery with modern design setups" class="cover-img">
+                <img src="Resources-1.jpg" alt="Macro shot of a designer's screen showing crop marks and bleed margins" class="cover-img">
             </div>
             <div class="inner-hero-content">
-                <h1>Complete Print, Binding & Design Services in Norwich</h1>
-                <p>Finding a print partner who understands the nuances of your project shouldn't be difficult. Whether you need a massive corporate brochure rollout or a highly specialized, 500-unit run of an independent zine, GoWise delivers uncompromising quality from our Thorpe St Andrew facility.</p>
+                <h1>Print Resources & Artwork Guide</h1>
+                <p>A flawless printed product starts with a perfectly prepared file. Explore our guides below to understand the fundamentals of commercial print, or use our interactive tools to plan your next project.</p>
             </div>
         </section>
 
         <!-- 2. Intro Section -->
         <section class="page-intro scroll-reveal">
-            <p>By housing advanced printing technology, comprehensive book binding, and an expert pre-press design team under one roof, we ensure your project transitions seamlessly from a digital file to a perfectly finished physical product. Explore our core services below to see how we bring your ideas to the page.</p>
+            <p>Whether you are submitting a corporate annual report, a heavily illustrated folklore zine, or a short run of bespoke merchandise, setting your artwork up correctly saves time and ensures the best possible result on the press.</p>
         </section>
 
-        <!-- 3. Services Core Breakdown (Alternating Layout) -->
-        <section class="services-detail-section">
+        <hr class="magenta-divider scroll-reveal">
+
+        <!-- 3. Understanding Colour (CMYK vs RGB) -->
+        <section id="colour-guide" class="resource-section">
             <div class="section-container">
+                <div class="section-header scroll-reveal">
+                    <h2>Understanding Colour: CMYK vs. RGB</h2>
+                    <p>The most common issue in pre-press is the difference between how colours look on a screen and how they look on physical paper.</p>
+                </div>
                 
-                <hr class="magenta-divider scroll-reveal">
-                
-                <!-- Category 1: Printing -->
-                <article id="printing" class="service-row scroll-reveal">
-                    <div class="service-img-container">
-                        <img src="Services-2.jpg" alt="Dynamic image showcasing vivid spot colors on a heavy-stock print sheet rolling off the litho press" class="cover-img">
+                <div class="colour-grid">
+                    <div class="color-card scroll-reveal" style="transition-delay: 0s;">
+                        <div class="color-placeholder"></div>
+                        <h3>RGB (Red, Green, Blue)</h3>
+                        <p>This is the colour model used by digital screens (monitors, phones, TVs). Because screens emit light, RGB can produce incredibly bright, neon, and highly saturated colours. <strong>We cannot print directly from RGB files.</strong></p>
                     </div>
-                    <div class="service-text">
-                        <h2>1. Commercial & Independent Printing</h2>
-                        <p>We don't believe in a one-size-fits-all approach to ink and paper. We match your specific run size, budget, and colour requirements with the ideal printing press, ensuring flawless detail and maximum cost-efficiency.</p>
-                        
-                        <ul class="service-features">
-                            <li>
-                                <strong>Spot Colour Lithographic Printing</strong>
-                                When brand consistency is paramount, our traditional litho presses deliver. We are specialists in exact Pantone® ink matching, making this the perfect choice for corporate stationery, packaging, and high-volume runs where extreme precision and vibrant solid colours are non-negotiable.
-                            </li>
-                            <li>
-                                <strong>5-Colour Digital Printing</strong>
-                                Our cutting-edge Fujifilm 5UPER COLOUR© press goes far beyond standard CMYK. By utilizing an expanded colour gamut, we achieve incredibly rich RGB tones and simulate Pantone colours with stunning accuracy. Digital is fast, cost-effective for shorter runs, and perfect for variable data printing.
-                            </li>
-                            <li>
-                                <strong>Custom Formats & Stocks</strong>
-                                We optimize your artwork for both standard and custom raw sheet sizes (including 320x450mm and 450x640mm) to reduce waste and keep your costs down, whether you're printing heavy-stock art prints or high-volume flyers.
-                            </li>
-                        </ul>
+                    
+                    <hr class="cyan-divider scroll-reveal">
+                    
+                    <div class="color-card scroll-reveal" style="transition-delay: 0.2s;">
+                        <div class="color-placeholder"></div>
+                        <h3>CMYK (Cyan, Magenta, Yellow, Key/Black)</h3>
+                        <p>This is the standard colour model for commercial printing. Presses combine these four ink colours to reproduce images. Because ink absorbs light rather than emitting it, CMYK has a smaller "colour gamut" than RGB.</p>
                     </div>
-                </article>
+                </div>
 
-                <!-- Category 2: Binding -->
-                <article id="binding" class="service-row scroll-reveal">
-                    <div class="service-img-container">
-                        <img src="Services-3.jpg" alt="Close-up showing the varied textures of PUR binding, square back folding, and wire binding laid side-by-side" class="cover-img">
-                    </div>
-                    <div class="service-text">
-                        <h2>2. Book Binding & In-House Finishing</h2>
-                        <p>A beautifully printed page is only half the journey; the finish dictates how your publication is experienced. Because we handle all our binding in-house, we maintain complete quality control without the delays of outsourcing.</p>
-                        
-                        <ul class="service-features">
-                            <li>
-                                <strong>PUR Perfect Binding</strong>
-                                The gold standard for paperback books, thick catalogues, and graphic novels. Polyurethane Reactive (PUR) glue is significantly stronger and more flexible than standard adhesives, ensuring your book won't crack even when opened completely flat.
-                            </li>
-                            <li>
-                                <strong>Square Back Binding</strong>
-                                Get the premium, flat-spine look of a perfect-bound book with the cost-effectiveness of stapling. Ideal for independent creators, atmospheric folklore zines, and limited-edition lookbooks, this method presses the folded spine flat so your publication stacks and presents beautifully.
-                            </li>
-                            <li>
-                                <strong>Wire Binding</strong>
-                                When your manual, sketchbook, or presentation deck needs to lay entirely flat or fold back 360 degrees, our durable wire-o binding offers the most practical and professional finish.
-                            </li>
-                        </ul>
-                    </div>
-                </article>
-
-                <!-- Category 3: Design -->
-                <article id="design" class="service-row scroll-reveal">
-                    <div class="service-img-container">
-                        <img src="Services-4.jpg" alt="A graphic designer inspecting a digital proof on a large monitor alongside physical Pantone swatch books" class="cover-img">
-                    </div>
-                    <div class="service-text">
-                        <h2>3. Graphic Design & Artwork Setup</h2>
-                        <p>Even the best presses can't fix poorly prepared files. Our full in-house graphic design and pre-press team is here to bridge the gap between your screen and our printers.</p>
-                        
-                        <ul class="service-features">
-                            <li>
-                                <strong>Print-Ready File Setup</strong>
-                                Let us take the stress out of commercial print preparation. We can review your files to ensure perfect CMYK conversions, correct bleed margins, and proper resolution, so your final product looks exactly as you envisioned.
-                            </li>
-                            <li>
-                                <strong>Creative Design Services</strong>
-                                Bring us a rough concept, and our experienced designers will bring it to life. From striking corporate branding to layout design for multi-page publications, we merge deep technical printing knowledge with a wealth of creative experience to save you time and money.
-                            </li>
-                        </ul>
-
-                        <a href="resources.html" class="btn">Read Our Artwork Guide</a>
-                    </div>
-                </article>
-
+                <div class="callout-box scroll-reveal">
+                    <h4>The GoWise Solution</h4>
+                    <p>If your illustrations or designs rely on vibrant tones that standard CMYK struggles to hit, our <strong>Fujifilm 5UPER COLOUR© Digital Press</strong> utilizes an expanded colour gamut to simulate vivid RGB and exact Pantone® spot colours with exceptional accuracy.</p>
+                </div>
             </div>
         </section>
 
-        <!-- 4. Digital vs Litho Section -->
+        <!-- 4. Digital vs Litho -->
         <section id="digital-vs-litho" class="resource-section">
             <div class="section-container">
                 <div class="section-header scroll-reveal">
@@ -426,7 +471,64 @@
                 </div>
             </div>
         </section>
-        
+
+        <!-- 5. Setup Checklist -->
+        <section id="setup-checklist" class="resource-section">
+            <div class="section-container">
+                <div class="section-header scroll-reveal">
+                    <h2>Essential Artwork Setup Checklist</h2>
+                    <p>To avoid delays and additional pre-press fees, please ensure your files meet the following criteria before submission.</p>
+                </div>
+                
+                <div class="checklist-grid">
+                    <div class="checklist-item scroll-reveal" style="transition-delay: 0s;">
+                        <div class="icon-placeholder"></div>
+                        <div class="check-content">
+                            <h4>Resolution</h4>
+                            <p>All images and raster graphics must be at least <strong>300 DPI</strong> (Dots Per Inch) at their actual printed size.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="checklist-item scroll-reveal" style="transition-delay: 0.1s;">
+                        <div class="icon-placeholder"></div>
+                        <div class="check-content">
+                            <h4>Bleed</h4>
+                            <p>If your design features colour or images that run right to the edge of the page, you must include a <strong>3mm bleed</strong> on all sides. This gives our finishing team the tolerance needed to trim your pages perfectly without leaving white borders.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="checklist-item scroll-reveal" style="transition-delay: 0.2s;">
+                        <div class="icon-placeholder"></div>
+                        <div class="check-content">
+                            <h4>Safe Zone</h4>
+                            <p>Keep all important text and logos at least <strong>5mm away</strong> from the trim edge to ensure nothing gets cut off during the binding or guillotining process.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="checklist-item scroll-reveal" style="transition-delay: 0.3s;">
+                        <div class="icon-placeholder"></div>
+                        <div class="check-content">
+                            <h4>File Formats</h4>
+                            <p>We strongly prefer <strong>Print-Ready PDFs</strong>. Please ensure all fonts are outlined or embedded, and transparency layers are flattened.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. Plan Your Project (CTA) -->
+        <section id="plan-project" class="partner-cta-section scroll-reveal">
+            <div class="partner-cta-container">
+                <h2>Plan Your Project</h2>
+                <p>Ready to see how different stocks, sizes, and binding methods affect your bottom line? Take the guesswork out of your print budget.</p>
+                <p style="margin-bottom: 30px;">Use our interactive HTML cost calculation tool to input your preferred specifications—from standard A-sizes to custom 320x450mm sheets—and get an instant, transparent estimate for your next run.</p>
+                <div class="cta-actions">
+                    <a href="index.html#estimator" class="btn">Launch Print Cost Calculator</a>
+                    <a href="#" class="btn">Contact Our Pre-Press Team</a>
+                </div>
+            </div>
+        </section>
+
     </main>
 
     <!-- Quote Request Modal Window -->
@@ -463,17 +565,20 @@
         </div>
     </div>
 
+    <!-- Footer -->
     <footer>
         <div class="footer-header">
             <h2>Visit Our Norwich Print Shop</h2>
             <p>GoWise Print proudly serves local businesses, independent creators, and trade partners across Norfolk and the UK.</p>
         </div>
         <div class="footer-grid">
+            
             <div class="footer-arrow-container">
                 <svg class="footer-arrow" id="slideArrow" viewBox="0 0 100 50" xmlns="http://www.w3.org/2000/svg">
                     <path d="M0,15 L60,15 L60,0 L100,25 L60,50 L60,35 L0,35 Z" fill="var(--gowise-magenta)"/>
                 </svg>
             </div>
+            
             <div class="footer-text-columns">
                 <div>
                     <p style="font-size: 18px; margin-bottom: 15px; color: var(--gowise-cyan); font-weight: 600;">CONTACT INFO</p>
@@ -482,14 +587,17 @@
                     <p><strong>Phone:</strong> +44 (0)1603 431304</p>
                     <p><strong>Email:</strong> print@gowise.co.uk</p>
                 </div>
+                
                 <div>
                     <p style="font-size: 18px; margin-bottom: 15px; color: var(--gowise-cyan); font-weight: 600;">OPENING HOURS</p>
                     <p>MONDAY: 08:30 – 17:00<br>TUESDAY: 08:30 – 17:00<br>WEDNESDAY: 08:30 – 17:00<br>THURSDAY: 08:30 – 17:00<br>FRIDAY: 08:30 – 17:00<br>SATURDAY: CLOSED<br>SUNDAY: CLOSED</p>
                 </div>
             </div>
+            
             <div class="map-container">
                 <iframe src="https://maps.google.com/maps?q=NR7%200PT&t=&z=14&ie=UTF8&iwloc=&output=embed" loading="lazy" allowfullscreen title="GoWise Print Location Map"></iframe>
             </div>
+            
         </div>
     </footer>
 
@@ -509,6 +617,7 @@
             elements.forEach(el => observer.observe(el));
         };
 
+        // Initialize scroll reveal on elements
         createObserver('.scroll-reveal', 'visible', 0.15);
 
         // Footer Arrow Animation
