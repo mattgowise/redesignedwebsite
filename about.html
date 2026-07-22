@@ -84,14 +84,34 @@
         @keyframes slideUpFade { to { opacity: 1; transform: translateY(0); } }
         @keyframes kenBurns { from { transform: scale(1); } to { transform: scale(1.1); } }
 
+        /* 2. Intro Section (Matched to Services Page) */
+        .page-intro { 
+            padding: 60px 5% 40px; 
+            max-width: 1400px; 
+            margin: 0 auto; 
+            text-align: center; 
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .page-intro.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .page-intro p { 
+            font-size: 18px; 
+            font-weight: 300;
+            line-height: 1.8; 
+            color: #555; 
+            max-width: 1100px; 
+            margin: 0 auto; 
+        }
+
         /* Layout Sections */
         .content-section { padding: 80px 5%; max-width: 1400px; margin: 0 auto; scroll-margin-top: 100px; }
         .section-header { text-align: center; margin-bottom: 50px; }
         .section-header h2 { font-size: 36px; color: var(--gowise-magenta); margin-bottom: 15px; }
         .section-header p { font-size: 18px; max-width: 800px; margin: 0 auto; }
-
-        /* Intro Text */
-        .intro-text-block { max-width: 900px; margin: 0 auto 60px; text-align: center; font-size: 18px; }
 
         /* Alternating Split Rows */
         .split-row { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; margin-bottom: 60px; opacity: 0; transform: translateY(40px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
@@ -227,13 +247,13 @@
             </div>
         </section>
 
-        <!-- Intro Text -->
-        <section class="content-section">
-            <div class="intro-text-block scroll-reveal">
-                <p>We are an independent, family-run business based in Thorpe St Andrew, Norwich. For over 40 years, we have been the silent partner behind the brochures, zines, books, and branding that define local businesses and independent creators alike. We don't just print; we consult, we craft, and we ensure that every project—whether it is 50 business cards or 10,000 professional booklets—receives the same expert attention.</p>
-            </div>
+        <!-- 2. Intro Section -->
+        <section class="page-intro scroll-reveal">
+            <p>We are an independent, family-run business based in Thorpe St Andrew, Norwich. For over 40 years, we have been the silent partner behind the brochures, zines, books, and branding that define local businesses and independent creators alike. We don't just print; we consult, we craft, and we ensure that every project—whether it is 50 business cards or 10,000 professional booklets—receives the same expert attention.</p>
+        </section>
 
-            <!-- 2. Sustainability Section -->
+        <section class="content-section" style="padding-top: 0;">
+            <!-- 3. Sustainability Section -->
             <article id="sustainability" class="split-row scroll-reveal">
                 <div class="split-img-container">
                     <!-- Replaced [About-2] Placeholder -->
@@ -246,7 +266,7 @@
                 </div>
             </article>
 
-            <!-- 3. The Team Section -->
+            <!-- 4. The Team Section -->
             <article id="team" class="split-row scroll-reveal">
                 <div class="split-img-container">
                     <!-- Replaced [About-3] Placeholder -->
@@ -260,7 +280,7 @@
             </article>
         </section>
 
-        <!-- 4. Insights / Blog Feed Placeholder -->
+        <!-- 5. Insights / Blog Feed Placeholder -->
         <section id="insights" class="bg-light">
             <div class="content-section" style="padding-top: 0; padding-bottom: 0;">
                 <div class="section-header scroll-reveal">
@@ -306,7 +326,7 @@
             </div>
         </section>
 
-        <!-- 5. Final CTA -->
+        <!-- 6. Final CTA -->
         <section class="partner-cta-section scroll-reveal">
             <div class="partner-cta-container">
                 <h2>Ready to start your next project?</h2>
@@ -318,6 +338,41 @@
             </div>
         </section>
     </main>
+
+    <!-- Quote Request Modal Window -->
+    <!-- (Added to ensure modal functionality isn't broken if you copy-paste over it) -->
+    <div class="modal-overlay" id="quoteModal">
+        <div class="modal-content">
+            <span class="close-modal" id="closeModal">&times;</span>
+            <h3>Request a Quote</h3>
+            <form id="asyncQuoteForm">
+                <input type="hidden" name="access_key" value="3c30689d-ea16-4629-92a1-5737b09d6f4c">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" placeholder="Your Name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" placeholder="your@email.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="details">Project Details</label>
+                    <textarea id="details" name="details" placeholder="Please describe your printing needs..." required></textarea>
+                </div>
+                <button type="submit" class="btn" id="submitQuoteBtn" style="width: 100%;">Send Request</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Submission Success Pop-Up -->
+    <div class="modal-overlay" id="successModal">
+        <div class="modal-content" style="max-width: 420px; text-align: center;">
+            <span class="close-modal" id="closeSuccessX">&times;</span>
+            <h3 style="color: var(--gowise-cyan); margin-bottom: 15px;">Thank You!</h3>
+            <p style="font-size: 16px; color: #444; margin-bottom: 25px;">Your quote request has been successfully submitted. Our production team will review your project details and get back to you shortly.</p>
+            <button type="button" class="btn" id="closeSuccessBtn" style="width: 100%; background-color: var(--gowise-cyan);">Close Window</button>
+        </div>
+    </div>
 
     <!-- Footer -->
     <footer>
@@ -391,6 +446,66 @@
             });
         }, { threshold: 0.1 }); 
         if(arrow) arrowObserver.observe(arrow);
+
+        // --- Modal & Form Logic ---
+        const navQuoteBtn = document.getElementById('navQuoteBtn');
+        const quoteModal = document.getElementById('quoteModal');
+        const closeModal = document.getElementById('closeModal');
+        const asyncForm = document.getElementById('asyncQuoteForm');
+        const submitBtn = document.getElementById('submitQuoteBtn');
+        const successModal = document.getElementById('successModal');
+        const closeSuccessX = document.getElementById('closeSuccessX');
+        const closeSuccessBtn = document.getElementById('closeSuccessBtn');
+
+        const showQuoteModal = (e) => {
+            if(e) e.preventDefault();
+            quoteModal.style.display = 'flex';
+            setTimeout(() => quoteModal.classList.add('active'), 10);
+        };
+
+        if (navQuoteBtn) navQuoteBtn.addEventListener('click', showQuoteModal);
+
+        const hideQuoteModal = () => {
+            quoteModal.classList.remove('active');
+            setTimeout(() => quoteModal.style.display = 'none', 400); 
+        };
+        if (closeModal) closeModal.addEventListener('click', hideQuoteModal);
+
+        const hideSuccessModal = () => {
+            successModal.classList.remove('active');
+            setTimeout(() => successModal.style.display = 'none', 400);
+        };
+        if (closeSuccessX) closeSuccessX.addEventListener('click', hideSuccessModal);
+        if (closeSuccessBtn) closeSuccessBtn.addEventListener('click', hideSuccessModal);
+
+        window.addEventListener('click', (e) => {
+            if (e.target === quoteModal) hideQuoteModal();
+            if (e.target === successModal) hideSuccessModal();
+        });
+
+        if (asyncForm) {
+            asyncForm.addEventListener('submit', function(e) {
+                e.preventDefault(); 
+                submitBtn.textContent = "Sending Request...";
+                submitBtn.disabled = true;
+
+                const formData = new FormData(asyncForm);
+                fetch('https://api.web3forms.com/submit', { method: 'POST', body: formData })
+                .then(async (response) => {
+                    let json = await response.json();
+                    if (response.status == 200) {
+                        hideQuoteModal();
+                        asyncForm.reset(); 
+                        successModal.style.display = 'flex';
+                        setTimeout(() => successModal.classList.add('active'), 10);
+                    } else {
+                        alert("Submission failed: " + json.message);
+                    }
+                })
+                .catch(error => { alert("Network error. Please try again."); })
+                .finally(() => { submitBtn.textContent = "Send Request"; submitBtn.disabled = false; });
+            });
+        }
     </script>
 </body>
 </html>
