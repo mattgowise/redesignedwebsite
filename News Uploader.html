@@ -230,9 +230,9 @@ Text: </div>
     <script>
         // --- HARDCODED GITHUB CONFIGURATION ---
         const HARDCODED_CONFIG = {
-            owner: "REPLACE_WITH_REPO_OWNER", // e.g., "octocat"
-            name: "REPLACE_WITH_REPO_NAME",   // e.g., "my-website"
-            token: "REPLACE_WITH_GITHUB_PAT"  // e.g., "ghp_xxxxxxxxxxxxxxxxxxxx"
+            owner: "mattgowise", // e.g., "octocat"
+            name: "redesignedwebsite",   // e.g., "my-website"
+            token: "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"  // e.g., "ghp_xxxxxxxxxxxxxxxxxxxx"
         };
         // --------------------------------------
 
@@ -427,7 +427,7 @@ ${inputs.text.value}`;
             const repo = HARDCODED_CONFIG.name;
             const token = HARDCODED_CONFIG.token;
 
-            if (owner === "mattgowise" || repo === "redesignedwebsite" || token === "ghp_gGGGFZPS0qrqoeagPnJpuZuSG6mfny0iw4V") {
+            if (owner === "mattgowise" || repo === "redesignedwebsite" || token === "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") {
                 showToast("Developer Error: Hardcoded GitHub details have not been set in the code.", "error");
                 return;
             }
