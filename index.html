@@ -359,16 +359,11 @@
         }
         
         /* New Mobile & Hamburger Threshold */
-        @media (max-width: 992px) {
-            .mobile-break { display: block; 
-                          /* Hide Carousel Arrows on Mobile */
-            .carousel-arrow { display: none; }
-                          }
-            
-            /* 1 & 2: Header & Hamburger Menu */
-            header { flex-wrap: wrap; padding: 15px 5%; }
-            .header-right { display: flex; align-items: center; gap: 15px; }
-            .header-right .btn-quote { padding: 8px 12px !important; font-size: 12px; }
+        @media (max-width: 1050px) {
+      header { flex-direction: row; flex-wrap: wrap; justify-content: space-between; align-items: center; padding: 15px 5%; }
++     .logo img { max-height: 40px; }
+      .header-right { display: flex; align-items: center; gap: 15px; }
+      .header-right .btn-quote { padding: 8px 12px !important; font-size: 12px; margin-top: 0; }
             
             .hamburger { display: flex; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 5px; z-index: 1001; }
             .hamburger span { display: block; width: 25px; height: 3px; background-color: #fff; transition: 0.3s; }
