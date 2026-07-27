@@ -106,6 +106,7 @@
             animation: fadeUp 0.6s forwards; 
             padding-bottom: 50px;
             border-bottom: 2px solid var(--gowise-magenta);
+            max-width: 55ch; /* Size constraint matched from Folklore journal */
         }
         .news-entry:last-child {
             border-bottom: none;
@@ -136,6 +137,75 @@
         .keyword-tag:not(:last-child)::after { content: '•'; color: #ccc; margin-left: 15px; font-weight: 300; }
 
         .no-results { text-align: center; padding: 60px 0; color: #888; font-size: 18px; background: transparent; border-radius: 0; box-shadow: none; }
+
+        /* --- COMMENTS SECTION --- */
+        .comments-section { 
+            margin-top: 30px; 
+            padding-top: 30px; 
+            border-top: 1px dashed #ccc; 
+            display: none; 
+        }
+
+        .toggle-comments-btn { 
+            margin-top: 25px; 
+            background: transparent; 
+            border: 1px solid var(--gowise-magenta); 
+            color: var(--gowise-magenta); 
+            padding: 10px 20px; 
+            cursor: pointer; 
+            text-transform: uppercase; 
+            font-size: 13px; 
+            font-weight: 600; 
+            transition: all var(--transition-speed); 
+            border-radius: 3px; 
+        }
+        .toggle-comments-btn:hover { 
+            background: var(--gowise-magenta); 
+            color: #fff; 
+        }
+
+        .comment-item { 
+            background: #fff; 
+            padding: 20px; 
+            border-left: 3px solid var(--gowise-cyan); 
+            margin-bottom: 15px; 
+            border-radius: 0 4px 4px 0; 
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        .comment-header { 
+            display: flex; 
+            justify-content: space-between; 
+            margin-bottom: 8px; 
+            font-size: 13px; 
+        }
+        .comment-author { font-weight: 600; color: var(--header-dark); text-transform: uppercase; }
+        .comment-date { color: #888; }
+        .comment-body { font-size: 15px; line-height: 1.6; color: #555; margin: 0; }
+
+        .comment-form { 
+            display: flex; 
+            flex-direction: column; 
+            gap: 15px; 
+            margin-top: 30px; 
+            background: #fff; 
+            padding: 25px; 
+            border-radius: 4px; 
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        .comment-form h4 { margin: 0 0 10px 0; font-size: 22px; color: var(--gowise-magenta); }
+        .comment-form input, .comment-form textarea { 
+            width: 100%; 
+            padding: 12px; 
+            border: 1px solid #ccc; 
+            border-radius: 4px; 
+            font-family: inherit; 
+            font-size: 14px; 
+            transition: border-color 0.3s; 
+        }
+        .comment-form input:focus, .comment-form textarea:focus { 
+            outline: none; 
+            border-color: var(--gowise-cyan); 
+        }
 
         /* Footer */
         footer { background: var(--header-dark); color: #fff; position: relative; overflow: hidden; padding: 60px 5%; margin-top: 60px; }
@@ -482,6 +552,24 @@
                                 <h2 class="entry-title">${entry.title}</h2>
                                 <div class="entry-text">${entry.textHtml}</div>
                                 ${keywordsHtml}
+                                
+                                <!-- Injected Comment Section -->
+                                <button id="toggle-btn-${index}" class="toggle-comments-btn" onclick="window.toggleComments('${index}', '${entry.title.replace(/'/g, "\\'")}')">
+                                    Load Comments
+                                </button>
+                                
+                                <div id="comments-section-${index}" class="comments-section">
+                                    <div id="comment-list-${index}"></div>
+                                    
+                                    <div class="comment-form">
+                                        <h4>Leave a Reply</h4>
+                                        <input type="text" id="comment-name-${index}" placeholder="Your Name (Required)">
+                                        <textarea id="comment-text-${index}" rows="3" placeholder="Your thoughts on this update... (Required)"></textarea>
+                                        <button class="btn" onclick="window.submitComment('${index}', '${entry.title.replace(/'/g, "\\'")}')">Post Comment</button>
+                                    </div>
+                                </div>
+                                <!-- End Injected Comment Section -->
+
                             </div>
                         </article>
                     `;
@@ -524,6 +612,128 @@
             searchInput.addEventListener('keyup', filterNews);
             yearSelect.addEventListener('change', filterNews);
         });
+    </script>
+
+    <!-- Firebase Script -->
+    <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-app.js";
+    import { getFirestore, collection, addDoc, query, where, orderBy, getDocs, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-firestore.js";
+
+    const firebaseConfig = {
+  apiKey: "AIzaSyCkeyQe9fj5a4eTPGcpAskL1rwQVA189hI",
+  authDomain: "gowise-comments.firebaseapp.com",
+  projectId: "gowise-comments",
+  storageBucket: "gowise-comments.firebasestorage.app",
+  messagingSenderId: "758253156309",
+  appId: "1:758253156309:web:ee272344320c82cbed6f5c",
+  measurementId: "G-J58BEQWHLS"
+};
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    window.toggleComments = async function(index, entryTitle) {
+        const section = document.getElementById(`comments-section-${index}`);
+        const btn = document.getElementById(`toggle-btn-${index}`);
+        const list = document.getElementById(`comment-list-${index}`);
+        
+        if (section.style.display === 'none' || section.style.display === '') {
+            section.style.display = 'block';
+            btn.textContent = 'Hide Comments';
+            
+            if (list.innerHTML.trim() === '') {
+                list.innerHTML = '<p style="color: #888; font-style: italic;">Loading comments...</p>';
+                try {
+                    const q = query(
+                        collection(db, "gowise_comments"), 
+                        where("entryId", "==", entryTitle), 
+                        orderBy("timestamp", "asc")
+                    );
+                    const querySnapshot = await getDocs(q);
+                    
+                    list.innerHTML = ''; 
+                    
+                    if (querySnapshot.empty) {
+                        list.innerHTML = '<p style="color: #888; font-style: italic;">No comments yet. Be the first to reply.</p>';
+                    } else {
+                        querySnapshot.forEach((doc) => {
+                            const data = doc.data();
+                            const dateStr = data.timestamp ? data.timestamp.toDate().toLocaleDateString('en-GB') : 'Just now';
+                            
+                            list.innerHTML += `
+                                <div class="comment-item">
+                                    <div class="comment-header">
+                                        <span class="comment-author">${data.name}</span>
+                                        <span class="comment-date">${dateStr}</span>
+                                    </div>
+                                    <p class="comment-body">${data.text}</p>
+                                </div>
+                            `;
+                        });
+                    }
+                } catch (e) {
+                    console.error("Error fetching comments: ", e);
+                    list.innerHTML = `<p style="color: var(--gowise-magenta);">Comments are currently unreachable. Try again later.</p>`;
+                }
+            }
+        } else {
+            section.style.display = 'none';
+            btn.textContent = 'Load Comments';
+        }
+    };
+
+    window.submitComment = async function(index, entryTitle) {
+        const nameInput = document.getElementById(`comment-name-${index}`);
+        const textInput = document.getElementById(`comment-text-${index}`);
+        const list = document.getElementById(`comment-list-${index}`);
+        const btn = event.target;
+        
+        const name = nameInput.value.trim();
+        const text = textInput.value.trim();
+        
+        if (!name || !text) {
+            alert("Please provide both your name and a comment.");
+            return;
+        }
+
+        const originalBtnText = btn.textContent;
+        btn.textContent = 'Sending...';
+        btn.disabled = true;
+        
+        try {
+            await addDoc(collection(db, "gowise_comments"), {
+                entryId: entryTitle,
+                name: name,
+                text: text,
+                timestamp: serverTimestamp()
+            });
+            
+            const noCommentsMsg = list.querySelector('p');
+            if (noCommentsMsg && noCommentsMsg.textContent.includes('No comments yet')) {
+                list.innerHTML = '';
+            }
+            
+            list.innerHTML += `
+                <div class="comment-item" style="border-left-color: var(--gowise-magenta);">
+                    <div class="comment-header">
+                        <span class="comment-author">${name}</span>
+                        <span class="comment-date">Just now</span>
+                    </div>
+                    <p class="comment-body">${text}</p>
+                </div>
+            `;
+            
+            nameInput.value = '';
+            textInput.value = '';
+            
+        } catch (e) {
+            console.error("Error adding document: ", e);
+            alert("Failed to post comment.");
+        } finally {
+            btn.textContent = originalBtnText;
+            btn.disabled = false;
+        }
+    };
     </script>
 </body>
 </html>
