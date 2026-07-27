@@ -105,6 +105,10 @@
 
         @keyframes dropFade { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
 
+        /* Utility specific for mobile breaks */
+        .mobile-break { display: none; }
+        .header-right { display: none; }
+
         /* 1. Hero Carousel */
         .carousel-container { position: relative; width: 100%; min-height: 70vh; background-color: #111; overflow: hidden; display: flex; align-items: center; justify-content: center; }
         .carousel-slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1.2s ease-in-out; display: flex; align-items: center; justify-content: flex-start; } 
@@ -141,8 +145,6 @@
         /* 3. New Introduction Sections */
         .pink-banner { background-color: var(--gowise-magenta); color: #fff; padding: 50px 5%; text-align: center; font-size: 36px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; opacity: 0; transform: scale(0.98); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
         .pink-banner.visible { opacity: 1; transform: scale(1); }
-
- 
 
         .intro-text-section { padding: 80px 5% 40px 5%; text-align: center; background-color: #fcfcfc; }
         .intro-text-section p { 
@@ -334,24 +336,87 @@
             .squares-grid { grid-template-columns: repeat(3, 1fr); }
             .carousel-content { margin-left: 5%; max-width: 500px; }
         }
+        
+        /* New Mobile & Hamburger Threshold */
+        @media (max-width: 992px) {
+            .mobile-break { display: block; }
+            
+            /* 1 & 2: Header & Hamburger Menu */
+            header { flex-wrap: wrap; padding: 15px 5%; }
+            .header-right { display: flex; align-items: center; gap: 15px; }
+            .header-right .btn-quote { padding: 8px 12px !important; font-size: 12px; }
+            
+            .hamburger { display: flex; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 5px; z-index: 1001; }
+            .hamburger span { display: block; width: 25px; height: 3px; background-color: #fff; transition: 0.3s; }
+            .hamburger.active span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+            .hamburger.active span:nth-child(2) { opacity: 0; }
+            .hamburger.active span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+            nav { width: 100%; display: none; margin-top: 15px; }
+            nav.active { display: block; }
+            .main-nav { flex-direction: column; align-items: stretch; gap: 0; }
+            .main-nav li { padding: 0; border-top: 1px solid #444; }
+            .main-nav a { display: block; padding: 15px 10px; }
+            .main-nav li:last-child { display: none; } /* Hide the desktop nav quote button */
+            
+            .dropdown { position: static; box-shadow: none; display: none; background-color: transparent; border-left: 2px solid var(--gowise-cyan); margin-left: 10px; }
+            .main-nav li:hover .dropdown { display: block; animation: none; }
+            .dropdown a { padding: 10px 15px; border-bottom: none; }
+
+            /* Reordering the Main Body for Mobile */
+            main { display: flex; flex-direction: column; }
+            .pink-banner { order: 1; margin-top: 0; font-size: 24px; padding: 30px 5%; } /* 4. Pink banner moved to top */
+            .carousel-container { order: 2; height: 500px; min-height: unset; display: block; } /* 3. Stacked Carousel */
+            .trust-bar { order: 3; }
+            .intro-text-section { order: 4; }
+            .pink-divider { order: 5; }
+            .services-section { order: 6; }
+            .environment-banner { order: 7; }
+            .environment-content { order: 8; }
+
+            /* 3. Stacked Carousel Styles */
+            .carousel-slide { flex-direction: column; }
+            .carousel-bg-img { position: relative; height: 50%; object-fit: cover; filter: brightness(1); }
+            .carousel-content {
+                position: relative;
+                transform: none !important;
+                background-color: var(--gowise-pink);
+                margin: 0;
+                padding: 20px 5%;
+                max-width: 100%;
+                border-radius: 0;
+                backdrop-filter: none;
+                text-align: center;
+                height: 50%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+            }
+            .carousel-content h1 { font-size: 28px; margin-bottom: 10px; }
+            .carousel-content p { font-size: 16px; }
+            
+            /* 5. Services Square shrink down */
+            .squares-grid { grid-template-columns: 1fr; gap: 15px; }
+            .service-column { gap: 10px; }
+            .service-square { aspect-ratio: auto; min-height: 80px; padding: 15px; }
+            
+            /* 6. Environmental Policy text size shrink */
+            .environment-banner h2 { font-size: min(6vw, 24px); white-space: nowrap; }
+
+            /* 8. Remove the floating quote roundel */
+            .quote-roundel { display: none !important; }
+        }
+
+        /* Lower Mobile Polish (Formatting elements inside blocks) */
         @media (max-width: 768px) {
-            .squares-grid { grid-template-columns: 1fr; }
-            .carousel-slide { justify-content: center; }
-            .carousel-content { margin: 0 5%; max-width: 100%; text-align: center; transform: translateY(20px); }
-            .carousel-slide.active .carousel-content { transform: translateY(0); }
             .trust-bar { grid-template-columns: 1fr; text-align: center; }
             .trust-item { flex-direction: column; }
             .top-bar { flex-direction: column; text-align: center; gap: 10px; }
-            header { flex-direction: column; gap: 15px; padding: 20px 5%; }
-            .main-nav { flex-wrap: wrap; justify-content: center; }
-            .dropdown { display: none !important; }
-            .pink-banner { font-size: 24px; padding: 30px 5%; }
             .intro-text-section p { font-size: 18px; }
             .footer-grid { flex-wrap: wrap; justify-content: center; text-align: center; }
             .footer-arrow-container { display: none; }
             .footer-text-columns { flex-direction: column; gap: 30px; align-items: center; }
             .map-container { width: 100%; flex: 1 1 100%; }
-            .quote-roundel { width: 70px; height: 70px; font-size: 12px; right: 10px; }
         }
     </style>
 </head>
@@ -367,6 +432,15 @@
         <a href="index.html" class="logo">
             <img src="gowise-logo.png" alt="Gowise Print Logo">
         </a>
+        
+        <!-- Mobile Right Hand Group (Quote + Hamburger) -->
+        <div class="header-right">
+            <a href="#" id="navQuoteBtnMobile" class="btn-quote">GET A QUOTE</a>
+            <button class="hamburger" id="hamburgerBtn" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+
         <nav>
             <ul class="main-nav">
                 <li><a href="index.html" class="active">HOME</a></li>
@@ -404,6 +478,7 @@
                     </ul>
                 </li>
                 <li><a href="news.html">NEWS</a></li>
+                <!-- Hidden on mobile, visible on desktop -->
                 <li><a href="#" id="navQuoteBtn" class="btn-quote">GET A QUOTE</a></li>
             </ul>
         </nav>
@@ -471,7 +546,7 @@
 
         <!-- 3. Introduction Banners -->
         <section class="pink-banner scroll-reveal">
-            Gowise Print. Expert Printers Norwich
+            Gowise Print. <br class="mobile-break">Expert Printers Norwich
         </section>
 
         <section class="intro-text-section">
@@ -596,7 +671,8 @@
     <!-- 6. Footer -->
     <footer>
         <div class="footer-header">
-            <h2>Visit Our Norwich Print Shop</h2>
+            <!-- 7. Footer Header text split on mobile -->
+            <h2>Visit Our Norwich<br class="mobile-break"> Print Shop</h2>
             <p>GoWise Print proudly serves local businesses, independent creators, and trade partners across Norfolk and the UK.</p>
         </div>
         <div class="footer-grid">
@@ -630,6 +706,15 @@
     </footer>
 
     <script>
+        // --- Hamburger Menu Toggle ---
+        const hamburgerBtn = document.getElementById('hamburgerBtn');
+        const mobileNav = document.querySelector('nav');
+        
+        hamburgerBtn.addEventListener('click', () => {
+            hamburgerBtn.classList.toggle('active');
+            mobileNav.classList.toggle('active');
+        });
+
         // --- 1. Auto-fading Carousel Logic ---
         const slides = document.querySelectorAll('.carousel-slide');
         let currentSlide = 0;
@@ -675,7 +760,8 @@
 
         // --- 4. Request Form & Success Modals Interactivity ---
         const roundel = document.getElementById('quoteRoundel');
-        const navQuoteBtn = document.getElementById('navQuoteBtn'); // Grabs the top nav button
+        const navQuoteBtn = document.getElementById('navQuoteBtn'); // Desktop Nav btn
+        const navQuoteBtnMobile = document.getElementById('navQuoteBtnMobile'); // Mobile Nav btn
         const quoteModal = document.getElementById('quoteModal');
         const closeModal = document.getElementById('closeModal');
         
@@ -688,14 +774,15 @@
 
         // Reveal Form Modal Function
         const showQuoteModal = (e) => {
-            if(e) e.preventDefault(); // Prevents the link from jumping to the top of the page
+            if(e) e.preventDefault();
             quoteModal.style.display = 'flex';
             setTimeout(() => quoteModal.classList.add('active'), 10);
         };
 
-        // Attach to BOTH the roundel and the top navigation button
+        // Attach to all buttons
         roundel.addEventListener('click', showQuoteModal);
         navQuoteBtn.addEventListener('click', showQuoteModal);
+        if(navQuoteBtnMobile) navQuoteBtnMobile.addEventListener('click', showQuoteModal);
 
         // Hide Form Modal Function
         const hideQuoteModal = () => {
@@ -743,7 +830,6 @@
                     successModal.style.display = 'flex';
                     setTimeout(() => successModal.classList.add('active'), 10);
                 } else {
-                    // Fallback configuration if API validation fails
                     alert("Submission failed: " + json.message);
                 }
             })
