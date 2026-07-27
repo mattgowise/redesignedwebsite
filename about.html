@@ -119,7 +119,7 @@
             display: grid; 
             grid-template-columns: 1fr 1fr; 
             gap: 60px; 
-            align-items: start; /* Aligns images strictly to the top of the text */
+            align-items: stretch; /* Stretches the text column to match the photo's height */
             margin-bottom: 80px; 
             opacity: 0; 
             transform: translateY(40px); 
@@ -146,12 +146,13 @@
 
         /* Magenta Circle Placeholder */
         .circle-placeholder {
-            width: 80px;
-            height: 80px;
+            width: 150px;
+            height: 150px;
             background-color: var(--gowise-magenta);
             border-radius: 50%;
-            margin: 30px auto 0 auto; /* Centers the circle horizontally beneath the text */
+            margin: auto auto 0 auto; /* Pushes the circle down to align with the bottom of the photo */
             display: block;
+            flex-shrink: 0; /* Prevents the circle from squishing if text is long */
         }
 
         /* Insights / News Image Cards */
