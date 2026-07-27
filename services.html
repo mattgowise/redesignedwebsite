@@ -95,6 +95,12 @@
 
         @keyframes dropFade { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
 
+        /* Mobile Header Utilities */
+        .mobile-header-right { display: none; align-items: center; gap: 15px; }
+        .hamburger { background: none; border: none; cursor: pointer; padding: 5px; display: flex; align-items: center; justify-content: center; }
+        .hamburger svg { fill: #fff; width: 30px; height: 30px; }
+        .mobile-break { display: none; }
+
         /* 1. Inner Hero Section */
         .inner-hero {
             position: relative;
@@ -325,8 +331,26 @@
         .form-group textarea { resize: vertical; min-height: 120px; }
         .form-group input:focus, .form-group textarea:focus { border-color: var(--gowise-magenta); outline: none; }
 
-        /* Responsive */
-        @media (max-width: 1024px) {
+        /* --- RESPONSIVE BREAKPOINTS --- */
+
+        /* Trigger hamburger earlier before nav breaks rows */
+        @media (max-width: 1050px) {
+            header { flex-direction: row; flex-wrap: wrap; justify-content: space-between; align-items: center; padding: 15px 5%; }
+            .mobile-header-right { display: flex; }
+            
+            nav { width: 100%; display: none; margin-top: 15px; }
+            nav.active { display: block; }
+            
+            .main-nav { flex-direction: column; align-items: flex-start; gap: 0; }
+            .main-nav li { width: 100%; border-bottom: 1px solid rgba(255,255,255,0.1); }
+            .main-nav a { display: block; padding: 15px 0; }
+            
+            /* Hide the desktop quote button since it moved to the header wrapper */
+            .main-nav a.desktop-quote { display: none !important; }
+            
+            .dropdown { position: static; display: none; background-color: #222; box-shadow: none; min-width: 100%; }
+            .main-nav li:hover .dropdown, .main-nav li:active .dropdown { display: block; animation: none; }
+            
             .comparison-grid { grid-template-columns: 1fr; }
             .checklist-grid { grid-template-columns: 1fr 1fr; }
             .footer-grid { flex-wrap: wrap; justify-content: center; text-align: center; }
@@ -334,12 +358,32 @@
             .footer-text-columns { flex-direction: column; gap: 30px; align-items: center; }
             .map-container { width: 100%; flex: 1 1 100%; }
         }
+
+        /* Mobile Adjustments */
         @media (max-width: 768px) {
-            .inner-hero-content { padding: 30px 20px; margin: 0 5%; }
+            .mobile-break { display: block; }
+            
+            /* Stacked Hero Overrides */
+            .inner-hero { flex-direction: column; min-height: auto; background-color: var(--gowise-pink); overflow: visible; padding: 0; }
+            .hero-bg { position: relative; height: 280px; width: 100%; flex-shrink: 0; }
+            .inner-hero-content { 
+                position: relative; 
+                background-color: var(--gowise-pink); 
+                margin: 0; 
+                padding: 40px 5%; 
+                border-radius: 0; 
+                width: 100%; 
+                max-width: 100%; 
+                backdrop-filter: none; 
+            }
+            
+            /* Text scaling so split titles fit beautifully */
+            .inner-hero-content h1 { font-size: 34px; }
+            .section-header h2 { font-size: 28px; }
+            .color-card h3 { font-size: 22px; }
+            .footer-header h2 { font-size: 26px; }
+
             .top-bar { flex-direction: column; text-align: center; gap: 10px; }
-            header { flex-direction: column; gap: 15px; padding: 20px 5%; }
-            .main-nav { flex-wrap: wrap; justify-content: center; }
-            .dropdown { display: none !important; }
             .cta-actions { flex-direction: column; }
             .checklist-grid { grid-template-columns: 1fr; }
         }
@@ -357,7 +401,16 @@
         <a href="index.html" class="logo">
             <img src="gowise-logo.png" alt="Gowise Print Logo">
         </a>
-        <nav>
+        
+        <!-- Mobile Actions: Hamburger + Quote -->
+        <div class="mobile-header-right">
+            <button class="hamburger" id="hamburgerMenu" aria-label="Toggle Navigation">
+                <svg viewBox="0 0 24 24"><path d="M3 6h18v2H3V6zm0 5h18v2H3v-2zm0 5h18v2H3v-2z"/></svg>
+            </button>
+            <a href="#" id="navQuoteBtnMobile" class="btn-quote">GET A QUOTE</a>
+        </div>
+
+        <nav id="navMenu">
             <ul class="main-nav">
                 <li><a href="index.html">HOME</a></li>
                 <li>
@@ -394,7 +447,7 @@
                     </ul>
                 </li>
                 <li><a href="news.html">NEWS</a></li>
-                <li><a href="#" id="navQuoteBtn" class="btn-quote">GET A QUOTE</a></li>
+                <li><a href="#" id="navQuoteBtn" class="btn-quote desktop-quote">GET A QUOTE</a></li>
             </ul>
         </nav>
     </header>
@@ -422,14 +475,14 @@
         <section id="colour-guide" class="resource-section">
             <div class="section-container">
                 <div class="section-header scroll-reveal">
-                    <h2>Understanding Colour: CMYK vs. RGB</h2>
+                    <h2>Understanding Colour:<br class="mobile-break"> CMYK vs. RGB</h2>
                     <p>The most common issue in pre-press is the difference between how colours look on a screen and how they look on physical paper.</p>
                 </div>
                 
                 <div class="colour-grid">
                     <div class="color-card scroll-reveal" style="transition-delay: 0s;">
                         <div class="color-placeholder"></div>
-                        <h3>RGB (Red, Green, Blue)</h3>
+                        <h3>RGB<br class="mobile-break"> (Red, Green, Blue)</h3>
                         <p>This is the colour model used by digital screens (monitors, phones, TVs). Because screens emit light, RGB can produce incredibly bright, neon, and highly saturated colours. <strong>We cannot print directly from RGB files.</strong></p>
                     </div>
                     
@@ -437,7 +490,7 @@
                     
                     <div class="color-card scroll-reveal" style="transition-delay: 0.2s;">
                         <div class="color-placeholder"></div>
-                        <h3>CMYK (Cyan, Magenta, Yellow, Key/Black)</h3>
+                        <h3>CMYK<br class="mobile-break"> (Cyan, Magenta, Yellow, Key/Black)</h3>
                         <p>This is the standard colour model for commercial printing. Presses combine these four ink colours to reproduce images. Because ink absorbs light rather than emitting it, CMYK has a smaller "colour gamut" than RGB.</p>
                     </div>
                 </div>
@@ -476,7 +529,7 @@
         <section id="setup-checklist" class="resource-section">
             <div class="section-container">
                 <div class="section-header scroll-reveal">
-                    <h2>Essential Artwork Setup Checklist</h2>
+                    <h2>Essential Artwork<br class="mobile-break"> Setup Checklist</h2>
                     <p>To avoid delays and additional pre-press fees, please ensure your files meet the following criteria before submission.</p>
                 </div>
                 
@@ -568,7 +621,7 @@
     <!-- Footer -->
     <footer>
         <div class="footer-header">
-            <h2>Visit Our Norwich Print Shop</h2>
+            <h2>Visit Our Norwich<br class="mobile-break"> Print Shop</h2>
             <p>GoWise Print proudly serves local businesses, independent creators, and trade partners across Norfolk and the UK.</p>
         </div>
         <div class="footer-grid">
@@ -633,8 +686,18 @@
         }, { threshold: 0.1 }); 
         if(arrow) arrowObserver.observe(arrow);
 
+        // --- Mobile Nav Toggle ---
+        const hamburgerMenu = document.getElementById('hamburgerMenu');
+        const navMenu = document.getElementById('navMenu');
+        if (hamburgerMenu) {
+            hamburgerMenu.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+            });
+        }
+
         // --- Modal & Form Logic ---
         const navQuoteBtn = document.getElementById('navQuoteBtn');
+        const navQuoteBtnMobile = document.getElementById('navQuoteBtnMobile');
         const quoteModal = document.getElementById('quoteModal');
         const closeModal = document.getElementById('closeModal');
         const asyncForm = document.getElementById('asyncQuoteForm');
@@ -649,7 +712,9 @@
             setTimeout(() => quoteModal.classList.add('active'), 10);
         };
 
+        // Attach modal trigger to both desktop and mobile buttons
         if (navQuoteBtn) navQuoteBtn.addEventListener('click', showQuoteModal);
+        if (navQuoteBtnMobile) navQuoteBtnMobile.addEventListener('click', showQuoteModal);
 
         const hideQuoteModal = () => {
             quoteModal.classList.remove('active');
