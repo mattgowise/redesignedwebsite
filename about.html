@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
     
     <!-- SEO Optimization -->
     <title>About Us | 40 Years of Print Expertise in Norwich | Gowise Print</title>
@@ -50,6 +51,8 @@
 
         /* Header & Nav */
         .top-bar { background-color: var(--gowise-magenta); color: #fff; display: flex; justify-content: space-between; padding: 8px 5%; font-size: 13px; font-weight: 400; }
+        .top-bar a { text-decoration: none; color: inherit; }
+
         header { background-color: var(--header-dark); color: #fff; padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; }
         .logo img { max-height: 60px; width: auto; transition: transform 0.3s ease; }
         .logo:hover img { transform: scale(1.05); }
@@ -70,6 +73,10 @@
 
         @keyframes dropFade { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
 
+        /* Mobile Utilities */
+        .mobile-break { display: none; }
+        .header-right { display: none; }
+
         /* Hero */
         .inner-hero { position: relative; width: 100%; min-height: 50vh; display: flex; align-items: center; background-color: #111; overflow: hidden; scroll-margin-top: 100px; }
         
@@ -84,7 +91,7 @@
         @keyframes slideUpFade { to { opacity: 1; transform: translateY(0); } }
         @keyframes kenBurns { from { transform: scale(1); } to { transform: scale(1.1); } }
 
-        /* 2. Intro Section (Matched to Services Page) */
+        /* 2. Intro Section */
         .page-intro { 
             padding: 60px 5% 40px; 
             max-width: 1400px; 
@@ -172,7 +179,35 @@
         .map-container { flex: 0 0 400px; height: 300px; background: #ddd; border-radius: 4px; overflow: hidden; }
         .map-container iframe { width: 100%; height: 100%; border: none; }
 
-        @media (max-width: 1024px) {
+        /* --- RESPONSIVE BREAKPOINTS --- */
+
+        /* 1050px Breakpoint: Hamburger & Grid collapses */
+        @media (max-width: 1050px) {
+            header { flex-direction: row; flex-wrap: wrap; justify-content: space-between; align-items: center; padding: 15px 5%; }
+            .header-right { display: flex; align-items: center; gap: 15px; }
+            .header-right .btn-quote { padding: 8px 12px !important; font-size: 12px; margin-top: 0; }
+            
+            /* Hamburger animated toggle setup */
+            .hamburger { display: flex; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 5px; z-index: 1001; }
+            .hamburger span { display: block; width: 25px; height: 3px; background-color: #fff; transition: 0.3s; }
+            .hamburger.active span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+            .hamburger.active span:nth-child(2) { opacity: 0; }
+            .hamburger.active span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+            
+            nav { width: 100%; display: none; margin-top: 15px; }
+            nav.active { display: block; }
+            
+            .main-nav { flex-direction: column; align-items: flex-start; gap: 0; }
+            .main-nav li { width: 100%; border-bottom: 1px solid rgba(255,255,255,0.1); }
+            .main-nav a { display: block; padding: 15px 0; }
+            
+            /* Hide the desktop quote button since it moved to the header wrapper */
+            .main-nav a.desktop-quote { display: none !important; }
+            
+            .dropdown { position: static; display: none; background-color: #222; box-shadow: none; min-width: 100%; border-left: 2px solid var(--gowise-cyan); margin-left: 10px; }
+            .main-nav li:hover .dropdown, .main-nav li:active .dropdown { display: block; animation: none; }
+            .dropdown a { padding: 10px 15px; border-bottom: none; }
+            
             .split-row { gap: 40px; }
             .blog-grid { grid-template-columns: 1fr; }
             .footer-grid { flex-wrap: wrap; justify-content: center; text-align: center; }
@@ -180,23 +215,46 @@
             .footer-text-columns { flex-direction: column; gap: 30px; align-items: center; }
             .map-container { width: 100%; flex: 1 1 100%; }
         }
+
+        /* 768px Breakpoint: Mobile specific layout tweaks */
         @media (max-width: 768px) {
-            .inner-hero-content { padding: 30px 20px; margin: 0 5%; }
+            .mobile-break { display: block; }
+            
+            /* Top Bar on one line without underlines */
+            .top-bar { flex-direction: row; justify-content: center; gap: 15px; font-size: 12px; white-space: nowrap; }
+            .top-bar a { text-decoration: none !important; }
+
+            /* Stacked Hero Overrides */
+            .inner-hero { flex-direction: column; min-height: auto; background-color: #ffffff; overflow: visible; padding: 0; }
+            .hero-bg { position: relative; height: 280px; width: 100%; flex-shrink: 0; }
+            .inner-hero-content { 
+                position: relative; 
+                background-color: #ffffff; 
+                margin: 0; 
+                padding: 40px 5%; 
+                border-radius: 0; 
+                width: 100%; 
+                max-width: 100%; 
+                backdrop-filter: none; 
+            }
+            
+            /* Text scaling and color application for white background */
+            .inner-hero-content h1 { font-size: 34px; color: var(--gowise-cyan); }
+            .inner-hero-content p { color: #444444; font-size: 16px; }
+
             .split-row { grid-template-columns: 1fr; margin-bottom: 50px; }
             .split-row:nth-child(even) .split-text { order: 0; } 
             .split-img-container { min-height: 250px; }
-            .top-bar { flex-direction: column; text-align: center; gap: 10px; }
-            header { flex-direction: column; gap: 15px; padding: 20px 5%; }
-            .main-nav { flex-wrap: wrap; justify-content: center; }
-            .dropdown { display: none !important; }
+            
+            .footer-header h2 { font-size: 26px; }
         }
     </style>
 </head>
 <body>
 
     <div class="top-bar">
-        <span>Tel: +44 (0)1603 431304</span>
-        <span>print@gowise.co.uk</span>
+        <a href="tel:+441603431304">Tel: +44 (0)1603 431304</a>
+        <a href="mailto:print@gowise.co.uk">print@gowise.co.uk</a>
     </div>
 
     <!-- Navigation -->
@@ -204,7 +262,16 @@
         <a href="index.html" class="logo">
             <img src="gowise-logo.png" alt="Gowise Print Logo">
         </a>
-        <nav>
+        
+        <!-- Mobile Actions: Quote + Animated Hamburger -->
+        <div class="header-right">
+            <a href="#" id="navQuoteBtnMobile" class="btn-quote">GET A QUOTE</a>
+            <button class="hamburger" id="hamburgerBtn" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+
+        <nav id="navMenu">
             <ul class="main-nav">
                 <li><a href="index.html">HOME</a></li>
                 <li>
@@ -241,7 +308,7 @@
                     </ul>
                 </li>
                 <li><a href="news.html">NEWS</a></li>
-                <li><a href="#" id="navQuoteBtn" class="btn-quote">GET A QUOTE</a></li>
+                <li><a href="#" id="navQuoteBtn" class="btn-quote desktop-quote">GET A QUOTE</a></li>
             </ul>
         </nav>
     </header>
@@ -254,7 +321,7 @@
                 <img src="About-1.jpg" alt="Vintage printing equipment alongside modern digital tech at GoWise Print" class="cover-img">
             </div>
             <div class="inner-hero-content">
-                <h1>About GoWise: Four Decades of Print Expertise in Norfolk</h1>
+                <h1>About GoWise:<br class="mobile-break"> Four Decades of Print Expertise in Norfolk</h1>
                 <p>Since 1983, GoWise has been at the heart of the Norfolk print community. Our core philosophy has remained the same: Large enough to cope, small enough to care.</p>
             </div>
         </section>
@@ -391,7 +458,7 @@
     <!-- Footer -->
     <footer>
         <div class="footer-header">
-            <h2>Visit Our Norwich Print Shop</h2>
+            <h2>Visit Our Norwich<br class="mobile-break"> Print Shop</h2>
             <p>GoWise Print proudly serves local businesses, independent creators, and trade partners across Norfolk and the UK.</p>
         </div>
         <div class="footer-grid">
@@ -461,8 +528,20 @@
         }, { threshold: 0.1 }); 
         if(arrow) arrowObserver.observe(arrow);
 
+        // --- Hamburger Menu Toggle ---
+        const hamburgerBtn = document.getElementById('hamburgerBtn');
+        const navMenu = document.getElementById('navMenu');
+        
+        if (hamburgerBtn) {
+            hamburgerBtn.addEventListener('click', () => {
+                hamburgerBtn.classList.toggle('active');
+                navMenu.classList.toggle('active');
+            });
+        }
+
         // --- Modal & Form Logic ---
         const navQuoteBtn = document.getElementById('navQuoteBtn');
+        const navQuoteBtnMobile = document.getElementById('navQuoteBtnMobile');
         const quoteModal = document.getElementById('quoteModal');
         const closeModal = document.getElementById('closeModal');
         const asyncForm = document.getElementById('asyncQuoteForm');
@@ -477,7 +556,9 @@
             setTimeout(() => quoteModal.classList.add('active'), 10);
         };
 
+        // Attach modal trigger to both desktop and mobile buttons
         if (navQuoteBtn) navQuoteBtn.addEventListener('click', showQuoteModal);
+        if (navQuoteBtnMobile) navQuoteBtnMobile.addEventListener('click', showQuoteModal);
 
         const hideQuoteModal = () => {
             quoteModal.classList.remove('active');
