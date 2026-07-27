@@ -46,9 +46,6 @@
         .btn-outline { background-color: transparent; border: 2px solid #fff; color: #fff; }
         .btn-outline:hover { background-color: #fff; color: var(--gowise-magenta); }
 
-        /* Image Helpers */
-        .cover-img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.6s ease; }
-
         /* Header & Nav */
         .top-bar { background-color: var(--gowise-magenta); color: #fff; display: flex; justify-content: space-between; padding: 8px 5%; font-size: 13px; font-weight: 400; }
         .top-bar a { text-decoration: none; color: inherit; }
@@ -86,7 +83,8 @@
         .inner-hero-content p { font-size: 18px; color: #ddd; font-weight: 300; opacity: 0; transform: translateY(30px); animation: slideUpFade 0.8s 0.2s forwards; }
         
         .hero-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; }
-        .hero-bg img { animation: kenBurns 20s infinite alternate ease-in-out; }
+        /* Explicitly defining image constraints restores the missing hero image */
+        .hero-bg img { width: 100%; height: 100%; object-fit: cover; display: block; animation: kenBurns 20s infinite alternate ease-in-out; }
 
         @keyframes slideUpFade { to { opacity: 1; transform: translateY(0); } }
         @keyframes kenBurns { from { transform: scale(1); } to { transform: scale(1.1); } }
@@ -116,12 +114,12 @@
         .section-header h2 { font-size: 36px; color: var(--gowise-magenta); margin-bottom: 15px; }
         .section-header p { font-size: 18px; max-width: 800px; margin: 0 auto; }
 
-        /* 3-Photo Split Rows */
+        /* 3-Photo Split Rows (4:3 Ratio & Top-Aligned) */
         .split-row { 
             display: grid; 
             grid-template-columns: 1fr 1fr; 
             gap: 60px; 
-            align-items: start; /* Align to the top of the text */
+            align-items: start; /* Aligns images strictly to the top of the text */
             margin-bottom: 80px; 
             opacity: 0; 
             transform: translateY(40px); 
@@ -133,17 +131,28 @@
         
         .split-img-container { 
             width: 100%; 
-            aspect-ratio: 4 / 3; /* Exact 4:3 Ratio */
+            aspect-ratio: 4 / 3; /* Locks images strictly to a 4:3 ratio */
             border-radius: 4px; 
             overflow: hidden; 
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             position: relative;
         }
-        .split-img-container img { width: 100%; height: 100%; object-fit: cover; }
+        .split-img-container img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; display: block; }
         .split-row:hover .split-img-container img { transform: scale(1.05); }
         
+        .split-text { display: flex; flex-direction: column; }
         .split-text h2 { font-size: 32px; margin-bottom: 20px; color: var(--gowise-magenta); }
         .split-text p { font-size: 16px; margin-bottom: 20px; color: #444; }
+
+        /* Magenta Circle Placeholder */
+        .circle-placeholder {
+            width: 80px;
+            height: 80px;
+            background-color: var(--gowise-magenta);
+            border-radius: 50%;
+            margin: 30px auto 0 auto; /* Centers the circle horizontally beneath the text */
+            display: block;
+        }
 
         /* Insights / News Image Cards */
         .blog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
@@ -208,7 +217,7 @@
         .map-container iframe { width: 100%; height: 100%; border: none; }
 
         /* =======================================================
-           BULLETPROOF MODAL CSS (Prevents static text rendering)
+           BULLETPROOF MODAL CSS 
            ======================================================= */
         .modal-overlay { 
             position: fixed !important; 
@@ -218,7 +227,6 @@
             height: 100vh !important; 
             background: rgba(0,0,0,0.8) !important; 
             z-index: 9999 !important; 
-            display: none !important; /* Strictly hidden until .active */
             align-items: center; 
             justify-content: center; 
             opacity: 0; 
@@ -343,7 +351,7 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="plant-list.html">PLANT LIST & CAPABILITIES ▾</a>
+                    <a href="plant-list.html">EQUIPMENT & CAPABILITIES ▾</a>
                     <ul class="dropdown">
                         <li><a href="plant-list.html#digital">Digital Press</a></li>
                         <li><a href="plant-list.html#litho">Lithographic Press</a></li>
@@ -377,13 +385,19 @@
         <!-- 1. Hero Section -->
         <section class="inner-hero" aria-label="About GoWise">
             <div class="hero-bg">
-                <img src="About-Hero.jpg" alt="GoWise Print Facility Overview" class="cover-img">
+                <img src="About-1.jpg" alt="Vintage printing equipment alongside modern digital tech at GoWise Print" class="cover-img">
             </div>
             <div class="inner-hero-content">
-                <h1>Large Enough to Cope,<br class="mobile-break"> Small Enough to Care.</h1>
-                <p>Discover the people, the history, and the sustainable practices behind Norfolk’s most trusted independent commercial printers.</p>
+                <h1>About GoWise:<br class="mobile-break"> Four Decades of Print Expertise in Norfolk</h1>
+                <p>Since 1983, GoWise has been at the heart of the Norfolk print community. Our core philosophy has remained the same: Large enough to cope, small enough to care.</p>
             </div>
         </section>
+
+        <section class="page-intro scroll-reveal">
+            <p>We are an independent, family-run business based in Thorpe St Andrew, Norwich. For over 40 years, we have been the silent partner behind the brochures, zines, books, and branding that define local businesses and independent creators alike. We don't just print; we consult, we craft, and we ensure that every project—whether it is 50 business cards or 10,000 professional booklets—receives the same expert attention.</p>
+        </section>
+        
+        <hr class="magenta-divider scroll-reveal">
 
         <!-- 3-Photo Split Rows Section (Light Grey Background) -->
         <section class="bg-light">
@@ -392,36 +406,42 @@
                 <!-- Split Row 1: History -->
                 <article id="history" class="split-row scroll-reveal">
                     <div class="split-img-container">
-                        <img src="About-1.jpg" alt="Vintage printing equipment alongside modern digital tech at GoWise Print" class="cover-img">
+                        <img src="About-1.jpg" alt="Vintage printing equipment alongside modern digital tech at GoWise Print">
                     </div>
                     <div class="split-text">
                         <h2>Our History & Philosophy</h2>
                         <p>Since 1983, GoWise has been at the heart of the Norfolk print community. We are an independent, family-run business based in Thorpe St Andrew, Norwich.</p>
                         <p>For over 40 years, we have been the silent partner behind the brochures, zines, books, and branding that define local businesses and independent creators alike. We don't just print; we consult, we craft, and we ensure that every project—whether it is 50 business cards or 10,000 professional booklets—receives the exact same expert attention.</p>
+                        <!-- Added Circle Placeholder -->
+                        <div class="circle-placeholder"></div>
                     </div>
                 </article>
 
                 <!-- Split Row 2: Sustainability -->
                 <article id="sustainability" class="split-row scroll-reveal">
                     <div class="split-img-container">
-                        <img src="About-2.jpg" alt="Eco-friendly paper stacks and responsible printing materials" class="cover-img">
+                        <img src="About-2.jpg" alt="Eco-friendly paper stacks and responsible printing materials">
                     </div>
                     <div class="split-text">
                         <h2>Our Commitment to Sustainability</h2>
                         <p>In an industry driven by paper and ink, we take our environmental impact seriously. We operate with a "precision first" mentality; by optimizing our sheet usage (printing to custom 320x450mm and 450x640mm sizes) and utilizing high-efficiency, low-waste digital technologies, we minimize paper scrap and ink waste.</p>
                         <p>We are committed to responsible sourcing and continuously refining our workflows to ensure that quality production and environmental mindfulness go hand-in-hand.</p>
+                        <!-- Added Circle Placeholder -->
+                        <div class="circle-placeholder"></div>
                     </div>
                 </article>
 
                 <!-- Split Row 3: Team -->
                 <article id="team" class="split-row scroll-reveal">
                     <div class="split-img-container">
-                        <img src="About-3.jpg" alt="The GoWise Print team working hands-on with finishing equipment" class="cover-img">
+                        <img src="About-3.jpg" alt="The GoWise Print team working hands-on with finishing equipment">
                     </div>
                     <div class="split-text">
                         <h2>Your Print Partner in Norfolk</h2>
                         <p>We aren't just machine operators; we are your technical partners. When you work with GoWise, you aren't dealing with an automated upload portal—you are working with a local team that knows the difference between a square back fold and PUR binding.</p>
                         <p>We are always happy to discuss your project requirements over the phone or in person at our Norwich facility.</p>
+                        <!-- Added Circle Placeholder -->
+                        <div class="circle-placeholder"></div>
                     </div>
                 </article>
 
@@ -436,33 +456,9 @@
                     <p>We believe in the power of print, and we love sharing the stories behind the projects that leave our shop floor. Catch up on our latest technical insights and case studies.</p>
                 </div>
                 
-                <div class="blog-grid">
-                    <!-- Article Card 1 -->
-                    <a href="news.html#shuck-issue" class="blog-card scroll-reveal" style="transition-delay: 0s;">
-                        <img src="News-1.jpg" alt="Binding on Shuck Issue 8" class="blog-card-bg">
-                        <div class="blog-overlay">
-                            <span class="meta">12 Aug 2026</span>
-                            <h3>Recent Project: Perfecting the Binding on 'SHUCK' Issue 8</h3>
-                        </div>
-                    </a>
-
-                    <!-- Article Card 2 -->
-                    <a href="news.html#paper-stock" class="blog-card scroll-reveal" style="transition-delay: 0.2s;">
-                        <img src="News-2.jpg" alt="Choosing the right paper stock" class="blog-card-bg">
-                        <div class="blog-overlay">
-                            <span class="meta">28 Jul 2026</span>
-                            <h3>How to Choose the Right Paper Stock for Your Prints</h3>
-                        </div>
-                    </a>
-
-                    <!-- Article Card 3 -->
-                    <a href="news.html#pantone-matching" class="blog-card scroll-reveal" style="transition-delay: 0.4s;">
-                        <img src="News-3.jpg" alt="Pantone Spot Colour Mixing" class="blog-card-bg">
-                        <div class="blog-overlay">
-                            <span class="meta">05 Jul 2026</span>
-                            <h3>Why Pantone Spot Colour Matching Still Matters in 2026</h3>
-                        </div>
-                    </a>
+                <!-- Dynamic Container Populated by JS -->
+                <div class="blog-grid" id="latest-news-grid">
+                    <p style="grid-column: 1 / -1; text-align: center; color: #888;">Loading latest insights...</p>
                 </div>
                 
                 <div style="text-align: center; margin-top: 50px;" class="scroll-reveal">
@@ -486,12 +482,14 @@
     <!-- 
     ========================================================
     BULLETPROOF MODAL WINDOWS
-    These are injected directly before the footer to prevent flow errors.
+    The "style='display: none;'" attribute is hardcoded into the HTML tags. 
+    This prevents the forms from ever rendering statically at the bottom 
+    of the page even if the CSS stylesheet fails to parse correctly.
     ======================================================== 
     -->
     
     <!-- Quote Request Modal Window -->
-    <div class="modal-overlay" id="quoteModal">
+    <div class="modal-overlay" id="quoteModal" style="display: none;">
         <div class="modal-content">
             <span class="close-modal" id="closeModal">&times;</span>
             <h3>Request a Quote</h3>
@@ -515,7 +513,7 @@
     </div>
 
     <!-- Submission Success Pop-Up -->
-    <div class="modal-overlay" id="successModal">
+    <div class="modal-overlay" id="successModal" style="display: none;">
         <div class="modal-content" style="max-width: 420px; text-align: center;">
             <span class="close-modal" id="closeSuccessX">&times;</span>
             <h3 style="color: var(--gowise-cyan); margin-bottom: 15px;">Thank You!</h3>
@@ -556,46 +554,112 @@
     </footer>
 
     <script>
-        // Scroll Animations
-        const createObserver = (selector, visibleClass, threshold = 0.15) => {
-            const elements = document.querySelectorAll(selector);
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add(visibleClass);
-                        observer.unobserve(entry.target); 
-                    }
-                });
-            }, { threshold: threshold });
-            
-            elements.forEach(el => observer.observe(el));
+        // Global Observer Setup
+        const scrollObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    scrollObserver.unobserve(entry.target); 
+                }
+            });
+        }, { threshold: 0.15 });
+        
+        const attachObserver = (selector) => {
+            document.querySelectorAll(selector).forEach(el => scrollObserver.observe(el));
         };
-
-        createObserver('.scroll-reveal', 'visible', 0.15);
+        attachObserver('.scroll-reveal');
 
         // Footer Arrow Animation
         const arrow = document.getElementById('slideArrow');
-        const arrowObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    arrow.classList.add('slide-in');
-                } else {
-                    arrow.classList.remove('slide-in');
-                }
-            });
-        }, { threshold: 0.1 }); 
-        if(arrow) arrowObserver.observe(arrow);
+        if(arrow) {
+            new IntersectionObserver((entries) => {
+                entries.forEach(e => {
+                    if (e.isIntersecting) arrow.classList.add('slide-in');
+                    else arrow.classList.remove('slide-in');
+                });
+            }, { threshold: 0.1 }).observe(arrow);
+        }
 
         // --- Hamburger Menu Toggle ---
         const hamburgerBtn = document.getElementById('hamburgerBtn');
         const navMenu = document.getElementById('navMenu');
-        
         if (hamburgerBtn) {
             hamburgerBtn.addEventListener('click', () => {
                 hamburgerBtn.classList.toggle('active');
                 navMenu.classList.toggle('active');
             });
         }
+
+        // --- Async News Feed Parser for About Us Page ---
+        document.addEventListener("DOMContentLoaded", async () => {
+            const feedContainer = document.getElementById('latest-news-grid');
+            if (!feedContainer) return;
+            
+            let allEntries = [];
+            let currentIndex = 1;
+            const maxFilesToCheck = 20; 
+
+            while (currentIndex <= maxFilesToCheck) {
+                try {
+                    const response = await fetch(`NEWS-${currentIndex}.txt`, { cache: 'no-store' });
+                    if (!response.ok) break; 
+                    
+                    const text = await response.text();
+                    const lines = text.split('\n');
+                    let entry = { fileIndex: currentIndex, images: [] };
+                    
+                    lines.forEach(line => {
+                        const sepIndex = line.indexOf(':');
+                        if (sepIndex > -1) {
+                            const key = line.slice(0, sepIndex).trim().toLowerCase();
+                            const value = line.slice(sepIndex + 1).trim();
+                            if (key === 'date') entry.displayDate = value;
+                            else if (key === 'title') entry.title = value;
+                            else if (key === 'image') {
+                                entry.images = value.split(',').map(img => img.trim()).filter(img => img !== '');
+                            }
+                        }
+                    });
+                    
+                    if (entry.title) allEntries.push(entry);
+                    currentIndex++;
+                } catch (error) {
+                    break;
+                }
+            }
+            
+            if (allEntries.length > 0) {
+                // Sort descending (newest file numbers first)
+                allEntries.sort((a, b) => b.fileIndex - a.fileIndex);
+                
+                // Grab Top 3 Only
+                const topThree = allEntries.slice(0, 3);
+                feedContainer.innerHTML = '';
+                
+                topThree.forEach((entry, index) => {
+                    const imgUrl = (entry.images && entry.images.length > 0) ? entry.images[0] : 'placeholder.jpg';
+                    const delay = index * 0.2;
+                    
+                    // Create HTML String
+                    const cardHtml = `
+                        <a href="news.html" class="blog-card scroll-reveal" style="transition-delay: ${delay}s;">
+                            <img src="${imgUrl}" alt="${entry.title}" class="blog-card-bg">
+                            <div class="blog-overlay">
+                                <span class="meta">${entry.displayDate || ''}</span>
+                                <h3>${entry.title}</h3>
+                            </div>
+                        </a>
+                    `;
+                    feedContainer.insertAdjacentHTML('beforeend', cardHtml);
+                });
+
+                // Attach scroll animation observer to dynamically generated cards
+                feedContainer.querySelectorAll('.scroll-reveal').forEach(el => scrollObserver.observe(el));
+                
+            } else {
+                 feedContainer.innerHTML = '<p style="color:#ccc; grid-column: 1 / -1; text-align:center;">No recent news found. Add "NEWS-1.txt" to generate.</p>';
+            }
+        });
 
         // --- Modal & Form Logic ---
         const navQuoteBtn = document.getElementById('navQuoteBtn');
