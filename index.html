@@ -138,6 +138,24 @@
         .carousel-content h1 { font-size: 48px; font-weight: 800; color: #fff; margin-bottom: 20px; line-height: 1.2; }
         .carousel-content p { font-size: 20px; color: #eee; font-weight: 300; }
 
+        .carousel-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.4);
+            color: #fff;
+            border: none;
+            padding: 15px 20px;
+            font-size: 30px;
+            cursor: pointer;
+            z-index: 10;
+            transition: background-color 0.3s ease;
+            border-radius: 3px;
+        }
+        .carousel-arrow:hover { background-color: var(--gowise-magenta); }
+        .prev-arrow { left: 2%; }
+        .next-arrow { right: 2%; }
+
         /* 2. Trust Indicators */
         .trust-bar { display: grid; grid-template-columns: repeat(3, 1fr); background-color: var(--header-dark); color: #fff; padding: 40px 5%; gap: 20px; position: relative; z-index: 10; }
         .trust-item { display: flex; align-items: center; gap: 20px; opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
@@ -343,7 +361,10 @@
         
         /* New Mobile & Hamburger Threshold */
         @media (max-width: 992px) {
-            .mobile-break { display: block; }
+            .mobile-break { display: block; 
+                          /* Hide Carousel Arrows on Mobile */
+            .carousel-arrow { display: none; }
+                          }
             
             /* 1 & 2: Header & Hamburger Menu */
             header { flex-wrap: wrap; padding: 15px 5%; }
@@ -494,6 +515,11 @@
     <main>
         <!-- 1. Auto-fading Carousel -->
         <section class="carousel-container" aria-label="Introduction">
+            
+            <!-- ADD THESE TWO LINES -->
+            <button class="carousel-arrow prev-arrow" id="prevSlideBtn" aria-label="Previous Slide">&#10094;</button>
+            <button class="carousel-arrow next-arrow" id="nextSlideBtn" aria-label="Next Slide">&#10095;</button>
+
             <!-- Slide 1 -->
             <div class="carousel-slide active">
                 <img src="Home-1.jpg" alt="Printing facility" class="carousel-bg-img">
@@ -723,14 +749,44 @@
 
         // --- 1. Auto-fading Carousel Logic ---
         const slides = document.querySelectorAll('.carousel-slide');
+        const prevBtn = document.getElementById('prevSlideBtn');
+        const nextBtn = document.getElementById('nextSlideBtn');
         let currentSlide = 0;
+        let slideInterval;
 
         function nextSlide() {
             slides[currentSlide].classList.remove('active');
             currentSlide = (currentSlide + 1) % slides.length;
             slides[currentSlide].classList.add('active');
         }
-        setInterval(nextSlide, 6000);
+
+        function prevSlide() {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }
+
+        function startInterval() {
+            slideInterval = setInterval(nextSlide, 6000);
+        }
+
+        function resetInterval() {
+            clearInterval(slideInterval);
+            startInterval();
+        }
+
+        if (nextBtn && prevBtn) {
+            nextBtn.addEventListener('click', () => {
+                nextSlide();
+                resetInterval();
+            });
+            prevBtn.addEventListener('click', () => {
+                prevSlide();
+                resetInterval();
+            });
+        }
+
+        startInterval();
 
         // --- 2. Scroll Animations ---
         const createObserver = (selector, visibleClass, threshold = 0.15) => {
