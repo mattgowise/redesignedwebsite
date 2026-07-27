@@ -269,6 +269,38 @@
             /* Updated Top Bar to keep it on one line for mobile */
             .top-bar { flex-direction: row; justify-content: center; gap: 20px; font-size: 12px; }
             
+            /* Stacked Hero Overrides (Matched to Index Mobile Style) */
+            .inner-hero { 
+                height: 500px; 
+                min-height: unset; 
+                display: flex; 
+                flex-direction: column; 
+                background-color: #ffffff; 
+                padding: 0; 
+                overflow: hidden; 
+            }
+            .hero-bg { position: relative; height: 50%; width: 100%; flex-shrink: 0; }
+            .inner-hero-content { 
+                position: relative; 
+                background-color: #ffffff; 
+                margin: 0; 
+                padding: 20px 5%; 
+                border-radius: 0; 
+                width: 100%; 
+                max-width: 100%; 
+                height: 50%;
+                backdrop-filter: none; 
+                text-align: center;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                box-shadow: none;
+            }
+            
+            /* Text scaling so split titles fit beautifully */
+            .inner-hero-content h1 { font-size: 28px; color: var(--gowise-cyan); margin-bottom: 10px; line-height: 1.2; }
+            .inner-hero-content p { font-size: 16px; color: #444444; margin-bottom: 0; }
+
             /* Mobile Carousel implementation for Service Rows */
             .plant-list-section .section-container {
                 display: flex;
