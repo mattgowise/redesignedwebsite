@@ -10,6 +10,9 @@
     <meta name="keywords" content="Trade Print Norwich, Plant List Print Shop, Lithographic Press Norfolk, Digital Print Capabilities, PUR Binding Trade, Print Production Partner">
     <link rel="canonical" href="https://www.gowise.co.uk/plant-list.html">
     
+    <!-- Prevent iOS auto-linking styles -->
+    <meta name="format-detection" content="telephone=no, date=no, email=no, address=no">
+    
     <!-- Open Graph for Social Sharing -->
     <meta property="og:title" content="Trade Print Capabilities & Plant List in Norwich">
     <meta property="og:description" content="In-house litho, 5-colour digital, and complete print finishing for trade buyers and independent publishers.">
@@ -20,8 +23,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;600;800&display=swap" rel="stylesheet">
 
     <style>
-        /* Base Reset */
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: "Roboto", -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-weight: 300; }
+        /* Base Reset & Universal Font Enforcement */
+        * { 
+            box-sizing: border-box; 
+            margin: 0; 
+            padding: 0; 
+            font-family: "Roboto", -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; 
+            font-weight: 300; 
+        }
         html { scroll-behavior: smooth; }
         body { color: #333; overflow-x: hidden; background-color: #fcfcfc; }
         a { text-decoration: none; color: inherit; }
@@ -53,12 +62,16 @@
             display: block;
         }
 
-        /* Header & Nav */
+        /* Top Bar */
         .top-bar { background-color: var(--gowise-magenta); color: #fff; display: flex; justify-content: space-between; padding: 8px 5%; font-size: 13px; font-weight: 400; }
+        .top-bar a, .top-bar span { color: #fff !important; text-decoration: none !important; }
+
+        /* Main Header & Nav */
         header { background-color: var(--header-dark); color: #fff; padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; }
         .logo img { max-height: 60px; width: auto; transition: transform 0.3s ease; }
         .logo:hover img { transform: scale(1.05); }
         
+        /* Unified Navigation Menu */
         .main-nav { display: flex; align-items: center; gap: 20px; font-size: 13px; font-weight: 300; }
         .main-nav li { position: relative; padding: 10px 0; }
         .main-nav a { padding: 5px 10px; transition: color 0.3s; text-transform: uppercase; }
@@ -74,6 +87,10 @@
         .dropdown a:hover { background-color: rgba(0, 0, 0, 0.15); color: #fff; padding-left: 20px; transition: padding 0.3s ease, background-color 0.3s ease; }
 
         @keyframes dropFade { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* Utility specific for mobile breaks */
+        .mobile-break { display: none; }
+        .header-right { display: none; }
 
         /* Hero */
         .inner-hero { position: relative; width: 100%; min-height: 50vh; display: flex; align-items: center; background-color: #111; overflow: hidden; }
@@ -99,7 +116,7 @@
         @keyframes slideUpFade { to { opacity: 1; transform: translateY(0); } }
         @keyframes kenBurns { from { transform: scale(1); } to { transform: scale(1.1); } }
 
-        /* 2. Intro Section (Matched to Services Page) */
+        /* Intro Section */
         .page-intro { 
             padding: 60px 5% 40px; 
             max-width: 1400px; 
@@ -109,10 +126,7 @@
             transform: translateY(40px);
             transition: opacity 0.8s ease-out, transform 0.8s ease-out;
         }
-        .page-intro.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        .page-intro.visible { opacity: 1; transform: translateY(0); }
         .page-intro p { 
             font-size: 18px; 
             font-weight: 300;
@@ -135,10 +149,7 @@
             opacity: 0;
             transition: width 1s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.8s ease-out; 
         }
-        .magenta-divider.visible {
-            width: 120px;
-            opacity: 1;
-        }
+        .magenta-divider.visible { width: 120px; opacity: 1; }
         
         .service-row {
             display: grid;
@@ -171,22 +182,23 @@
         .equipment-header { text-align: center; margin-bottom: 50px; }
         .equipment-header h2 { font-size: 36px; color: var(--gowise-magenta); }
         
-        /* Centralised and tighter equipment grid */
         .equipment-grid { display: grid; grid-template-columns: auto auto auto; justify-content: center; gap: 80px; }
         .equipment-column h3 { font-size: 28px; color: #fff; margin-bottom: 20px; font-weight: 400; }
         .equipment-column h3.sub-heading { margin-top: 40px; }
         .equipment-list { list-style: none; padding: 0; }
         .equipment-list li { margin-bottom: 8px; font-size: 16px; color: #bbb; font-weight: 300; line-height: 1.5; }
 
+        /* Partner CTA */
         .partner-cta-section { background-color: var(--gowise-cyan); color: #fff; padding: 80px 5%; text-align: center; margin-bottom: 60px; }
         .partner-cta-container { max-width: 900px; margin: 0 auto; }
         .partner-cta-section h2 { color: #fff; font-size: 36px; margin-bottom: 20px; }
         .partner-cta-section p { color: #fff; font-size: 18px; margin-bottom: 30px; }
         .cta-actions { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
-        .partner-cta-section .btn { background-color: var(--header-dark); color: #fff; }
-        .partner-cta-section .btn:hover { background-color: #111; }
-        .partner-cta-section .btn-outline { border-color: var(--header-dark); color: var(--header-dark); font-weight: 600; }
-        .partner-cta-section .btn-outline:hover { background-color: var(--header-dark); color: #fff; }
+        
+        .partner-cta-section .btn { background-color: var(--header-dark); color: #fff; border: 2px solid var(--header-dark); }
+        .partner-cta-section .btn:hover { background-color: #111; border-color: #111; }
+        .partner-cta-section .btn-outline { background-color: transparent; border: 2px solid #fff; color: #fff; font-weight: 600; }
+        .partner-cta-section .btn-outline:hover { background-color: #fff; color: var(--gowise-cyan); }
 
         /* Modal Form Setup */
         .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 2000; display: none; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.4s ease; }
@@ -203,8 +215,10 @@
         .form-group textarea { resize: vertical; min-height: 120px; }
         .form-group input:focus, .form-group textarea:focus { border-color: var(--gowise-magenta); outline: none; }
 
-        /* Footer & Responsive Styles */
+        /* 6. Footer & Location */
         footer { background: var(--header-dark); color: #fff; position: relative; overflow: hidden; padding: 60px 5%; }
+        footer p { color: #ffffff; } 
+        
         .footer-header { margin-bottom: 40px; text-align: center; }
         .footer-header h2 { color: var(--gowise-magenta); font-size: 32px; }
         .footer-grid { display: flex; align-items: stretch; justify-content: space-between; gap: 40px; max-width: 1400px; margin: 0 auto; }
@@ -215,37 +229,96 @@
         .map-container { flex: 0 0 400px; height: 300px; background: #ddd; border-radius: 4px; overflow: hidden; }
         .map-container iframe { width: 100%; height: 100%; border: none; }
 
-        @media (max-width: 1024px) {
+        /* Responsive Overrides */
+        @media (max-width: 1200px) {
             .service-row { gap: 40px; }
             .equipment-grid { grid-template-columns: auto auto; justify-content: center; gap: 60px; }
+        }
+
+        /* Mobile & Hamburger Threshold (Matched to Index) */
+        @media (max-width: 992px) {
+            .mobile-break { display: block; }
+            .mobile-shrink-text { font-size: clamp(24px, 7vw, 32px) !important; line-height: 1.3 !important; }
+            
+            /* Header & Hamburger Menu */
+            header { flex-wrap: wrap; padding: 15px 5%; }
+            .header-right { display: flex; align-items: center; gap: 15px; }
+            .header-right .btn-quote { padding: 8px 12px !important; font-size: 12px; }
+            
+            .hamburger { display: flex; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 5px; z-index: 1001; }
+            .hamburger span { display: block; width: 25px; height: 3px; background-color: #fff; transition: 0.3s; }
+            .hamburger.active span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+            .hamburger.active span:nth-child(2) { opacity: 0; }
+            .hamburger.active span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+            nav { width: 100%; display: none; margin-top: 15px; }
+            nav.active { display: block; }
+            .main-nav { flex-direction: column; align-items: stretch; gap: 0; }
+            .main-nav li { padding: 0; border-top: 1px solid #444; }
+            .main-nav a { display: block; padding: 15px 10px; }
+            .main-nav li:last-child { display: none; } /* Hide the desktop nav quote button */
+            
+            .dropdown { position: static; box-shadow: none; display: none; background-color: transparent; border-left: 2px solid var(--gowise-cyan); margin-left: 10px; }
+            .main-nav li:hover .dropdown { display: block; animation: none; }
+            .dropdown a { padding: 10px 15px; border-bottom: none; }
+
+            .inner-hero-content { padding: 30px 20px; margin: 0 5%; }
+        }
+        
+        @media (max-width: 768px) {
+            /* Updated Top Bar to keep it on one line for mobile */
+            .top-bar { flex-direction: row; justify-content: center; gap: 20px; font-size: 12px; }
+            
+            /* Mobile Carousel implementation for Service Rows */
+            .plant-list-section .section-container {
+                display: flex;
+                overflow-x: auto;
+                scroll-snap-type: x mandatory;
+                gap: 20px;
+                padding-bottom: 20px;
+                -ms-overflow-style: none;
+                scrollbar-width: none;
+            }
+            .plant-list-section .section-container::-webkit-scrollbar { display: none; }
+            
+            .service-row { 
+                flex: 0 0 88vw;
+                scroll-snap-align: center;
+                grid-template-columns: 1fr; 
+                margin-bottom: 0; 
+            }
+            .service-row:nth-child(even) .service-text { order: 0; } 
+            
+            .equipment-grid { grid-template-columns: 1fr; text-align: center; gap: 40px; }
+            
             .footer-grid { flex-wrap: wrap; justify-content: center; text-align: center; }
             .footer-arrow-container { display: none; }
             .footer-text-columns { flex-direction: column; gap: 30px; align-items: center; }
             .map-container { width: 100%; flex: 1 1 100%; }
-        }
-        @media (max-width: 768px) {
-            .inner-hero-content { padding: 30px 20px; margin: 0 5%; }
-            .service-row { grid-template-columns: 1fr; margin-bottom: 50px; }
-            .service-row:nth-child(even) .service-text { order: 0; } 
-            .equipment-grid { grid-template-columns: 1fr; text-align: center; gap: 40px; }
-            .top-bar { flex-direction: column; text-align: center; gap: 10px; }
-            header { flex-direction: column; gap: 15px; padding: 20px 5%; }
-            .main-nav { flex-wrap: wrap; justify-content: center; }
-            .dropdown { display: none !important; }
         }
     </style>
 </head>
 <body>
 
     <div class="top-bar">
-        <span>Tel: +44 (0)1603 431304</span>
-        <span>print@gowise.co.uk</span>
+        <a href="tel:+441603431304">Tel: +44 (0)1603 431304</a>
+        <a href="mailto:print@gowise.co.uk">print@gowise.co.uk</a>
     </div>
 
+    <!-- Unified Navigation Structure -->
     <header>
         <a href="index.html" class="logo">
             <img src="gowise-logo.png" alt="Gowise Print Logo">
         </a>
+        
+        <!-- Mobile Right Hand Group (Quote + Hamburger) -->
+        <div class="header-right">
+            <a href="#" id="navQuoteBtnMobile" class="btn-quote">GET A QUOTE</a>
+            <button class="hamburger" id="hamburgerBtn" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+
         <nav>
             <ul class="main-nav">
                 <li><a href="index.html">HOME</a></li>
@@ -283,6 +356,7 @@
                     </ul>
                 </li>
                 <li><a href="news.html">NEWS</a></li>
+                <!-- Hidden on mobile, visible on desktop -->
                 <li><a href="#" id="navQuoteBtn" class="btn-quote">GET A QUOTE</a></li>
             </ul>
         </nav>
@@ -350,7 +424,7 @@
                         <img src="Plant-4.jpg" alt="Heavy-duty automated bindery equipment" class="cover-img">
                     </div>
                     <div class="service-text">
-                        <h2>In-House Finishing & Book Binding</h2>
+                        <h2 class="mobile-shrink-text">In-House Finishing <br class="mobile-break">& Book Binding</h2>
                         <p>We do not outsource our binding. Our fully equipped finishing department operates as a dedicated trade finishing service.</p>
                         <ul class="capabilities-list">
                             <li><strong>PUR Perfect Binding:</strong> Polyurethane Reactive adhesive for superior page pull strength and lay-flat flexibility.</li>
@@ -367,7 +441,7 @@
         <section class="equipment-inventory-section scroll-reveal">
             <div class="section-container">
                 <div class="equipment-header">
-                    <h2>A Full List of Our Equipment</h2>
+                    <h2 class="mobile-shrink-text">A Full List <br class="mobile-break">of Our Equipment</h2>
                 </div>
                 <div class="equipment-grid">
                     
@@ -437,8 +511,11 @@
         <div class="modal-content">
             <span class="close-modal" id="closeModal">&times;</span>
             <h3>Request a Quote</h3>
+            
+            <!-- Web3Forms API Submission Form -->
             <form id="asyncQuoteForm">
                 <input type="hidden" name="access_key" value="3c30689d-ea16-4629-92a1-5737b09d6f4c">
+                
                 <div class="form-group">
                     <label for="name">Name</label>
                     <input type="text" id="name" name="name" placeholder="Your Name" required>
@@ -449,34 +526,38 @@
                 </div>
                 <div class="form-group">
                     <label for="details">Project Details</label>
-                    <textarea id="details" name="details" placeholder="Please describe your printing needs..." required></textarea>
+                    <textarea id="details" name="details" placeholder="Please describe your printing needs (dimensions, quantity, paper stock, binding styles, etc.)..." required></textarea>
                 </div>
                 <button type="submit" class="btn" id="submitQuoteBtn" style="width: 100%;">Send Request</button>
             </form>
         </div>
     </div>
 
-    <!-- Submission Success Pop-Up -->
+    <!-- Submission Success Pop-Up Window -->
     <div class="modal-overlay" id="successModal">
         <div class="modal-content" style="max-width: 420px; text-align: center;">
             <span class="close-modal" id="closeSuccessX">&times;</span>
-            <h3 style="color: var(--gowise-cyan); margin-bottom: 15px;">Thank You!</h3>
+            <h3 style="color: #00aae9; margin-bottom: 15px;">Thank You!</h3>
             <p style="font-size: 16px; color: #444; margin-bottom: 25px;">Your quote request has been successfully submitted. Our production team will review your project details and get back to you shortly.</p>
             <button type="button" class="btn" id="closeSuccessBtn" style="width: 100%; background-color: var(--gowise-cyan);">Close Window</button>
         </div>
     </div>
 
+    <!-- 6. Footer -->
     <footer>
         <div class="footer-header">
-            <h2>Visit Our Norwich Print Shop</h2>
+            <!-- 7. Footer Header text split on mobile -->
+            <h2>Visit Our Norwich<br class="mobile-break"> Print Shop</h2>
             <p>GoWise Print proudly serves local businesses, independent creators, and trade partners across Norfolk and the UK.</p>
         </div>
         <div class="footer-grid">
+            
             <div class="footer-arrow-container">
                 <svg class="footer-arrow" id="slideArrow" viewBox="0 0 100 50" xmlns="http://www.w3.org/2000/svg">
                     <path d="M0,15 L60,15 L60,0 L100,25 L60,50 L60,35 L0,35 Z" fill="var(--gowise-magenta)"/>
                 </svg>
             </div>
+            
             <div class="footer-text-columns">
                 <div>
                     <p style="font-size: 18px; margin-bottom: 15px; color: var(--gowise-cyan); font-weight: 600;">CONTACT INFO</p>
@@ -485,18 +566,30 @@
                     <p><strong>Phone:</strong> +44 (0)1603 431304</p>
                     <p><strong>Email:</strong> print@gowise.co.uk</p>
                 </div>
+                
                 <div>
                     <p style="font-size: 18px; margin-bottom: 15px; color: var(--gowise-cyan); font-weight: 600;">OPENING HOURS</p>
                     <p>MONDAY: 08:30 – 17:00<br>TUESDAY: 08:30 – 17:00<br>WEDNESDAY: 08:30 – 17:00<br>THURSDAY: 08:30 – 17:00<br>FRIDAY: 08:30 – 17:00<br>SATURDAY: CLOSED<br>SUNDAY: CLOSED</p>
                 </div>
             </div>
+            
             <div class="map-container">
                 <iframe src="https://maps.google.com/maps?q=NR7%200PT&t=&z=14&ie=UTF8&iwloc=&output=embed" loading="lazy" allowfullscreen title="GoWise Print Location Map"></iframe>
             </div>
+            
         </div>
     </footer>
 
     <script>
+        // --- Hamburger Menu Toggle ---
+        const hamburgerBtn = document.getElementById('hamburgerBtn');
+        const mobileNav = document.querySelector('nav');
+        
+        hamburgerBtn.addEventListener('click', () => {
+            hamburgerBtn.classList.toggle('active');
+            mobileNav.classList.toggle('active');
+        });
+
         // Scroll Animations
         const createObserver = (selector, visibleClass, threshold = 0.15) => {
             const elements = document.querySelectorAll(selector);
@@ -527,65 +620,88 @@
         }, { threshold: 0.1 }); 
         if(arrow) arrowObserver.observe(arrow);
 
-        // --- Modal & Form Logic ---
-        const navQuoteBtn = document.getElementById('navQuoteBtn');
+        // --- 4. Request Form & Success Modals Interactivity ---
+        const navQuoteBtn = document.getElementById('navQuoteBtn'); // Desktop Nav btn
+        const navQuoteBtnMobile = document.getElementById('navQuoteBtnMobile'); // Mobile Nav btn
         const quoteModal = document.getElementById('quoteModal');
         const closeModal = document.getElementById('closeModal');
+        
         const asyncForm = document.getElementById('asyncQuoteForm');
         const submitBtn = document.getElementById('submitQuoteBtn');
+        
         const successModal = document.getElementById('successModal');
         const closeSuccessX = document.getElementById('closeSuccessX');
         const closeSuccessBtn = document.getElementById('closeSuccessBtn');
 
+        // Reveal Form Modal Function
         const showQuoteModal = (e) => {
             if(e) e.preventDefault();
             quoteModal.style.display = 'flex';
             setTimeout(() => quoteModal.classList.add('active'), 10);
         };
 
-        if (navQuoteBtn) navQuoteBtn.addEventListener('click', showQuoteModal);
+        // Attach to all buttons
+        if(navQuoteBtn) navQuoteBtn.addEventListener('click', showQuoteModal);
+        if(navQuoteBtnMobile) navQuoteBtnMobile.addEventListener('click', showQuoteModal);
 
+        // Hide Form Modal Function
         const hideQuoteModal = () => {
             quoteModal.classList.remove('active');
             setTimeout(() => quoteModal.style.display = 'none', 400); 
         };
-        if (closeModal) closeModal.addEventListener('click', hideQuoteModal);
+        closeModal.addEventListener('click', hideQuoteModal);
 
+        // Hide Success Modal Function
         const hideSuccessModal = () => {
             successModal.classList.remove('active');
             setTimeout(() => successModal.style.display = 'none', 400);
         };
-        if (closeSuccessX) closeSuccessX.addEventListener('click', hideSuccessModal);
-        if (closeSuccessBtn) closeSuccessBtn.addEventListener('click', hideSuccessModal);
+        closeSuccessX.addEventListener('click', hideSuccessModal);
+        closeSuccessBtn.addEventListener('click', hideSuccessModal);
 
+        // Background click processing to close elements
         window.addEventListener('click', (e) => {
             if (e.target === quoteModal) hideQuoteModal();
             if (e.target === successModal) hideSuccessModal();
         });
 
-        if (asyncForm) {
-            asyncForm.addEventListener('submit', function(e) {
-                e.preventDefault(); 
-                submitBtn.textContent = "Sending Request...";
-                submitBtn.disabled = true;
+        // Asynchronous Messaging API Route Submission Processing (Web3Forms)
+        asyncForm.addEventListener('submit', function(e) {
+            e.preventDefault(); // Stop page routing/reloads
+            
+            // Set dynamic loading states
+            submitBtn.textContent = "Sending Request...";
+            submitBtn.disabled = true;
 
-                const formData = new FormData(asyncForm);
-                fetch('https://api.web3forms.com/submit', { method: 'POST', body: formData })
-                .then(async (response) => {
-                    let json = await response.json();
-                    if (response.status == 200) {
-                        hideQuoteModal();
-                        asyncForm.reset(); 
-                        successModal.style.display = 'flex';
-                        setTimeout(() => successModal.classList.add('active'), 10);
-                    } else {
-                        alert("Submission failed: " + json.message);
-                    }
-                })
-                .catch(error => { alert("Network error. Please try again."); })
-                .finally(() => { submitBtn.textContent = "Send Request"; submitBtn.disabled = false; });
+            const formData = new FormData(asyncForm);
+
+            fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                body: formData
+            })
+            .then(async (response) => {
+                let json = await response.json();
+                if (response.status == 200) {
+                    // Step A: Close the entry form seamlessly
+                    hideQuoteModal();
+                    asyncForm.reset(); // Wipe inputs
+                    
+                    // Step B: Pop open the Confirmation Window overlay
+                    successModal.style.display = 'flex';
+                    setTimeout(() => successModal.classList.add('active'), 10);
+                } else {
+                    alert("Submission failed: " + json.message);
+                }
+            })
+            .catch(error => {
+                alert("Network error. Please confirm server connectivity or reach out directly to print@gowise.co.uk.");
+            })
+            .finally(() => {
+                // Restore primary CTA interface elements
+                submitBtn.textContent = "Send Request";
+                submitBtn.disabled = false;
             });
-        }
+        });
     </script>
 </body>
 </html>
