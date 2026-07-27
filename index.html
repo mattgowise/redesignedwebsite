@@ -89,7 +89,8 @@
 
         /* Main Header & Nav */
         header { background-color: var(--header-dark); color: #fff; padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; }
-        .logo img { max-height: 90px; width: auto; transition: transform 0.3s ease; }        .logo:hover img { transform: scale(1.05); }
+        .logo img { max-height: 90px; width: auto; transition: transform 0.3s ease; }
+        .logo:hover img { transform: scale(1.05); }
         
         /* Unified Navigation Menu */
         .main-nav { display: flex; align-items: center; gap: 20px; font-size: 13px; font-weight: 300; }
@@ -112,7 +113,7 @@
         .mobile-break { display: none; }
         .header-right { display: none; }
 
-        /* 1. Hero Carousel (Desktop / Original View) */
+        /* 1. Hero Carousel */
         .carousel-container { position: relative; width: 100%; min-height: 70vh; background-color: #111; overflow: hidden; display: flex; align-items: center; justify-content: center; }
         .carousel-slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1.2s ease-in-out; display: flex; align-items: center; justify-content: flex-start; } 
         .carousel-slide.active { opacity: 1; z-index: 1; }
@@ -136,7 +137,7 @@
         .carousel-slide.active .carousel-content { transform: translateX(0); }
         .carousel-content h1 { font-size: 48px; font-weight: 800; color: #fff; margin-bottom: 20px; line-height: 1.2; }
         .carousel-content p { font-size: 20px; color: #eee; font-weight: 300; }
-
+        
         .carousel-arrow {
             position: absolute;
             top: 50%;
@@ -273,7 +274,7 @@
         .map-container { flex: 0 0 400px; height: 300px; background: #ddd; border-radius: 4px; overflow: hidden; }
         .map-container iframe { width: 100%; height: 100%; border: none; }
 
-        /* 7. Roundel & Modals Setup */
+        /* 7. Roundel */
         .quote-roundel {
             position: fixed;
             top: 50%;
@@ -302,74 +303,56 @@
             background-color: var(--gowise-magenta);
         }
 
-        .modal-overlay {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.7);
-            z-index: 2000;
-            display: none;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transition: opacity 0.4s ease;
+        /* =======================================================
+           BULLETPROOF MODAL CSS 
+           ======================================================= */
+        .modal-overlay { 
+            position: fixed !important; 
+            top: 0 !important; 
+            left: 0 !important; 
+            width: 100vw !important; 
+            height: 100vh !important; 
+            background: rgba(0,0,0,0.8) !important; 
+            z-index: 9999 !important; 
+            align-items: center; 
+            justify-content: center; 
+            opacity: 0; 
+            transition: opacity 0.4s ease; 
         }
-        .modal-overlay.active {
-            display: flex;
-            opacity: 1;
+        .modal-overlay.active { 
+            display: flex !important; 
+            opacity: 1; 
         }
-        .modal-content {
-            background: #fff;
-            padding: 40px;
-            border-radius: 4px;
-            max-width: 500px;
-            width: 90%;
-            position: relative;
-            transform: translateY(20px);
-            transition: transform 0.4s ease;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-        }
-        .modal-overlay.active .modal-content {
-            transform: translateY(0);
-        }
-        .close-modal {
-            position: absolute;
-            top: 15px;
-            right: 20px;
-            font-size: 32px;
-            cursor: pointer;
-            color: #888;
-            transition: color 0.3s;
-            line-height: 1;
-        }
+        .modal-content { background: #fff; padding: 40px; border-radius: 4px; max-width: 500px; width: 90%; position: relative; transform: translateY(20px); transition: transform 0.4s ease; box-shadow: 0 10px 40px rgba(0,0,0,0.4); color: var(--header-dark); }
+        .modal-overlay.active .modal-content { transform: translateY(0); }
+        .close-modal { position: absolute; top: 15px; right: 20px; font-size: 32px; cursor: pointer; color: #888; transition: color 0.3s; line-height: 1; }
         .close-modal:hover { color: var(--gowise-pink); }
         .modal-content h3 { color: var(--gowise-magenta); margin-bottom: 20px; font-size: 28px; }
-        
         .form-group { margin-bottom: 20px; }
         .form-group label { display: block; font-weight: 600; margin-bottom: 8px; font-size: 14px; color: var(--header-dark); }
-        .form-group input, .form-group textarea { 
-            width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 4px; font-size: 14px; font-family: inherit; transition: border-color 0.3s; 
-        }
+        .form-group input, .form-group textarea { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 4px; font-size: 14px; font-family: inherit; transition: border-color 0.3s; }
         .form-group textarea { resize: vertical; min-height: 120px; }
         .form-group input:focus, .form-group textarea:focus { border-color: var(--gowise-magenta); outline: none; }
 
-        /* Responsive Overrides */
+        /* --- RESPONSIVE BREAKPOINTS --- */
+
         @media (max-width: 1200px) {
             .squares-grid { grid-template-columns: repeat(3, 1fr); }
             .carousel-content { margin-left: 5%; max-width: 500px; }
         }
         
-        /* New Mobile & Hamburger Threshold */
-        @media (max-width: 992px) {
-            .mobile-break { display: block; 
-                          /* Hide Carousel Arrows on Mobile */
-            .carousel-arrow { display: none; }
-                          }
+        /* 1050px Breakpoint: Hamburger & Core Mobile Layout */
+        @media (max-width: 1050px) {
+            .mobile-break { display: block; }
+            .carousel-arrow { display: none; } /* Hide Carousel Arrows on Mobile */
             
-            /* 1 & 2: Header & Hamburger Menu */
-            header { flex-wrap: wrap; padding: 15px 5%; }
+            header { flex-direction: row; flex-wrap: wrap; justify-content: space-between; align-items: center; padding: 15px 5%; }
+            .logo img { max-height: 40px; }
+            
             .header-right { display: flex; align-items: center; gap: 15px; }
-            .header-right .btn-quote { padding: 8px 12px !important; font-size: 12px; }
+            .header-right .btn-quote { padding: 8px 12px !important; font-size: 12px; margin-top: 0; }
             
+            /* Hamburger animated toggle setup */
             .hamburger { display: flex; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 5px; z-index: 1001; }
             .hamburger span { display: block; width: 25px; height: 3px; background-color: #fff; transition: 0.3s; }
             .hamburger.active span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
@@ -378,19 +361,22 @@
 
             nav { width: 100%; display: none; margin-top: 15px; }
             nav.active { display: block; }
-            .main-nav { flex-direction: column; align-items: stretch; gap: 0; }
-            .main-nav li { padding: 0; border-top: 1px solid #444; }
-            .main-nav a { display: block; padding: 15px 10px; }
-            .main-nav li:last-child { display: none; } /* Hide the desktop nav quote button */
             
-            .dropdown { position: static; box-shadow: none; display: none; background-color: transparent; border-left: 2px solid var(--gowise-cyan); margin-left: 10px; }
-            .main-nav li:hover .dropdown { display: block; animation: none; }
+            .main-nav { flex-direction: column; align-items: flex-start; gap: 0; }
+            .main-nav li { width: 100%; padding: 0; border-top: 1px solid rgba(255,255,255,0.1); border-bottom: none; }
+            .main-nav a { display: block; padding: 15px 0; }
+            
+            /* Hide the desktop quote button since it moved to the header wrapper */
+            .main-nav a.desktop-quote { display: none !important; }
+            
+            .dropdown { position: static; display: none; background-color: transparent; box-shadow: none; min-width: 100%; border-left: 2px solid var(--gowise-cyan); margin-left: 10px; }
+            .main-nav li:hover .dropdown, .main-nav li:active .dropdown { display: block; animation: none; }
             .dropdown a { padding: 10px 15px; border-bottom: none; }
 
             /* Reordering the Main Body for Mobile */
             main { display: flex; flex-direction: column; }
-            .pink-banner { order: 1; margin-top: 0; font-size: 24px; padding: 30px 5%; } /* 4. Pink banner moved to top */
-            .carousel-container { order: 2; height: 500px; min-height: unset; display: block; } /* 3. Stacked Carousel */
+            .pink-banner { order: 1; margin-top: 0; font-size: 24px; padding: 30px 5%; }
+            .carousel-container { order: 2; height: 500px; min-height: unset; display: block; }
             .trust-bar { order: 3; }
             .intro-text-section { order: 4; }
             .pink-divider { order: 5; }
@@ -398,7 +384,7 @@
             .environment-banner { order: 7; }
             .environment-content { order: 8; }
 
-            /* 3. Stacked Carousel Styles (Mobile Only Overrides) */
+            /* Stacked Carousel Styles (Mobile Only Overrides) */
             .carousel-slide { flex-direction: column; }
             .carousel-bg-img { position: relative; height: 50%; object-fit: cover; filter: brightness(1); }
             .carousel-content {
@@ -417,29 +403,30 @@
                 justify-content: center;
                 box-shadow: none;
             }
-            /* White Box Text overrides only on mobile */
             .carousel-content h1 { font-size: 28px; margin-bottom: 10px; color: var(--gowise-cyan); }
             .carousel-content p { font-size: 16px; color: #444; }
             
-            /* 5. Services Square shrink down */
             .squares-grid { grid-template-columns: 1fr; gap: 15px; }
             .service-column { gap: 10px; }
             .service-square { aspect-ratio: auto; min-height: 80px; padding: 15px; }
             
-            /* 6. Environmental Policy text size shrink */
             .environment-banner h2 { font-size: min(6vw, 24px); white-space: nowrap; }
 
-            /* 8. Remove the floating quote roundel */
+            /* Remove the floating quote roundel */
             .quote-roundel { display: none !important; }
         }
 
-        /* Lower Mobile Polish (Formatting elements inside blocks) */
+        /* 768px Breakpoint: Lower Mobile Polish */
         @media (max-width: 768px) {
             .trust-bar { grid-template-columns: 1fr; text-align: center; }
             .trust-item { flex-direction: column; }
-            /* Updated Top Bar to keep it on one line for mobile */
-            .top-bar { flex-direction: row; justify-content: center; gap: 20px; font-size: 12px; }
+            
+            /* Top Bar on one line without underlines */
+            .top-bar { flex-direction: row; justify-content: center; gap: 15px; font-size: 12px; white-space: nowrap; }
+            .top-bar a { text-decoration: none !important; }
+            
             .intro-text-section p { font-size: 18px; }
+            
             .footer-grid { flex-wrap: wrap; justify-content: center; text-align: center; }
             .footer-arrow-container { display: none; }
             .footer-text-columns { flex-direction: column; gap: 30px; align-items: center; }
@@ -468,7 +455,7 @@
             </button>
         </div>
 
-        <nav>
+        <nav id="navMenu">
             <ul class="main-nav">
                 <li><a href="index.html" class="active">HOME</a></li>
                 <li>
@@ -505,8 +492,7 @@
                     </ul>
                 </li>
                 <li><a href="news.html">NEWS</a></li>
-                <!-- Hidden on mobile, visible on desktop -->
-                <li><a href="#" id="navQuoteBtn" class="btn-quote">GET A QUOTE</a></li>
+                <li><a href="#" id="navQuoteBtn" class="btn-quote desktop-quote">GET A QUOTE</a></li>
             </ul>
         </nav>
     </header>
@@ -515,7 +501,6 @@
         <!-- 1. Auto-fading Carousel -->
         <section class="carousel-container" aria-label="Introduction">
             
-            <!-- ADD THESE TWO LINES -->
             <button class="carousel-arrow prev-arrow" id="prevSlideBtn" aria-label="Previous Slide">&#10094;</button>
             <button class="carousel-arrow next-arrow" id="nextSlideBtn" aria-label="Next Slide">&#10095;</button>
 
@@ -663,7 +648,7 @@
     </div>
 
     <!-- Quote Request Modal Window -->
-    <div class="modal-overlay" id="quoteModal">
+    <div class="modal-overlay" id="quoteModal" style="display: none;">
         <div class="modal-content">
             <span class="close-modal" id="closeModal">&times;</span>
             <h3>Request a Quote</h3>
@@ -690,7 +675,7 @@
     </div>
 
     <!-- Submission Success Pop-Up Window -->
-    <div class="modal-overlay" id="successModal">
+    <div class="modal-overlay" id="successModal" style="display: none;">
         <div class="modal-content" style="max-width: 420px; text-align: center;">
             <span class="close-modal" id="closeSuccessX">&times;</span>
             <h3 style="color: #00aae9; margin-bottom: 15px;">Thank You!</h3>
@@ -739,12 +724,14 @@
     <script>
         // --- Hamburger Menu Toggle ---
         const hamburgerBtn = document.getElementById('hamburgerBtn');
-        const mobileNav = document.querySelector('nav');
+        const mobileNav = document.getElementById('navMenu');
         
-        hamburgerBtn.addEventListener('click', () => {
-            hamburgerBtn.classList.toggle('active');
-            mobileNav.classList.toggle('active');
-        });
+        if (hamburgerBtn) {
+            hamburgerBtn.addEventListener('click', () => {
+                hamburgerBtn.classList.toggle('active');
+                mobileNav.classList.toggle('active');
+            });
+        }
 
         // --- 1. Auto-fading Carousel Logic ---
         const slides = document.querySelectorAll('.carousel-slide');
@@ -841,8 +828,8 @@
         };
 
         // Attach to all buttons
-        roundel.addEventListener('click', showQuoteModal);
-        navQuoteBtn.addEventListener('click', showQuoteModal);
+        if(roundel) roundel.addEventListener('click', showQuoteModal);
+        if(navQuoteBtn) navQuoteBtn.addEventListener('click', showQuoteModal);
         if(navQuoteBtnMobile) navQuoteBtnMobile.addEventListener('click', showQuoteModal);
 
         // Hide Form Modal Function
