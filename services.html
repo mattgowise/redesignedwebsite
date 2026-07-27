@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
     
     <!-- SEO Optimization -->
     <title>Print Resources & Artwork Setup Guide | Gowise Print Norwich</title>
@@ -75,6 +76,8 @@
 
         /* Header & Nav */
         .top-bar { background-color: var(--gowise-magenta); color: #fff; display: flex; justify-content: space-between; padding: 8px 5%; font-size: 13px; font-weight: 400; }
+        .top-bar a { text-decoration: none; color: inherit; }
+
         header { background-color: var(--header-dark); color: #fff; padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; }
         .logo img { max-height: 60px; width: auto; transition: transform 0.3s ease; }
         .logo:hover img { transform: scale(1.05); }
@@ -95,11 +98,9 @@
 
         @keyframes dropFade { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* Mobile Header Utilities */
-        .mobile-header-right { display: none; align-items: center; gap: 15px; }
-        .hamburger { background: none; border: none; cursor: pointer; padding: 5px; display: flex; align-items: center; justify-content: center; }
-        .hamburger svg { fill: #fff; width: 30px; height: 30px; }
+        /* Mobile Utilities */
         .mobile-break { display: none; }
+        .header-right { display: none; }
 
         /* 1. Inner Hero Section */
         .inner-hero {
@@ -336,7 +337,15 @@
         /* Trigger hamburger earlier before nav breaks rows */
         @media (max-width: 1050px) {
             header { flex-direction: row; flex-wrap: wrap; justify-content: space-between; align-items: center; padding: 15px 5%; }
-            .mobile-header-right { display: flex; }
+            .header-right { display: flex; align-items: center; gap: 15px; }
+            .header-right .btn-quote { padding: 8px 12px !important; font-size: 12px; }
+            
+            /* Hamburger animated toggle setup matching index.html */
+            .hamburger { display: flex; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 5px; z-index: 1001; }
+            .hamburger span { display: block; width: 25px; height: 3px; background-color: #fff; transition: 0.3s; }
+            .hamburger.active span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+            .hamburger.active span:nth-child(2) { opacity: 0; }
+            .hamburger.active span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
             
             nav { width: 100%; display: none; margin-top: 15px; }
             nav.active { display: block; }
@@ -348,8 +357,9 @@
             /* Hide the desktop quote button since it moved to the header wrapper */
             .main-nav a.desktop-quote { display: none !important; }
             
-            .dropdown { position: static; display: none; background-color: #222; box-shadow: none; min-width: 100%; }
+            .dropdown { position: static; display: none; background-color: #222; box-shadow: none; min-width: 100%; border-left: 2px solid var(--gowise-cyan); margin-left: 10px; }
             .main-nav li:hover .dropdown, .main-nav li:active .dropdown { display: block; animation: none; }
+            .dropdown a { padding: 10px 15px; border-bottom: none; }
             
             .comparison-grid { grid-template-columns: 1fr; }
             .checklist-grid { grid-template-columns: 1fr 1fr; }
@@ -363,12 +373,16 @@
         @media (max-width: 768px) {
             .mobile-break { display: block; }
             
+            /* Top Bar on one line without underlines */
+            .top-bar { flex-direction: row; justify-content: center; gap: 15px; font-size: 12px; white-space: nowrap; }
+            .top-bar a { text-decoration: none !important; }
+            
             /* Stacked Hero Overrides */
-            .inner-hero { flex-direction: column; min-height: auto; background-color: var(--gowise-pink); overflow: visible; padding: 0; }
+            .inner-hero { flex-direction: column; min-height: auto; background-color: #ffffff; overflow: visible; padding: 0; }
             .hero-bg { position: relative; height: 280px; width: 100%; flex-shrink: 0; }
             .inner-hero-content { 
                 position: relative; 
-                background-color: var(--gowise-pink); 
+                background-color: #ffffff; 
                 margin: 0; 
                 padding: 40px 5%; 
                 border-radius: 0; 
@@ -378,12 +392,13 @@
             }
             
             /* Text scaling so split titles fit beautifully */
-            .inner-hero-content h1 { font-size: 34px; }
+            .inner-hero-content h1 { font-size: 34px; color: var(--gowise-cyan); }
+            .inner-hero-content p { color: #444444; }
+            
             .section-header h2 { font-size: 28px; }
             .color-card h3 { font-size: 22px; }
             .footer-header h2 { font-size: 26px; }
 
-            .top-bar { flex-direction: column; text-align: center; gap: 10px; }
             .cta-actions { flex-direction: column; }
             .checklist-grid { grid-template-columns: 1fr; }
         }
@@ -392,8 +407,8 @@
 <body>
 
     <div class="top-bar">
-        <span>Tel: +44 (0)1603 431304</span>
-        <span>print@gowise.co.uk</span>
+        <a href="tel:+441603431304">Tel: +44 (0)1603 431304</a>
+        <a href="mailto:print@gowise.co.uk">print@gowise.co.uk</a>
     </div>
 
     <!-- Navigation -->
@@ -402,19 +417,19 @@
             <img src="gowise-logo.png" alt="Gowise Print Logo">
         </a>
         
-        <!-- Mobile Actions: Hamburger + Quote -->
-        <div class="mobile-header-right">
-            <button class="hamburger" id="hamburgerMenu" aria-label="Toggle Navigation">
-                <svg viewBox="0 0 24 24"><path d="M3 6h18v2H3V6zm0 5h18v2H3v-2zm0 5h18v2H3v-2z"/></svg>
-            </button>
+        <!-- Mobile Actions: Quote + Animated Hamburger -->
+        <div class="header-right">
             <a href="#" id="navQuoteBtnMobile" class="btn-quote">GET A QUOTE</a>
+            <button class="hamburger" id="hamburgerBtn" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
         </div>
 
         <nav id="navMenu">
             <ul class="main-nav">
                 <li><a href="index.html">HOME</a></li>
                 <li>
-                    <a href="services.html">SERVICES ▾</a>
+                    <a href="services.html" class="active">SERVICES ▾</a>
                     <ul class="dropdown">
                         <li><a href="services.html#printing">Commercial Printing</a></li>
                         <li><a href="services.html#binding">Book Binding & Finishing</a></li>
@@ -430,7 +445,7 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="resources.html" class="active">PRINT RESOURCES ▾</a>
+                    <a href="resources.html">PRINT RESOURCES ▾</a>
                     <ul class="dropdown">
                         <li><a href="resources.html#colour-guide">Understanding Colour (CMYK vs RGB)</a></li>
                         <li><a href="resources.html#digital-vs-litho">Digital vs. Lithographic</a></li>
@@ -686,11 +701,13 @@
         }, { threshold: 0.1 }); 
         if(arrow) arrowObserver.observe(arrow);
 
-        // --- Mobile Nav Toggle ---
-        const hamburgerMenu = document.getElementById('hamburgerMenu');
+        // --- Hamburger Menu Toggle ---
+        const hamburgerBtn = document.getElementById('hamburgerBtn');
         const navMenu = document.getElementById('navMenu');
-        if (hamburgerMenu) {
-            hamburgerMenu.addEventListener('click', () => {
+        
+        if (hamburgerBtn) {
+            hamburgerBtn.addEventListener('click', () => {
+                hamburgerBtn.classList.toggle('active');
                 navMenu.classList.toggle('active');
             });
         }
