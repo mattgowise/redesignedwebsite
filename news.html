@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
     
     <!-- SEO Optimization -->
     <title>News & Updates | GoWise Print Norwich</title>
@@ -52,13 +53,19 @@
             transition: background-color var(--transition-speed), transform 0.2s;
             border: none;
             cursor: pointer;
+            text-align: center;
         }
         .btn:hover { background-color: var(--gowise-pink); transform: translateY(-2px); }
 
+        /* Image Helpers */
+        .cover-img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.6s ease; }
+
         /* Top Bar & Nav */
         .top-bar { background-color: var(--gowise-magenta); color: #fff; display: flex; justify-content: space-between; padding: 8px 5%; font-size: 13px; font-weight: 400; }
+        .top-bar a { text-decoration: none; color: inherit; }
+
         header { background-color: var(--header-dark); color: #fff; padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; }
-        .logo img { max-height: 90px; width: auto; transition: transform 0.3s ease; }
+        .logo img { max-height: 60px; width: auto; transition: transform 0.3s ease; }
         .logo:hover img { transform: scale(1.05); }
         
         .main-nav { display: flex; align-items: center; gap: 20px; font-size: 13px; font-weight: 300; }
@@ -73,20 +80,81 @@
         .main-nav li:hover .dropdown { display: block; animation: dropFade 0.3s ease forwards; }
         .dropdown li { padding: 0; }
         .dropdown a { display: block; padding: 12px 15px; border-bottom: 1px solid rgba(255, 255, 255, 0.2); font-size: 12px; text-transform: none; color: #ffffff; }
-        .dropdown a:hover { background-color: rgba(0, 0, 0, 0.15); color: #fff; padding-left: 20px; transition: padding 0.3s ease; }
+        .dropdown a:hover { background-color: rgba(0, 0, 0, 0.15); color: #fff; padding-left: 20px; transition: padding 0.3s ease, background-color 0.3s ease; }
+        
         @keyframes dropFade { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* Mobile Utilities */
+        .mobile-break { display: none; }
+        .header-right { display: none; }
 
         /* --- NEWS PAGE LAYOUT --- */
         .news-header { background-color: var(--header-dark); color: #fff; text-align: center; padding: 60px 5%; border-bottom: 4px solid var(--gowise-magenta); }
         .news-header h1 { color: #fff; font-size: 42px; margin: 0; }
 
-        .news-container { display: grid; grid-template-columns: 320px 1fr; gap: 50px; max-width: 1400px; margin: 60px auto; padding: 0 5%; align-items: start; }
-        @media (max-width: 900px) { .news-container { grid-template-columns: 1fr; gap: 40px; } }
+        .news-container { max-width: 900px; margin: 60px auto; padding: 0 5%; }
 
-        /* Sidebar Styling */
-        .news-sidebar { position: sticky; top: 120px; background: transparent; padding: 0; border-radius: 0; box-shadow: none; }
-        .news-sidebar h3 { font-size: 22px; margin-bottom: 25px; color: var(--header-dark); border-bottom: 1px solid #eee; padding-bottom: 15px; }
+        /* --- FLOATING SEARCH/FILTER SIDEBAR --- */
+        .search-trigger {
+            position: fixed;
+            left: 0;
+            top: 250px;
+            background-color: var(--gowise-magenta);
+            color: #fff;
+            width: 55px;
+            height: 55px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 998;
+            border-radius: 0 4px 4px 0;
+            box-shadow: 3px 3px 15px rgba(0,0,0,0.2);
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        .search-trigger:hover {
+            background-color: var(--gowise-pink);
+            transform: translateX(5px);
+        }
+        .search-trigger svg {
+            width: 24px;
+            height: 24px;
+            fill: #fff;
+        }
+
+        .news-sidebar { 
+            position: fixed;
+            top: 250px;
+            left: -350px; /* Hidden offscreen by default */
+            width: 320px;
+            max-width: 90vw;
+            background: #fff; 
+            padding: 40px 30px 30px; 
+            border-radius: 0 8px 8px 0; 
+            box-shadow: 5px 5px 25px rgba(0,0,0,0.2); 
+            z-index: 999;
+            transition: left 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+            border-left: 4px solid var(--gowise-cyan);
+        }
+        .news-sidebar.active {
+            left: 0;
+        }
         
+        .close-sidebar-btn {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            background: none;
+            border: none;
+            font-size: 28px;
+            color: #888;
+            cursor: pointer;
+            transition: color 0.3s;
+            line-height: 1;
+        }
+        .close-sidebar-btn:hover { color: var(--gowise-magenta); }
+
+        .news-sidebar h3 { font-size: 22px; margin-bottom: 25px; color: var(--header-dark); border-bottom: 1px solid #eee; padding-bottom: 15px; }
         .sidebar-group { margin-bottom: 25px; }
         .sidebar-group label { display: block; margin-bottom: 8px; font-weight: 600; font-size: 14px; color: #555; }
         .news-sidebar input, .news-sidebar select { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 4px; font-size: 14px; font-family: inherit; transition: border-color 0.3s; background: #fff; }
@@ -105,8 +173,7 @@
             transform: translateY(20px); 
             animation: fadeUp 0.6s forwards; 
             padding-bottom: 50px;
-            border-bottom: 2px solid var(--gowise-magenta);
-            max-width: 55ch; /* Size constraint matched from Folklore journal */
+            border-bottom: 2px solid var(--gowise-cyan);
         }
         .news-entry:last-child {
             border-bottom: none;
@@ -115,9 +182,9 @@
         @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
 
         /* 4:3 Image Layouts */
-        .entry-image { width: 100%; aspect-ratio: 4 / 3; height: auto; object-fit: cover; display: block; background: #eee; }
+        .entry-image { width: 100%; aspect-ratio: 4 / 3; height: auto; object-fit: cover; display: block; background: #eee; border-radius: 4px; }
 
-        .entry-slider-container { position: relative; width: 100%; aspect-ratio: 4 / 3; height: auto; overflow: hidden; background: #eee; }
+        .entry-slider-container { position: relative; width: 100%; aspect-ratio: 4 / 3; height: auto; overflow: hidden; background: #eee; border-radius: 4px; }
         .slider-wrapper { display: flex; width: 100%; height: 100%; transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1); }
         .slider-slide { min-width: 100%; height: 100%; }
         .slider-slide img { width: 100%; height: 100%; object-fit: cover; display: block; }
@@ -138,75 +205,6 @@
 
         .no-results { text-align: center; padding: 60px 0; color: #888; font-size: 18px; background: transparent; border-radius: 0; box-shadow: none; }
 
-        /* --- COMMENTS SECTION --- */
-        .comments-section { 
-            margin-top: 30px; 
-            padding-top: 30px; 
-            border-top: 1px dashed #ccc; 
-            display: none; 
-        }
-
-        .toggle-comments-btn { 
-            margin-top: 25px; 
-            background: transparent; 
-            border: 1px solid var(--gowise-magenta); 
-            color: var(--gowise-magenta); 
-            padding: 10px 20px; 
-            cursor: pointer; 
-            text-transform: uppercase; 
-            font-size: 13px; 
-            font-weight: 600; 
-            transition: all var(--transition-speed); 
-            border-radius: 3px; 
-        }
-        .toggle-comments-btn:hover { 
-            background: var(--gowise-magenta); 
-            color: #fff; 
-        }
-
-        .comment-item { 
-            background: #fff; 
-            padding: 20px; 
-            border-left: 3px solid var(--gowise-cyan); 
-            margin-bottom: 15px; 
-            border-radius: 0 4px 4px 0; 
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-        }
-        .comment-header { 
-            display: flex; 
-            justify-content: space-between; 
-            margin-bottom: 8px; 
-            font-size: 13px; 
-        }
-        .comment-author { font-weight: 600; color: var(--header-dark); text-transform: uppercase; }
-        .comment-date { color: #888; }
-        .comment-body { font-size: 15px; line-height: 1.6; color: #555; margin: 0; }
-
-        .comment-form { 
-            display: flex; 
-            flex-direction: column; 
-            gap: 15px; 
-            margin-top: 30px; 
-            background: #fff; 
-            padding: 25px; 
-            border-radius: 4px; 
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-        }
-        .comment-form h4 { margin: 0 0 10px 0; font-size: 22px; color: var(--gowise-magenta); }
-        .comment-form input, .comment-form textarea { 
-            width: 100%; 
-            padding: 12px; 
-            border: 1px solid #ccc; 
-            border-radius: 4px; 
-            font-family: inherit; 
-            font-size: 14px; 
-            transition: border-color 0.3s; 
-        }
-        .comment-form input:focus, .comment-form textarea:focus { 
-            outline: none; 
-            border-color: var(--gowise-cyan); 
-        }
-
         /* Footer */
         footer { background: var(--header-dark); color: #fff; position: relative; overflow: hidden; padding: 60px 5%; margin-top: 60px; }
         footer p { color: #ffffff; } 
@@ -216,37 +214,109 @@
         .footer-text-columns { flex: 1; display: flex; justify-content: flex-start; gap: 60px; font-size: 14px; line-height: 1.8; padding-top: 20px; }
         .map-container { flex: 0 0 400px; height: 300px; background: #ddd; border-radius: 4px; overflow: hidden; }
         .map-container iframe { width: 100%; height: 100%; border: none; }
-        @media (max-width: 768px) { .footer-grid { flex-wrap: wrap; justify-content: center; text-align: center; } .footer-text-columns { flex-direction: column; gap: 30px; align-items: center; } .map-container { width: 100%; flex: 1 1 100%; } }
 
-        /* Modal Form Setup */
-        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 2000; display: none; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.4s ease; }
-        .modal-overlay.active { display: flex; opacity: 1; }
-        .modal-content { background: #fff; padding: 40px; border-radius: 4px; max-width: 500px; width: 90%; position: relative; transform: translateY(20px); transition: transform 0.4s ease; box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+        /* =======================================================
+           BULLETPROOF MODAL CSS 
+           ======================================================= */
+        .modal-overlay { 
+            position: fixed !important; 
+            top: 0 !important; 
+            left: 0 !important; 
+            width: 100vw !important; 
+            height: 100vh !important; 
+            background: rgba(0,0,0,0.8) !important; 
+            z-index: 9999 !important; 
+            align-items: center; 
+            justify-content: center; 
+            opacity: 0; 
+            transition: opacity 0.4s ease; 
+        }
+        .modal-overlay.active { 
+            display: flex !important; 
+            opacity: 1; 
+        }
+        .modal-content { background: #fff; padding: 40px; border-radius: 4px; max-width: 500px; width: 90%; position: relative; transform: translateY(20px); transition: transform 0.4s ease; box-shadow: 0 10px 40px rgba(0,0,0,0.4); color: var(--header-dark); }
         .modal-overlay.active .modal-content { transform: translateY(0); }
         .close-modal { position: absolute; top: 15px; right: 20px; font-size: 32px; cursor: pointer; color: #888; transition: color 0.3s; line-height: 1; }
         .close-modal:hover { color: var(--gowise-pink); }
         .modal-content h3 { color: var(--gowise-magenta); margin-bottom: 20px; font-size: 28px; }
-        
         .form-group { margin-bottom: 20px; }
         .form-group label { display: block; font-weight: 600; margin-bottom: 8px; font-size: 14px; color: var(--header-dark); }
         .form-group input, .form-group textarea { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 4px; font-size: 14px; font-family: inherit; transition: border-color 0.3s; }
         .form-group textarea { resize: vertical; min-height: 120px; }
         .form-group input:focus, .form-group textarea:focus { border-color: var(--gowise-magenta); outline: none; }
+
+        /* --- RESPONSIVE BREAKPOINTS --- */
+
+        /* 1050px Breakpoint: Hamburger & Grid collapses */
+        @media (max-width: 1050px) {
+            header { flex-direction: row; flex-wrap: wrap; justify-content: space-between; align-items: center; padding: 15px 5%; }
+            .header-right { display: flex; align-items: center; gap: 15px; }
+            .header-right .btn-quote { padding: 8px 12px !important; font-size: 12px; margin-top: 0; }
+            
+            /* Hamburger animated toggle setup */
+            .hamburger { display: flex; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 5px; z-index: 1001; }
+            .hamburger span { display: block; width: 25px; height: 3px; background-color: #fff; transition: 0.3s; }
+            .hamburger.active span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+            .hamburger.active span:nth-child(2) { opacity: 0; }
+            .hamburger.active span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+            
+            nav { width: 100%; display: none; margin-top: 15px; }
+            nav.active { display: block; }
+            
+            .main-nav { flex-direction: column; align-items: flex-start; gap: 0; }
+            .main-nav li { width: 100%; border-bottom: 1px solid rgba(255,255,255,0.1); }
+            .main-nav a { display: block; padding: 15px 0; }
+            
+            /* Hide the desktop quote button */
+            .main-nav a.desktop-quote { display: none !important; }
+            
+            .dropdown { position: static; display: none; background-color: #222; box-shadow: none; min-width: 100%; border-left: 2px solid var(--gowise-cyan); margin-left: 10px; }
+            .main-nav li:hover .dropdown, .main-nav li:active .dropdown { display: block; animation: none; }
+            .dropdown a { padding: 10px 15px; border-bottom: none; }
+            
+            .footer-grid { flex-wrap: wrap; justify-content: center; text-align: center; }
+            .footer-text-columns { flex-direction: column; gap: 30px; align-items: center; }
+            .map-container { width: 100%; flex: 1 1 100%; }
+        }
+
+        /* 768px Breakpoint: Mobile specific layout tweaks */
+        @media (max-width: 768px) {
+            .mobile-break { display: block; }
+            
+            /* Top Bar on one line without underlines */
+            .top-bar { flex-direction: row; justify-content: center; gap: 15px; font-size: 12px; white-space: nowrap; }
+            .top-bar a { text-decoration: none !important; }
+            
+            .news-header { padding: 40px 5%; }
+            .news-header h1 { font-size: 32px; }
+            
+            .footer-header h2 { font-size: 26px; }
+        }
     </style>
 </head>
 <body>
 
     <div class="top-bar">
-        <span>Tel: +44 (0)1603 431304</span>
-        <span>print@gowise.co.uk</span>
+        <a href="tel:+441603431304">Tel: +44 (0)1603 431304</a>
+        <a href="mailto:print@gowise.co.uk">print@gowise.co.uk</a>
     </div>
 
-    <!-- Navigation Structure -->
+    <!-- Navigation -->
     <header>
         <a href="index.html" class="logo">
             <img src="gowise-logo.png" alt="Gowise Print Logo">
         </a>
-        <nav>
+        
+        <!-- Mobile Actions: Quote + Animated Hamburger -->
+        <div class="header-right">
+            <a href="#" id="navQuoteBtnMobile" class="btn-quote">GET A QUOTE</a>
+            <button class="hamburger" id="hamburgerBtn" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+
+        <nav id="navMenu">
             <ul class="main-nav">
                 <li><a href="index.html">HOME</a></li>
                 <li>
@@ -266,7 +336,7 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="resources.html">PRINT RESOURCES ▾</a>
+                    <a href="resources.html" >PRINT RESOURCES ▾</a>
                     <ul class="dropdown">
                         <li><a href="resources.html#colour-guide">Understanding Colour (CMYK vs RGB)</a></li>
                         <li><a href="resources.html#digital-vs-litho">Digital vs. Lithographic</a></li>
@@ -283,7 +353,7 @@
                     </ul>
                 </li>
                 <li><a href="news.html" class="active">NEWS</a></li>
-                <li><a href="#" id="navQuoteBtn" class="btn-quote">GET A QUOTE</a></li>
+                <li><a href="#" id="navQuoteBtn" class="btn-quote desktop-quote">GET A QUOTE</a></li>
             </ul>
         </nav>
     </header>
@@ -293,22 +363,29 @@
             <h1>News & Updates</h1>
         </div>
 
-        <div class="news-container">
-            <!-- Sidebar Filters -->
-            <aside class="news-sidebar">
-                <h3>Filter Articles</h3>
-                <div class="sidebar-group">
-                    <label for="search-input">Search Keywords</label>
-                    <input type="text" id="search-input" placeholder="Search news...">
-                </div>
-                <div class="sidebar-group">
-                    <label for="year-select">Filter by Year</label>
-                    <select id="year-select">
-                        <option value="all">All Years</option>
-                    </select>
-                </div>
-            </aside>
+        <!-- Floating Search Trigger -->
+        <div class="search-trigger" id="searchTriggerBtn" aria-label="Open Filters">
+            <!-- Magnifying Glass Icon -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 12.01 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 12.01 14 9.5 14z"/></svg>
+        </div>
 
+        <!-- Hidden Floating Sidebar -->
+        <aside class="news-sidebar" id="newsSidebar">
+            <button class="close-sidebar-btn" id="closeSidebarBtn" aria-label="Close Filters">&times;</button>
+            <h3>Filter Articles</h3>
+            <div class="sidebar-group">
+                <label for="search-input">Search Keywords</label>
+                <input type="text" id="search-input" placeholder="Search news...">
+            </div>
+            <div class="sidebar-group">
+                <label for="year-select">Filter by Year</label>
+                <select id="year-select">
+                    <option value="all">All Years</option>
+                </select>
+            </div>
+        </aside>
+
+        <div class="news-container">
             <!-- News Feed -->
             <section class="news-feed" id="news-feed">
                 <p style="text-align:center; color:#888;">Loading news articles...</p>
@@ -316,8 +393,14 @@
         </div>
     </main>
 
+    <!-- 
+    ========================================================
+    BULLETPROOF MODAL WINDOWS
+    ======================================================== 
+    -->
+    
     <!-- Quote Request Modal Window -->
-    <div class="modal-overlay" id="quoteModal">
+    <div class="modal-overlay" id="quoteModal" style="display: none;">
         <div class="modal-content">
             <span class="close-modal" id="closeModal">&times;</span>
             <h3>Request a Quote</h3>
@@ -341,7 +424,7 @@
     </div>
 
     <!-- Submission Success Pop-Up -->
-    <div class="modal-overlay" id="successModal">
+    <div class="modal-overlay" id="successModal" style="display: none;">
         <div class="modal-content" style="max-width: 420px; text-align: center;">
             <span class="close-modal" id="closeSuccessX">&times;</span>
             <h3 style="color: var(--gowise-cyan); margin-bottom: 15px;">Thank You!</h3>
@@ -353,7 +436,7 @@
     <!-- Footer -->
     <footer>
         <div class="footer-header">
-            <h2>Visit Our Norwich Print Shop</h2>
+            <h2>Visit Our Norwich<br class="mobile-break"> Print Shop</h2>
             <p>GoWise Print proudly serves local businesses, independent creators, and trade partners across Norfolk and the UK.</p>
         </div>
         <div class="footer-grid">
@@ -376,10 +459,34 @@
         </div>
     </footer>
 
-    <!-- Scripts -->
     <script>
-        // --- 1. MODAL CAPABILITIES ---
+        // --- Hamburger Menu Toggle ---
+        const hamburgerBtn = document.getElementById('hamburgerBtn');
+        const navMenu = document.getElementById('navMenu');
+        if (hamburgerBtn) {
+            hamburgerBtn.addEventListener('click', () => {
+                hamburgerBtn.classList.toggle('active');
+                navMenu.classList.toggle('active');
+            });
+        }
+
+        // --- Sidebar Filter Toggle Logic ---
+        const searchTriggerBtn = document.getElementById('searchTriggerBtn');
+        const newsSidebar = document.getElementById('newsSidebar');
+        const closeSidebarBtn = document.getElementById('closeSidebarBtn');
+
+        if (searchTriggerBtn && newsSidebar) {
+            searchTriggerBtn.addEventListener('click', () => {
+                newsSidebar.classList.add('active');
+            });
+            closeSidebarBtn.addEventListener('click', () => {
+                newsSidebar.classList.remove('active');
+            });
+        }
+
+        // --- Modal & Form Logic ---
         const navQuoteBtn = document.getElementById('navQuoteBtn');
+        const navQuoteBtnMobile = document.getElementById('navQuoteBtnMobile');
         const quoteModal = document.getElementById('quoteModal');
         const closeModal = document.getElementById('closeModal');
         const asyncForm = document.getElementById('asyncQuoteForm');
@@ -395,48 +502,55 @@
         };
 
         if (navQuoteBtn) navQuoteBtn.addEventListener('click', showQuoteModal);
+        if (navQuoteBtnMobile) navQuoteBtnMobile.addEventListener('click', showQuoteModal);
 
         const hideQuoteModal = () => {
             quoteModal.classList.remove('active');
             setTimeout(() => quoteModal.style.display = 'none', 400); 
         };
-        closeModal.addEventListener('click', hideQuoteModal);
+        if (closeModal) closeModal.addEventListener('click', hideQuoteModal);
 
         const hideSuccessModal = () => {
             successModal.classList.remove('active');
             setTimeout(() => successModal.style.display = 'none', 400);
         };
-        closeSuccessX.addEventListener('click', hideSuccessModal);
-        closeSuccessBtn.addEventListener('click', hideSuccessModal);
+        if (closeSuccessX) closeSuccessX.addEventListener('click', hideSuccessModal);
+        if (closeSuccessBtn) closeSuccessBtn.addEventListener('click', hideSuccessModal);
 
         window.addEventListener('click', (e) => {
             if (e.target === quoteModal) hideQuoteModal();
             if (e.target === successModal) hideSuccessModal();
+            // Close sidebar if clicking outside of it
+            if (newsSidebar && newsSidebar.classList.contains('active') && !newsSidebar.contains(e.target) && !searchTriggerBtn.contains(e.target)) {
+                newsSidebar.classList.remove('active');
+            }
         });
 
-        asyncForm.addEventListener('submit', function(e) {
-            e.preventDefault(); 
-            submitBtn.textContent = "Sending Request...";
-            submitBtn.disabled = true;
+        if (asyncForm) {
+            asyncForm.addEventListener('submit', function(e) {
+                e.preventDefault(); 
+                submitBtn.textContent = "Sending Request...";
+                submitBtn.disabled = true;
 
-            const formData = new FormData(asyncForm);
-            fetch('https://api.web3forms.com/submit', { method: 'POST', body: formData })
-            .then(async (response) => {
-                let json = await response.json();
-                if (response.status == 200) {
-                    hideQuoteModal();
-                    asyncForm.reset(); 
-                    successModal.style.display = 'flex';
-                    setTimeout(() => successModal.classList.add('active'), 10);
-                } else {
-                    alert("Submission failed: " + json.message);
-                }
-            })
-            .catch(error => { alert("Network error. Please try again."); })
-            .finally(() => { submitBtn.textContent = "Send Request"; submitBtn.disabled = false; });
-        });
+                const formData = new FormData(asyncForm);
+                fetch('https://api.web3forms.com/submit', { method: 'POST', body: formData })
+                .then(async (response) => {
+                    let json = await response.json();
+                    if (response.status == 200) {
+                        hideQuoteModal();
+                        asyncForm.reset(); 
+                        successModal.style.display = 'flex';
+                        setTimeout(() => successModal.classList.add('active'), 10);
+                    } else {
+                        alert("Submission failed: " + json.message);
+                    }
+                })
+                .catch(error => { alert("Network error. Please try again."); })
+                .finally(() => { submitBtn.textContent = "Send Request"; submitBtn.disabled = false; });
+            });
+        }
 
-        // --- 2. ASYNC MULTI-IMAGE PARSER ENGINE (FILE INDEX SORTING) ---
+        // --- ASYNC MULTI-IMAGE PARSER ENGINE ---
         document.addEventListener("DOMContentLoaded", async () => {
             const feedContainer = document.getElementById('news-feed');
             const searchInput = document.getElementById('search-input');
@@ -445,8 +559,9 @@
             let allEntries = [];
             let uniqueYears = new Set();
             let currentIndex = 1;
+            const maxFilesToCheck = 50; 
 
-            while (true) {
+            while (currentIndex <= maxFilesToCheck) {
                 try {
                     const response = await fetch(`NEWS-${currentIndex}.txt`, { cache: 'no-store' });
                     if (!response.ok) break; 
@@ -504,7 +619,7 @@
             if (allEntries.length === 0) {
                 feedContainer.innerHTML = '<div class="no-results">No news articles found. Add "NEWS-1.txt" to start.</div>';
             } else {
-                // Strict descending sort based on the filename number (highest first)
+                // Sort newest first
                 allEntries.sort((a, b) => b.fileIndex - a.fileIndex);
                 
                 Array.from(uniqueYears).sort().reverse().forEach(year => {
@@ -545,31 +660,13 @@
 
                     const delay = index * 0.15;
                     feedContainer.innerHTML += `
-                        <article class="news-entry" style="animation-delay: ${delay}s;">
+                        <article class="news-entry" id="news-entry-${entry.fileIndex}" style="animation-delay: ${delay}s;">
                             ${visualHtml}
                             <div class="entry-content">
-                                <span class="entry-date">${entry.displayDate}</span>
+                                <span class="entry-date">${entry.displayDate || ''}</span>
                                 <h2 class="entry-title">${entry.title}</h2>
                                 <div class="entry-text">${entry.textHtml}</div>
                                 ${keywordsHtml}
-                                
-                                <!-- Injected Comment Section -->
-                                <button id="toggle-btn-${index}" class="toggle-comments-btn" onclick="window.toggleComments('${index}', '${entry.title.replace(/'/g, "\\'")}')">
-                                    Load Comments
-                                </button>
-                                
-                                <div id="comments-section-${index}" class="comments-section">
-                                    <div id="comment-list-${index}"></div>
-                                    
-                                    <div class="comment-form">
-                                        <h4>Leave a Reply</h4>
-                                        <input type="text" id="comment-name-${index}" placeholder="Your Name (Required)">
-                                        <textarea id="comment-text-${index}" rows="3" placeholder="Your thoughts on this update... (Required)"></textarea>
-                                        <button class="btn" onclick="window.submitComment('${index}', '${entry.title.replace(/'/g, "\\'")}')">Post Comment</button>
-                                    </div>
-                                </div>
-                                <!-- End Injected Comment Section -->
-
                             </div>
                         </article>
                     `;
@@ -612,128 +709,6 @@
             searchInput.addEventListener('keyup', filterNews);
             yearSelect.addEventListener('change', filterNews);
         });
-    </script>
-
-    <!-- Firebase Script -->
-    <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-app.js";
-    import { getFirestore, collection, addDoc, query, where, orderBy, getDocs, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-firestore.js";
-
-    const firebaseConfig = {
-  apiKey: "AIzaSyCkeyQe9fj5a4eTPGcpAskL1rwQVA189hI",
-  authDomain: "gowise-comments.firebaseapp.com",
-  projectId: "gowise-comments",
-  storageBucket: "gowise-comments.firebasestorage.app",
-  messagingSenderId: "758253156309",
-  appId: "1:758253156309:web:ee272344320c82cbed6f5c",
-  measurementId: "G-J58BEQWHLS"
-};
-
-    const app = initializeApp(firebaseConfig);
-    const db = getFirestore(app);
-
-    window.toggleComments = async function(index, entryTitle) {
-        const section = document.getElementById(`comments-section-${index}`);
-        const btn = document.getElementById(`toggle-btn-${index}`);
-        const list = document.getElementById(`comment-list-${index}`);
-        
-        if (section.style.display === 'none' || section.style.display === '') {
-            section.style.display = 'block';
-            btn.textContent = 'Hide Comments';
-            
-            if (list.innerHTML.trim() === '') {
-                list.innerHTML = '<p style="color: #888; font-style: italic;">Loading comments...</p>';
-                try {
-                    const q = query(
-                        collection(db, "gowise_comments"), 
-                        where("entryId", "==", entryTitle), 
-                        orderBy("timestamp", "asc")
-                    );
-                    const querySnapshot = await getDocs(q);
-                    
-                    list.innerHTML = ''; 
-                    
-                    if (querySnapshot.empty) {
-                        list.innerHTML = '<p style="color: #888; font-style: italic;">No comments yet. Be the first to reply.</p>';
-                    } else {
-                        querySnapshot.forEach((doc) => {
-                            const data = doc.data();
-                            const dateStr = data.timestamp ? data.timestamp.toDate().toLocaleDateString('en-GB') : 'Just now';
-                            
-                            list.innerHTML += `
-                                <div class="comment-item">
-                                    <div class="comment-header">
-                                        <span class="comment-author">${data.name}</span>
-                                        <span class="comment-date">${dateStr}</span>
-                                    </div>
-                                    <p class="comment-body">${data.text}</p>
-                                </div>
-                            `;
-                        });
-                    }
-                } catch (e) {
-                    console.error("Error fetching comments: ", e);
-                    list.innerHTML = `<p style="color: var(--gowise-magenta);">Comments are currently unreachable. Try again later.</p>`;
-                }
-            }
-        } else {
-            section.style.display = 'none';
-            btn.textContent = 'Load Comments';
-        }
-    };
-
-    window.submitComment = async function(index, entryTitle) {
-        const nameInput = document.getElementById(`comment-name-${index}`);
-        const textInput = document.getElementById(`comment-text-${index}`);
-        const list = document.getElementById(`comment-list-${index}`);
-        const btn = event.target;
-        
-        const name = nameInput.value.trim();
-        const text = textInput.value.trim();
-        
-        if (!name || !text) {
-            alert("Please provide both your name and a comment.");
-            return;
-        }
-
-        const originalBtnText = btn.textContent;
-        btn.textContent = 'Sending...';
-        btn.disabled = true;
-        
-        try {
-            await addDoc(collection(db, "gowise_comments"), {
-                entryId: entryTitle,
-                name: name,
-                text: text,
-                timestamp: serverTimestamp()
-            });
-            
-            const noCommentsMsg = list.querySelector('p');
-            if (noCommentsMsg && noCommentsMsg.textContent.includes('No comments yet')) {
-                list.innerHTML = '';
-            }
-            
-            list.innerHTML += `
-                <div class="comment-item" style="border-left-color: var(--gowise-magenta);">
-                    <div class="comment-header">
-                        <span class="comment-author">${name}</span>
-                        <span class="comment-date">Just now</span>
-                    </div>
-                    <p class="comment-body">${text}</p>
-                </div>
-            `;
-            
-            nameInput.value = '';
-            textInput.value = '';
-            
-        } catch (e) {
-            console.error("Error adding document: ", e);
-            alert("Failed to post comment.");
-        } finally {
-            btn.textContent = originalBtnText;
-            btn.disabled = false;
-        }
-    };
     </script>
 </body>
 </html>
