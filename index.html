@@ -113,7 +113,7 @@
         .mobile-break { display: none; }
         .header-right { display: none; }
 
-        /* 1. Hero Carousel */
+        /* 1. Hero Carousel (Desktop / Original View) */
         .carousel-container { position: relative; width: 100%; min-height: 70vh; background-color: #111; overflow: hidden; display: flex; align-items: center; justify-content: center; }
         .carousel-slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1.2s ease-in-out; display: flex; align-items: center; justify-content: flex-start; } 
         .carousel-slide.active { opacity: 1; z-index: 1; }
@@ -126,18 +126,17 @@
             padding: 50px; 
             margin-left: 5%; 
             max-width: 650px; 
-            color: #444; 
-            background-color: #ffffff; 
+            color: #fff; 
+            background-color: rgba(0, 0, 0, 0.5); 
             border-radius: 8px;
             backdrop-filter: blur(8px);
             text-align: left; 
             transform: translateX(-30px);
             transition: transform 1.2s ease-out;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
         }
         .carousel-slide.active .carousel-content { transform: translateX(0); }
-        .carousel-content h1 { font-size: 48px; font-weight: 800; color: var(--gowise-cyan); margin-bottom: 20px; line-height: 1.2; }
-        .carousel-content p { font-size: 20px; color: #444; font-weight: 300; }
+        .carousel-content h1 { font-size: 48px; font-weight: 800; color: #fff; margin-bottom: 20px; line-height: 1.2; }
+        .carousel-content p { font-size: 20px; color: #eee; font-weight: 300; }
 
         /* 2. Trust Indicators */
         .trust-bar { display: grid; grid-template-columns: repeat(3, 1fr); background-color: var(--header-dark); color: #fff; padding: 40px 5%; gap: 20px; position: relative; z-index: 10; }
@@ -379,13 +378,13 @@
             .environment-banner { order: 7; }
             .environment-content { order: 8; }
 
-            /* 3. Stacked Carousel Styles */
+            /* 3. Stacked Carousel Styles (Mobile Only Overrides) */
             .carousel-slide { flex-direction: column; }
             .carousel-bg-img { position: relative; height: 50%; object-fit: cover; filter: brightness(1); }
             .carousel-content {
                 position: relative;
                 transform: none !important;
-                background-color: #ffffff; /* Changed to White */
+                background-color: #ffffff; /* White background only on mobile */
                 margin: 0;
                 padding: 20px 5%;
                 max-width: 100%;
@@ -398,8 +397,9 @@
                 justify-content: center;
                 box-shadow: none;
             }
-            .carousel-content h1 { font-size: 28px; margin-bottom: 10px; }
-            .carousel-content p { font-size: 16px; }
+            /* White Box Text overrides only on mobile */
+            .carousel-content h1 { font-size: 28px; margin-bottom: 10px; color: var(--gowise-cyan); }
+            .carousel-content p { font-size: 16px; color: #444; }
             
             /* 5. Services Square shrink down */
             .squares-grid { grid-template-columns: 1fr; gap: 15px; }
