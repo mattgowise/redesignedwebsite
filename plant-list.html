@@ -149,7 +149,8 @@
         }
 
         .section-container { max-width: 1400px; margin: 0 auto; }
-        .plant-list-section { padding: 0 5% 40px; }
+        /* Doubled bottom padding from 40px to 80px */
+        .plant-list-section { padding: 0 5% 80px; }
         
         /* Animated Magenta Divider */
         .magenta-divider { 
@@ -163,31 +164,76 @@
         }
         .magenta-divider.visible { width: 120px; opacity: 1; }
         
+        /* Service Rows (Equipment Blocks) */
         .service-row {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 40px;
             align-items: start;
             margin-bottom: 80px;
-            opacity: 0;
-            transform: translateY(40px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
             scroll-margin-top: 120px; 
         }
         .service-row:last-child { margin-bottom: 0; }
-        .service-row.visible { opacity: 1; transform: translateY(0); }
         .service-row:nth-child(even) .service-text { order: -1; } 
         
-        .service-img-container { width: 100%; aspect-ratio: 3 / 2; height: auto; border-radius: 4px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        .service-img-container { 
+            width: 100%; 
+            aspect-ratio: 3 / 2; 
+            height: auto; 
+            border-radius: 4px; 
+            overflow: hidden; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1); 
+            transform: scale(0);
+            transform-origin: center;
+            opacity: 0;
+            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.6s ease-out;
+        }
+        .service-row.visible .service-img-container {
+            transform: scale(1);
+            opacity: 1;
+        }
         .service-img-container img { transition: transform 0.6s ease; }
         .service-row:hover .service-img-container img { transform: scale(1.05); }
         
-        .service-text h2 { font-size: 32px; margin-bottom: 20px; color: var(--gowise-magenta); line-height: 1.2; }
+        /* New Inner Banner Styling for the 3 Headings */
+        .service-banner {
+            background-color: var(--gowise-magenta);
+            color: #fff;
+            padding: 15px 5%;
+            text-align: center;
+            font-size: 24px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+            transform: scaleX(0);
+            transform-origin: center;
+            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+            line-height: 1.2;
+        }
+        .service-banner span {
+            display: inline-block;
+            opacity: 0;
+            transition: opacity 0.5s ease-out 0.4s;
+        }
+        .service-row.visible .service-banner { transform: scaleX(1); }
+        .service-row.visible .service-banner span { opacity: 1; }
+
         .service-text > p { font-size: 16px; margin-bottom: 25px; font-weight: 400; color: #444; line-height: 1.4; }
         
         .capabilities-list { list-style: none; padding: 0; }
         .capabilities-list li { position: relative; margin-bottom: 20px; font-size: 15px; line-height: 1.6; }
         .capabilities-list strong { display: block; font-size: 16px; font-weight: 600; color: var(--gowise-cyan); margin-bottom: 5px; }
+
+        /* Delayed Fade for the body text in Service Rows */
+        .service-text > p, .service-text > .capabilities-list {
+            opacity: 0;
+            transition: opacity 0.6s ease-out 0.7s;
+        }
+        .service-row.visible .service-text > p, .service-row.visible .service-text > .capabilities-list {
+            opacity: 1;
+        }
 
         /* 5-Colour Banner & Section */
         .fuji-section { padding: 0 5% 80px; }
@@ -380,8 +426,9 @@
             .inner-hero-content h1 { font-size: 28px; color: var(--gowise-cyan); margin-bottom: 10px; line-height: 1.2; }
             .inner-hero-content p { font-size: 16px; color: #444444; margin-bottom: 0; }
 
-            /* Scaling for the new Banner & Grid */
+            /* Scaling for the new Banners & Grid */
             .magenta-banner { font-size: 24px; padding: 20px 5%; margin-bottom: 20px; }
+            .service-banner { font-size: 20px; padding: 12px 5%; }
             .fuji-text-grid { grid-template-columns: 1fr; gap: 20px; }
 
             /* Mobile Carousel implementation for Service Rows */
@@ -509,7 +556,7 @@
                         <img src="Plant-2.jpg" alt="Fujifilm 5UPER COLOUR digital press control panel" class="cover-img">
                     </div>
                     <div class="service-text">
-                        <h2>Digital Press Capabilities</h2>
+                        <h2 class="service-banner"><span>Digital Press Capabilities</span></h2>
                         <p>Our digital suite is built for speed, variable data, and colour reproduction that standard CMYK digital presses simply cannot achieve.</p>
                         <ul class="capabilities-list">
                             <li><strong>Fujifilm 5UPER COLOUR© Digital Press:</strong> Our flagship 5-colour system hits specific RGB tones and simulates Pantone® colours with exceptional accuracy.</li>
@@ -526,7 +573,7 @@
                         <img src="Plant-3.jpg" alt="Traditional litho press ink rollers in motion" class="cover-img">
                     </div>
                     <div class="service-text">
-                        <h2>Lithographic Press Capabilities</h2>
+                        <h2 class="service-banner"><span>Lithographic Press Capabilities</span></h2>
                         <p>For long runs and exact brand colour matching, traditional litho remains unbeatable.</p>
                         <ul class="capabilities-list">
                             <li><strong>Four-Colour Process (CMYK) Litho:</strong> High-accuracy production for catalogues, brochures, and commercial flyers.</li>
@@ -542,7 +589,7 @@
                         <img src="Plant-4.jpg" alt="Heavy-duty automated bindery equipment" class="cover-img">
                     </div>
                     <div class="service-text">
-                        <h2 class="mobile-shrink-text">In-House Finishing <br class="mobile-break">& Book Binding</h2>
+                        <h2 class="service-banner mobile-shrink-text"><span>In-House Finishing <br class="mobile-break">& Book Binding</span></h2>
                         <p>We do not outsource our binding. Our fully equipped finishing department operates as a dedicated trade finishing service.</p>
                         <ul class="capabilities-list">
                             <li><strong>PUR Perfect Binding:</strong> Polyurethane Reactive adhesive for superior page pull strength and lay-flat flexibility.</li>
