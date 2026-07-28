@@ -30,7 +30,8 @@
             font-weight: 300; 
         }
 
-        
+        /* Utility */
+        .mobile-break { display: none; } /* Keeps headers on one line for desktop */
         
         /* Enable smooth scrolling for anchor links */
         html { scroll-behavior: smooth; }
@@ -175,7 +176,7 @@
             opacity: 0;
             transform: translateY(40px);
             transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-            scroll-margin-top: 200px; /* Increased to clear the sticky header */
+            scroll-margin-top: 160px; 
         }
         .service-row.visible { opacity: 1; transform: translateY(0); }
         .service-row:nth-child(even) .service-text { order: -1; } 
@@ -192,7 +193,7 @@
         .service-features strong { display: block; font-size: 16px; font-weight: 600; color: var(--gowise-cyan); margin-bottom: 5px; }
 
         /* 4. Comparison Cards (Digital/Litho) */
-        .resource-section { padding: 60px 5% 100px; scroll-margin-top: 200px; background-color: #f4f4f4; border-top: 1px solid #eaeaea; }
+        .resource-section { padding: 60px 5% 100px; scroll-margin-top: 160px; background-color: #f4f4f4; border-top: 1px solid #eaeaea; }
         .section-header { text-align: center; margin-bottom: 50px; }
         .section-header h2 { font-size: 36px; color: var(--gowise-magenta); margin-bottom: 15px; }
         .section-header p { font-size: 18px; max-width: 1200px; margin: 0 auto; }
@@ -219,6 +220,7 @@
 
         /* Footer overrides */
         footer { background: var(--header-dark); color: #fff; position: relative; overflow: hidden; padding: 60px 5%; }
+        footer p { color: #ffffff; }
         .footer-header { margin-bottom: 40px; text-align: center; }
         .footer-header h2 { color: var(--gowise-magenta); font-size: 32px; }
         .footer-grid { display: flex; align-items: stretch; justify-content: space-between; gap: 40px; max-width: 1400px; margin: 0 auto; }
@@ -243,6 +245,9 @@
         .form-group input, .form-group textarea { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 4px; font-size: 14px; font-family: inherit; transition: border-color 0.3s; }
         .form-group textarea { resize: vertical; min-height: 120px; }
         .form-group input:focus, .form-group textarea:focus { border-color: var(--gowise-magenta); outline: none; }
+
+        /* Universal Anchor Target Fix */
+        [id] { scroll-margin-top: 160px !important; }
 
         /* --- RESPONSIVE BREAKPOINTS --- */
 
@@ -312,9 +317,6 @@
             
             .footer-header h2 { font-size: 26px; }
         }
-        [id] {
-            scroll-margin-top: 200px; 
-        }
     </style>
 </head>
 <body>
@@ -350,7 +352,7 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="plant-list.html">PLANT LIST & CAPABILITIES ▾</a>
+                    <a href="plant-list.html">EQUIPMENT & CAPABILITIES ▾</a>
                     <ul class="dropdown">
                         <li><a href="plant-list.html#digital">Digital Press</a></li>
                         <li><a href="plant-list.html#litho">Lithographic Press</a></li>
