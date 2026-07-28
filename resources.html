@@ -145,7 +145,7 @@
         @keyframes slideUpFade { to { opacity: 1; transform: translateY(0); } }
         @keyframes kenBurns { from { transform: scale(1); } to { transform: scale(1.1); } }
 
-        /* 2. Intro Section (Matched to Services Page) */
+        /* 2. Intro Section */
         .page-intro { 
             padding: 60px 5% 40px; 
             max-width: 1400px; 
@@ -180,7 +180,6 @@
         }
         .magenta-divider.visible { width: 120px; opacity: 1; }
 
-        /* Modified Cyan Divider for Side-by-Side Layout */
         .cyan-divider { 
             border: none; 
             width: 4px; 
@@ -192,13 +191,47 @@
         }
         .cyan-divider.visible { height: 250px; opacity: 1; }
 
+        /* Reusable Animated Magenta Banner for Headings */
+        h2.magenta-banner-heading {
+            background-color: var(--gowise-magenta);
+            color: #fff !important;
+            padding: 15px 5%;
+            text-align: center;
+            font-size: 32px;
+            font-weight: 300;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 25px;
+            border-radius: 4px;
+            transform: scaleX(0);
+            transform-origin: center;
+            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+            line-height: 1.3;
+            display: block;
+        }
+        h2.magenta-banner-heading span {
+            display: inline-block;
+            opacity: 0;
+            transition: opacity 0.5s ease-out 0.4s;
+        }
+        .visible h2.magenta-banner-heading { transform: scaleX(1); }
+        .visible h2.magenta-banner-heading span { opacity: 1; }
+
         /* Section Layout Helpers */
         .resource-section { padding: 80px 5%; scroll-margin-top: 100px; }
         .resource-section:nth-child(even) { background-color: #f4f4f4; }
         .section-container { max-width: 1400px; margin: 0 auto; }
         .section-header { text-align: center; margin-bottom: 50px; }
-        .section-header h2 { font-size: 36px; color: var(--gowise-magenta); margin-bottom: 15px; }
         .section-header p { font-size: 18px; max-width: 1200px; margin: 0 auto; font-weight: 300; text-transform: none; letter-spacing: normal; }
+
+        /* Delayed Fade for the body text in Section & Footer Headers */
+        .section-header p, .footer-header p {
+            opacity: 0;
+            transition: opacity 0.6s ease-out 0.7s;
+        }
+        .section-header.visible p, .footer-header.visible p {
+            opacity: 1;
+        }
 
         /* 3. Understanding Colour (CMYK/RGB) Custom Layout */
         .colour-grid {
@@ -277,7 +310,6 @@
             background-color: var(--header-dark);
             color: #fff;
         }
-        #setup-checklist .section-header h2 { color: #fff; }
         #setup-checklist .section-header p { color: #ddd; }
         
         .checklist-grid {
@@ -324,7 +356,6 @@
         footer { background: var(--header-dark); color: #fff; position: relative; overflow: hidden; padding: 60px 5%; }
         footer p { color: #ffffff !important; }
         .footer-header { margin-bottom: 40px; text-align: center; }
-        .footer-header h2 { color: var(--gowise-magenta); font-size: 32px; }
         .footer-grid { display: flex; align-items: stretch; justify-content: space-between; gap: 40px; max-width: 1400px; margin: 0 auto; }
         .footer-arrow-container { flex: 0 0 120px; display: flex; align-items: center; }
         .footer-arrow { width: 100%; height: auto; transform: translateX(-150px); opacity: 0; transition: transform 1s cubic-bezier(0.25, 1, 0.5, 1), opacity 1s ease; }
@@ -414,9 +445,8 @@
             .inner-hero-content h1 { font-size: 34px; color: var(--gowise-cyan); }
             .inner-hero-content p { color: #444444; }
             
-            .section-header h2 { font-size: 28px; }
             .color-card h3 { font-size: 22px; }
-            .footer-header h2 { font-size: 26px; }
+            h2.magenta-banner-heading { font-size: 20px; padding: 12px 5%; }
 
             /* Switch Colour Grid back to stacked and reset divider for mobile */
             .colour-grid { grid-template-columns: 1fr; gap: 20px; }
@@ -519,7 +549,7 @@
         <section id="colour-guide" class="resource-section">
             <div class="section-container">
                 <div class="section-header scroll-reveal">
-                    <h2>Understanding Colour:<br class="mobile-break"> CMYK vs. RGB</h2>
+                    <h2 class="magenta-banner-heading"><span>Understanding Colour:<br class="mobile-break"> CMYK vs. RGB</span></h2>
                     <p>The most common issue in pre-press is the difference between how colours look on a screen and how they look on physical paper.</p>
                 </div>
                 
@@ -550,7 +580,7 @@
         <section id="digital-vs-litho" class="resource-section">
             <div class="section-container">
                 <div class="section-header scroll-reveal">
-                    <h2>Digital vs. Lithographic Printing</h2>
+                    <h2 class="magenta-banner-heading"><span>Digital vs. Lithographic Printing</span></h2>
                     <p>Which is right for you? Choosing the right press depends entirely on your quantity, timeline, and quality requirements.</p>
                 </div>
                 
@@ -573,7 +603,7 @@
         <section id="setup-checklist" class="resource-section">
             <div class="section-container">
                 <div class="section-header scroll-reveal">
-                    <h2>Essential Artwork<br class="mobile-break"> Setup Checklist</h2>
+                    <h2 class="magenta-banner-heading"><span>Essential Artwork<br class="mobile-break"> Setup Checklist</span></h2>
                     <p>To avoid delays and additional pre-press fees, please ensure your files meet the following criteria before submission.</p>
                 </div>
                 
@@ -663,8 +693,8 @@
     </div>
 
     <footer>
-        <div class="footer-header">
-            <h2>Visit Our Norwich<br class="mobile-break"> Print Shop</h2>
+        <div class="footer-header scroll-reveal">
+            <h2 class="magenta-banner-heading"><span>Visit Our Norwich<br class="mobile-break"> Print Shop</span></h2>
             <p>GoWise Print proudly serves local businesses, independent creators, and trade partners across Norfolk and the UK.</p>
         </div>
         <div class="footer-grid">
