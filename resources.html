@@ -176,16 +176,17 @@
         }
         .magenta-divider.visible { width: 120px; opacity: 1; }
 
+        /* Modified Cyan Divider for Side-by-Side Layout */
         .cyan-divider { 
             border: none; 
-            height: 4px; 
+            width: 4px; 
             background-color: var(--gowise-cyan); 
-            width: 0; 
-            margin: 30px auto; 
+            height: 0; 
+            margin: auto 0; 
             opacity: 0;
-            transition: width 1s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.8s ease-out; 
+            transition: height 1s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.8s ease-out; 
         }
-        .cyan-divider.visible { width: 120px; opacity: 1; }
+        .cyan-divider.visible { height: 250px; opacity: 1; }
 
         /* Section Layout Helpers */
         .resource-section { padding: 80px 5%; scroll-margin-top: 100px; }
@@ -197,11 +198,14 @@
 
         /* 3. Understanding Colour (CMYK/RGB) Custom Layout */
         .colour-grid {
-            display: flex;
-            flex-direction: column;
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
             align-items: center;
-            gap: 20px;
+            gap: 40px;
             margin-bottom: 40px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
         }
         .color-card {
             background: transparent;
@@ -209,7 +213,6 @@
             border: none;
             box-shadow: none;
             text-align: center;
-            max-width: 1000px;
             opacity: 0;
             transform: translateY(30px);
             transition: opacity 0.6s ease-out, transform 0.6s ease-out;
@@ -292,13 +295,13 @@
         }
         .checklist-item.visible { opacity: 1; transform: translateY(0); }
         
-        .icon-placeholder {
+        .checklist-icon {
             width: 80px;
             height: 80px;
-            border-radius: 50%;
-            background-color: #555;
+            object-fit: contain;
             margin-bottom: 10px;
         }
+
         .check-content h4 { font-size: 20px; margin-bottom: 10px; color: var(--gowise-cyan); }
         .check-content p { font-size: 15px; margin-bottom: 0; color: #ccc; }
 
@@ -338,6 +341,9 @@
         .form-group input, .form-group textarea { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 4px; font-size: 14px; font-family: inherit; transition: border-color 0.3s; }
         .form-group textarea { resize: vertical; min-height: 120px; }
         .form-group input:focus, .form-group textarea:focus { border-color: var(--gowise-magenta); outline: none; }
+
+        /* Universal Anchor Target Fix */
+        [id] { scroll-margin-top: 160px !important; }
 
         /* --- RESPONSIVE BREAKPOINTS --- */
 
@@ -405,6 +411,16 @@
             .section-header h2 { font-size: 28px; }
             .color-card h3 { font-size: 22px; }
             .footer-header h2 { font-size: 26px; }
+
+            /* Switch Colour Grid back to stacked and reset divider for mobile */
+            .colour-grid { grid-template-columns: 1fr; gap: 20px; }
+            .cyan-divider { 
+                width: 0; 
+                height: 4px; 
+                margin: 20px auto; 
+                transition: width 1s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.8s ease-out; 
+            }
+            .cyan-divider.visible { width: 120px; height: 4px; opacity: 1; }
 
             .cta-actions { flex-direction: column; }
             .checklist-grid { grid-template-columns: 1fr; }
@@ -557,7 +573,7 @@
                 
                 <div class="checklist-grid">
                     <div class="checklist-item scroll-reveal" style="transition-delay: 0s;">
-                        <div class="icon-placeholder"></div>
+                        <img src="resolution-icon.svg" alt="Resolution Icon" class="checklist-icon">
                         <div class="check-content">
                             <h4>Resolution</h4>
                             <p>All images and raster graphics must be at least <strong>300 DPI</strong> (Dots Per Inch) at their actual printed size.</p>
@@ -565,7 +581,7 @@
                     </div>
                     
                     <div class="checklist-item scroll-reveal" style="transition-delay: 0.1s;">
-                        <div class="icon-placeholder"></div>
+                        <img src="bleed-icon.svg" alt="Bleed Icon" class="checklist-icon">
                         <div class="check-content">
                             <h4>Bleed</h4>
                             <p>If your design features colour or images that run right to the edge of the page, you must include a <strong>3mm bleed</strong> on all sides. This gives our finishing team the tolerance needed to trim your pages perfectly without leaving white borders.</p>
@@ -573,7 +589,7 @@
                     </div>
                     
                     <div class="checklist-item scroll-reveal" style="transition-delay: 0.2s;">
-                        <div class="icon-placeholder"></div>
+                        <img src="safe-zone-icon.svg" alt="Safe Zone Icon" class="checklist-icon">
                         <div class="check-content">
                             <h4>Safe Zone</h4>
                             <p>Keep all important text and logos at least <strong>5mm away</strong> from the trim edge to ensure nothing gets cut off during the binding or guillotining process.</p>
@@ -581,7 +597,7 @@
                     </div>
                     
                     <div class="checklist-item scroll-reveal" style="transition-delay: 0.3s;">
-                        <div class="icon-placeholder"></div>
+                        <img src="file-formats-icon.svg" alt="File Formats Icon" class="checklist-icon">
                         <div class="check-content">
                             <h4>File Formats</h4>
                             <p>We strongly prefer <strong>Print-Ready PDFs</strong>. Please ensure all fonts are outlined or embedded, and transparency layers are flattened.</p>
