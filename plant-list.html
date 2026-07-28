@@ -195,7 +195,7 @@
         .service-img-container img { transition: transform 0.6s ease; }
         .service-row:hover .service-img-container img { transform: scale(1.05); }
         
-        /* New Inner Banner Styling for the 3 Headings */
+        /* Inner Banner Styling for the 3 Headings */
         .service-banner {
             background-color: var(--gowise-magenta);
             color: #fff;
@@ -269,7 +269,7 @@
             transition: opacity 0.5s ease-out 0.4s;
         }
         
-        /* 50% Text / 25% Placeholder 1 / 25% Placeholder 2 Grid */
+        /* 50% Text / 25% Card 1 / 25% Card 2 Grid */
         .fuji-text-grid {
             display: grid;
             grid-template-columns: 2fr 1fr 1fr;
@@ -288,11 +288,36 @@
             margin-bottom: 20px;
         }
         
-        .fuji-placeholder {
+        .fuji-image-card {
+            position: relative;
             background-color: #e0e0e0;
             border-radius: 4px;
             width: 100%;
             min-height: 200px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        .fuji-image-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .fuji-image-label {
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            color: #fff;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 20px;
+            text-shadow: 0px 2px 6px rgba(0,0,0,0.8);
+            z-index: 2;
         }
 
         /* Coordinated Animation Triggers for the Fuji Section */
@@ -624,8 +649,16 @@
                         
                         <p>This latest purchase has put us once again at the very forefront of technology and ensures we will stay ahead of the game as the way colour is processed digitally continues to surge onwards.</p>
                     </div>
-                    <div class="fuji-placeholder"></div>
-                    <div class="fuji-placeholder"></div>
+                    
+                    <div class="fuji-image-card">
+                        <img src="CMYK.png" alt="Standard CMYK Print Example" class="cover-img">
+                        <div class="fuji-image-label">CMYK</div>
+                    </div>
+                    
+                    <div class="fuji-image-card">
+                        <img src="CMYK-pink.png" alt="CMYK with Fluorescent Pink Print Example" class="cover-img">
+                        <div class="fuji-image-label">CMYK + PINK</div>
+                    </div>
                 </div>
                 
             </div>
