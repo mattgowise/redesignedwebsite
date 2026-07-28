@@ -206,10 +206,36 @@
             transition: opacity 0.8s ease-out, transform 0.8s ease-out; 
         }
         .magenta-banner.visible { opacity: 1; transform: scale(1); }
+        
         .fuji-section { padding: 0 5% 80px; }
-        .fuji-content { max-width: 1000px; margin: 0 auto; opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
+        .fuji-content { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
         .fuji-content.visible { opacity: 1; transform: translateY(0); }
-        .fuji-img-container { width: 100%; border-radius: 4px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1); margin-bottom: 40px; }
+        
+        /* Larger image, no drop shadow */
+        .fuji-img-container { width: 100%; border-radius: 4px; overflow: hidden; margin-bottom: 40px; }
+        
+        /* 75% Text / 25% Image Placeholder Grid */
+        .fuji-text-grid {
+            display: grid;
+            grid-template-columns: 3fr 1fr;
+            gap: 40px;
+            align-items: stretch;
+        }
+        
+        .fuji-text p {
+            font-size: 16px;
+            font-weight: 400;
+            color: #444;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        
+        .fuji-placeholder {
+            background-color: #e0e0e0;
+            border-radius: 4px;
+            width: 100%;
+            min-height: 200px;
+        }
 
         /* Equipment Inventory Section */
         .equipment-inventory-section { background-color: var(--header-dark); padding: 40px 5% 80px; margin-bottom: 0; }
@@ -338,6 +364,7 @@
 
             /* Scaling for the new Banner */
             .magenta-banner { font-size: 24px; padding: 30px 5%; margin-bottom: 40px; }
+            .fuji-text-grid { grid-template-columns: 1fr; }
 
             /* Mobile Carousel implementation for Service Rows */
             .plant-list-section .section-container {
@@ -516,17 +543,25 @@
         </section>
 
         <section class="fuji-section">
-            <div class="fuji-content scroll-reveal">
-                <div class="fuji-img-container">
-                    <img src="fuji-press.png" alt="Fujifilm Revoria SC285S Five Colour Press" class="cover-img">
+            <div class="section-container">
+                <div class="fuji-content scroll-reveal">
+                    <div class="fuji-img-container">
+                        <img src="fuji-press.png" alt="Fujifilm Revoria SC285S Five Colour Press" class="cover-img">
+                    </div>
+                    
+                    <div class="fuji-text-grid">
+                        <div class="fuji-text">
+                            <p>As digital presses advanced in the late nineties we could see the benefit of supplementing our lithographic process with the ability to deliver short run colour. Since taking that decision we have been swept along with the rapid technological changes and have frequently updated our digital presses with each upgrade bringing improved quality, features and capabilities – each more exciting than the last.</p>
+                            
+                            <p>In 2026 we have embraced the most exciting change in digital technology to date. In fact, we have haven’t been this excited about a change in print in our history! Our latest Fujifilm Revoria SC285S press breaks the confines of CMYK like never before, enabling us to delivery a vastly improved colour gamut in short run digital print than at any time previously.</p>
+                            
+                            <p>Adding fluorescent pink as a fifth colour vastly improves our oranges, purples, bright blues and a host of other pigments enabling us to produce digital colour print closer to images on screen and closer to many previously unobtainable Pantone colours.</p>
+                            
+                            <p>This latest purchase has put us once again at the very forefront of technology and ensures we will stay ahead of the game as the way colour is processed digitally continues to surge onwards.</p>
+                        </div>
+                        <div class="fuji-placeholder"></div>
+                    </div>
                 </div>
-                <p>As digital presses advanced in the late nineties we could see the benefit of supplementing our lithographic process with the ability to deliver short run colour. Since taking that decision we have been swept along with the rapid technological changes and have frequently updated our digital presses with each upgrade bringing improved quality, features and capabilities – each more exciting than the last.</p>
-                
-                <p>In 2026 we have embraced the most exciting change in digital technology to date. In fact, we have haven’t been this excited about a change in print in our history! Our latest Fujifilm Revoria SC285S press breaks the confines of CMYK like never before, enabling us to delivery a vastly improved colour gamut in short run digital print than at any time previously.</p>
-                
-                <p>Adding fluorescent pink as a fifth colour vastly improves our oranges, purples, bright blues and a host of other pigments enabling us to produce digital colour print closer to images on screen and closer to many previously unobtainable Pantone colours.</p>
-                
-                <p>This latest purchase has put us once again at the very forefront of technology and ensures we will stay ahead of the game as the way colour is processed digitally continues to surge onwards.</p>
             </div>
         </section>
 
