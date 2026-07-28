@@ -50,7 +50,7 @@
         }
 
         /* Typography Styles */
-        h1, h2, h3, h4 { font-weight: 600; color: var(--header-dark); }
+        h1, h2, h3, h4 { font-weight: 300; color: var(--header-dark); text-transform: uppercase; letter-spacing: 1px; }
         p { line-height: 1.8; color: #555; margin-bottom: 15px; font-weight: 300; }
         
         .btn {
@@ -66,6 +66,7 @@
             border: none;
             cursor: pointer;
             text-align: center;
+            letter-spacing: normal;
         }
         .btn:hover { background-color: var(--gowise-pink); transform: translateY(-2px); }
 
@@ -135,7 +136,7 @@
             backdrop-filter: blur(5px);
         }
         
-        .inner-hero-content h1 { font-size: 42px; font-weight: 800; color: #fff; margin-bottom: 20px; line-height: 1.2; opacity: 0; transform: translateY(30px); animation: slideUpFade 0.8s forwards; }
+        .inner-hero-content h1 { font-size: 42px; font-weight: 300; color: #fff; margin-bottom: 20px; line-height: 1.2; opacity: 0; transform: translateY(30px); animation: slideUpFade 0.8s forwards; }
         .inner-hero-content p { font-size: 18px; color: #ddd; font-weight: 300; opacity: 0; transform: translateY(30px); animation: slideUpFade 0.8s 0.2s forwards; }
         
         .hero-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; }
@@ -197,7 +198,7 @@
         .section-container { max-width: 1400px; margin: 0 auto; }
         .section-header { text-align: center; margin-bottom: 50px; }
         .section-header h2 { font-size: 36px; color: var(--gowise-magenta); margin-bottom: 15px; }
-        .section-header p { font-size: 18px; max-width: 1200px; margin: 0 auto; font-weight: 300; }
+        .section-header p { font-size: 18px; max-width: 1200px; margin: 0 auto; font-weight: 300; text-transform: none; letter-spacing: normal; }
 
         /* 3. Understanding Colour (CMYK/RGB) Custom Layout */
         .colour-grid {
@@ -250,6 +251,8 @@
         }
         .comparison-card.visible { opacity: 1; transform: translateY(0); }
         .comparison-card h3 { font-size: 24px; margin-bottom: 20px; color: var(--header-dark); }
+        .comparison-card p { font-size: 16px; font-weight: 300; line-height: 1.8; color: #555; margin-bottom: 15px; }
+        .comparison-card strong { font-weight: 600; color: var(--header-dark); text-transform: none; letter-spacing: normal; }
 
         /* Highlight Callout Box */
         .callout-box {
@@ -340,7 +343,7 @@
         .modal-content h3 { color: var(--gowise-magenta); margin-bottom: 20px; font-size: 28px; }
         
         .form-group { margin-bottom: 20px; }
-        .form-group label { display: block; font-weight: 600; margin-bottom: 8px; font-size: 14px; color: var(--header-dark); }
+        .form-group label { display: block; font-weight: 600; margin-bottom: 8px; font-size: 14px; color: var(--header-dark); text-transform: none; letter-spacing: normal; }
         .form-group input, .form-group textarea { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 4px; font-size: 14px; font-family: inherit; transition: border-color 0.3s; }
         .form-group textarea { resize: vertical; min-height: 120px; }
         .form-group input:focus, .form-group textarea:focus { border-color: var(--gowise-magenta); outline: none; }
@@ -659,39 +662,33 @@
         </div>
     </div>
 
-    <!-- Footer -->
     <footer>
         <div class="footer-header">
             <h2>Visit Our Norwich<br class="mobile-break"> Print Shop</h2>
             <p>GoWise Print proudly serves local businesses, independent creators, and trade partners across Norfolk and the UK.</p>
         </div>
         <div class="footer-grid">
-            
             <div class="footer-arrow-container">
                 <svg class="footer-arrow" id="slideArrow" viewBox="0 0 100 50" xmlns="http://www.w3.org/2000/svg">
                     <path d="M0,15 L60,15 L60,0 L100,25 L60,50 L60,35 L0,35 Z" fill="var(--gowise-magenta)"/>
                 </svg>
             </div>
-            
             <div class="footer-text-columns">
                 <div>
-                    <p style="font-size: 18px; margin-bottom: 15px; color: var(--gowise-cyan); font-weight: 600;">CONTACT INFO</p>
+                    <p style="font-size: 18px; margin-bottom: 15px; color: var(--gowise-cyan); font-weight: 600; text-transform: none; letter-spacing: normal;">CONTACT INFO</p>
                     <p><strong>Address:</strong><br>4 Belmore Road<br>Thorpe St Andrew<br>Norwich, Norfolk<br>NR7 0PT</p>
                     <br>
                     <p><strong>Phone:</strong> +44 (0)1603 431304</p>
                     <p><strong>Email:</strong> print@gowise.co.uk</p>
                 </div>
-                
                 <div>
-                    <p style="font-size: 18px; margin-bottom: 15px; color: var(--gowise-cyan); font-weight: 600;">OPENING HOURS</p>
+                    <p style="font-size: 18px; margin-bottom: 15px; color: var(--gowise-cyan); font-weight: 600; text-transform: none; letter-spacing: normal;">OPENING HOURS</p>
                     <p>MONDAY: 08:30 – 17:00<br>TUESDAY: 08:30 – 17:00<br>WEDNESDAY: 08:30 – 17:00<br>THURSDAY: 08:30 – 17:00<br>FRIDAY: 08:30 – 17:00<br>SATURDAY: CLOSED<br>SUNDAY: CLOSED</p>
                 </div>
             </div>
-            
             <div class="map-container">
                 <iframe src="https://maps.google.com/maps?q=NR7%200PT&t=&z=14&ie=UTF8&iwloc=&output=embed" loading="lazy" allowfullscreen title="GoWise Print Location Map"></iframe>
             </div>
-            
         </div>
     </footer>
 
