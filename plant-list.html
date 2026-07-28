@@ -51,10 +51,10 @@
         }
 
         /* Typography & Buttons */
-        h1, h2, h3, h4 { font-weight: 600; color: var(--header-dark); }
+        h1, h2, h3, h4 { font-weight: 300; color: var(--header-dark); text-transform: uppercase; letter-spacing: 1px; }
         p { line-height: 1.8; color: #555; margin-bottom: 15px; }
         
-        .btn { display: inline-block; padding: 12px 24px; background-color: var(--gowise-magenta); color: #fff; text-transform: uppercase; font-size: 14px; font-weight: 600; border-radius: 3px; transition: background-color var(--transition-speed), transform 0.2s; border: none; cursor: pointer; text-align: center; }
+        .btn { display: inline-block; padding: 12px 24px; background-color: var(--gowise-magenta); color: #fff; text-transform: uppercase; font-size: 14px; font-weight: 600; border-radius: 3px; transition: background-color var(--transition-speed), transform 0.2s; border: none; cursor: pointer; text-align: center; letter-spacing: normal; }
         .btn:hover { background-color: var(--gowise-pink); transform: translateY(-2px); }
         .btn-outline { background-color: transparent; border: 2px solid #fff; color: #fff; }
         .btn-outline:hover { background-color: #fff; color: var(--gowise-magenta); }
@@ -119,7 +119,7 @@
             backdrop-filter: blur(5px);
         }
         
-        .inner-hero-content h1 { font-size: 42px; font-weight: 800; color: #fff; margin-bottom: 20px; line-height: 1.2; opacity: 0; transform: translateY(30px); animation: slideUpFade 0.8s forwards; }
+        .inner-hero-content h1 { font-size: 42px; color: #fff; margin-bottom: 20px; line-height: 1.2; opacity: 0; transform: translateY(30px); animation: slideUpFade 0.8s forwards; }
         .inner-hero-content p { font-size: 18px; color: #ddd; font-weight: 300; opacity: 0; transform: translateY(30px); animation: slideUpFade 0.8s 0.2s forwards; }
         
         .hero-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; }
@@ -149,7 +149,6 @@
         }
 
         .section-container { max-width: 1400px; margin: 0 auto; }
-        /* Doubled bottom padding from 40px to 80px */
         .plant-list-section { padding: 0 5% 80px; }
         
         /* Animated Magenta Divider */
@@ -163,6 +162,32 @@
             transition: width 1s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.8s ease-out; 
         }
         .magenta-divider.visible { width: 120px; opacity: 1; }
+
+        /* Reusable Animated Magenta Banner for Headings */
+        h2.magenta-banner-heading {
+            background-color: var(--gowise-magenta);
+            color: #fff !important;
+            padding: 15px 5%;
+            text-align: center;
+            font-size: 32px;
+            font-weight: 300;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 25px;
+            border-radius: 4px;
+            transform: scaleX(0);
+            transform-origin: center;
+            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+            line-height: 1.3;
+            display: block;
+        }
+        h2.magenta-banner-heading span {
+            display: inline-block;
+            opacity: 0;
+            transition: opacity 0.5s ease-out 0.4s;
+        }
+        .visible h2.magenta-banner-heading { transform: scaleX(1); }
+        .visible h2.magenta-banner-heading span { opacity: 1; }
         
         /* Service Rows (Equipment Blocks) */
         .service-row {
@@ -202,7 +227,7 @@
             padding: 15px 5%;
             text-align: center;
             font-size: 24px;
-            font-weight: 300; /* Matched to screenshot */
+            font-weight: 300; 
             text-transform: uppercase;
             letter-spacing: 1px;
             margin-bottom: 20px;
@@ -224,7 +249,7 @@
         
         .capabilities-list { list-style: none; padding: 0; }
         .capabilities-list li { position: relative; margin-bottom: 20px; font-size: 15px; line-height: 1.6; }
-        .capabilities-list strong { display: block; font-size: 16px; font-weight: 600; color: var(--gowise-cyan); margin-bottom: 5px; }
+        .capabilities-list strong { display: block; font-size: 16px; font-weight: 600; color: var(--gowise-cyan); margin-bottom: 5px; text-transform: none; letter-spacing: normal; }
 
         /* Delayed Fade for the body text in Service Rows */
         .service-text > p, .service-text > .capabilities-list {
@@ -244,7 +269,7 @@
             padding: 25px 5%; 
             text-align: center; 
             font-size: 36px; 
-            font-weight: 300; /* Matched to screenshot */
+            font-weight: 300; 
             text-transform: uppercase; 
             letter-spacing: 1px; 
             margin-bottom: 25px;
@@ -312,7 +337,7 @@
             width: 100%;
             text-align: center;
             color: #fff;
-            font-weight: 300; /* Matched to banner */
+            font-weight: 300;
             text-transform: uppercase;
             letter-spacing: 1px;
             font-size: 20px;
@@ -329,10 +354,16 @@
         /* Equipment Inventory Section */
         .equipment-inventory-section { background-color: var(--header-dark); padding: 40px 5% 80px; margin-bottom: 0; }
         .equipment-header { text-align: center; margin-bottom: 50px; }
-        .equipment-header h2 { font-size: 36px; color: var(--gowise-magenta); }
         
+        /* Delayed fade for paragraph if it exists inside header block */
+        .equipment-header p, .footer-header p {
+            opacity: 0;
+            transition: opacity 0.6s ease-out 0.7s;
+        }
+        .equipment-header.visible p, .footer-header.visible p { opacity: 1; }
+
         .equipment-grid { display: grid; grid-template-columns: auto auto auto; justify-content: center; gap: 80px; }
-        .equipment-column h3 { font-size: 28px; color: #fff; margin-bottom: 20px; font-weight: 400; }
+        .equipment-column h3 { font-size: 28px; color: #fff; margin-bottom: 20px; font-weight: 300; }
         .equipment-column h3.sub-heading { margin-top: 40px; }
         .equipment-list { list-style: none; padding: 0; }
         .equipment-list li { margin-bottom: 8px; font-size: 16px; color: #bbb; font-weight: 300; line-height: 1.5; }
@@ -359,7 +390,7 @@
         .modal-content h3 { color: var(--gowise-magenta); margin-bottom: 20px; font-size: 28px; }
         
         .form-group { margin-bottom: 20px; }
-        .form-group label { display: block; font-weight: 600; margin-bottom: 8px; font-size: 14px; color: var(--header-dark); }
+        .form-group label { display: block; font-weight: 600; margin-bottom: 8px; font-size: 14px; color: var(--header-dark); text-transform: none; letter-spacing: normal; }
         .form-group input, .form-group textarea { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 4px; font-size: 14px; font-family: inherit; transition: border-color 0.3s; }
         .form-group textarea { resize: vertical; min-height: 120px; }
         .form-group input:focus, .form-group textarea:focus { border-color: var(--gowise-magenta); outline: none; }
@@ -369,7 +400,6 @@
         footer p { color: #ffffff !important; } 
         
         .footer-header { margin-bottom: 40px; text-align: center; }
-        .footer-header h2 { color: var(--gowise-magenta); font-size: 32px; }
         .footer-grid { display: flex; align-items: stretch; justify-content: space-between; gap: 40px; max-width: 1400px; margin: 0 auto; }
         .footer-arrow-container { flex: 0 0 120px; display: flex; align-items: center; }
         .footer-arrow { width: 100%; height: auto; transform: translateX(-150px); opacity: 0; transition: transform 1s cubic-bezier(0.25, 1, 0.5, 1), opacity 1s ease; }
@@ -454,6 +484,7 @@
             /* Scaling for the new Banners & Grid */
             .magenta-banner { font-size: 24px; padding: 20px 5%; margin-bottom: 20px; }
             .service-banner { font-size: 20px; padding: 12px 5%; }
+            h2.magenta-banner-heading { font-size: 20px; padding: 12px 5%; }
             .fuji-text-grid { grid-template-columns: 1fr; gap: 20px; }
 
             /* Mobile Carousel implementation for Service Rows */
@@ -665,12 +696,12 @@
         </section>
 
         <!-- Full Equipment List Section -->
-        <section class="equipment-inventory-section scroll-reveal">
+        <section class="equipment-inventory-section">
             <div class="section-container">
-                <div class="equipment-header">
-                    <h2 class="mobile-shrink-text">A Full List <br class="mobile-break">of Our Equipment</h2>
+                <div class="equipment-header scroll-reveal">
+                    <h2 class="magenta-banner-heading mobile-shrink-text"><span>A Full List <br class="mobile-break">of Our Equipment</span></h2>
                 </div>
-                <div class="equipment-grid">
+                <div class="equipment-grid scroll-reveal">
                     
                     <div class="equipment-column">
                         <h3>Pre Press</h3>
@@ -772,9 +803,9 @@
 
     <!-- 6. Footer -->
     <footer>
-        <div class="footer-header">
+        <div class="footer-header scroll-reveal">
             <!-- 7. Footer Header text split on mobile -->
-            <h2>Visit Our Norwich<br class="mobile-break"> Print Shop</h2>
+            <h2 class="magenta-banner-heading"><span>Visit Our Norwich<br class="mobile-break"> Print Shop</span></h2>
             <p>GoWise Print proudly serves local businesses, independent creators, and trade partners across Norfolk and the UK.</p>
         </div>
         <div class="footer-grid">
@@ -787,7 +818,7 @@
             
             <div class="footer-text-columns">
                 <div>
-                    <p style="font-size: 18px; margin-bottom: 15px; color: var(--gowise-cyan); font-weight: 600;">CONTACT INFO</p>
+                    <p style="font-size: 18px; margin-bottom: 15px; color: var(--gowise-cyan); font-weight: 600; text-transform: none; letter-spacing: normal;">CONTACT INFO</p>
                     <p><strong>Address:</strong><br>4 Belmore Road<br>Thorpe St Andrew<br>Norwich, Norfolk<br>NR7 0PT</p>
                     <br>
                     <p><strong>Phone:</strong> +44 (0)1603 431304</p>
@@ -795,7 +826,7 @@
                 </div>
                 
                 <div>
-                    <p style="font-size: 18px; margin-bottom: 15px; color: var(--gowise-cyan); font-weight: 600;">OPENING HOURS</p>
+                    <p style="font-size: 18px; margin-bottom: 15px; color: var(--gowise-cyan); font-weight: 600; text-transform: none; letter-spacing: normal;">OPENING HOURS</p>
                     <p>MONDAY: 08:30 – 17:00<br>TUESDAY: 08:30 – 17:00<br>WEDNESDAY: 08:30 – 17:00<br>THURSDAY: 08:30 – 17:00<br>FRIDAY: 08:30 – 17:00<br>SATURDAY: CLOSED<br>SUNDAY: CLOSED</p>
                 </div>
             </div>
