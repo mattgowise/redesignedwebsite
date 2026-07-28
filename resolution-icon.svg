@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 300 300">
+  <!-- Generator: Adobe Illustrator 30.6.0, SVG Export Plug-In . SVG Version: 2.1.4 Build 109)  -->
+  <defs>
+    <style>
+      .st0 {
+        fill: #e738f7;
+      }
+    </style>
+  </defs>
+  <path class="st0" d="M150,8c37.93,0,73.59,14.77,100.41,41.59,26.82,26.82,41.59,62.48,41.59,100.41s-14.77,73.59-41.59,100.41c-26.82,26.82-62.48,41.59-100.41,41.59s-73.59-14.77-100.41-41.59c-26.82-26.82-41.59-62.48-41.59-100.41s14.77-73.59,41.59-100.41c26.82-26.82,62.48-41.59,100.41-41.59M150,0C67.16,0,0,67.16,0,150s67.16,150,150,150,150-67.16,150-150S232.84,0,150,0h0Z"/>
+  <path class="st0" d="M216.28,238.62H83.72c-12.32,0-22.33-10.02-22.33-22.33V83.72c0-12.32,10.02-22.33,22.33-22.33h132.56c12.32,0,22.33,10.02,22.33,22.33v132.56c0,12.32-10.02,22.33-22.33,22.33ZM83.72,69.38c-7.9,0-14.33,6.43-14.33,14.33v132.56c0,7.9,6.43,14.33,14.33,14.33h132.56c7.9,0,14.33-6.43,14.33-14.33V83.72c0-7.9-6.43-14.33-14.33-14.33H83.72Z"/>
+  <g>
+    <g>
+      <circle class="st0" cx="91.69" cy="85.98" r="6.18"/>
+      <circle class="st0" cx="115.01" cy="85.98" r="6.18"/>
+      <circle class="st0" cx="138.34" cy="85.98" r="6.18"/>
+      <circle class="st0" cx="161.66" cy="85.98" r="6.18"/>
+      <circle class="st0" cx="184.99" cy="85.98" r="6.18"/>
+      <circle class="st0" cx="208.31" cy="85.98" r="6.18"/>
+    </g>
+    <g>
+      <circle class="st0" cx="91.69" cy="107.32" r="6.18"/>
+      <circle class="st0" cx="115.01" cy="107.32" r="6.18"/>
+      <circle class="st0" cx="138.34" cy="107.32" r="6.18"/>
+      <circle class="st0" cx="161.66" cy="107.32" r="6.18"/>
+      <circle class="st0" cx="184.99" cy="107.32" r="6.18"/>
+      <circle class="st0" cx="208.31" cy="107.32" r="6.18"/>
+    </g>
+    <g>
+      <circle class="st0" cx="91.69" cy="128.66" r="6.18"/>
+      <circle class="st0" cx="115.01" cy="128.66" r="6.18"/>
+      <circle class="st0" cx="138.34" cy="128.66" r="6.18"/>
+      <circle class="st0" cx="161.66" cy="128.66" r="6.18"/>
+      <circle class="st0" cx="184.99" cy="128.66" r="6.18"/>
+      <circle class="st0" cx="208.31" cy="128.66" r="6.18"/>
+    </g>
+    <g>
+      <circle class="st0" cx="91.69" cy="150" r="6.18"/>
+      <circle class="st0" cx="115.01" cy="150" r="6.18"/>
+      <circle class="st0" cx="138.34" cy="150" r="6.18"/>
+      <circle class="st0" cx="161.66" cy="150" r="6.18"/>
+      <circle class="st0" cx="184.99" cy="150" r="6.18"/>
+      <circle class="st0" cx="208.31" cy="150" r="6.18"/>
+    </g>
+    <g>
+      <circle class="st0" cx="91.69" cy="171.34" r="6.18"/>
+      <circle class="st0" cx="115.01" cy="171.34" r="6.18"/>
+      <circle class="st0" cx="138.34" cy="171.34" r="6.18"/>
+      <circle class="st0" cx="161.66" cy="171.34" r="6.18"/>
+      <circle class="st0" cx="184.99" cy="171.34" r="6.18"/>
+      <circle class="st0" cx="208.31" cy="171.34" r="6.18"/>
+    </g>
+    <g>
+      <circle class="st0" cx="91.69" cy="192.68" r="6.18"/>
+      <circle class="st0" cx="115.01" cy="192.68" r="6.18"/>
+      <circle class="st0" cx="138.34" cy="192.68" r="6.18"/>
+      <circle class="st0" cx="161.66" cy="192.68" r="6.18"/>
+      <circle class="st0" cx="184.99" cy="192.68" r="6.18"/>
+      <circle class="st0" cx="208.31" cy="192.68" r="6.18"/>
+    </g>
+    <g>
+      <circle class="st0" cx="91.69" cy="214.02" r="6.18"/>
+      <circle class="st0" cx="115.01" cy="214.02" r="6.18"/>
+      <circle class="st0" cx="138.34" cy="214.02" r="6.18"/>
+      <circle class="st0" cx="161.66" cy="214.02" r="6.18"/>
+      <circle class="st0" cx="184.99" cy="214.02" r="6.18"/>
+      <circle class="st0" cx="208.31" cy="214.02" r="6.18"/>
+    </g>
+  </g>
+</svg>
