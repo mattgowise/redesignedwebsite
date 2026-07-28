@@ -323,9 +323,11 @@
             .header-right { display: flex; align-items: center; gap: 15px; }
             .header-right .btn-quote { padding: 8px 12px !important; font-size: 12px; margin-top: 0; }}
             
-            /* Top Bar on one line without underlines */
+            /* Top Bar on one line without underlines - Mobile Only */
+            @media (max-width: 1050px) {
             .top-bar { flex-direction: row; justify-content: center; gap: 15px; font-size: 12px; white-space: nowrap; }
             .top-bar a { text-decoration: none !important; }
+        }
 
             /* Stacked Hero Overrides */
             .inner-hero { flex-direction: column; min-height: auto; background-color: #ffffff; overflow: visible; padding: 0; }
