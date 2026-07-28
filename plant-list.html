@@ -95,11 +95,10 @@
         @keyframes dropFade { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
 
         /* Utility specific for mobile breaks */
-        /* 1050px Breakpoint: Hamburger & Core Mobile Layout */
         @media (max-width: 1050px) {
             .mobile-break { display: block; }
             .desktop-break { display: none; }
-            .carousel-arrow { display: none; } /* Hide Carousel Arrows on Mobile */
+            .carousel-arrow { display: none; }
             header { flex-direction: row; flex-wrap: wrap; justify-content: space-between; align-items: center; padding: 15px 5%; }
             .logo img { max-height: 60px; }
             .header-right { display: flex; align-items: center; gap: 15px; }
@@ -191,35 +190,48 @@
         .capabilities-list strong { display: block; font-size: 16px; font-weight: 600; color: var(--gowise-cyan); margin-bottom: 5px; }
 
         /* 5-Colour Banner & Section */
+        .fuji-section { padding: 0 5% 80px; }
+        
         .magenta-banner { 
             background-color: var(--gowise-magenta); 
             color: #fff; 
-            padding: 50px 5%; 
+            padding: 25px 5%; 
             text-align: center; 
             font-size: 36px; 
             font-weight: 800; 
             text-transform: uppercase; 
             letter-spacing: 1px; 
-            margin-bottom: 60px;
-            opacity: 0; 
-            transform: scale(0.98); 
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out; 
+            margin-bottom: 25px;
+            border-radius: 4px;
+            transform: scaleX(0); 
+            transform-origin: center;
+            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1); 
         }
-        .magenta-banner.visible { opacity: 1; transform: scale(1); }
         
-        .fuji-section { padding: 0 5% 80px; }
-        .fuji-content { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
-        .fuji-content.visible { opacity: 1; transform: translateY(0); }
+        .magenta-banner span {
+            display: inline-block;
+            opacity: 0;
+            transition: opacity 0.5s ease-out 0.4s;
+        }
+
+        .fuji-img-container { 
+            width: 100%; 
+            border-radius: 4px; 
+            overflow: hidden; 
+            margin-bottom: 40px; 
+            opacity: 0;
+            transition: opacity 0.5s ease-out 0.4s;
+        }
         
-        /* Larger image, no drop shadow */
-        .fuji-img-container { width: 100%; border-radius: 4px; overflow: hidden; margin-bottom: 40px; }
-        
-        /* 75% Text / 25% Image Placeholder Grid */
+        /* 50% Text / 25% Placeholder 1 / 25% Placeholder 2 Grid */
         .fuji-text-grid {
             display: grid;
-            grid-template-columns: 3fr 1fr;
+            grid-template-columns: 2fr 1fr 1fr;
             gap: 40px;
             align-items: stretch;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out 0.7s, transform 0.6s ease-out 0.7s;
         }
         
         .fuji-text p {
@@ -236,6 +248,12 @@
             width: 100%;
             min-height: 200px;
         }
+
+        /* Coordinated Animation Triggers for the Fuji Section */
+        .fuji-section.visible .magenta-banner { transform: scaleX(1); }
+        .fuji-section.visible .magenta-banner span { opacity: 1; }
+        .fuji-section.visible .fuji-img-container { opacity: 1; }
+        .fuji-section.visible .fuji-text-grid { opacity: 1; transform: translateY(0); }
 
         /* Equipment Inventory Section */
         .equipment-inventory-section { background-color: var(--header-dark); padding: 40px 5% 80px; margin-bottom: 0; }
@@ -330,7 +348,7 @@
             /* Updated Top Bar to keep it on one line for mobile */
             .top-bar { flex-direction: row; justify-content: center; gap: 20px; font-size: 12px; }
             
-            /* Stacked Hero Overrides (Matched to Index Mobile Style) */
+            /* Stacked Hero Overrides */
             .inner-hero { 
                 height: 500px; 
                 min-height: unset; 
@@ -358,13 +376,13 @@
                 box-shadow: none;
             }
             
-            /* Text scaling so split titles fit beautifully */
+            /* Text scaling */
             .inner-hero-content h1 { font-size: 28px; color: var(--gowise-cyan); margin-bottom: 10px; line-height: 1.2; }
             .inner-hero-content p { font-size: 16px; color: #444444; margin-bottom: 0; }
 
-            /* Scaling for the new Banner */
-            .magenta-banner { font-size: 24px; padding: 30px 5%; margin-bottom: 40px; }
-            .fuji-text-grid { grid-template-columns: 1fr; }
+            /* Scaling for the new Banner & Grid */
+            .magenta-banner { font-size: 24px; padding: 20px 5%; margin-bottom: 20px; }
+            .fuji-text-grid { grid-template-columns: 1fr; gap: 20px; }
 
             /* Mobile Carousel implementation for Service Rows */
             .plant-list-section .section-container {
@@ -538,30 +556,31 @@
         </section>
 
         <!-- New Five Colour Digital Printing Section -->
-        <section class="magenta-banner scroll-reveal">
-            Five Colour Digital Printing
-        </section>
-
-        <section class="fuji-section">
+        <section class="fuji-section scroll-reveal">
             <div class="section-container">
-                <div class="fuji-content scroll-reveal">
-                    <div class="fuji-img-container">
-                        <img src="fuji-press.png" alt="Fujifilm Revoria SC285S Five Colour Press" class="cover-img">
-                    </div>
-                    
-                    <div class="fuji-text-grid">
-                        <div class="fuji-text">
-                            <p>As digital presses advanced in the late nineties we could see the benefit of supplementing our lithographic process with the ability to deliver short run colour. Since taking that decision we have been swept along with the rapid technological changes and have frequently updated our digital presses with each upgrade bringing improved quality, features and capabilities – each more exciting than the last.</p>
-                            
-                            <p>In 2026 we have embraced the most exciting change in digital technology to date. In fact, we have haven’t been this excited about a change in print in our history! Our latest Fujifilm Revoria SC285S press breaks the confines of CMYK like never before, enabling us to delivery a vastly improved colour gamut in short run digital print than at any time previously.</p>
-                            
-                            <p>Adding fluorescent pink as a fifth colour vastly improves our oranges, purples, bright blues and a host of other pigments enabling us to produce digital colour print closer to images on screen and closer to many previously unobtainable Pantone colours.</p>
-                            
-                            <p>This latest purchase has put us once again at the very forefront of technology and ensures we will stay ahead of the game as the way colour is processed digitally continues to surge onwards.</p>
-                        </div>
-                        <div class="fuji-placeholder"></div>
-                    </div>
+                
+                <div class="magenta-banner">
+                    <span>Five Colour Digital Printing</span>
                 </div>
+                
+                <div class="fuji-img-container">
+                    <img src="fuji-press.png" alt="Fujifilm Revoria SC285S Five Colour Press" class="cover-img">
+                </div>
+                
+                <div class="fuji-text-grid">
+                    <div class="fuji-text">
+                        <p>As digital presses advanced in the late nineties we could see the benefit of supplementing our lithographic process with the ability to deliver short run colour. Since taking that decision we have been swept along with the rapid technological changes and have frequently updated our digital presses with each upgrade bringing improved quality, features and capabilities – each more exciting than the last.</p>
+                        
+                        <p>In 2026 we have embraced the most exciting change in digital technology to date. In fact, we have haven’t been this excited about a change in print in our history! Our latest Fujifilm Revoria SC285S press breaks the confines of CMYK like never before, enabling us to delivery a vastly improved colour gamut in short run digital print than at any time previously.</p>
+                        
+                        <p>Adding fluorescent pink as a fifth colour vastly improves our oranges, purples, bright blues and a host of other pigments enabling us to produce digital colour print closer to images on screen and closer to many previously unobtainable Pantone colours.</p>
+                        
+                        <p>This latest purchase has put us once again at the very forefront of technology and ensures we will stay ahead of the game as the way colour is processed digitally continues to surge onwards.</p>
+                    </div>
+                    <div class="fuji-placeholder"></div>
+                    <div class="fuji-placeholder"></div>
+                </div>
+                
             </div>
         </section>
 
