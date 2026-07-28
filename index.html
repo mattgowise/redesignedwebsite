@@ -52,6 +52,9 @@
         h1, h2, h3 { font-weight: 600; color: var(--header-dark); }
         p { line-height: 1.8; color: #555; }
         
+        /* Utility */
+        .mobile-break { display: none; } /* Hidden on desktop, shown on mobile via media query */
+
         .btn {
             display: inline-block;
             padding: 12px 24px;
@@ -231,7 +234,9 @@
             text-align: center; 
             border-radius: 4px;
             box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            transition: box-shadow 0.3s ease, transform 0.3s ease; 
+            transition: box-shadow 0.3s ease, transform 0.3s ease;
+            text-decoration: none; /* Ensures link styling is removed */
+            color: inherit;
         }
         .service-square:hover { box-shadow: 0 15px 35px rgba(0,0,0,0.25); transform: translateY(-10px); z-index: 2; }
         .service-square h3 { color: #fff; font-size: 20px; margin: 0; line-height: 1.4; }
@@ -284,7 +289,7 @@
         /* 7. Roundel */
         .quote-roundel {
             position: fixed;
-            top: 50%;
+            top: 65%; /* Adjusted down to not obscure arrows */
             right: 20px;
             transform: translateY(-50%);
             width: 90px;
@@ -515,7 +520,7 @@
             <div class="carousel-slide active">
                 <img src="Home-1.jpg" alt="Printing facility" class="carousel-bg-img">
                 <div class="carousel-content">
-                    <h1>Now in our fifth decade of printing</h1>
+                    <h1>Now in our fifth <br>decade of printing</h1>
                     <p>We have been proudly serving local businesses and independent creators with premium print and finishing services since 1983.</p>
                 </div>
             </div>
@@ -591,41 +596,41 @@
                 
                 <!-- Box 1 -->
                 <div class="service-column scroll-stagger" style="transition-delay: 0s;">
-                    <div class="service-square box-1">
+                    <a href="services.html#digital-vs-litho" class="service-square box-1">
                         <h3>Litho Printing &<br>Digital Printing</h3>
-                    </div>
+                    </a>
                     <p class="service-desc">What is lithographic and digital printing? Read about the difference.</p>
                 </div>
 
                 <!-- Box 2 -->
                 <div class="service-column scroll-stagger" style="transition-delay: 0.15s;">
-                    <div class="service-square box-2">
+                    <a href="services.html#commercial-printing" class="service-square box-2">
                         <h3>Pantone Spot Colour<br>Litho Printing</h3>
-                    </div>
+                    </a>
                     <p class="service-desc">Exact Pantone ink matching is a dying art and one we are very keen to preserve. We still offer traditional litho printed pantone matching and will for many years to come.</p>
                 </div>
 
                 <!-- Box 3 -->
                 <div class="service-column scroll-stagger" style="transition-delay: 0.3s;">
-                    <div class="service-square box-3">
+                    <a href="services.html#binding" class="service-square box-3">
                         <h3>Book<br>Binding</h3>
-                    </div>
+                    </a>
                     <p class="service-desc">We offer PUR binding (paperback books), wire binding and square back folded and stapled binding – all finished in house. Trade finishing service also available.</p>
                 </div>
 
                 <!-- Box 4 -->
                 <div class="service-column scroll-stagger" style="transition-delay: 0.45s;">
-                    <div class="service-square box-4">
+                    <a href="services.html#design" class="service-square box-4">
                         <h3>Artwork &<br>Design</h3>
-                    </div>
+                    </a>
                     <p class="service-desc">Let us enhance your design and save you money by merging our printing knowledge with a wealth of design and artwork experience.</p>
                 </div>
 
                 <!-- Box 5 -->
                 <div class="service-column scroll-stagger" style="transition-delay: 0.6s;">
-                    <div class="service-square box-5">
+                    <a href="plant-list.html#digital" class="service-square box-5">
                         <h3>Five Colour<br>Digital Printing</h3>
-                    </div>
+                    </a>
                     <p class="service-desc">Fujifilm 5UPER COLOUR©. Achieve far more Pantone and RGB colours with our expanded colour gamut.</p>
                 </div>
 
@@ -636,7 +641,7 @@
         <section class="environment-banner scroll-reveal">
             <img src="Environmental-Header-Image.jpg" alt="Environmental sustainability printing" class="env-bg-img" loading="lazy">
             <div class="overlay"></div>
-            <h2>Our Environment Policy</h2>
+            <h2>Our Environmental Policy</h2>
         </section>
 
         <section class="environment-content scroll-reveal">
