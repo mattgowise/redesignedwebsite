@@ -49,7 +49,7 @@
         }
 
         /* Typography Styles */
-        h1, h2, h3 { font-weight: 600; color: var(--header-dark); }
+        h1, h2, h3, h4 { font-weight: 300; color: var(--header-dark); text-transform: uppercase; letter-spacing: 1px; }
         p { line-height: 1.8; color: #555; }
         
         /* Utility */
@@ -67,6 +67,7 @@
             transition: background-color var(--transition-speed), transform 0.2s;
             border: none;
             cursor: pointer;
+            letter-spacing: normal;
         }
         .btn:hover { background-color: var(--gowise-pink); transform: translateY(-2px); }
         .btn-outline { background-color: transparent; border: 2px solid var(--gowise-magenta); color: var(--gowise-magenta); }
@@ -114,10 +115,9 @@
         @keyframes dropFade { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
 
         /* Utility specific for mobile breaks */
-        /* 1050px Breakpoint: Hamburger & Core Mobile Layout */
         @media (max-width: 1050px) {
             .mobile-break { display: block; }
-            .carousel-arrow { display: none; } /* Hide Carousel Arrows on Mobile */
+            .carousel-arrow { display: none; }
             header { flex-direction: row; flex-wrap: wrap; justify-content: space-between; align-items: center; padding: 15px 5%; }
             .logo img { max-height: 60px; }
             .header-right { display: flex; align-items: center; gap: 15px; }
@@ -145,7 +145,7 @@
             transition: transform 1.2s ease-out;
         }
         .carousel-slide.active .carousel-content { transform: translateX(0); }
-        .carousel-content h1 { font-size: 48px; font-weight: 800; color: #fff; margin-bottom: 20px; line-height: 1.2; }
+        .carousel-content h1 { font-size: 48px; font-weight: 300; color: #fff; margin-bottom: 20px; line-height: 1.2; }
         .carousel-content p { font-size: 20px; color: #eee; font-weight: 300; }
         
         .carousel-arrow {
@@ -171,12 +171,30 @@
         .trust-item { display: flex; align-items: center; gap: 20px; opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
         .trust-item.visible { opacity: 1; transform: translateY(0); }
         .trust-icon { width: 60px; height: 60px; flex-shrink: 0; }
-        .trust-text h4 { font-size: 16px; font-weight: 600; color: var(--gowise-cyan); margin-bottom: 5px; }
+        .trust-text h4 { font-size: 16px; font-weight: 600; color: var(--gowise-cyan); margin-bottom: 5px; text-transform: none; letter-spacing: normal; }
         .trust-text p { font-size: 13px; color: #ccc; line-height: 1.4; }
 
-        /* 3. New Introduction Sections */
-        .pink-banner { background-color: var(--gowise-magenta); color: #fff; padding: 50px 5%; text-align: center; font-size: 36px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; opacity: 0; transform: scale(0.98); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
-        .pink-banner.visible { opacity: 1; transform: scale(1); }
+        /* 3. New Introduction Banners */
+        .pink-banner { 
+            background-color: var(--gowise-magenta); 
+            color: #fff; 
+            padding: 30px 5%; 
+            text-align: center; 
+            font-size: 36px; 
+            font-weight: 300; 
+            text-transform: uppercase; 
+            letter-spacing: 1px; 
+            transform: scaleX(0); 
+            transform-origin: center; 
+            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1); 
+        }
+        .pink-banner span {
+            display: inline-block;
+            opacity: 0;
+            transition: opacity 0.5s ease-out 0.4s;
+        }
+        .pink-banner.visible { transform: scaleX(1); }
+        .pink-banner.visible span { opacity: 1; }
 
         .intro-text-section { padding: 80px 5% 40px 5%; text-align: center; background-color: #fcfcfc; }
         .intro-text-section p { 
@@ -204,7 +222,7 @@
         }
 
         /* 4. Our Services Grid */
-        .services-section { padding: 0 5% 100px; max-width: 1500px; margin: 0 auto; }
+        .services-section { padding: 0 5% 100px; max-width: 1400px; margin: 0 auto; }
         .services-header { text-align: center; margin-bottom: 60px; opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
         .services-header.visible { opacity: 1; transform: translateY(0); }
         .services-header h2 { font-size: 36px; color: var(--header-dark); }
@@ -235,11 +253,11 @@
             border-radius: 4px;
             box-shadow: 0 10px 20px rgba(0,0,0,0.1);
             transition: box-shadow 0.3s ease, transform 0.3s ease;
-            text-decoration: none; /* Ensures link styling is removed */
+            text-decoration: none; 
             color: inherit;
         }
         .service-square:hover { box-shadow: 0 15px 35px rgba(0,0,0,0.25); transform: translateY(-10px); z-index: 2; }
-        .service-square h3 { color: #fff; font-size: 20px; margin: 0; line-height: 1.4; }
+        .service-square h3 { color: #fff; font-size: 20px; margin: 0; line-height: 1.4; font-weight: 300; }
         
         .service-desc { 
             text-align: left; 
@@ -265,10 +283,10 @@
         .env-bg-img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; }
         
         .environment-banner .overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.6); z-index: 2; }
-        .environment-banner h2 { position: relative; z-index: 3; font-size: 42px; font-weight: 800; color: #fff; text-transform: uppercase; letter-spacing: 1px; transform: scale(0.9); opacity: 0; transition: all 0.8s ease-out 0.2s; }
+        .environment-banner h2 { position: relative; z-index: 3; font-size: 42px; font-weight: 300; color: #fff; text-transform: uppercase; letter-spacing: 1px; transform: scale(0.9); opacity: 0; transition: all 0.8s ease-out 0.2s; }
         .environment-banner.visible h2 { transform: scale(1); opacity: 1; }
 
-        .environment-content { padding: 80px 5%; max-width: 1200px; margin: 0 auto; opacity: 0; transform: translateY(40px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
+        .environment-content { padding: 80px 5%; max-width: 1400px; margin: 0 auto; opacity: 0; transform: translateY(40px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
         .environment-content.visible { opacity: 1; transform: translateY(0); }
         .environment-content p { font-size: 16px; margin-bottom: 25px; line-height: 1.8; color: #444; }
 
@@ -341,7 +359,7 @@
         .close-modal:hover { color: var(--gowise-pink); }
         .modal-content h3 { color: var(--gowise-magenta); margin-bottom: 20px; font-size: 28px; }
         .form-group { margin-bottom: 20px; }
-        .form-group label { display: block; font-weight: 600; margin-bottom: 8px; font-size: 14px; color: var(--header-dark); }
+        .form-group label { display: block; font-weight: 600; margin-bottom: 8px; font-size: 14px; color: var(--header-dark); text-transform: none; letter-spacing: normal; }
         .form-group input, .form-group textarea { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 4px; font-size: 14px; font-family: inherit; transition: border-color 0.3s; }
         .form-group textarea { resize: vertical; min-height: 120px; }
         .form-group input:focus, .form-group textarea:focus { border-color: var(--gowise-magenta); outline: none; }
@@ -575,7 +593,7 @@
 
         <!-- 3. Introduction Banners -->
         <section class="pink-banner scroll-reveal">
-            Gowise Print. <br class="mobile-break">Expert Printers Norwich
+            <span>Gowise Print. <br class="mobile-break">Expert Printers Norwich</span>
         </section>
 
         <section class="intro-text-section">
@@ -713,7 +731,7 @@
             
             <div class="footer-text-columns">
                 <div>
-                    <p style="font-size: 18px; margin-bottom: 15px; color: var(--gowise-cyan); font-weight: 600;">CONTACT INFO</p>
+                    <p style="font-size: 18px; margin-bottom: 15px; color: var(--gowise-cyan); font-weight: 600; text-transform: none; letter-spacing: normal;">CONTACT INFO</p>
                     <p><strong>Address:</strong><br>4 Belmore Road<br>Thorpe St Andrew<br>Norwich, Norfolk<br>NR7 0PT</p>
                     <br>
                     <p><strong>Phone:</strong> +44 (0)1603 431304</p>
@@ -721,7 +739,7 @@
                 </div>
                 
                 <div>
-                    <p style="font-size: 18px; margin-bottom: 15px; color: var(--gowise-cyan); font-weight: 600;">OPENING HOURS</p>
+                    <p style="font-size: 18px; margin-bottom: 15px; color: var(--gowise-cyan); font-weight: 600; text-transform: none; letter-spacing: normal;">OPENING HOURS</p>
                     <p>MONDAY: 08:30 – 17:00<br>TUESDAY: 08:30 – 17:00<br>WEDNESDAY: 08:30 – 17:00<br>THURSDAY: 08:30 – 17:00<br>FRIDAY: 08:30 – 17:00<br>SATURDAY: CLOSED<br>SUNDAY: CLOSED</p>
                 </div>
             </div>
