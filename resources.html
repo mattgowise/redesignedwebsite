@@ -257,11 +257,11 @@
         .color-card.visible { opacity: 1; transform: translateY(0); }
         .color-card h3 { font-size: 24px; margin-bottom: 20px; color: var(--header-dark); }
         
-        .color-placeholder {
+        .color-icon {
             width: 100px;
             height: 100px;
-            border-radius: 50%;
-            background-color: #e0e0e0;
+            object-fit: contain;
+            display: block;
             margin: 0 auto 25px auto;
         }
 
@@ -555,7 +555,7 @@
                 
                 <div class="colour-grid">
                     <div class="color-card scroll-reveal" style="transition-delay: 0s;">
-                        <div class="color-placeholder"></div>
+                        <img src="rgb-icon.png" alt="RGB Icon" class="color-icon">
                         <h3>RGB<br class="mobile-break"> (Red, Green, Blue)</h3>
                         <p>This is the colour model used by digital screens (monitors, phones, TVs). Because screens emit light, RGB can produce incredibly bright, neon, and highly saturated colours. <strong>We cannot print directly from RGB files.</strong></p>
                     </div>
@@ -563,7 +563,7 @@
                     <hr class="cyan-divider scroll-reveal">
                     
                     <div class="color-card scroll-reveal" style="transition-delay: 0.2s;">
-                        <div class="color-placeholder"></div>
+                        <img src="cmyk-icon.png" alt="CMYK Icon" class="color-icon">
                         <h3>CMYK<br class="mobile-break"> (Cyan, Magenta, Yellow, Key/Black)</h3>
                         <p>This is the standard colour model for commercial printing. Presses combine these four ink colours to reproduce images. Because ink absorbs light rather than emitting it, CMYK has a smaller "colour gamut" than RGB.</p>
                     </div>
