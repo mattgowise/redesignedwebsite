@@ -3,19 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
     
     <!-- SEO Optimization -->
-    <title>Trade Print Capabilities & Plant List in Norwich | Gowise Print</title>
-    <meta name="description" content="Explore GoWise Print's in-house capabilities: 5-colour digital printing, CMYK litho, Pantone spot matching, and professional book binding in Norwich, Norfolk.">
-    <meta name="keywords" content="Trade Print Norwich, Plant List Print Shop, Lithographic Press Norfolk, Digital Print Capabilities, PUR Binding Trade, Print Production Partner">
-    <link rel="canonical" href="https://www.gowise.co.uk/plant-list.html">
-    
-    <!-- Prevent iOS auto-linking styles -->
-    <meta name="format-detection" content="telephone=no, date=no, email=no, address=no">
+    <title>Print Resources & Artwork Setup Guide | Gowise Print Norwich</title>
+    <meta name="description" content="Learn how to prepare your artwork for commercial printing. Discover the difference between CMYK and RGB, Digital vs Litho, and our pre-press checklist.">
+    <meta name="keywords" content="Artwork Setup Guide, Print Resources, CMYK vs RGB, Litho vs Digital Print, Print Ready PDF, Bleed and Crop Marks, Norwich Printers">
+    <link rel="canonical" href="https://www.gowise.co.uk/resources.html">
     
     <!-- Open Graph for Social Sharing -->
-    <meta property="og:title" content="Trade Print Capabilities & Plant List in Norwich">
-    <meta property="og:description" content="In-house litho, 5-colour digital, and complete print finishing for trade buyers and independent publishers.">
+    <meta property="og:title" content="Print Resources & Artwork Setup Guide | Gowise Print">
+    <meta property="og:description" content="A flawless printed product starts with a perfectly prepared file. Read our pre-press guides to get your artwork press-ready.">
     <meta property="og:type" content="website">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -32,14 +30,15 @@
             font-weight: 300; 
         }
         
-        /* Utility Classes for Line Breaks */
-        .mobile-break { display: none; }
-        .desktop-break { display: block; }
-        
+        /* Enable smooth scrolling for anchor links */
         html { scroll-behavior: smooth; }
+        
         body { color: #333; overflow-x: hidden; background-color: #fcfcfc; }
         a { text-decoration: none; color: inherit; }
         ul { list-style: none; }
+
+        /* Utility */
+        .mobile-break { display: none; } /* Keeps headers on one line for desktop */
 
         /* Color Variables */
         :root {
@@ -50,14 +49,26 @@
             --transition-speed: 0.4s;
         }
 
-        /* Typography & Buttons */
+        /* Typography Styles */
         h1, h2, h3, h4 { font-weight: 300; color: var(--header-dark); text-transform: uppercase; letter-spacing: 1px; }
-        p { line-height: 1.8; color: #555; margin-bottom: 15px; }
+        p { line-height: 1.8; color: #555; margin-bottom: 15px; font-weight: 300; }
         
-        .btn { display: inline-block; padding: 12px 24px; background-color: var(--gowise-magenta); color: #fff; text-transform: uppercase; font-size: 14px; font-weight: 600; border-radius: 3px; transition: background-color var(--transition-speed), transform 0.2s; border: none; cursor: pointer; text-align: center; letter-spacing: normal; }
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: var(--gowise-magenta);
+            color: #fff;
+            text-transform: uppercase;
+            font-size: 14px;
+            font-weight: 600;
+            border-radius: 3px;
+            transition: background-color var(--transition-speed), transform 0.2s;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+            letter-spacing: normal;
+        }
         .btn:hover { background-color: var(--gowise-pink); transform: translateY(-2px); }
-        .btn-outline { background-color: transparent; border: 2px solid #fff; color: #fff; }
-        .btn-outline:hover { background-color: #fff; color: var(--gowise-magenta); }
 
         /* Image Helpers */
         .cover-img {
@@ -67,17 +78,15 @@
             display: block;
         }
 
-        /* Top Bar */
+        /* Header & Nav */
         .top-bar { background-color: var(--gowise-magenta); color: #fff; display: flex; justify-content: space-between; padding: 8px 5%; font-size: 13px; font-weight: 400; }
-        .top-bar a, .top-bar span { color: #fff !important; text-decoration: none !important; }
+        .top-bar a { text-decoration: none; color: inherit; }
 
-        /* Main Header & Nav */
         header { background-color: var(--header-dark); color: #fff; padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; }
         .header-right { display: none; }
         .logo img { max-height: 90px; width: auto; transition: transform 0.3s ease; }
         .logo:hover img { transform: scale(1.05); }
         
-        /* Unified Navigation Menu */
         .main-nav { display: flex; align-items: center; gap: 20px; font-size: 13px; font-weight: 300; }
         .main-nav li { position: relative; padding: 10px 0; }
         .main-nav a { padding: 5px 10px; transition: color 0.3s; text-transform: uppercase; }
@@ -94,32 +103,40 @@
 
         @keyframes dropFade { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* Utility specific for mobile breaks */
+        /* Mobile Utilities */
+        /* 1050px Breakpoint: Hamburger & Core Mobile Layout */
         @media (max-width: 1050px) {
             .mobile-break { display: block; }
-            .desktop-break { display: none; }
-            .carousel-arrow { display: none; }
+            .carousel-arrow { display: none; } /* Hide Carousel Arrows on Mobile */
             header { flex-direction: row; flex-wrap: wrap; justify-content: space-between; align-items: center; padding: 15px 5%; }
             .logo img { max-height: 60px; }
             .header-right { display: flex; align-items: center; gap: 15px; }
             .header-right .btn-quote { padding: 8px 12px !important; font-size: 12px; margin-top: 0; }}
 
-        /* Hero */
-        .inner-hero { position: relative; width: 100%; min-height: 50vh; display: flex; align-items: center; background-color: #111; overflow: hidden; }
+        /* 1. Inner Hero Section */
+        .inner-hero {
+            position: relative;
+            width: 100%;
+            min-height: 50vh;
+            display: flex;
+            align-items: center;
+            background-color: #111;
+            overflow: hidden;
+        }
         
-        .inner-hero-content { 
-            position: relative; 
-            z-index: 2; 
-            padding: 40px; 
+        .inner-hero-content {
+            position: relative;
+            z-index: 2;
+            padding: 40px;
             margin: 0 5%;
-            max-width: 1000px; 
-            color: #fff; 
-            background-color: rgba(0, 0, 0, 0.65); 
+            max-width: 1000px;
+            color: #fff;
+            background-color: rgba(0, 0, 0, 0.65);
             border-radius: 8px;
             backdrop-filter: blur(5px);
         }
         
-        .inner-hero-content h1 { font-size: 42px; color: #fff; margin-bottom: 20px; line-height: 1.2; opacity: 0; transform: translateY(30px); animation: slideUpFade 0.8s forwards; }
+        .inner-hero-content h1 { font-size: 42px; font-weight: 300; color: #fff; margin-bottom: 20px; line-height: 1.2; opacity: 0; transform: translateY(30px); animation: slideUpFade 0.8s forwards; }
         .inner-hero-content p { font-size: 18px; color: #ddd; font-weight: 300; opacity: 0; transform: translateY(30px); animation: slideUpFade 0.8s 0.2s forwards; }
         
         .hero-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; }
@@ -128,7 +145,7 @@
         @keyframes slideUpFade { to { opacity: 1; transform: translateY(0); } }
         @keyframes kenBurns { from { transform: scale(1); } to { transform: scale(1.1); } }
 
-        /* Intro Section */
+        /* 2. Intro Section */
         .page-intro { 
             padding: 60px 5% 40px; 
             max-width: 1400px; 
@@ -138,7 +155,10 @@
             transform: translateY(40px);
             transition: opacity 0.8s ease-out, transform 0.8s ease-out;
         }
-        .page-intro.visible { opacity: 1; transform: translateY(0); }
+        .page-intro.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
         .page-intro p { 
             font-size: 18px; 
             font-weight: 300;
@@ -148,10 +168,7 @@
             margin: 0 auto; 
         }
 
-        .section-container { max-width: 1400px; margin: 0 auto; }
-        .plant-list-section { padding: 0 5% 80px; }
-        
-        /* Animated Magenta Divider */
+        /* Animated Dividers */
         .magenta-divider { 
             border: none; 
             height: 4px; 
@@ -162,6 +179,17 @@
             transition: width 1s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.8s ease-out; 
         }
         .magenta-divider.visible { width: 120px; opacity: 1; }
+
+        .cyan-divider { 
+            border: none; 
+            width: 4px; 
+            background-color: var(--gowise-cyan); 
+            height: 0; 
+            margin: auto 0; 
+            opacity: 0;
+            transition: height 1s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.8s ease-out; 
+        }
+        .cyan-divider.visible { height: 250px; opacity: 1; }
 
         /* Reusable Animated Magenta Banner for Headings */
         h2.magenta-banner-heading {
@@ -188,197 +216,153 @@
         }
         .visible h2.magenta-banner-heading { transform: scaleX(1); }
         .visible h2.magenta-banner-heading span { opacity: 1; }
+
+        /* Section Layout Helpers */
+        .resource-section { padding: 80px 5%; scroll-margin-top: 100px; }
+        .resource-section:nth-child(even) { background-color: #f4f4f4; }
+        .section-container { max-width: 1400px; margin: 0 auto; }
+        .section-header { text-align: center; margin-bottom: 50px; }
+        .section-header p { font-size: 18px; max-width: 1200px; margin: 0 auto; font-weight: 300; text-transform: none; letter-spacing: normal; }
+
+        /* Delayed Fade for the body text in Section & Footer Headers */
+        .section-header p, .footer-header p {
+            opacity: 0;
+            transition: opacity 0.6s ease-out 0.7s;
+        }
+        .section-header.visible p, .footer-header.visible p {
+            opacity: 1;
+        }
+
+        /* 3. Understanding Colour (CMYK/RGB) Custom Layout */
+        .colour-grid {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            align-items: center;
+            gap: 40px;
+            margin-bottom: 40px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .color-card {
+            background: transparent;
+            padding: 20px;
+            border: none;
+            box-shadow: none;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .color-card.visible { opacity: 1; transform: translateY(0); }
+        .color-card h3 { font-size: 24px; margin-bottom: 20px; color: var(--header-dark); }
         
-        /* Service Rows (Equipment Blocks) */
-        .service-row {
+        .color-placeholder {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: #e0e0e0;
+            margin: 0 auto 25px auto;
+        }
+
+        /* 4. Comparison Cards (Digital/Litho) */
+        .comparison-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 40px;
-            align-items: start;
-            margin-bottom: 80px;
-            scroll-margin-top: 120px; 
+            margin-bottom: 40px;
         }
-        .service-row:last-child { margin-bottom: 0; }
-        .service-row:nth-child(even) .service-text { order: -1; } 
-        
-        .service-img-container { 
-            width: 100%; 
-            aspect-ratio: 3 / 2; 
-            height: auto; 
-            border-radius: 4px; 
-            overflow: hidden; 
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1); 
-            transform: scale(0);
-            transform-origin: center;
+        .comparison-card {
+            background: #fff;
+            padding: 40px;
+            border-radius: 4px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            border-top: 4px solid var(--gowise-cyan);
             opacity: 0;
-            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.6s ease-out;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
         }
-        .service-row.visible .service-img-container {
-            transform: scale(1);
-            opacity: 1;
-        }
-        .service-img-container img { transition: transform 0.6s ease; }
-        .service-row:hover .service-img-container img { transform: scale(1.05); }
-        
-        /* Inner Banner Styling for the 3 Headings */
-        .service-banner {
-            background-color: var(--gowise-magenta);
-            color: #fff;
-            padding: 15px 5%;
+        .comparison-card.visible { opacity: 1; transform: translateY(0); }
+        .comparison-card h3 { font-size: 24px; margin-bottom: 20px; color: var(--header-dark); }
+        .comparison-card p { font-size: 16px; font-weight: 300; line-height: 1.8; color: #555; margin-bottom: 15px; }
+        .comparison-card strong { font-weight: 600; color: var(--header-dark); text-transform: none; letter-spacing: normal; }
+
+        /* Highlight Callout Box */
+        .callout-box {
+            background-color: #f4f4f4;
+            color: var(--header-dark);
+            padding: 40px;
+            border-radius: 4px;
+            max-width: 1000px;
+            margin: 20px auto 0 auto;
+            border-left: none; 
             text-align: center;
-            font-size: 24px;
-            font-weight: 300; 
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 20px;
-            border-radius: 4px;
-            transform: scaleX(0);
-            transform-origin: center;
-            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
-            line-height: 1.2;
-        }
-        .service-banner span {
-            display: inline-block;
             opacity: 0;
-            transition: opacity 0.5s ease-out 0.4s;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
         }
-        .service-row.visible .service-banner { transform: scaleX(1); }
-        .service-row.visible .service-banner span { opacity: 1; }
+        .callout-box.visible { opacity: 1; transform: translateY(0); }
+        .callout-box h4 { color: var(--gowise-cyan); font-size: 20px; margin-bottom: 15px; }
+        .callout-box p { color: #444; margin-bottom: 0; }
 
-        .service-text > p { font-size: 16px; margin-bottom: 25px; font-weight: 400; color: #444; line-height: 1.4; }
+        /* 5. Checklist Section */
+        #setup-checklist {
+            background-color: var(--header-dark);
+            color: #fff;
+        }
+        #setup-checklist .section-header p { color: #ddd; }
         
-        .capabilities-list { list-style: none; padding: 0; }
-        .capabilities-list li { position: relative; margin-bottom: 20px; font-size: 15px; line-height: 1.6; }
-        .capabilities-list strong { display: block; font-size: 16px; font-weight: 600; color: var(--gowise-cyan); margin-bottom: 5px; text-transform: none; letter-spacing: normal; }
-
-        /* Delayed Fade for the body text in Service Rows */
-        .service-text > p, .service-text > .capabilities-list {
-            opacity: 0;
-            transition: opacity 0.6s ease-out 0.7s;
-        }
-        .service-row.visible .service-text > p, .service-row.visible .service-text > .capabilities-list {
-            opacity: 1;
-        }
-
-        /* 5-Colour Banner & Section */
-        .fuji-section { padding: 0 5% 80px; }
-        
-        .magenta-banner { 
-            background-color: var(--gowise-magenta); 
-            color: #fff; 
-            padding: 25px 5%; 
-            text-align: center; 
-            font-size: 36px; 
-            font-weight: 300; 
-            text-transform: uppercase; 
-            letter-spacing: 1px; 
-            margin-bottom: 25px;
-            border-radius: 4px;
-            transform: scaleX(0); 
-            transform-origin: center;
-            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1); 
-        }
-        
-        .magenta-banner span {
-            display: inline-block;
-            opacity: 0;
-            transition: opacity 0.5s ease-out 0.4s;
-        }
-
-        .fuji-img-container { 
-            width: 100%; 
-            border-radius: 4px; 
-            overflow: hidden; 
-            margin-bottom: 40px; 
-            opacity: 0;
-            transition: opacity 0.5s ease-out 0.4s;
-        }
-        
-        /* 50% Text / 25% Card 1 / 25% Card 2 Grid */
-        .fuji-text-grid {
+        .checklist-grid {
             display: grid;
-            grid-template-columns: 2fr 1fr 1fr;
-            gap: 40px;
-            align-items: stretch;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+        .checklist-item {
+            background: transparent;
+            padding: 20px 0;
+            border-radius: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 15px;
+            box-shadow: none;
             opacity: 0;
             transform: translateY(20px);
-            transition: opacity 0.6s ease-out 0.7s, transform 0.6s ease-out 0.7s;
+            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
         }
+        .checklist-item.visible { opacity: 1; transform: translateY(0); }
         
-        .fuji-text p {
-            font-size: 16px;
-            font-weight: 400;
-            color: #444;
-            line-height: 1.6;
-            margin-bottom: 20px;
-        }
-        
-        .fuji-image-card {
-            position: relative;
-            background-color: #e0e0e0;
-            border-radius: 4px;
-            width: 100%;
-            min-height: 200px;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        .checklist-icon {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+            margin-bottom: 10px;
         }
 
-        .fuji-image-card img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
+        .check-content h4 { font-size: 20px; margin-bottom: 10px; color: var(--gowise-cyan); }
+        .check-content p { font-size: 15px; margin-bottom: 0; color: #ccc; }
 
-        .fuji-image-label {
-            position: absolute;
-            bottom: 20px;
-            left: 0;
-            width: 100%;
-            text-align: center;
-            color: #fff;
-            font-weight: 300;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-size: 20px;
-            text-shadow: 0px 2px 6px rgba(0,0,0,0.8);
-            z-index: 2;
-        }
-
-        /* Coordinated Animation Triggers for the Fuji Section */
-        .fuji-section.visible .magenta-banner { transform: scaleX(1); }
-        .fuji-section.visible .magenta-banner span { opacity: 1; }
-        .fuji-section.visible .fuji-img-container { opacity: 1; }
-        .fuji-section.visible .fuji-text-grid { opacity: 1; transform: translateY(0); }
-
-        /* Equipment Inventory Section */
-        .equipment-inventory-section { background-color: var(--header-dark); padding: 40px 5% 80px; margin-bottom: 0; }
-        .equipment-header { text-align: center; margin-bottom: 50px; }
-        
-        /* Delayed fade for paragraph if it exists inside header block */
-        .equipment-header p {
-            opacity: 0;
-            transition: opacity 0.6s ease-out 0.7s;
-        }
-        .equipment-header.visible p { opacity: 1; }
-
-        .equipment-grid { display: grid; grid-template-columns: auto auto auto; justify-content: center; gap: 80px; }
-        .equipment-column h3 { font-size: 28px; color: #fff; margin-bottom: 20px; font-weight: 300; }
-        .equipment-column h3.sub-heading { margin-top: 40px; }
-        .equipment-list { list-style: none; padding: 0; }
-        .equipment-list li { margin-bottom: 8px; font-size: 16px; color: #bbb; font-weight: 300; line-height: 1.5; }
-
-        /* Partner CTA */
-        .partner-cta-section { background-color: var(--gowise-cyan); color: #fff; padding: 80px 5%; text-align: center; margin-bottom: 0; }
+        /* 6. Partner/Plan CTA Section */
+        .partner-cta-section { background-color: var(--gowise-cyan); color: #fff; padding: 80px 5%; text-align: center; }
         .partner-cta-container { max-width: 900px; margin: 0 auto; }
         .partner-cta-section h2 { color: #fff; font-size: 36px; margin-bottom: 20px; }
         .partner-cta-section p { color: #fff; font-size: 18px; margin-bottom: 30px; }
         .cta-actions { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
-        
-        .partner-cta-section .btn { background-color: var(--header-dark); color: #fff; border: 2px solid var(--header-dark); }
-        .partner-cta-section .btn:hover { background-color: #111; border-color: #111; }
-        .partner-cta-section .btn-outline { background-color: transparent; border: 2px solid #fff; color: #fff; font-weight: 600; }
-        .partner-cta-section .btn-outline:hover { background-color: #fff; color: var(--gowise-cyan); }
+        .partner-cta-section .btn { background-color: var(--header-dark); color: #fff; }
+        .partner-cta-section .btn:hover { background-color: #111; }
+
+        /* Footer overrides */
+        footer { background: var(--header-dark); color: #fff; position: relative; overflow: hidden; padding: 60px 5%; }
+        footer p { color: #ffffff !important; }
+        .footer-header { margin-bottom: 40px; text-align: center; }
+        .footer-grid { display: flex; align-items: stretch; justify-content: space-between; gap: 40px; max-width: 1400px; margin: 0 auto; }
+        .footer-arrow-container { flex: 0 0 120px; display: flex; align-items: center; }
+        .footer-arrow { width: 100%; height: auto; transform: translateX(-150px); opacity: 0; transition: transform 1s cubic-bezier(0.25, 1, 0.5, 1), opacity 1s ease; }
+        .footer-arrow.slide-in { transform: translateX(0); opacity: 1; }
+        .footer-text-columns { flex: 1; display: flex; justify-content: flex-start; gap: 60px; font-size: 14px; line-height: 1.8; padding-top: 20px; }
+        .map-container { flex: 0 0 400px; height: 300px; background: #ddd; border-radius: 4px; overflow: hidden; }
+        .map-container iframe { width: 100%; height: 100%; border: none; }
 
         /* Modal Form Setup */
         .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 2000; display: none; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.4s ease; }
@@ -395,128 +379,87 @@
         .form-group textarea { resize: vertical; min-height: 120px; }
         .form-group input:focus, .form-group textarea:focus { border-color: var(--gowise-magenta); outline: none; }
 
-        /* 6. Footer & Location */
-        footer { background: var(--header-dark); color: #fff; position: relative; overflow: hidden; padding: 60px 5%; }
-        footer p { color: #ffffff !important; } 
-        
-        .footer-header { margin-bottom: 40px; text-align: center; }
-        .footer-header h2 { color: var(--gowise-magenta); font-size: 32px; }
-        .footer-grid { display: flex; align-items: stretch; justify-content: space-between; gap: 40px; max-width: 1400px; margin: 0 auto; }
-        .footer-arrow-container { flex: 0 0 120px; display: flex; align-items: center; }
-        .footer-arrow { width: 100%; height: auto; transform: translateX(-150px); opacity: 0; transition: transform 1s cubic-bezier(0.25, 1, 0.5, 1), opacity 1s ease; }
-        .footer-arrow.slide-in { transform: translateX(0); opacity: 1; }
-        .footer-text-columns { flex: 1; display: flex; justify-content: flex-start; gap: 60px; font-size: 14px; line-height: 1.8; padding-top: 20px; }
-        .map-container { flex: 0 0 400px; height: 300px; background: #ddd; border-radius: 4px; overflow: hidden; }
-        .map-container iframe { width: 100%; height: 100%; border: none; }
+        /* Universal Anchor Target Fix */
+        [id] { scroll-margin-top: 160px !important; }
 
-        /* Responsive Overrides */
-        @media (max-width: 1200px) {
-            .service-row { gap: 40px; }
-            .equipment-grid { grid-template-columns: auto auto; justify-content: center; gap: 60px; }
-        }
+        /* --- RESPONSIVE BREAKPOINTS --- */
 
-        /* Mobile & Hamburger Threshold (Matched to Index) */
-        @media (max-width: 992px) {
-            .mobile-break { display: block; }
-            .desktop-break { display: none; }
-            .mobile-shrink-text { font-size: clamp(24px, 7vw, 32px) !important; line-height: 1.3 !important; }
-            
-            /* Header & Hamburger Menu */
-            header { flex-wrap: wrap; padding: 15px 5%; }
+        /* Trigger hamburger earlier before nav breaks rows */
+        @media (max-width: 1050px) {
+            header { flex-direction: row; flex-wrap: wrap; justify-content: space-between; align-items: center; padding: 15px 5%; }
             .header-right { display: flex; align-items: center; gap: 15px; }
             .header-right .btn-quote { padding: 8px 12px !important; font-size: 12px; }
             
+            /* Hamburger animated toggle setup matching index.html */
             .hamburger { display: flex; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 5px; z-index: 1001; }
             .hamburger span { display: block; width: 25px; height: 3px; background-color: #fff; transition: 0.3s; }
             .hamburger.active span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
             .hamburger.active span:nth-child(2) { opacity: 0; }
             .hamburger.active span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
-
+            
             nav { width: 100%; display: none; margin-top: 15px; }
             nav.active { display: block; }
-            .main-nav { flex-direction: column; align-items: stretch; gap: 0; }
-            .main-nav li { padding: 0; border-top: 1px solid #444; }
-            .main-nav a { display: block; padding: 15px 10px; }
-            .main-nav li:last-child { display: none; } /* Hide the desktop nav quote button */
             
-            .dropdown { position: static; box-shadow: none; display: none; background-color: transparent; border-left: 2px solid var(--gowise-cyan); margin-left: 10px; }
-            .main-nav li:hover .dropdown { display: block; animation: none; }
+            .main-nav { flex-direction: column; align-items: flex-start; gap: 0; }
+            .main-nav li { width: 100%; border-bottom: 1px solid rgba(255,255,255,0.1); }
+            .main-nav a { display: block; padding: 15px 0; }
+            
+            /* Hide the desktop quote button since it moved to the header wrapper */
+            .main-nav a.desktop-quote { display: none !important; }
+            
+            .dropdown { position: static; display: none; background-color: #222; box-shadow: none; min-width: 100%; border-left: 2px solid var(--gowise-cyan); margin-left: 10px; }
+            .main-nav li:hover .dropdown, .main-nav li:active .dropdown { display: block; animation: none; }
             .dropdown a { padding: 10px 15px; border-bottom: none; }
-
-            .inner-hero-content { padding: 30px 20px; margin: 0 5%; }
-        }
-        
-        @media (max-width: 768px) {
-            /* Updated Top Bar to keep it on one line for mobile */
-            .top-bar { flex-direction: row; justify-content: center; gap: 20px; font-size: 12px; }
             
-            /* Stacked Hero Overrides */
-            .inner-hero { 
-                height: 500px; 
-                min-height: unset; 
-                display: flex; 
-                flex-direction: column; 
-                background-color: #ffffff; 
-                padding: 0; 
-                overflow: hidden; 
-            }
-            .hero-bg { position: relative; height: 50%; width: 100%; flex-shrink: 0; }
-            .inner-hero-content { 
-                position: relative; 
-                background-color: #ffffff; 
-                margin: 0; 
-                padding: 20px 5%; 
-                border-radius: 0; 
-                width: 100%; 
-                max-width: 100%; 
-                height: 50%;
-                backdrop-filter: none; 
-                text-align: center;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                box-shadow: none;
-            }
-            
-            /* Text scaling */
-            .inner-hero-content h1 { font-size: 28px; color: var(--gowise-cyan); margin-bottom: 10px; line-height: 1.2; }
-            .inner-hero-content p { font-size: 16px; color: #444444; margin-bottom: 0; }
-
-            /* Scaling for the new Banners & Grid */
-            .magenta-banner { font-size: 24px; padding: 20px 5%; margin-bottom: 20px; }
-            .service-banner { font-size: 20px; padding: 12px 5%; }
-            h2.magenta-banner-heading { font-size: 20px; padding: 12px 5%; }
-            .fuji-text-grid { grid-template-columns: 1fr; gap: 20px; }
-
-            /* Mobile Carousel implementation for Service Rows */
-            .plant-list-section .section-container {
-                display: flex;
-                overflow-x: auto;
-                scroll-snap-type: x mandatory;
-                gap: 20px;
-                padding-bottom: 20px;
-                -ms-overflow-style: none;
-                scrollbar-width: none;
-            }
-            .plant-list-section .section-container::-webkit-scrollbar { display: none; }
-            
-            .service-row { 
-                flex: 0 0 88vw;
-                scroll-snap-align: center;
-                grid-template-columns: 1fr; 
-                margin-bottom: 0; 
-            }
-            .service-row:nth-child(even) .service-text { order: 0; } 
-            
-            .equipment-grid { grid-template-columns: 1fr; text-align: center; gap: 40px; }
-            
+            .comparison-grid { grid-template-columns: 1fr; }
+            .checklist-grid { grid-template-columns: 1fr 1fr; }
             .footer-grid { flex-wrap: wrap; justify-content: center; text-align: center; }
             .footer-arrow-container { display: none; }
             .footer-text-columns { flex-direction: column; gap: 30px; align-items: center; }
             .map-container { width: 100%; flex: 1 1 100%; }
         }
-        [id] {
-            scroll-margin-top: 160px !important; 
+
+        /* Mobile Adjustments */
+        @media (max-width: 768px) {
+            .mobile-break { display: block; }
+            
+            /* Top Bar on one line without underlines */
+            .top-bar { flex-direction: row; justify-content: center; gap: 15px; font-size: 12px; white-space: nowrap; }
+            .top-bar a { text-decoration: none !important; }
+            
+            /* Stacked Hero Overrides */
+            .inner-hero { flex-direction: column; min-height: auto; background-color: #ffffff; overflow: visible; padding: 0; }
+            .hero-bg { position: relative; height: 280px; width: 100%; flex-shrink: 0; }
+            .inner-hero-content { 
+                position: relative; 
+                background-color: #ffffff; 
+                margin: 0; 
+                padding: 40px 5%; 
+                border-radius: 0; 
+                width: 100%; 
+                max-width: 100%; 
+                backdrop-filter: none; 
+            }
+            
+            /* Text scaling so split titles fit beautifully */
+            .inner-hero-content h1 { font-size: 34px; color: var(--gowise-cyan); }
+            .inner-hero-content p { color: #444444; }
+            
+            .color-card h3 { font-size: 22px; }
+            h2.magenta-banner-heading { font-size: 20px; padding: 12px 5%; }
+
+            /* Switch Colour Grid back to stacked and reset divider for mobile */
+            .colour-grid { grid-template-columns: 1fr; gap: 20px; }
+            .cyan-divider { 
+                width: 0; 
+                height: 4px; 
+                margin: 20px auto; 
+                transition: width 1s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.8s ease-out; 
+            }
+            .cyan-divider.visible { width: 120px; height: 4px; opacity: 1; }
+
+            .cta-actions { flex-direction: column; }
+            .checklist-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -527,13 +470,13 @@
         <a href="mailto:print@gowise.co.uk">print@gowise.co.uk</a>
     </div>
 
-    <!-- Unified Navigation Structure -->
+    <!-- Navigation -->
     <header>
         <a href="index.html" class="logo">
             <img src="gowise-logo.png" alt="Gowise Print Logo">
         </a>
         
-        <!-- Mobile Right Hand Group (Quote + Hamburger) -->
+        <!-- Mobile Actions: Quote + Animated Hamburger -->
         <div class="header-right">
             <a href="#" id="navQuoteBtnMobile" class="btn-quote">GET A QUOTE</a>
             <button class="hamburger" id="hamburgerBtn" aria-label="Menu">
@@ -541,7 +484,7 @@
             </button>
         </div>
 
-        <nav>
+        <nav id="navMenu">
             <ul class="main-nav">
                 <li><a href="index.html">HOME</a></li>
                 <li>
@@ -553,7 +496,7 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="plant-list.html" class="active">EQUIPMENT & CAPABILITIES ▾</a>
+                    <a href="plant-list.html">EQUIPMENT & CAPABILITIES ▾</a>
                     <ul class="dropdown">
                         <li><a href="plant-list.html#digital">Digital Press</a></li>
                         <li><a href="plant-list.html#litho">Lithographic Press</a></li>
@@ -561,7 +504,7 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="resources.html">PRINT RESOURCES ▾</a>
+                    <a href="resources.html" class="active">PRINT RESOURCES ▾</a>
                     <ul class="dropdown">
                         <li><a href="resources.html#colour-guide">Understanding Colour (CMYK vs RGB)</a></li>
                         <li><a href="resources.html#digital-vs-litho">Digital vs. Lithographic</a></li>
@@ -578,191 +521,141 @@
                     </ul>
                 </li>
                 <li><a href="news.html">NEWS</a></li>
-                <!-- Hidden on mobile, visible on desktop -->
-                <li><a href="#" id="navQuoteBtn" class="btn-quote">GET A QUOTE</a></li>
+                <li><a href="#" id="navQuoteBtn" class="btn-quote desktop-quote">GET A QUOTE</a></li>
             </ul>
         </nav>
     </header>
 
     <main>
-        <!-- Hero Section -->
+        <!-- 1. Hero Section -->
         <section class="inner-hero" aria-label="Introduction">
             <div class="hero-bg">
-                <img src="Plant-1.jpg" alt="Wide industrial shot of the GoWise print floor" class="cover-img">
+                <img src="Resources-1.jpg" alt="Macro shot of a designer's screen showing crop marks and bleed margins" class="cover-img">
             </div>
             <div class="inner-hero-content">
-                <h1>Trade Print Capabilities & Equipment<br class="desktop-break"> List in Norwich</h1>
-                <p>For over four decades, GoWise has been the trusted production partner for businesses, design agencies, and independent publishers across Norfolk and the UK.</p>
+                <h1>Print Resources & Artwork Guide</h1>
+                <p>A flawless printed product starts with a perfectly prepared file. Explore our guides below to understand the fundamentals of commercial print, or use our interactive tools to plan your next project.</p>
             </div>
         </section>
 
-        <!-- Intro Section -->
+        <!-- 2. Intro Section -->
         <section class="page-intro scroll-reveal">
-            <p>By keeping our core printing and finishing processes entirely in-house, we offer trade buyers complete control over quality, turnaround times, and technical specifications.</p>
+            <p>By housing advanced printing technology, comprehensive book binding, and an expert pre-press design team under one roof, we ensure your project transitions seamlessly from a digital file to a perfectly finished physical product. Explore our core services below to see how we bring your ideas to the page.</p>
         </section>
 
-        <!-- Animated Divider -->
         <hr class="magenta-divider scroll-reveal">
 
-        <section class="plant-list-section">
+        <!-- 3. Understanding Colour (CMYK vs RGB) -->
+        <section id="colour-guide" class="resource-section">
             <div class="section-container">
-                
-                <!-- Digital Press -->
-                <article id="digital" class="service-row scroll-reveal">
-                    <div class="service-img-container">
-                        <img src="Plant-2.jpg" alt="Fujifilm 5UPER COLOUR digital press control panel" class="cover-img">
-                    </div>
-                    <div class="service-text">
-                        <h2 class="service-banner"><span>Digital Press Capabilities</span></h2>
-                        <p>Our digital suite is built for speed, variable data, and colour reproduction that standard CMYK digital presses simply cannot achieve.</p>
-                        <ul class="capabilities-list">
-                            <li><strong>Fujifilm 5UPER COLOUR© Digital Press:</strong> Our flagship 5-colour system hits specific RGB tones and simulates Pantone® colours with exceptional accuracy.</li>
-                            <li><strong>Variable Data Printing (VDP):</strong> Full capability to swap text, numbering, and imagery sheet-to-sheet.</li>
-                            <li><strong>Short-Run Efficiency:</strong> Cost-effective for runs up to 500 units and bespoke merchandise.</li>
-                            <li><strong>Custom Sheet Handling:</strong> Configured for custom raw sizes like 320x450mm.</li>
-                        </ul>
-                    </div>
-                </article>
-
-                <!-- Litho Press -->
-                <article id="litho" class="service-row scroll-reveal">
-                    <div class="service-img-container">
-                        <img src="Plant-3.jpg" alt="Traditional litho press ink rollers in motion" class="cover-img">
-                    </div>
-                    <div class="service-text">
-                        <h2 class="service-banner"><span>Lithographic Press Capabilities</span></h2>
-                        <p>For long runs and exact brand colour matching, traditional litho remains unbeatable.</p>
-                        <ul class="capabilities-list">
-                            <li><strong>Four-Colour Process (CMYK) Litho:</strong> High-accuracy production for catalogues, brochures, and commercial flyers.</li>
-                            <li><strong>Spot Colour Pantone® Matching:</strong> Exact ink mixing before the press runs for absolute colour fidelity.</li>
-                            <li><strong>Large Format Sheet Yields:</strong> Capacity to process larger raw stock sizes, such as 450x640mm.</li>
-                        </ul>
-                    </div>
-                </article>
-
-                <!-- Finishing -->
-                <article id="finishing" class="service-row scroll-reveal">
-                    <div class="service-img-container">
-                        <img src="Plant-4.jpg" alt="Heavy-duty automated bindery equipment" class="cover-img">
-                    </div>
-                    <div class="service-text">
-                        <h2 class="service-banner mobile-shrink-text"><span>In-House Finishing <br class="mobile-break">& Book Binding</span></h2>
-                        <p>We do not outsource our binding. Our fully equipped finishing department operates as a dedicated trade finishing service.</p>
-                        <ul class="capabilities-list">
-                            <li><strong>PUR Perfect Binding:</strong> Polyurethane Reactive adhesive for superior page pull strength and lay-flat flexibility.</li>
-                            <li><strong>Square Back Binding:</strong> Automated folding and stapling that presses the spine flat, mimicking a perfect-bound look.</li>
-                            <li><strong>Wire-O Binding:</strong> Precision punching for manuals requiring a 360-degree fold.</li>
-                            <li><strong>Pre-Press & Artwork:</strong> Full in-house department to inspect bleeds, colour profiles, and imposition layouts.</li>
-                        </ul>
-                    </div>
-                </article>
-            </div>
-        </section>
-
-        <!-- New Five Colour Digital Printing Section -->
-        <section class="fuji-section scroll-reveal">
-            <div class="section-container">
-                
-                <div class="magenta-banner">
-                    <span>Five Colour Digital Printing</span>
+                <div class="section-header scroll-reveal">
+                    <h2 class="magenta-banner-heading"><span>Understanding Colour:<br class="mobile-break"> CMYK vs. RGB</span></h2>
+                    <p>The most common issue in pre-press is the difference between how colours look on a screen and how they look on physical paper.</p>
                 </div>
                 
-                <div class="fuji-img-container">
-                    <img src="fuji-press.png" alt="Fujifilm Revoria SC285S Five Colour Press" class="cover-img">
-                </div>
-                
-                <div class="fuji-text-grid">
-                    <div class="fuji-text">
-                        <p>As digital presses advanced in the late nineties we could see the benefit of supplementing our lithographic process with the ability to deliver short run colour. Since taking that decision we have been swept along with the rapid technological changes and have frequently updated our digital presses with each upgrade bringing improved quality, features and capabilities – each more exciting than the last.</p>
-                        
-                        <p>In 2026 we have embraced the most exciting change in digital technology to date. In fact, we have haven’t been this excited about a change in print in our history! Our latest Fujifilm Revoria SC285S press breaks the confines of CMYK like never before, enabling us to delivery a vastly improved colour gamut in short run digital print than at any time previously.</p>
-                        
-                        <p>Adding fluorescent pink as a fifth colour vastly improves our oranges, purples, bright blues and a host of other pigments enabling us to produce digital colour print closer to images on screen and closer to many previously unobtainable Pantone colours.</p>
-                        
-                        <p>This latest purchase has put us once again at the very forefront of technology and ensures we will stay ahead of the game as the way colour is processed digitally continues to surge onwards.</p>
+                <div class="colour-grid">
+                    <div class="color-card scroll-reveal" style="transition-delay: 0s;">
+                        <div class="color-placeholder"></div>
+                        <h3>RGB<br class="mobile-break"> (Red, Green, Blue)</h3>
+                        <p>This is the colour model used by digital screens (monitors, phones, TVs). Because screens emit light, RGB can produce incredibly bright, neon, and highly saturated colours. <strong>We cannot print directly from RGB files.</strong></p>
                     </div>
                     
-                    <div class="fuji-image-card">
-                        <img src="CMYK.png" alt="Standard CMYK Print Example" class="cover-img">
-                        <div class="fuji-image-label">CMYK</div>
-                    </div>
+                    <hr class="cyan-divider scroll-reveal">
                     
-                    <div class="fuji-image-card">
-                        <img src="CMYK-pink.png" alt="CMYK with Fluorescent Pink Print Example" class="cover-img">
-                        <div class="fuji-image-label">CMYK + PINK</div>
+                    <div class="color-card scroll-reveal" style="transition-delay: 0.2s;">
+                        <div class="color-placeholder"></div>
+                        <h3>CMYK<br class="mobile-break"> (Cyan, Magenta, Yellow, Key/Black)</h3>
+                        <p>This is the standard colour model for commercial printing. Presses combine these four ink colours to reproduce images. Because ink absorbs light rather than emitting it, CMYK has a smaller "colour gamut" than RGB.</p>
                     </div>
                 </div>
-                
-            </div>
-        </section>
 
-        <!-- Full Equipment List Section -->
-        <section class="equipment-inventory-section">
-            <div class="section-container">
-                <div class="equipment-header scroll-reveal">
-                    <h2 class="magenta-banner-heading mobile-shrink-text"><span>A Full List <br class="mobile-break">of Our Equipment</span></h2>
-                </div>
-                <div class="equipment-grid scroll-reveal">
-                    
-                    <div class="equipment-column">
-                        <h3>Pre Press</h3>
-                        <ul class="equipment-list">
-                            <li>Apple iMac 27" 3.2ghz</li>
-                            <li>Apple Mac Mini M4</li>
-                            <li>PC's x 3</li>
-                            <li>Agfa Acento S (CTP)<br>with Studiorip 3.9</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="equipment-column">
-                        <h3>Digital Print Room</h3>
-                        <ul class="equipment-list">
-                            <li>Fujifilm Revoria SC285S Five Colour</li>
-                            <li>Xerox Versant 180 CMYK</li>
-                        </ul>
-
-                        <h3 class="sub-heading">Print Room</h3>
-                        <ul class="equipment-list">
-                            <li>Heidelberg Speedmaster (B3)</li>
-                            <li>Heidelberg GTO46 (SRA3)</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="equipment-column">
-                        <h3>Finishing</h3>
-                        <ul class="equipment-list">
-                            <li>Renz Autopunch 360</li>
-                            <li>Renz Mobi 500</li>
-                            <li>Renz DTP 340M</li>
-                            <li>KB4000 PUR binder</li>
-                            <li>Speedbind 420 Planamelt Binder</li>
-                            <li>Watkiss PowerSquare 224</li>
-                            <li>Duplo 618 creaser/slitter</li>
-                            <li>Heidelberg Platen (SRA3)</li>
-                            <li>EBA 721 Guillotine</li>
-                            <li>D&K Neptune B3 Laminator</li>
-                            <li>Watkiss Vario Booklet Maker</li>
-                            <li>Morgana Autocreaser 500</li>
-                            <li>Morgana Autofold Pro</li>
-                            <li>Morgana Double Head Stitcher</li>
-                            <li>Filepecker IV double head drill</li>
-                        </ul>
-                    </div>
-
+                <div class="callout-box scroll-reveal">
+                    <h4>The GoWise Solution</h4>
+                    <p>If your illustrations or designs rely on vibrant tones that standard CMYK struggles to hit, our <strong>Fujifilm 5UPER COLOUR© Digital Press</strong> utilizes an expanded colour gamut to simulate vivid RGB and exact Pantone® spot colours with exceptional accuracy.</p>
                 </div>
             </div>
         </section>
 
-        <section class="partner-cta-section scroll-reveal">
+        <!-- 4. Digital vs Litho -->
+        <section id="digital-vs-litho" class="resource-section">
+            <div class="section-container">
+                <div class="section-header scroll-reveal">
+                    <h2 class="magenta-banner-heading"><span>Digital vs. Lithographic Printing</span></h2>
+                    <p>Which is right for you? Choosing the right press depends entirely on your quantity, timeline, and quality requirements.</p>
+                </div>
+                
+                <div class="comparison-grid">
+                    <div class="comparison-card scroll-reveal" style="transition-delay: 0s; border-top-color: var(--gowise-magenta);">
+                        <h3>Digital Printing</h3>
+                        <p><strong>Best for short to medium runs (typically 1 to 500 units).</strong></p>
+                        <p>Because there are no traditional printing plates to set up, digital is incredibly fast and cost-effective for smaller batches, limited-edition art prints, and variable data projects.</p>
+                    </div>
+                    <div class="comparison-card scroll-reveal" style="transition-delay: 0.2s; border-top-color: var(--gowise-magenta);">
+                        <h3>Lithographic Printing (Litho)</h3>
+                        <p><strong>Best for high-volume commercial runs.</strong></p>
+                        <p>Litho uses wet ink and custom plates. The initial setup takes longer and costs more, but once the press is running, the cost-per-page drops drastically. Litho also allows us to use traditional Pantone® spot colours and print on much larger raw sheet sizes (such as 450x640mm) for maximum yield.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. Setup Checklist -->
+        <section id="setup-checklist" class="resource-section">
+            <div class="section-container">
+                <div class="section-header scroll-reveal">
+                    <h2 class="magenta-banner-heading"><span>Essential Artwork<br class="mobile-break"> Setup Checklist</span></h2>
+                    <p>To avoid delays and additional pre-press fees, please ensure your files meet the following criteria before submission.</p>
+                </div>
+                
+                <div class="checklist-grid">
+                    <div class="checklist-item scroll-reveal" style="transition-delay: 0s;">
+                        <img src="resolution-icon.svg" alt="Resolution Icon" class="checklist-icon">
+                        <div class="check-content">
+                            <h4>Resolution</h4>
+                            <p>All images and raster graphics must be at least <strong>300 DPI</strong> (Dots Per Inch) at their actual printed size.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="checklist-item scroll-reveal" style="transition-delay: 0.1s;">
+                        <img src="bleed-icon.svg" alt="Bleed Icon" class="checklist-icon">
+                        <div class="check-content">
+                            <h4>Bleed</h4>
+                            <p>If your design features colour or images that run right to the edge of the page, you must include a <strong>3mm bleed</strong> on all sides. This gives our finishing team the tolerance needed to trim your pages perfectly without leaving white borders.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="checklist-item scroll-reveal" style="transition-delay: 0.2s;">
+                        <img src="safe-zone-icon.svg" alt="Safe Zone Icon" class="checklist-icon">
+                        <div class="check-content">
+                            <h4>Safe Zone</h4>
+                            <p>Keep all important text and logos at least <strong>5mm away</strong> from the trim edge to ensure nothing gets cut off during the binding or guillotining process.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="checklist-item scroll-reveal" style="transition-delay: 0.3s;">
+                        <img src="file-format-icon.svg" alt="File Formats Icon" class="checklist-icon">
+                        <div class="check-content">
+                            <h4>File Formats</h4>
+                            <p>We strongly prefer <strong>Print-Ready PDFs</strong>. Please ensure all fonts are outlined or embedded, and transparency layers are flattened.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. Plan Your Project (CTA) -->
+        <section id="plan-project" class="partner-cta-section scroll-reveal">
             <div class="partner-cta-container">
-                <h2>Partner With GoWise</h2>
-                <p>We work seamlessly with trade buyers, offering white-label shipping and competitive trade pricing on both long and short runs.</p>
+                <h2>Plan Your Project</h2>
+                <p>Ready to see how different stocks, sizes, and binding methods affect your bottom line? Take the guesswork out of your print budget.</p>
+                <p style="margin-bottom: 30px;">Use our interactive HTML cost calculation tool to input your preferred specifications—from standard A-sizes to custom 320x450mm sheets—and get an instant, transparent estimate for your next run.</p>
                 <div class="cta-actions">
-                    <a href="index.html#estimator" class="btn">Request a Quote or Trade Pricing</a>
-                    <a href="#" class="btn btn-outline">Contact Our Production Team</a>
+                    <a href="index.html#estimator" class="btn">Launch Print Cost Calculator</a>
+                    <a href="#" class="btn">Contact Our Pre-Press Team</a>
                 </div>
             </div>
         </section>
+
     </main>
 
     <!-- Quote Request Modal Window -->
@@ -770,11 +663,8 @@
         <div class="modal-content">
             <span class="close-modal" id="closeModal">&times;</span>
             <h3>Request a Quote</h3>
-            
-            <!-- Web3Forms API Submission Form -->
             <form id="asyncQuoteForm">
                 <input type="hidden" name="access_key" value="3c30689d-ea16-4629-92a1-5737b09d6f4c">
-                
                 <div class="form-group">
                     <label for="name">Name</label>
                     <input type="text" id="name" name="name" placeholder="Your Name" required>
@@ -785,38 +675,35 @@
                 </div>
                 <div class="form-group">
                     <label for="details">Project Details</label>
-                    <textarea id="details" name="details" placeholder="Please describe your printing needs (dimensions, quantity, paper stock, binding styles, etc.)..." required></textarea>
+                    <textarea id="details" name="details" placeholder="Please describe your printing needs..." required></textarea>
                 </div>
                 <button type="submit" class="btn" id="submitQuoteBtn" style="width: 100%;">Send Request</button>
             </form>
         </div>
     </div>
 
-    <!-- Submission Success Pop-Up Window -->
+    <!-- Submission Success Pop-Up -->
     <div class="modal-overlay" id="successModal">
         <div class="modal-content" style="max-width: 420px; text-align: center;">
             <span class="close-modal" id="closeSuccessX">&times;</span>
-            <h3 style="color: #00aae9; margin-bottom: 15px;">Thank You!</h3>
+            <h3 style="color: var(--gowise-cyan); margin-bottom: 15px;">Thank You!</h3>
             <p style="font-size: 16px; color: #444; margin-bottom: 25px;">Your quote request has been successfully submitted. Our production team will review your project details and get back to you shortly.</p>
             <button type="button" class="btn" id="closeSuccessBtn" style="width: 100%; background-color: var(--gowise-cyan);">Close Window</button>
         </div>
     </div>
 
-    <!-- 6. Footer -->
     <footer>
         <div class="footer-header">
-            <!-- 7. Footer Header text split on mobile -->
-            <h2>Visit Our Norwich<br class="mobile-break"> Print Shop</h2>
-            <p>GoWise Print proudly serves local businesses, independent creators, and trade partners across Norfolk and the UK.</p>
-        </div>
+    <!-- 7. Footer Header text split on mobile -->
+    <h2>Visit Our Norwich<br class="mobile-break"> Print Shop</h2>
+    <p>GoWise Print proudly serves local businesses, independent creators, and trade partners across Norfolk and the UK.</p>
+</div>
         <div class="footer-grid">
-            
             <div class="footer-arrow-container">
                 <svg class="footer-arrow" id="slideArrow" viewBox="0 0 100 50" xmlns="http://www.w3.org/2000/svg">
                     <path d="M0,15 L60,15 L60,0 L100,25 L60,50 L60,35 L0,35 Z" fill="var(--gowise-magenta)"/>
                 </svg>
             </div>
-            
             <div class="footer-text-columns">
                 <div>
                     <p style="font-size: 18px; margin-bottom: 15px; color: var(--gowise-cyan); font-weight: 600; text-transform: none; letter-spacing: normal;">CONTACT INFO</p>
@@ -825,30 +712,18 @@
                     <p><strong>Phone:</strong> +44 (0)1603 431304</p>
                     <p><strong>Email:</strong> print@gowise.co.uk</p>
                 </div>
-                
                 <div>
                     <p style="font-size: 18px; margin-bottom: 15px; color: var(--gowise-cyan); font-weight: 600; text-transform: none; letter-spacing: normal;">OPENING HOURS</p>
                     <p>MONDAY: 08:30 – 17:00<br>TUESDAY: 08:30 – 17:00<br>WEDNESDAY: 08:30 – 17:00<br>THURSDAY: 08:30 – 17:00<br>FRIDAY: 08:30 – 17:00<br>SATURDAY: CLOSED<br>SUNDAY: CLOSED</p>
                 </div>
             </div>
-            
             <div class="map-container">
                 <iframe src="https://maps.google.com/maps?q=NR7%200PT&t=&z=14&ie=UTF8&iwloc=&output=embed" loading="lazy" allowfullscreen title="GoWise Print Location Map"></iframe>
             </div>
-            
         </div>
     </footer>
 
     <script>
-        // --- Hamburger Menu Toggle ---
-        const hamburgerBtn = document.getElementById('hamburgerBtn');
-        const mobileNav = document.querySelector('nav');
-        
-        hamburgerBtn.addEventListener('click', () => {
-            hamburgerBtn.classList.toggle('active');
-            mobileNav.classList.toggle('active');
-        });
-
         // Scroll Animations
         const createObserver = (selector, visibleClass, threshold = 0.15) => {
             const elements = document.querySelectorAll(selector);
@@ -864,6 +739,7 @@
             elements.forEach(el => observer.observe(el));
         };
 
+        // Initialize scroll reveal on elements
         createObserver('.scroll-reveal', 'visible', 0.15);
 
         // Footer Arrow Animation
@@ -879,88 +755,79 @@
         }, { threshold: 0.1 }); 
         if(arrow) arrowObserver.observe(arrow);
 
-        // --- 4. Request Form & Success Modals Interactivity ---
-        const navQuoteBtn = document.getElementById('navQuoteBtn'); // Desktop Nav btn
-        const navQuoteBtnMobile = document.getElementById('navQuoteBtnMobile'); // Mobile Nav btn
+        // --- Hamburger Menu Toggle ---
+        const hamburgerBtn = document.getElementById('hamburgerBtn');
+        const navMenu = document.getElementById('navMenu');
+        
+        if (hamburgerBtn) {
+            hamburgerBtn.addEventListener('click', () => {
+                hamburgerBtn.classList.toggle('active');
+                navMenu.classList.toggle('active');
+            });
+        }
+
+        // --- Modal & Form Logic ---
+        const navQuoteBtn = document.getElementById('navQuoteBtn');
+        const navQuoteBtnMobile = document.getElementById('navQuoteBtnMobile');
         const quoteModal = document.getElementById('quoteModal');
         const closeModal = document.getElementById('closeModal');
-        
         const asyncForm = document.getElementById('asyncQuoteForm');
         const submitBtn = document.getElementById('submitQuoteBtn');
-        
         const successModal = document.getElementById('successModal');
         const closeSuccessX = document.getElementById('closeSuccessX');
         const closeSuccessBtn = document.getElementById('closeSuccessBtn');
 
-        // Reveal Form Modal Function
         const showQuoteModal = (e) => {
             if(e) e.preventDefault();
             quoteModal.style.display = 'flex';
             setTimeout(() => quoteModal.classList.add('active'), 10);
         };
 
-        // Attach to all buttons
-        if(navQuoteBtn) navQuoteBtn.addEventListener('click', showQuoteModal);
-        if(navQuoteBtnMobile) navQuoteBtnMobile.addEventListener('click', showQuoteModal);
+        // Attach modal trigger to both desktop and mobile buttons
+        if (navQuoteBtn) navQuoteBtn.addEventListener('click', showQuoteModal);
+        if (navQuoteBtnMobile) navQuoteBtnMobile.addEventListener('click', showQuoteModal);
 
-        // Hide Form Modal Function
         const hideQuoteModal = () => {
             quoteModal.classList.remove('active');
             setTimeout(() => quoteModal.style.display = 'none', 400); 
         };
-        closeModal.addEventListener('click', hideQuoteModal);
+        if (closeModal) closeModal.addEventListener('click', hideQuoteModal);
 
-        // Hide Success Modal Function
         const hideSuccessModal = () => {
             successModal.classList.remove('active');
             setTimeout(() => successModal.style.display = 'none', 400);
         };
-        closeSuccessX.addEventListener('click', hideSuccessModal);
-        closeSuccessBtn.addEventListener('click', hideSuccessModal);
+        if (closeSuccessX) closeSuccessX.addEventListener('click', hideSuccessModal);
+        if (closeSuccessBtn) closeSuccessBtn.addEventListener('click', hideSuccessModal);
 
-        // Background click processing to close elements
         window.addEventListener('click', (e) => {
             if (e.target === quoteModal) hideQuoteModal();
             if (e.target === successModal) hideSuccessModal();
         });
 
-        // Asynchronous Messaging API Route Submission Processing (Web3Forms)
-        asyncForm.addEventListener('submit', function(e) {
-            e.preventDefault(); // Stop page routing/reloads
-            
-            // Set dynamic loading states
-            submitBtn.textContent = "Sending Request...";
-            submitBtn.disabled = true;
+        if (asyncForm) {
+            asyncForm.addEventListener('submit', function(e) {
+                e.preventDefault(); 
+                submitBtn.textContent = "Sending Request...";
+                submitBtn.disabled = true;
 
-            const formData = new FormData(asyncForm);
-
-            fetch('https://api.web3forms.com/submit', {
-                method: 'POST',
-                body: formData
-            })
-            .then(async (response) => {
-                let json = await response.json();
-                if (response.status == 200) {
-                    // Step A: Close the entry form seamlessly
-                    hideQuoteModal();
-                    asyncForm.reset(); // Wipe inputs
-                    
-                    // Step B: Pop open the Confirmation Window overlay
-                    successModal.style.display = 'flex';
-                    setTimeout(() => successModal.classList.add('active'), 10);
-                } else {
-                    alert("Submission failed: " + json.message);
-                }
-            })
-            .catch(error => {
-                alert("Network error. Please confirm server connectivity or reach out directly to print@gowise.co.uk.");
-            })
-            .finally(() => {
-                // Restore primary CTA interface elements
-                submitBtn.textContent = "Send Request";
-                submitBtn.disabled = false;
+                const formData = new FormData(asyncForm);
+                fetch('https://api.web3forms.com/submit', { method: 'POST', body: formData })
+                .then(async (response) => {
+                    let json = await response.json();
+                    if (response.status == 200) {
+                        hideQuoteModal();
+                        asyncForm.reset(); 
+                        successModal.style.display = 'flex';
+                        setTimeout(() => successModal.classList.add('active'), 10);
+                    } else {
+                        alert("Submission failed: " + json.message);
+                    }
+                })
+                .catch(error => { alert("Network error. Please try again."); })
+                .finally(() => { submitBtn.textContent = "Send Request"; submitBtn.disabled = false; });
             });
-        });
+        }
     </script>
 </body>
 </html>
