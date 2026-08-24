@@ -148,10 +148,12 @@
 
         /* --- NEW PARALLAX WRAPPER & WHITE COLUMN --- */
         .parallax-wrapper {
-            background-image: url('side-panel.jpg');
+            background-image: url('side-panel.jpg'); /* Change to url('images/side-panel.jpg') if it is inside your images folder! */
             background-repeat: repeat;
             background-position: center top;
             background-attachment: fixed;
+            background-size: 400px; /* Forces the pattern to scale so it is visible */
+            background-color: #f0f0f0; /* Light grey fallback colour to help you test the file path */
             width: 100%;
             position: relative;
             z-index: 1;
