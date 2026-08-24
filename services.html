@@ -143,17 +143,14 @@
         .hero-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; }
         .hero-bg img { animation: kenBurns 20s infinite alternate ease-in-out; }
 
-        @keyframes slideUpFade { to { opacity: 1; transform: translateY(0); } }
-        @keyframes kenBurns { from { transform: scale(1); } to { transform: scale(1.1); } }
-
         /* --- NEW PARALLAX WRAPPER & WHITE COLUMN --- */
         .parallax-wrapper {
-            background-image: url('images/side-panel.jpg'); /* Updated correctly to match your github structure! */
-            background-repeat: repeat;
-            background-position: center top;
-            background-attachment: fixed;
-            background-size: 400px; /* Forces the pattern to scale so it is visible */
-            background-color: #f0f0f0; /* Light grey fallback colour to help you test the file path */
+            background-image: url('images/side-panel.jpg'), url('images/side-panel.jpg'); 
+            background-repeat: no-repeat, no-repeat;
+            background-position: left top, right top;
+            background-attachment: fixed, fixed;
+            background-size: auto 100%, auto 100%; /* Single instance scaled seamlessly to screen height */
+            background-color: #ffffff; /* Fills remaining space behind the content with white */
             width: 100%;
             position: relative;
             z-index: 1;
