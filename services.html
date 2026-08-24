@@ -249,6 +249,7 @@
             grid-template-columns: 1fr 1fr;
             gap: 40px;
         }
+        
         .comparison-card {
             background: #fff;
             padding: 40px;
@@ -258,11 +259,18 @@
             opacity: 0;
             transform: translateY(30px);
             transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-            /* Flexbox transforms to ensure bottom-alignment of the images */
+            /* Flexbox tweaks to ensure bottom-alignment of the images */
             display: flex;
             flex-direction: column;
+            height: 100%; /* Critical for forcing the container to stretch in the grid */
         }
         .comparison-card.visible { opacity: 1; transform: translateY(0); }
+        
+        /* New Wrapper Class */
+        .card-content {
+            flex-grow: 1; /* Pushes the image down to the absolute bottom padding */
+        }
+        
         .comparison-card h3 { font-size: 24px; margin-bottom: 20px; color: var(--header-dark); }
         .comparison-card p { font-size: 16px; font-weight: 300; line-height: 1.8; color: #555; margin-bottom: 15px; }
         .comparison-card strong { font-weight: 600; color: var(--header-dark); text-transform: none; letter-spacing: normal; }
@@ -271,10 +279,9 @@
             display: block;
             width: 100%;
             height: auto;
-            /* margin-top: auto pushes the image to the very bottom of the flex container */
-            margin-top: auto; 
-            padding-top: 35px;
-            margin-bottom: 10px;
+            margin-top: 35px;
+            object-fit: contain;
+            object-position: bottom;
         }
 
         /* Footer overrides */
@@ -555,18 +562,21 @@
                 
                 <div class="comparison-grid">
                     <div class="comparison-card scroll-reveal" style="transition-delay: 0s; border-top-color: var(--gowise-magenta);">
-                        <h3>Digital Printing</h3>
-                        <p><strong>Best for short to medium runs (typically 1 to 500 units).</strong></p>
-                        <p>Because there are no traditional printing plates to set up, digital is incredibly fast and cost-effective for smaller batches, limited-edition art prints, and variable data projects.</p>
-                        
+                        <!-- Wrapped the text in a new container -->
+                        <div class="card-content">
+                            <h3>Digital Printing</h3>
+                            <p><strong>Best for short to medium runs (typically 1 to 500 units).</strong></p>
+                            <p>Because there are no traditional printing plates to set up, digital is incredibly fast and cost-effective for smaller batches, limited-edition art prints, and variable data projects.</p>
+                        </div>
                         <img src="images/revoria.svg" alt="Revoria Digital Press" class="comparison-img">
                     </div>
                     <div class="comparison-card scroll-reveal" style="transition-delay: 0.2s; border-top-color: var(--gowise-magenta);">
-                        <h3>Lithographic Printing (Litho)</h3>
-                        <p><strong>Best for high-volume commercial runs.</strong></p>
-                        <p>Litho uses wet ink and custom plates. The initial setup takes longer and costs more, but once the press is running, the cost-per-page drops drastically. Litho also allows us to use traditional Pantone® spot colours and print on much larger raw sheet sizes (such as 450x640mm) for maximum yield.</p>
-                        
-                        <!-- --- NEW IMAGE ADDED HERE --- -->
+                        <!-- Wrapped the text in a new container -->
+                        <div class="card-content">
+                            <h3>Lithographic Printing (Litho)</h3>
+                            <p><strong>Best for high-volume commercial runs.</strong></p>
+                            <p>Litho uses wet ink and custom plates. The initial setup takes longer and costs more, but once the press is running, the cost-per-page drops drastically. Litho also allows us to use traditional Pantone® spot colours and print on much larger raw sheet sizes (such as 450x640mm) for maximum yield.</p>
+                        </div>
                         <img src="images/heidelberg.svg" alt="Heidelberg Lithographic Press" class="comparison-img">
                     </div>
                 </div>
