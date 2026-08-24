@@ -5,11 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="format-detection" content="telephone=no">
     
+    <!-- SEO Optimization -->
     <title>Complete Print, Binding & Design Services in Norwich | Gowise Print</title>
     <meta name="description" content="From corporate brochure rollouts to specialized 500-unit independent zines, GoWise Print delivers uncompromising quality printing, binding, and design in Norwich.">
     <meta name="keywords" content="Print Services Norwich, Lithographic Printing, 5-Colour Digital Print, Book Binding, Graphic Design Norwich, Zine Printing">
     <link rel="canonical" href="https://www.gowise.co.uk/services.html">
     
+    <!-- Open Graph for Social Sharing -->
     <meta property="og:title" content="Complete Print, Binding & Design Services in Norwich">
     <meta property="og:description" content="Advanced printing technology, comprehensive book binding, and expert pre-press design under one roof.">
     <meta property="og:type" content="website">
@@ -256,18 +258,22 @@
             opacity: 0;
             transform: translateY(30px);
             transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+            /* Flexbox transforms to ensure bottom-alignment of the images */
+            display: flex;
+            flex-direction: column;
         }
         .comparison-card.visible { opacity: 1; transform: translateY(0); }
         .comparison-card h3 { font-size: 24px; margin-bottom: 20px; color: var(--header-dark); }
         .comparison-card p { font-size: 16px; font-weight: 300; line-height: 1.8; color: #555; margin-bottom: 15px; }
         .comparison-card strong { font-weight: 600; color: var(--header-dark); text-transform: none; letter-spacing: normal; }
 
-        /* --- NEW CSS ADDED HERE --- */
         .comparison-img {
             display: block;
             width: 100%;
             height: auto;
-            margin-top: 35px;
+            /* margin-top: auto pushes the image to the very bottom of the flex container */
+            margin-top: auto; 
+            padding-top: 35px;
             margin-bottom: 10px;
         }
 
@@ -381,11 +387,13 @@
         <a href="mailto:print@gowise.co.uk">print@gowise.co.uk</a>
     </div>
 
+    <!-- Navigation -->
     <header>
         <a href="index.html" class="logo">
             <img src="gowise-logo.png" alt="Gowise Print Logo">
         </a>
         
+        <!-- Mobile Actions: Quote + Animated Hamburger -->
         <div class="header-right">
             <a href="#" id="navQuoteBtnMobile" class="btn-quote">GET A QUOTE</a>
             <button class="hamburger" id="hamburgerBtn" aria-label="Menu">
@@ -436,6 +444,7 @@
     </header>
 
     <main>
+        <!-- 1. Hero Section -->
         <section class="inner-hero" aria-label="Introduction">
             <div class="hero-bg">
                 <img src="Services-1.jpg" alt="Dynamic wide shot of the GoWise print facility blending traditional machinery with modern design setups" class="cover-img">
@@ -446,15 +455,18 @@
             </div>
         </section>
 
+        <!-- 2. Intro Section -->
         <section class="page-intro scroll-reveal">
             <p>By housing advanced printing technology, comprehensive book binding, and an expert pre-press design team under one roof, we ensure your project transitions seamlessly from a digital file to a perfectly finished physical product. Explore our core services below to see how we bring your ideas to the page.</p>
         </section>
 
+        <!-- 3. Services Core Breakdown (Alternating Layout) -->
         <section class="services-detail-section">
             <div class="section-container">
                 
                 <hr class="magenta-divider scroll-reveal">
                 
+                <!-- Category 1: Printing -->
                 <article id="printing" class="service-row scroll-reveal">
                     <div class="service-img-container">
                         <img src="Services-2.jpg" alt="Dynamic image showcasing vivid spot colors on a heavy-stock print sheet rolling off the litho press" class="cover-img">
@@ -480,6 +492,7 @@
                     </div>
                 </article>
 
+                <!-- Category 2: Binding -->
                 <article id="binding" class="service-row scroll-reveal">
                     <div class="service-img-container">
                         <img src="Services-3.jpg" alt="Close-up showing the varied textures of PUR binding, square back folding, and wire binding laid side-by-side" class="cover-img">
@@ -505,6 +518,7 @@
                     </div>
                 </article>
 
+                <!-- Category 3: Design -->
                 <article id="design" class="service-row scroll-reveal">
                     <div class="service-img-container">
                         <img src="Services-4.jpg" alt="A graphic designer inspecting a digital proof on a large monitor alongside physical Pantone swatch books" class="cover-img">
@@ -531,6 +545,7 @@
             </div>
         </section>
 
+        <!-- 4. Digital vs Litho Section -->
         <section id="digital-vs-litho" class="resource-section">
             <div class="section-container">
                 <div class="section-header scroll-reveal">
@@ -543,12 +558,16 @@
                         <h3>Digital Printing</h3>
                         <p><strong>Best for short to medium runs (typically 1 to 500 units).</strong></p>
                         <p>Because there are no traditional printing plates to set up, digital is incredibly fast and cost-effective for smaller batches, limited-edition art prints, and variable data projects.</p>
+                        
                         <img src="images/revoria.svg" alt="Revoria Digital Press" class="comparison-img">
                     </div>
                     <div class="comparison-card scroll-reveal" style="transition-delay: 0.2s; border-top-color: var(--gowise-magenta);">
                         <h3>Lithographic Printing (Litho)</h3>
                         <p><strong>Best for high-volume commercial runs.</strong></p>
                         <p>Litho uses wet ink and custom plates. The initial setup takes longer and costs more, but once the press is running, the cost-per-page drops drastically. Litho also allows us to use traditional Pantone® spot colours and print on much larger raw sheet sizes (such as 450x640mm) for maximum yield.</p>
+                        
+                        <!-- --- NEW IMAGE ADDED HERE --- -->
+                        <img src="images/heidelberg.svg" alt="Heidelberg Lithographic Press" class="comparison-img">
                     </div>
                 </div>
             </div>
@@ -556,6 +575,7 @@
         
     </main>
 
+    <!-- Quote Request Modal Window -->
     <div class="modal-overlay" id="quoteModal">
         <div class="modal-content">
             <span class="close-modal" id="closeModal">×</span>
@@ -579,6 +599,7 @@
         </div>
     </div>
 
+    <!-- Submission Success Pop-Up -->
     <div class="modal-overlay" id="successModal">
         <div class="modal-content" style="max-width: 420px; text-align: center;">
             <span class="close-modal" id="closeSuccessX">×</span>
