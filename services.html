@@ -147,16 +147,12 @@
         .hero-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; }
         .hero-bg img { animation: kenBurns 20s infinite alternate ease-in-out; }
 
-        @keyframes slideUpFade { to { opacity: 1; transform: translateY(0); } }
-        @keyframes kenBurns { from { transform: scale(1); } to { transform: scale(1.1); } }
-
-        /* --- NEW PARALLAX WRAPPER & WHITE COLUMN --- */
+        /* --- PARALLAX WRAPPER & WHITE COLUMN --- */
         .parallax-wrapper {
             background-image: url('images/side-panel.jpg'), url('images/side-panel.jpg'); 
             background-repeat: no-repeat, no-repeat;
             background-position: left top, right top;
             background-attachment: fixed, fixed;
-            /* Applies mathematically perfect size to background images based on JS ratio */
             background-size: var(--actual-panel-width) 100%, var(--actual-panel-width) 100%; 
             background-color: #ffffff; 
             width: 100%;
@@ -165,12 +161,11 @@
         }
         
         .white-center-column {
-            /* Calculates width to perfectly snap into the gap left by the pink images */
             width: calc(100% - (var(--actual-panel-width) * 2));
             margin: 0 auto;
             background-color: #ffffff;
-            box-shadow: 0 0 30px rgba(0, 0, 0, 0.08); /* Shadow now drops over the edge of the pattern seamlessly */
-            transition: width 0.3s ease; /* Smooth glide if aspect ratio recalculates */
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.08);
+            transition: width 0.3s ease;
         }
 
         /* 2. Intro Section */
@@ -502,99 +497,99 @@
             </div>
         </section>
 
-        <!-- Parallax Background Wrapper -->
+        <!-- 2. Intro Section -->
+        <section class="page-intro scroll-reveal">
+            <p>By housing advanced printing technology, comprehensive book binding, and an expert pre-press design team under one roof, we ensure your project transitions seamlessly from a digital file to a perfectly finished physical product. Explore our core services below to see how we bring your ideas to the page.</p>
+        </section>
+
+        <!-- 3. Services Core Breakdown (Alternating Layout) -->
+        <section class="services-detail-section">
+            <div class="section-container">
+                
+                <hr class="magenta-divider scroll-reveal">
+                
+                <!-- Category 1: Printing -->
+                <article id="printing" class="service-row scroll-reveal">
+                    <div class="service-img-container">
+                        <img src="Services-2.jpg" alt="Dynamic image showcasing vivid spot colors on a heavy-stock print sheet rolling off the litho press" class="cover-img">
+                    </div>
+                    <div class="service-text">
+                        <h2 class="service-banner"><span>1. Commercial & Independent Printing</span></h2>
+                        <p>We don't believe in a one-size-fits-all approach to ink and paper. We match your specific run size, budget, and colour requirements with the ideal printing press, ensuring flawless detail and maximum cost-efficiency.</p>
+                        
+                        <ul class="service-features">
+                            <li>
+                                <strong>Spot Colour Lithographic Printing</strong>
+                                When brand consistency is paramount, our traditional litho presses deliver. We are specialists in exact Pantone® ink matching, making this the perfect choice for corporate stationery, packaging, and high-volume runs where extreme precision and vibrant solid colours are non-negotiable.
+                            </li>
+                            <li>
+                                <strong>5-Colour Digital Printing</strong>
+                                Our cutting-edge Fujifilm 5UPER COLOUR© press goes far beyond standard CMYK. By utilizing an expanded colour gamut, we achieve incredibly rich RGB tones and simulate Pantone colours with stunning accuracy. Digital is fast, cost-effective for shorter runs, and perfect for variable data printing.
+                            </li>
+                            <li>
+                                <strong>Custom Formats & Stocks</strong>
+                                We optimize your artwork for both standard and custom raw sheet sizes (including 320x450mm and 450x640mm) to reduce waste and keep your costs down, whether you're printing heavy-stock art prints or high-volume flyers.
+                            </li>
+                        </ul>
+                    </div>
+                </article>
+
+                <!-- Category 2: Binding -->
+                <article id="binding" class="service-row scroll-reveal">
+                    <div class="service-img-container">
+                        <img src="Services-3.jpg" alt="Close-up showing the varied textures of PUR binding, square back folding, and wire binding laid side-by-side" class="cover-img">
+                    </div>
+                    <div class="service-text">
+                        <h2 class="service-banner"><span>2. Book Binding & In-House Finishing</span></h2>
+                        <p>A beautifully printed page is only half the journey; the finish dictates how your publication is experienced. Because we handle all our binding in-house, we maintain complete quality control without the delays of outsourcing.</p>
+                        
+                        <ul class="service-features">
+                            <li>
+                                <strong>PUR Perfect Binding</strong>
+                                The gold standard for paperback books, thick catalogues, and graphic novels. Polyurethane Reactive (PUR) glue is significantly stronger and more flexible than standard adhesives, ensuring your book won't crack even when opened completely flat.
+                            </li>
+                            <li>
+                                <strong>Square Back Binding</strong>
+                                Get the premium, flat-spine look of a perfect-bound book with the cost-effectiveness of stapling. Ideal for independent creators, atmospheric folklore zines, and limited-edition lookbooks, this method presses the folded spine flat so your publication stacks and presents beautifully.
+                            </li>
+                            <li>
+                                <strong>Wire Binding</strong>
+                                When your manual, sketchbook, or presentation deck needs to lay entirely flat or fold back 360 degrees, our durable wire-o binding offers the most practical and professional finish.
+                            </li>
+                        </ul>
+                    </div>
+                </article>
+
+                <!-- Category 3: Design -->
+                <article id="design" class="service-row scroll-reveal">
+                    <div class="service-img-container">
+                        <img src="Services-4.jpg" alt="A graphic designer inspecting a digital proof on a large monitor alongside physical Pantone swatch books" class="cover-img">
+                    </div>
+                    <div class="service-text">
+                        <h2 class="service-banner"><span>3. Graphic Design & Artwork Setup</span></h2>
+                        <p>Even the best presses can't fix poorly prepared files. Our full in-house graphic design and pre-press team is here to bridge the gap between your screen and our printers.</p>
+                        
+                        <ul class="service-features">
+                            <li>
+                                <strong>Print-Ready File Setup</strong>
+                                Let us take the stress out of commercial print preparation. We can review your files to ensure perfect CMYK conversions, correct bleed margins, and proper resolution, so your final product looks exactly as you envisioned.
+                            </li>
+                            <li>
+                                <strong>Creative Design Services</strong>
+                                Bring us a rough concept, and our experienced designers will bring it to life. From striking corporate branding to layout design for multi-page publications, we merge deep technical printing knowledge with a wealth of creative experience to save you time and money.
+                            </li>
+                        </ul>
+
+                        <a href="resources.html" class="btn">Read Our Artwork Guide</a>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- Parallax Background Wrapper ONLY for Digital vs Litho Section -->
         <div class="parallax-wrapper">
             <div class="white-center-column">
-                
-                <!-- 2. Intro Section -->
-                <section class="page-intro scroll-reveal">
-                    <p>By housing advanced printing technology, comprehensive book binding, and an expert pre-press design team under one roof, we ensure your project transitions seamlessly from a digital file to a perfectly finished physical product. Explore our core services below to see how we bring your ideas to the page.</p>
-                </section>
-
-                <!-- 3. Services Core Breakdown (Alternating Layout) -->
-                <section class="services-detail-section">
-                    <div class="section-container">
-                        
-                        <hr class="magenta-divider scroll-reveal">
-                        
-                        <!-- Category 1: Printing -->
-                        <article id="printing" class="service-row scroll-reveal">
-                            <div class="service-img-container">
-                                <img src="Services-2.jpg" alt="Dynamic image showcasing vivid spot colors on a heavy-stock print sheet rolling off the litho press" class="cover-img">
-                            </div>
-                            <div class="service-text">
-                                <h2 class="service-banner"><span>1. Commercial & Independent Printing</span></h2>
-                                <p>We don't believe in a one-size-fits-all approach to ink and paper. We match your specific run size, budget, and colour requirements with the ideal printing press, ensuring flawless detail and maximum cost-efficiency.</p>
-                                
-                                <ul class="service-features">
-                                    <li>
-                                        <strong>Spot Colour Lithographic Printing</strong>
-                                        When brand consistency is paramount, our traditional litho presses deliver. We are specialists in exact Pantone® ink matching, making this the perfect choice for corporate stationery, packaging, and high-volume runs where extreme precision and vibrant solid colours are non-negotiable.
-                                    </li>
-                                    <li>
-                                        <strong>5-Colour Digital Printing</strong>
-                                        Our cutting-edge Fujifilm 5UPER COLOUR© press goes far beyond standard CMYK. By utilizing an expanded colour gamut, we achieve incredibly rich RGB tones and simulate Pantone colours with stunning accuracy. Digital is fast, cost-effective for shorter runs, and perfect for variable data printing.
-                                    </li>
-                                    <li>
-                                        <strong>Custom Formats & Stocks</strong>
-                                        We optimize your artwork for both standard and custom raw sheet sizes (including 320x450mm and 450x640mm) to reduce waste and keep your costs down, whether you're printing heavy-stock art prints or high-volume flyers.
-                                    </li>
-                                </ul>
-                            </div>
-                        </article>
-
-                        <!-- Category 2: Binding -->
-                        <article id="binding" class="service-row scroll-reveal">
-                            <div class="service-img-container">
-                                <img src="Services-3.jpg" alt="Close-up showing the varied textures of PUR binding, square back folding, and wire binding laid side-by-side" class="cover-img">
-                            </div>
-                            <div class="service-text">
-                                <h2 class="service-banner"><span>2. Book Binding & In-House Finishing</span></h2>
-                                <p>A beautifully printed page is only half the journey; the finish dictates how your publication is experienced. Because we handle all our binding in-house, we maintain complete quality control without the delays of outsourcing.</p>
-                                
-                                <ul class="service-features">
-                                    <li>
-                                        <strong>PUR Perfect Binding</strong>
-                                        The gold standard for paperback books, thick catalogues, and graphic novels. Polyurethane Reactive (PUR) glue is significantly stronger and more flexible than standard adhesives, ensuring your book won't crack even when opened completely flat.
-                                    </li>
-                                    <li>
-                                        <strong>Square Back Binding</strong>
-                                        Get the premium, flat-spine look of a perfect-bound book with the cost-effectiveness of stapling. Ideal for independent creators, atmospheric folklore zines, and limited-edition lookbooks, this method presses the folded spine flat so your publication stacks and presents beautifully.
-                                    </li>
-                                    <li>
-                                        <strong>Wire Binding</strong>
-                                        When your manual, sketchbook, or presentation deck needs to lay entirely flat or fold back 360 degrees, our durable wire-o binding offers the most practical and professional finish.
-                                    </li>
-                                </ul>
-                            </div>
-                        </article>
-
-                        <!-- Category 3: Design -->
-                        <article id="design" class="service-row scroll-reveal">
-                            <div class="service-img-container">
-                                <img src="Services-4.jpg" alt="A graphic designer inspecting a digital proof on a large monitor alongside physical Pantone swatch books" class="cover-img">
-                            </div>
-                            <div class="service-text">
-                                <h2 class="service-banner"><span>3. Graphic Design & Artwork Setup</span></h2>
-                                <p>Even the best presses can't fix poorly prepared files. Our full in-house graphic design and pre-press team is here to bridge the gap between your screen and our printers.</p>
-                                
-                                <ul class="service-features">
-                                    <li>
-                                        <strong>Print-Ready File Setup</strong>
-                                        Let us take the stress out of commercial print preparation. We can review your files to ensure perfect CMYK conversions, correct bleed margins, and proper resolution, so your final product looks exactly as you envisioned.
-                                    </li>
-                                    <li>
-                                        <strong>Creative Design Services</strong>
-                                        Bring us a rough concept, and our experienced designers will bring it to life. From striking corporate branding to layout design for multi-page publications, we merge deep technical printing knowledge with a wealth of creative experience to save you time and money.
-                                    </li>
-                                </ul>
-
-                                <a href="resources.html" class="btn">Read Our Artwork Guide</a>
-                            </div>
-                        </article>
-
-                    </div>
-                </section>
                 
                 <!-- 4. Digital vs Litho Section -->
                 <section id="digital-vs-litho" class="resource-section">
