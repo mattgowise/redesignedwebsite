@@ -106,7 +106,11 @@
         .dropdown a { display: block; padding: 12px 15px; border-bottom: 1px solid rgba(255, 255, 255, 0.2); font-size: 12px; text-transform: none; color: #ffffff; }
         .dropdown a:hover { background-color: rgba(0, 0, 0, 0.15); color: #fff; padding-left: 20px; transition: padding 0.3s ease, background-color 0.3s ease; }
 
-        @keyframes dropFade { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+        /* Animation explicit start and end to prevent stuck hidden text */
+        @keyframes dropFade { 
+            from { opacity: 0; transform: translateY(-10px); } 
+            to { opacity: 1; transform: translateY(0); } 
+        }
 
         /* Mobile Utilities */
         /* 1050px Breakpoint: Hamburger & Core Mobile Layout */
@@ -141,11 +145,20 @@
             backdrop-filter: blur(5px);
         }
         
-        .inner-hero-content h1 { font-size: 42px; color: #fff; margin-bottom: 20px; line-height: 1.2; opacity: 0; transform: translateY(30px); animation: slideUpFade 0.8s forwards; }
-        .inner-hero-content p { font-size: 18px; color: #ddd; font-weight: 300; opacity: 0; transform: translateY(30px); animation: slideUpFade 0.8s 0.2s forwards; }
+        .inner-hero-content h1 { font-size: 42px; color: #fff; margin-bottom: 20px; line-height: 1.2; opacity: 0; animation: slideUpFade 0.8s forwards; }
+        .inner-hero-content p { font-size: 18px; color: #ddd; font-weight: 300; opacity: 0; animation: slideUpFade 0.8s 0.2s forwards; }
         
         .hero-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; }
         .hero-bg img { animation: kenBurns 20s infinite alternate ease-in-out; }
+
+        @keyframes slideUpFade { 
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); } 
+        }
+        @keyframes kenBurns { 
+            from { transform: scale(1); } 
+            to { transform: scale(1.1); } 
+        }
 
         /* --- TOP WHITE WRAPPER --- */
         /* Forces the top sections to sit above the parallax shadow and remain pure white */
@@ -403,23 +416,23 @@
             .top-bar { flex-direction: row; justify-content: center; gap: 15px; font-size: 12px; white-space: nowrap; }
             .top-bar a { text-decoration: none !important; }
 
-            /* Stacked Hero Overrides */
-            .inner-hero { flex-direction: column; min-height: auto; background-color: #ffffff; overflow: visible; padding: 0; }
-            .hero-bg { position: relative; height: 280px; width: 100%; flex-shrink: 0; }
+            /* Stacked Hero Overrides - FIXED to keep text over image securely */
+            .inner-hero { min-height: 40vh; flex-direction: column; justify-content: center; overflow: hidden; padding: 40px 0; }
+            .hero-bg { position: absolute; height: 100%; width: 100%; flex-shrink: 0; top: 0; left: 0; }
             .inner-hero-content { 
                 position: relative; 
-                background-color: #ffffff; 
-                margin: 0; 
-                padding: 40px 5%; 
-                border-radius: 0; 
-                width: 100%; 
+                background-color: rgba(0, 0, 0, 0.65); 
+                margin: 0 5%; 
+                padding: 30px 5%; 
+                border-radius: 8px; 
+                width: auto; 
                 max-width: 100%; 
-                backdrop-filter: none; 
+                backdrop-filter: blur(5px); 
             }
             
-            /* Text scaling and color application for white background */
-            .inner-hero-content h1 { font-size: 34px; color: var(--gowise-cyan); }
-            .inner-hero-content p { color: #444444; font-size: 16px; }
+            /* Text scaling and color application for dark overlay */
+            .inner-hero-content h1 { font-size: 28px; color: #ffffff; }
+            .inner-hero-content p { color: #dddddd; font-size: 15px; }
 
             .service-row { grid-template-columns: 1fr; margin-bottom: 50px; }
             .service-row:nth-child(even) .service-text { order: 0; } 
@@ -440,7 +453,8 @@
     <!-- Navigation -->
     <header>
         <a href="index.html" class="logo">
-            <img src="images/gowise-logo.png" alt="Gowise Print Logo">
+            <!-- Path reverted back to the root folder! -->
+            <img src="gowise-logo.png" alt="Gowise Print Logo">
         </a>
         
         <!-- Mobile Actions: Quote + Animated Hamburger -->
