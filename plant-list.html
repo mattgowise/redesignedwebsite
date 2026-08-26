@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
     
     <!-- SEO Optimization -->
     <title>Trade Print Capabilities & Plant List in Norwich | Gowise Print</title>
@@ -135,7 +136,7 @@
 
         @keyframes dropFade { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* Utility specific for mobile breaks */
+        /* Mobile Utilities */
         @media (max-width: 1050px) {
             .mobile-break { display: block; }
             .desktop-break { display: none; }
@@ -243,15 +244,16 @@
             display: grid;
             grid-template-columns: 4fr 5fr;
             gap: 60px;
-            align-items: start; /* Aligns top of image with top of text */
+            /* Stretch forces the image container to mirror the exact height of the text column */
+            align-items: stretch;
         }
         .service-article:nth-child(even) .service-row { grid-template-columns: 5fr 4fr; }
         .service-article:nth-child(even) .service-text { order: -1; } 
         
         .service-img-container { 
             width: 100%; 
-            aspect-ratio: 3 / 2; 
-            height: auto; 
+            /* Height 100% allows it to expand into the stretch space */
+            height: 100%; 
             border-radius: 4px; 
             overflow: hidden; 
             transform: scale(0);
@@ -483,6 +485,9 @@
             
             .service-row { grid-template-columns: 1fr !important; gap: 40px; }
             .service-article:nth-child(even) .service-text { order: 0; }
+            
+            /* Safeguard aspect ratio when stacked vertically on mobile */
+            .service-img-container { aspect-ratio: 3 / 2; height: auto; }
         }
         
         @media (max-width: 768px) {
@@ -523,7 +528,7 @@
             h2.magenta-banner-heading { font-size: 20px; padding: 12px 5%; }
             .fuji-text-grid { grid-template-columns: 1fr; gap: 20px; }
 
-            /* Mobile Carousel for Service Rows */
+            /* Mobile Carousel implementation for Service Rows */
             .plant-list-section .section-container {
                 display: flex;
                 overflow-x: auto;
@@ -849,6 +854,7 @@
     <footer>
         <div class="footer-content">
             <div class="footer-header">
+                <!-- 7. Footer Header text split on mobile -->
                 <h2>Visit Our Norwich<br class="mobile-break"> Print Shop</h2>
                 <p>GoWise Print proudly serves local businesses, independent creators, and trade partners across Norfolk and the UK.</p>
             </div>
@@ -907,8 +913,8 @@
         // --- 4. Request Form & Success Modals Interactivity ---
         const navQuoteBtn = document.getElementById('navQuoteBtn'); // Desktop Nav btn
         const navQuoteBtnMobile = document.getElementById('navQuoteBtnMobile'); // Mobile Nav btn
-        const ctaQuoteBtn = document.getElementById('ctaQuoteBtn'); // CTA btn
-        const contactTeamBtn = document.getElementById('contactTeamBtn'); // Contact Team btn
+        const ctaQuoteBtn = document.getElementById('ctaQuoteBtn'); // New CTA quote btn
+        const contactTeamBtn = document.getElementById('contactTeamBtn'); // New Contact Team btn
         const quoteModal = document.getElementById('quoteModal');
         const closeModal = document.getElementById('closeModal');
         
