@@ -79,7 +79,7 @@
         ul { list-style: none; }
 
         /* Utility */
-        .mobile-break { display: none; } /* Keeps headers on one line for desktop */
+        .mobile-break { display: none; }
 
         /* Color Variables */
         :root {
@@ -145,10 +145,8 @@
         @keyframes dropFade { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
 
         /* Mobile Utilities */
-        /* 1050px Breakpoint: Hamburger & Core Mobile Layout */
         @media (max-width: 1050px) {
             .mobile-break { display: block; }
-            .carousel-arrow { display: none; } /* Hide Carousel Arrows on Mobile */
             header { flex-direction: row; flex-wrap: wrap; justify-content: space-between; align-items: center; padding: 15px 5%; }
             .logo img { max-height: 60px; }
             .header-right { display: flex; align-items: center; gap: 15px; }
@@ -186,11 +184,16 @@
         @keyframes slideUpFade { to { opacity: 1; transform: translateY(0); } }
         @keyframes kenBurns { from { transform: scale(1); } to { transform: scale(1.1); } }
 
+        /* Universal Content Wrapper (Matched to 1400px standard) */
+        .content-wrapper {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 5%;
+        }
+
         /* 2. Intro Section */
         .page-intro { 
-            padding: 60px 5% 40px; 
-            max-width: 1400px; 
-            margin: 0 auto; 
+            padding: 60px 0 40px; 
             text-align: center; 
             opacity: 0;
             transform: translateY(40px);
@@ -259,9 +262,8 @@
         .visible h2.magenta-banner-heading span { opacity: 1; }
 
         /* Section Layout Helpers */
-        .resource-section { padding: 80px 5%; scroll-margin-top: 100px; }
-        .resource-section:nth-child(even) { background-color: #f4f4f4; }
-        .section-container { max-width: 1400px; margin: 0 auto; }
+        .resource-section { padding: 60px 0; scroll-margin-top: 100px; width: 100%; }
+        
         .section-header { text-align: center; margin-bottom: 50px; }
         .section-header p { font-size: 18px; max-width: 1200px; margin: 0 auto; font-weight: 300; text-transform: none; letter-spacing: normal; }
 
@@ -289,7 +291,6 @@
             background: transparent;
             padding: 20px;
             border: none;
-            box-shadow: none;
             text-align: center;
             opacity: 0;
             transform: translateY(30px);
@@ -306,6 +307,24 @@
             margin: 0 auto 25px auto;
         }
 
+        /* Highlight Callout Box */
+        .callout-box {
+            background-color: #f9f9f9;
+            color: var(--header-dark);
+            padding: 40px;
+            border-radius: 4px;
+            max-width: 1000px;
+            margin: 20px auto 0 auto;
+            border: 1px solid #eaeaea; 
+            text-align: center;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .callout-box.visible { opacity: 1; transform: translateY(0); }
+        .callout-box h4 { color: var(--gowise-cyan); font-size: 20px; margin-bottom: 15px; }
+        .callout-box p { color: #444; margin-bottom: 0; }
+
         /* 4. Comparison Cards (Digital/Litho) */
         .comparison-grid {
             display: grid;
@@ -317,34 +336,28 @@
             background: #fff;
             padding: 40px;
             border-radius: 4px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            border: 1px solid #eaeaea;
             border-top: 4px solid var(--gowise-cyan);
             opacity: 0;
             transform: translateY(30px);
             transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+            display: flex;
+            flex-direction: column;
+            height: 100%; 
         }
         .comparison-card.visible { opacity: 1; transform: translateY(0); }
         .comparison-card h3 { font-size: 24px; margin-bottom: 20px; color: var(--header-dark); }
         .comparison-card p { font-size: 16px; font-weight: 300; line-height: 1.8; color: #555; margin-bottom: 15px; }
         .comparison-card strong { font-weight: 600; color: var(--header-dark); text-transform: none; letter-spacing: normal; }
 
-        /* Highlight Callout Box */
-        .callout-box {
-            background-color: #f4f4f4;
-            color: var(--header-dark);
-            padding: 40px;
-            border-radius: 4px;
-            max-width: 1000px;
-            margin: 20px auto 0 auto;
-            border-left: none; 
-            text-align: center;
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        .comparison-img {
+            display: block;
+            width: 100%;
+            height: auto;
+            margin-top: auto;
+            padding-top: 35px;
+            margin-bottom: 10px;
         }
-        .callout-box.visible { opacity: 1; transform: translateY(0); }
-        .callout-box h4 { color: var(--gowise-cyan); font-size: 20px; margin-bottom: 15px; }
-        .callout-box p { color: #444; margin-bottom: 0; }
 
         /* 5. Checklist Section */
         #setup-checklist {
@@ -352,6 +365,7 @@
             color: #fff;
         }
         #setup-checklist .section-header p { color: #ddd; }
+        #setup-checklist .section-header h2 { color: #fff; font-size: 36px; margin-bottom: 15px; }
         
         .checklist-grid {
             display: grid;
@@ -361,13 +375,11 @@
         .checklist-item {
             background: transparent;
             padding: 20px 0;
-            border-radius: 0;
             display: flex;
             flex-direction: column;
             align-items: center;
             text-align: center;
             gap: 15px;
-            box-shadow: none;
             opacity: 0;
             transform: translateY(20px);
             transition: opacity 0.5s ease-out, transform 0.5s ease-out;
@@ -385,7 +397,7 @@
         .check-content p { font-size: 15px; margin-bottom: 0; color: #ccc; }
 
         /* 6. Partner/Plan CTA Section */
-        .partner-cta-section { background-color: var(--gowise-cyan); color: #fff; padding: 80px 5%; text-align: center; }
+        .partner-cta-section { background-color: var(--gowise-cyan); color: #fff; padding: 80px 0; text-align: center; width: 100%; margin: 0; }
         .partner-cta-container { max-width: 900px; margin: 0 auto; }
         .partner-cta-section h2 { color: #fff; font-size: 36px; margin-bottom: 20px; }
         .partner-cta-section p { color: #fff; font-size: 18px; margin-bottom: 30px; }
@@ -393,14 +405,21 @@
         .partner-cta-section .btn { background-color: var(--header-dark); color: #fff; }
         .partner-cta-section .btn:hover { background-color: #111; }
 
-        /* Footer overrides */
-        footer { background: var(--header-dark); color: #fff; position: relative; overflow: hidden; padding: 60px 5%; }
+        /* 7. Footer */
+        footer { 
+            background: var(--header-dark); 
+            color: #fff; 
+            position: relative; 
+            overflow: hidden; 
+            padding: 60px 0; 
+            width: 100%;
+            border-top: 4px solid var(--gowise-magenta);
+        }
         footer p { color: #ffffff !important; }
+        
         .footer-header { margin-bottom: 40px; text-align: center; }
-        .footer-grid { display: flex; align-items: stretch; justify-content: space-between; gap: 40px; max-width: 1400px; margin: 0 auto; }
-        .footer-arrow-container { flex: 0 0 120px; display: flex; align-items: center; }
-        .footer-arrow { width: 100%; height: auto; transform: translateX(-150px); opacity: 0; transition: transform 1s cubic-bezier(0.25, 1, 0.5, 1), opacity 1s ease; }
-        .footer-arrow.slide-in { transform: translateX(0); opacity: 1; }
+        .footer-header h2 { color: #ffffff; font-size: 32px; }
+        .footer-grid { display: flex; align-items: stretch; justify-content: space-between; gap: 40px; }
         .footer-text-columns { flex: 1; display: flex; justify-content: flex-start; gap: 60px; font-size: 14px; line-height: 1.8; padding-top: 20px; }
         .map-container { flex: 0 0 400px; height: 300px; background: #ddd; border-radius: 4px; overflow: hidden; }
         .map-container iframe { width: 100%; height: 100%; border: none; }
@@ -424,8 +443,6 @@
         [id] { scroll-margin-top: 160px !important; }
 
         /* --- RESPONSIVE BREAKPOINTS --- */
-
-        /* Trigger hamburger earlier before nav breaks rows */
         @media (max-width: 1050px) {
             header { flex-direction: row; flex-wrap: wrap; justify-content: space-between; align-items: center; padding: 15px 5%; }
             .header-right { display: flex; align-items: center; gap: 15px; }
@@ -455,7 +472,6 @@
             .comparison-grid { grid-template-columns: 1fr; }
             .checklist-grid { grid-template-columns: 1fr 1fr; }
             .footer-grid { flex-wrap: wrap; justify-content: center; text-align: center; }
-            .footer-arrow-container { display: none; }
             .footer-text-columns { flex-direction: column; gap: 30px; align-items: center; }
             .map-container { width: 100%; flex: 1 1 100%; }
         }
@@ -488,6 +504,7 @@
             
             .color-card h3 { font-size: 22px; }
             h2.magenta-banner-heading { font-size: 20px; padding: 12px 5%; }
+            #setup-checklist .section-header h2 { font-size: 28px; }
 
             /* Switch Colour Grid back to stacked and reset divider for mobile */
             .colour-grid { grid-template-columns: 1fr; gap: 20px; }
@@ -581,14 +598,16 @@
 
         <!-- 2. Intro Section -->
         <section class="page-intro scroll-reveal">
-            <p>Whether you are submitting a corporate annual report, a heavily illustrated folklore zine, or a short run of bespoke merchandise, setting your artwork up correctly saves time and ensures the best possible result on the press.</p>
+            <div class="content-wrapper">
+                <p>Whether you are submitting a corporate annual report, a heavily illustrated folklore zine, or a short run of bespoke merchandise, setting your artwork up correctly saves time and ensures the best possible result on the press.</p>
+            </div>
         </section>
 
         <hr class="magenta-divider scroll-reveal">
 
         <!-- 3. Understanding Colour (CMYK vs RGB) -->
         <section id="colour-guide" class="resource-section">
-            <div class="section-container">
+            <div class="content-wrapper">
                 <div class="section-header scroll-reveal">
                     <h2 class="magenta-banner-heading"><span>Understanding Colour:<br class="mobile-break"> CMYK vs. RGB</span></h2>
                     <p>The most common issue in pre-press is the difference between how colours look on a screen and how they look on physical paper.</p>
@@ -619,19 +638,19 @@
 
         <!-- 4. Digital vs Litho -->
         <section id="digital-vs-litho" class="resource-section">
-            <div class="section-container">
+            <div class="content-wrapper">
                 <div class="section-header scroll-reveal">
                     <h2 class="magenta-banner-heading"><span>Digital vs. Lithographic Printing</span></h2>
                     <p>Which is right for you? Choosing the right press depends entirely on your quantity, timeline, and quality requirements.</p>
                 </div>
                 
                 <div class="comparison-grid">
-                    <div class="comparison-card scroll-reveal" style="transition-delay: 0s; border-top-color: var(--gowise-magenta);">
+                    <div class="comparison-card scroll-reveal" style="transition-delay: 0s;">
                         <h3>Digital Printing</h3>
                         <p><strong>Best for short to medium runs (typically 1 to 500 units).</strong></p>
                         <p>Because there are no traditional printing plates to set up, digital is incredibly fast and cost-effective for smaller batches, limited-edition art prints, and variable data projects.</p>
                     </div>
-                    <div class="comparison-card scroll-reveal" style="transition-delay: 0.2s; border-top-color: var(--gowise-magenta);">
+                    <div class="comparison-card scroll-reveal" style="transition-delay: 0.2s;">
                         <h3>Lithographic Printing (Litho)</h3>
                         <p><strong>Best for high-volume commercial runs.</strong></p>
                         <p>Litho uses wet ink and custom plates. The initial setup takes longer and costs more, but once the press is running, the cost-per-page drops drastically. Litho also allows us to use traditional Pantone® spot colours and print on much larger raw sheet sizes (such as 450x640mm) for maximum yield.</p>
@@ -642,9 +661,9 @@
 
         <!-- 5. Setup Checklist -->
         <section id="setup-checklist" class="resource-section">
-            <div class="section-container">
+            <div class="content-wrapper">
                 <div class="section-header scroll-reveal">
-                    <h2 class="magenta-banner-heading"><span>Essential Artwork<br class="mobile-break"> Setup Checklist</span></h2>
+                    <h2>Essential Artwork<br class="mobile-break"> Setup Checklist</h2>
                     <p>To avoid delays and additional pre-press fees, please ensure your files meet the following criteria before submission.</p>
                 </div>
                 
@@ -686,13 +705,14 @@
 
         <!-- 6. Plan Your Project (CTA) -->
         <section id="plan-project" class="partner-cta-section scroll-reveal">
-            <div class="partner-cta-container">
-                <h2>Plan Your Project</h2>
-                <p>Ready to see how different stocks, sizes, and binding methods affect your bottom line? Take the guesswork out of your print budget.</p>
-                <p style="margin-bottom: 30px;">Use our interactive HTML cost calculation tool to input your preferred specifications—from standard A-sizes to custom 320x450mm sheets—and get an instant, transparent estimate for your next run.</p>
-                <div class="cta-actions">
-                    <!-- Added ID to trigger the contact modal -->
-                    <a href="#" id="prePressBtn" class="btn">Contact Our Pre-Press Team</a>
+            <div class="content-wrapper">
+                <div class="partner-cta-container">
+                    <h2>Plan Your Project</h2>
+                    <p>Ready to see how different stocks, sizes, and binding methods affect your bottom line? Take the guesswork out of your print budget.</p>
+                    <p style="margin-bottom: 30px;">Use our interactive HTML cost calculation tool to input your preferred specifications—from standard A-sizes to custom 320x450mm sheets—and get an instant, transparent estimate for your next run.</p>
+                    <div class="cta-actions">
+                        <a href="#" id="prePressBtn" class="btn">Contact Our Pre-Press Team</a>
+                    </div>
                 </div>
             </div>
         </section>
@@ -734,32 +754,28 @@
     </div>
 
     <footer>
-        <div class="footer-header">
-            <!-- 7. Footer Header text split on mobile -->
-            <h2>Visit Our Norwich<br class="mobile-break"> Print Shop</h2>
-            <p>GoWise Print proudly serves local businesses, independent creators, and trade partners across Norfolk and the UK.</p>
-        </div>
-        <div class="footer-grid">
-            <div class="footer-arrow-container">
-                <svg class="footer-arrow" id="slideArrow" viewBox="0 0 100 50" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M0,15 L60,15 L60,0 L100,25 L60,50 L60,35 L0,35 Z" fill="var(--gowise-magenta)"/>
-                </svg>
+        <div class="content-wrapper">
+            <div class="footer-header">
+                <h2>Visit Our Norwich<br class="mobile-break"> Print Shop</h2>
+                <p>GoWise Print proudly serves local businesses, independent creators, and trade partners across Norfolk and the UK.</p>
             </div>
-            <div class="footer-text-columns">
-                <div>
-                    <p style="font-size: 18px; margin-bottom: 15px; color: var(--gowise-cyan); font-weight: 600; text-transform: none; letter-spacing: normal;">CONTACT INFO</p>
-                    <p><strong>Address:</strong><br>4 Belmore Road<br>Thorpe St Andrew<br>Norwich, Norfolk<br>NR7 0PT</p>
-                    <br>
-                    <p><strong>Phone:</strong> +44 (0)1603 431304</p>
-                    <p><strong>Email:</strong> print@gowise.co.uk</p>
+            <div class="footer-grid">
+                <div class="footer-text-columns">
+                    <div>
+                        <p style="font-size: 18px; margin-bottom: 15px; color: #ffffff; font-weight: 600; text-transform: none; letter-spacing: normal;">CONTACT INFO</p>
+                        <p><strong>Address:</strong><br>4 Belmore Road<br>Thorpe St Andrew<br>Norwich, Norfolk<br>NR7 0PT</p>
+                        <br>
+                        <p><strong>Phone:</strong> +44 (0)1603 431304</p>
+                        <p><strong>Email:</strong> print@gowise.co.uk</p>
+                    </div>
+                    <div>
+                        <p style="font-size: 18px; margin-bottom: 15px; color: #ffffff; font-weight: 600; text-transform: none; letter-spacing: normal;">OPENING HOURS</p>
+                        <p>MONDAY: 08:30 – 17:00<br>TUESDAY: 08:30 – 17:00<br>WEDNESDAY: 08:30 – 17:00<br>THURSDAY: 08:30 – 17:00<br>FRIDAY: 08:30 – 17:00<br>SATURDAY: CLOSED<br>SUNDAY: CLOSED</p>
+                    </div>
                 </div>
-                <div>
-                    <p style="font-size: 18px; margin-bottom: 15px; color: var(--gowise-cyan); font-weight: 600; text-transform: none; letter-spacing: normal;">OPENING HOURS</p>
-                    <p>MONDAY: 08:30 – 17:00<br>TUESDAY: 08:30 – 17:00<br>WEDNESDAY: 08:30 – 17:00<br>THURSDAY: 08:30 – 17:00<br>FRIDAY: 08:30 – 17:00<br>SATURDAY: CLOSED<br>SUNDAY: CLOSED</p>
+                <div class="map-container">
+                    <iframe src="https://maps.google.com/maps?q=NR7%200PT&t=&z=14&ie=UTF8&iwloc=&output=embed" loading="lazy" allowfullscreen title="GoWise Print Location Map"></iframe>
                 </div>
-            </div>
-            <div class="map-container">
-                <iframe src="https://maps.google.com/maps?q=NR7%200PT&t=&z=14&ie=UTF8&iwloc=&output=embed" loading="lazy" allowfullscreen title="GoWise Print Location Map"></iframe>
             </div>
         </div>
     </footer>
@@ -783,19 +799,6 @@
         // Initialize scroll reveal on elements
         createObserver('.scroll-reveal', 'visible', 0.15);
 
-        // Footer Arrow Animation
-        const arrow = document.getElementById('slideArrow');
-        const arrowObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    arrow.classList.add('slide-in');
-                } else {
-                    arrow.classList.remove('slide-in');
-                }
-            });
-        }, { threshold: 0.1 }); 
-        if(arrow) arrowObserver.observe(arrow);
-
         // --- Hamburger Menu Toggle ---
         const hamburgerBtn = document.getElementById('hamburgerBtn');
         const navMenu = document.getElementById('navMenu');
@@ -810,7 +813,7 @@
         // --- Modal & Form Logic ---
         const navQuoteBtn = document.getElementById('navQuoteBtn');
         const navQuoteBtnMobile = document.getElementById('navQuoteBtnMobile');
-        const prePressBtn = document.getElementById('prePressBtn'); // Target the new pre-press button
+        const prePressBtn = document.getElementById('prePressBtn'); 
         const quoteModal = document.getElementById('quoteModal');
         const closeModal = document.getElementById('closeModal');
         const asyncForm = document.getElementById('asyncQuoteForm');
