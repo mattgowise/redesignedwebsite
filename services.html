@@ -198,7 +198,7 @@
         .page-intro p { font-size: 18px; line-height: 1.8; color: #555; max-width: 1100px; margin: 0 auto; }
 
         /* 3. Alternating Service Rows */
-        .services-detail-section { padding: 0 0 80px 0; }
+        .services-detail-section { padding: 0 0 60px 0; }
         
         /* Animated Magenta Divider */
         .magenta-divider { 
@@ -218,11 +218,12 @@
             grid-template-columns: 4fr 5fr;
             gap: 60px;
             align-items: center;
-            margin-bottom: 80px;
+            margin-bottom: 60px;
             scroll-margin-top: 160px; 
         }
         .service-row:nth-child(even) { grid-template-columns: 5fr 4fr; }
         .service-row:nth-child(even) .service-text { order: -1; } 
+        .service-row:last-child { margin-bottom: 0; }
         
         .service-img-container { 
             width: 100%; 
@@ -278,17 +279,16 @@
 
         /* 4. Comparison Cards (Digital/Litho) */
         .resource-section { 
-            padding: 80px 0 100px; 
+            padding: 60px 0; 
             scroll-margin-top: 100px; 
-            background-color: #f4f4f4; 
-            border-top: 1px solid #eaeaea; 
+            background-color: var(--header-dark); 
             position: relative; 
             z-index: 2;
             width: 100%;
         }
         .section-header { text-align: center; margin-bottom: 50px; }
-        .section-header h2 { font-size: 36px; color: var(--gowise-magenta); margin-bottom: 15px; }
-        .section-header p { font-size: 18px; max-width: 1200px; margin: 0 auto; }
+        .resource-section .section-header h2 { font-size: 36px; color: var(--gowise-magenta); margin-bottom: 15px; }
+        .resource-section .section-header p { font-size: 18px; color: #ddd; max-width: 1200px; margin: 0 auto; }
 
         .comparison-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
         
@@ -328,6 +328,7 @@
             overflow: hidden; 
             padding: 60px 0; 
             width: 100%;
+            border-top: 1px solid #444; /* Added a subtle line to separate from the dark section above */
         }
         footer p { color: #ffffff; } 
         
@@ -358,6 +359,8 @@
         [id] { scroll-margin-top: 160px !important; }
 
         /* --- RESPONSIVE BREAKPOINTS --- */
+        
+        /* 1050px Breakpoint: Hamburger & Grid collapses */
         @media (max-width: 1050px) {
             .mobile-break { display: block; }
 
@@ -365,6 +368,7 @@
             .header-right { display: flex; align-items: center; gap: 15px; }
             .header-right .btn-quote { padding: 8px 12px !important; font-size: 12px; margin-top: 0; }
             
+            /* Hamburger animated toggle setup */
             .hamburger { display: flex; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 5px; z-index: 1001; }
             .hamburger span { display: block; width: 25px; height: 3px; background-color: #fff; transition: 0.3s; }
             .hamburger.active span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
@@ -377,13 +381,14 @@
             .main-nav { flex-direction: column; align-items: flex-start; gap: 0; }
             .main-nav li { width: 100%; border-bottom: 1px solid rgba(255,255,255,0.1); }
             .main-nav a { display: block; padding: 15px 0; }
+            
+            /* Hide the desktop quote button since it moved to the header wrapper */
             .main-nav a.desktop-quote { display: none !important; }
             
             .dropdown { position: static; display: none; background-color: #222; box-shadow: none; min-width: 100%; border-left: 2px solid var(--gowise-cyan); margin-left: 10px; }
             .main-nav li:hover .dropdown, .main-nav li:active .dropdown { display: block; animation: none; }
             .dropdown a { padding: 10px 15px; border-bottom: none; }
             
-            /* Responsive Grid Collapse */
             .service-row { grid-template-columns: 1fr !important; gap: 40px; }
             .service-row:nth-child(even) .service-text { order: 0; } 
             
@@ -393,12 +398,15 @@
             .map-container { width: 100%; flex: 1 1 100%; }
         }
 
+        /* 768px Breakpoint: Mobile specific layout tweaks */
         @media (max-width: 768px) {
             .mobile-break { display: block; }
             
+            /* Top Bar on one line without underlines */
             .top-bar { flex-direction: row; justify-content: center; gap: 15px; font-size: 12px; white-space: nowrap; }
             .top-bar a { text-decoration: none !important; }
 
+            /* Stacked Hero Overrides - FIXED to keep text over image securely */
             .inner-hero { min-height: 40vh; flex-direction: column; justify-content: center; overflow: hidden; padding: 40px 0; }
             .hero-bg { position: absolute; height: 100%; width: 100%; flex-shrink: 0; top: 0; left: 0; }
             .inner-hero-content { 
@@ -411,11 +419,15 @@
                 max-width: 100%; 
                 backdrop-filter: blur(5px); 
             }
+            
+            /* Text scaling and color application for dark overlay */
             .inner-hero-content h1 { font-size: 28px; color: #ffffff; }
             .inner-hero-content p { color: #dddddd; font-size: 15px; }
 
-            .service-row { margin-bottom: 50px; }
+            .service-row { margin-bottom: 60px; }
+            
             .service-banner { font-size: 20px; padding: 12px 5%; }
+
             .footer-header h2 { font-size: 26px; }
         }
     </style>
@@ -433,6 +445,7 @@
             <img src="gowise-logo.png" alt="Gowise Print Logo">
         </a>
         
+        <!-- Mobile Actions: Quote + Animated Hamburger -->
         <div class="header-right">
             <a href="#" id="navQuoteBtnMobile" class="btn-quote">GET A QUOTE</a>
             <button class="hamburger" id="hamburgerBtn" aria-label="Menu">
@@ -651,9 +664,7 @@
         </div>
     </div>
 
-    <!-- Full Width Black Footer -->
     <footer>
-        <!-- Inner 1400px Container -->
         <div class="footer-content">
             <div class="footer-header">
                 <h2>Visit Our Norwich<br class="mobile-break"> Print Shop</h2>
@@ -669,7 +680,6 @@
                         <p><strong>Phone:</strong> +44 (0)1603 431304</p>
                         <p><strong>Email:</strong> print@gowise.co.uk</p>
                     </div>
-                    
                     <div>
                         <p style="font-size: 18px; margin-bottom: 15px; color: #ffffff; font-weight: 600; text-transform: none; letter-spacing: normal;">OPENING HOURS</p>
                         <p>MONDAY: 08:30 – 17:00<br>TUESDAY: 08:30 – 17:00<br>WEDNESDAY: 08:30 – 17:00<br>THURSDAY: 08:30 – 17:00<br>FRIDAY: 08:30 – 17:00<br>SATURDAY: CLOSED<br>SUNDAY: CLOSED</p>
@@ -728,6 +738,7 @@
             setTimeout(() => quoteModal.classList.add('active'), 10);
         };
 
+        // Attach modal trigger to both desktop and mobile buttons
         if (navQuoteBtn) navQuoteBtn.addEventListener('click', showQuoteModal);
         if (navQuoteBtnMobile) navQuoteBtnMobile.addEventListener('click', showQuoteModal);
 
