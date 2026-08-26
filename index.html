@@ -293,12 +293,11 @@
             justify-content: center; 
             text-align: center; 
             border-radius: 4px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            transition: box-shadow 0.3s ease, transform 0.3s ease;
+            transition: transform 0.3s ease;
             text-decoration: none; 
             color: inherit;
         }
-        .service-square:hover { box-shadow: 0 15px 35px rgba(0,0,0,0.25); transform: translateY(-10px); z-index: 2; }
+        .service-square:hover { transform: translateY(-10px); z-index: 2; }
         .service-square h3 { color: #fff; font-size: 20px; margin: 0; line-height: 1.4; font-weight: 300; }
         
         .service-desc { 
@@ -328,20 +327,18 @@
         .environment-banner h2 { position: relative; z-index: 3; font-size: 42px; font-weight: 300; color: #fff; text-transform: uppercase; letter-spacing: 1px; transform: scale(0.9); opacity: 0; transition: all 0.8s ease-out 0.2s; }
         .environment-banner.visible h2 { transform: scale(1); opacity: 1; }
 
-        .environment-content { padding: 80px 5%; max-width: 1400px; margin: 0 auto; opacity: 0; transform: translateY(40px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
+        .environment-content { padding: 80px 5%; background-color: #a2b058; opacity: 0; transform: translateY(40px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
         .environment-content.visible { opacity: 1; transform: translateY(0); }
-        .environment-content p { font-size: 16px; margin-bottom: 25px; line-height: 1.8; color: #444; }
+        .environment-inner { max-width: 1400px; margin: 0 auto; }
+        .environment-content p { font-size: 16px; margin-bottom: 25px; line-height: 1.8; color: #ffffff; }
 
         /* 6. Footer & Location */
         footer { background: var(--header-dark); color: #fff; position: relative; overflow: hidden; padding: 60px 5%; }
         footer p { color: #ffffff; } 
         
         .footer-header { margin-bottom: 40px; text-align: center; }
-        .footer-header h2 { color: var(--gowise-magenta); font-size: 32px; }
+        .footer-header h2 { color: #ffffff; font-size: 32px; }
         .footer-grid { display: flex; align-items: stretch; justify-content: space-between; gap: 40px; max-width: 1400px; margin: 0 auto; }
-        .footer-arrow-container { flex: 0 0 120px; display: flex; align-items: center; }
-        .footer-arrow { width: 100%; height: auto; transform: translateX(-150px); opacity: 0; transition: transform 1s cubic-bezier(0.25, 1, 0.5, 1), opacity 1s ease; }
-        .footer-arrow.slide-in { transform: translateX(0); opacity: 1; }
         .footer-text-columns { flex: 1; display: flex; justify-content: flex-start; gap: 60px; font-size: 14px; line-height: 1.8; padding-top: 20px; }
         .map-container { flex: 0 0 400px; height: 300px; background: #ddd; border-radius: 4px; overflow: hidden; }
         .map-container iframe { width: 100%; height: 100%; border: none; }
@@ -500,7 +497,6 @@
             .intro-text-section p { font-size: 18px; }
             
             .footer-grid { flex-wrap: wrap; justify-content: center; text-align: center; }
-            .footer-arrow-container { display: none; }
             .footer-text-columns { flex-direction: column; gap: 30px; align-items: center; }
             .map-container { width: 100%; flex: 1 1 100%; }
         }
@@ -705,11 +701,13 @@
         </section>
 
         <section class="environment-content scroll-reveal">
-            <p>Our company has always operated out of a relatively small group of units and our physical size gives us a naturally low ‘carbon footprint’. We were the second printer in the country to take advantage of a scheme from one of our paper suppliers. The scheme is in conjunction with the Woodland Trust. Through it, we are assessed for and fully offset the CO2 produced by our entire operation. This also includes the production and delivery of our paper.</p>
-            
-            <p>We take our impact on the environment very seriously; during production, before (paper manufacture) and after (our waste). As well as our own policies, we also continually monitor the environmental considerations of our suppliers and sub-contractors.</p>
-            
-            <p>Our policy is not static. We believe a permanent commitment to the environment is essential for a modern business. Our processes must be frequently reviewed. It is not just about recycling and reducing waste, but consideration in every aspect of our operation. This is a subject we are always willing to discuss at length with our customers, suppliers and other stakeholders.</p>
+            <div class="environment-inner">
+                <p>Our company has always operated out of a relatively small group of units and our physical size gives us a naturally low ‘carbon footprint’. We were the second printer in the country to take advantage of a scheme from one of our paper suppliers. The scheme is in conjunction with the Woodland Trust. Through it, we are assessed for and fully offset the CO2 produced by our entire operation. This also includes the production and delivery of our paper.</p>
+                
+                <p>We take our impact on the environment very seriously; during production, before (paper manufacture) and after (our waste). As well as our own policies, we also continually monitor the environmental considerations of our suppliers and sub-contractors.</p>
+                
+                <p>Our policy is not static. We believe a permanent commitment to the environment is essential for a modern business. Our processes must be frequently reviewed. It is not just about recycling and reducing waste, but consideration in every aspect of our operation. This is a subject we are always willing to discuss at length with our customers, suppliers and other stakeholders.</p>
+            </div>
         </section>
 
     </main>
@@ -765,15 +763,9 @@
         </div>
         <div class="footer-grid">
             
-            <div class="footer-arrow-container">
-                <svg class="footer-arrow" id="slideArrow" viewBox="0 0 100 50" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M0,15 L60,15 L60,0 L100,25 L60,50 L60,35 L0,35 Z" fill="var(--gowise-magenta)"/>
-                </svg>
-            </div>
-            
             <div class="footer-text-columns">
                 <div>
-                    <p style="font-size: 18px; margin-bottom: 15px; color: var(--gowise-cyan); font-weight: 600; text-transform: none; letter-spacing: normal;">CONTACT INFO</p>
+                    <p style="font-size: 18px; margin-bottom: 15px; color: #ffffff; font-weight: 600; text-transform: none; letter-spacing: normal;">CONTACT INFO</p>
                     <p><strong>Address:</strong><br>4 Belmore Road<br>Thorpe St Andrew<br>Norwich, Norfolk<br>NR7 0PT</p>
                     <br>
                     <p><strong>Phone:</strong> +44 (0)1603 431304</p>
@@ -781,7 +773,7 @@
                 </div>
                 
                 <div>
-                    <p style="font-size: 18px; margin-bottom: 15px; color: var(--gowise-cyan); font-weight: 600; text-transform: none; letter-spacing: normal;">OPENING HOURS</p>
+                    <p style="font-size: 18px; margin-bottom: 15px; color: #ffffff; font-weight: 600; text-transform: none; letter-spacing: normal;">OPENING HOURS</p>
                     <p>MONDAY: 08:30 – 17:00<br>TUESDAY: 08:30 – 17:00<br>WEDNESDAY: 08:30 – 17:00<br>THURSDAY: 08:30 – 17:00<br>FRIDAY: 08:30 – 17:00<br>SATURDAY: CLOSED<br>SUNDAY: CLOSED</p>
                 </div>
             </div>
@@ -864,19 +856,6 @@
         createObserver('.scroll-stagger', 'visible', 0.1);
         createObserver('.scroll-reveal', 'visible', 0.15);
         createObserver('.pink-divider', 'visible', 1.0);
-
-        // --- 3. Footer Arrow Animation ---
-        const arrow = document.getElementById('slideArrow');
-        const arrowObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    arrow.classList.add('slide-in');
-                } else {
-                    arrow.classList.remove('slide-in');
-                }
-            });
-        }, { threshold: 0.1 }); 
-        if(arrow) arrowObserver.observe(arrow);
 
         // --- 4. Request Form & Success Modals Interactivity ---
         const roundel = document.getElementById('quoteRoundel');
