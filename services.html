@@ -20,6 +20,47 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;600;800&display=swap" rel="stylesheet">
 
+    <!-- JSON-LD Local Business Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "GoWise Print",
+      "image": "https://www.gowise.co.uk/gowise-logo.png",
+      "@id": "https://www.gowise.co.uk",
+      "url": "https://www.gowise.co.uk",
+      "telephone": "+441603431304",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "4 Belmore Road, Thorpe St Andrew",
+        "addressLocality": "Norwich",
+        "addressRegion": "Norfolk",
+        "postalCode": "NR7 0PT",
+        "addressCountry": "UK"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 52.6323,
+        "longitude": 1.3415
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday"
+          ],
+          "opens": "08:30",
+          "closes": "17:00"
+        }
+      ],
+      "sameAs": []
+    }
+    </script>
+
     <style>
         /* Base Reset & Universal Font Enforcement */
         * { 
@@ -511,7 +552,7 @@
         <!-- 1. Hero Section -->
         <section class="inner-hero" aria-label="Introduction">
             <div class="hero-bg">
-                <img src="Services-1.jpg" alt="Dynamic wide shot of the GoWise print facility blending traditional machinery with modern design setups" class="cover-img">
+                <img src="Services-1.jpg" alt="GoWise Print facility in Norwich offering commercial print, binding and design services" class="cover-img">
             </div>
             <div class="inner-hero-content">
                 <h1>Complete Print, Binding & Design Services in Norwich</h1>
@@ -535,7 +576,7 @@
                     <!-- Category 1: Printing -->
                     <article id="printing" class="service-row scroll-reveal">
                         <div class="service-img-container">
-                            <img src="Services-2.jpg" alt="Dynamic image showcasing vivid spot colors on a heavy-stock print sheet rolling off the litho press" class="cover-img">
+                            <img src="Services-2.jpg" alt="Spot colour lithographic printing press at GoWise Print Norwich" class="cover-img">
                         </div>
                         <div class="service-text">
                             <h2 class="service-banner"><span>1. Commercial & Independent Printing</span></h2>
@@ -561,7 +602,7 @@
                     <!-- Category 2: Binding -->
                     <article id="binding" class="service-row scroll-reveal">
                         <div class="service-img-container">
-                            <img src="Services-3.jpg" alt="Close-up showing the varied textures of PUR binding, square back folding, and wire binding laid side-by-side" class="cover-img">
+                            <img src="Services-3.jpg" alt="Professional book binding services including PUR perfect binding and wire binding in Norfolk" class="cover-img">
                         </div>
                         <div class="service-text">
                             <h2 class="service-banner"><span>2. Book Binding & In-House Finishing</span></h2>
@@ -587,7 +628,7 @@
                     <!-- Category 3: Design -->
                     <article id="design" class="service-row scroll-reveal">
                         <div class="service-img-container">
-                            <img src="Services-4.jpg" alt="A graphic designer inspecting a digital proof on a large monitor alongside physical Pantone swatch books" class="cover-img">
+                            <img src="Services-4.jpg" alt="Graphic design and print-ready artwork setup services at GoWise Print" class="cover-img">
                         </div>
                         <div class="service-text">
                             <h2 class="service-banner"><span>3. Graphic Design & Artwork Setup</span></h2>
@@ -631,7 +672,7 @@
                                     <p><strong>Best for short to medium runs (typically 1 to 500 units).</strong></p>
                                     <p>Because there are no traditional printing plates to set up, digital is incredibly fast and cost-effective for smaller batches, limited-edition art prints, and variable data projects.</p>
                                 </div>
-                                <img src="images/revoria.svg" alt="Revoria Digital Press" class="comparison-img">
+                                <img src="images/revoria.svg" alt="Fujifilm Revoria 5-colour digital printing press for short run printing" class="comparison-img">
                             </div>
                             <div class="comparison-card scroll-reveal" style="transition-delay: 0.2s; border-top-color: var(--gowise-magenta);">
                                 <div class="card-content">
@@ -639,7 +680,7 @@
                                     <p><strong>Best for high-volume commercial runs.</strong></p>
                                     <p>Litho uses wet ink and custom plates. The initial setup takes longer and costs more, but once the press is running, the cost-per-page drops drastically. Litho also allows us to use traditional Pantone® spot colours and print on much larger raw sheet sizes (such as 450x640mm) for maximum yield.</p>
                                 </div>
-                                <img src="images/heidelberg.svg" alt="Heidelberg Lithographic Press" class="comparison-img">
+                                <img src="images/heidelberg.svg" alt="Heidelberg lithographic press for high-volume commercial printing" class="comparison-img">
                             </div>
                         </div>
                     </div>
