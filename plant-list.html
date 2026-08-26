@@ -22,6 +22,47 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;600;800&display=swap" rel="stylesheet">
 
+    <!-- JSON-LD Local Business Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "GoWise Print",
+      "image": "https://www.gowise.co.uk/gowise-logo.png",
+      "@id": "https://www.gowise.co.uk",
+      "url": "https://www.gowise.co.uk",
+      "telephone": "+441603431304",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "4 Belmore Road, Thorpe St Andrew",
+        "addressLocality": "Norwich",
+        "addressRegion": "Norfolk",
+        "postalCode": "NR7 0PT",
+        "addressCountry": "UK"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 52.6323,
+        "longitude": 1.3415
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday"
+          ],
+          "opens": "08:30",
+          "closes": "17:00"
+        }
+      ],
+      "sameAs": []
+    }
+    </script>
+
     <style>
         /* Base Reset & Universal Font Enforcement */
         * { 
@@ -587,7 +628,7 @@
         <!-- Hero Section -->
         <section class="inner-hero" aria-label="Introduction">
             <div class="hero-bg">
-                <img src="Plant-1.jpg" alt="Wide industrial shot of the GoWise print floor" class="cover-img">
+                <img src="Plant-1.jpg" alt="Commercial print floor at GoWise Print in Norwich" class="cover-img">
             </div>
             <div class="inner-hero-content">
                 <h1>Trade Print Capabilities & Equipment<br class="desktop-break"> List in Norwich</h1>
@@ -609,7 +650,7 @@
                 <!-- Digital Press -->
                 <article id="digital" class="service-row scroll-reveal">
                     <div class="service-img-container">
-                        <img src="Plant-2.jpg" alt="Fujifilm 5UPER COLOUR digital press control panel" class="cover-img">
+                        <img src="Plant-2.jpg" alt="Fujifilm Revoria 5-colour digital printing press in Norwich" class="cover-img">
                     </div>
                     <div class="service-text">
                         <h2 class="service-banner"><span>Digital Press Capabilities</span></h2>
@@ -626,7 +667,7 @@
                 <!-- Litho Press -->
                 <article id="litho" class="service-row scroll-reveal">
                     <div class="service-img-container">
-                        <img src="Plant-3.jpg" alt="Traditional litho press ink rollers in motion" class="cover-img">
+                        <img src="Plant-3.jpg" alt="Heidelberg lithographic printing press ink rollers" class="cover-img">
                     </div>
                     <div class="service-text">
                         <h2 class="service-banner"><span>Lithographic Press Capabilities</span></h2>
@@ -642,7 +683,7 @@
                 <!-- Finishing -->
                 <article id="finishing" class="service-row scroll-reveal">
                     <div class="service-img-container">
-                        <img src="Plant-4.jpg" alt="Heavy-duty automated bindery equipment" class="cover-img">
+                        <img src="Plant-4.jpg" alt="Professional book binding and finishing equipment in Norfolk" class="cover-img">
                     </div>
                     <div class="service-text">
                         <h2 class="service-banner mobile-shrink-text"><span>In-House Finishing <br class="mobile-break">& Book Binding</span></h2>
@@ -667,7 +708,7 @@
                 </div>
                 
                 <div class="fuji-img-container">
-                    <img src="fuji-press.png" alt="Fujifilm Revoria SC285S Five Colour Press" class="cover-img">
+                    <img src="fuji-press.png" alt="Fujifilm Revoria SC285S 5-colour digital press for commercial printing" class="cover-img">
                 </div>
                 
                 <div class="fuji-text-grid">
@@ -682,12 +723,12 @@
                     </div>
                     
                     <div class="fuji-image-card">
-                        <img src="CMYK.png" alt="Standard CMYK Print Example" class="cover-img">
+                        <img src="CMYK.png" alt="Standard CMYK digital printing example" class="cover-img">
                         <div class="fuji-image-label">CMYK</div>
                     </div>
                     
                     <div class="fuji-image-card">
-                        <img src="CMYK-pink.png" alt="CMYK with Fluorescent Pink Print Example" class="cover-img">
+                        <img src="CMYK-pink.png" alt="Enhanced CMYK with Fluorescent Pink 5-colour digital print example" class="cover-img">
                         <div class="fuji-image-label">CMYK + PINK</div>
                     </div>
                 </div>
@@ -757,8 +798,10 @@
                 <h2>Partner With GoWise</h2>
                 <p>We work seamlessly with trade buyers, offering white-label shipping and competitive trade pricing on both long and short runs.</p>
                 <div class="cta-actions">
-                    <a href="index.html#estimator" class="btn">Request a Quote or Trade Pricing</a>
-                    <a href="#" class="btn btn-outline">Contact Our Production Team</a>
+                    <!-- Adjusted link to open modal instead of an empty id jump -->
+                    <a href="#" id="ctaQuoteBtn" class="btn">Request a Quote or Trade Pricing</a>
+                    <!-- Wired this button to open the modal as well -->
+                    <a href="#" id="contactTeamBtn" class="btn btn-outline">Contact Our Production Team</a>
                 </div>
             </div>
         </section>
@@ -881,6 +924,8 @@
         // --- 4. Request Form & Success Modals Interactivity ---
         const navQuoteBtn = document.getElementById('navQuoteBtn'); // Desktop Nav btn
         const navQuoteBtnMobile = document.getElementById('navQuoteBtnMobile'); // Mobile Nav btn
+        const ctaQuoteBtn = document.getElementById('ctaQuoteBtn'); // New CTA quote btn
+        const contactTeamBtn = document.getElementById('contactTeamBtn'); // New Contact Team btn
         const quoteModal = document.getElementById('quoteModal');
         const closeModal = document.getElementById('closeModal');
         
@@ -901,6 +946,8 @@
         // Attach to all buttons
         if(navQuoteBtn) navQuoteBtn.addEventListener('click', showQuoteModal);
         if(navQuoteBtnMobile) navQuoteBtnMobile.addEventListener('click', showQuoteModal);
+        if(ctaQuoteBtn) ctaQuoteBtn.addEventListener('click', showQuoteModal);
+        if(contactTeamBtn) contactTeamBtn.addEventListener('click', showQuoteModal);
 
         // Hide Form Modal Function
         const hideQuoteModal = () => {
