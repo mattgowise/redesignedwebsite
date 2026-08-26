@@ -20,6 +20,47 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;600;800&display=swap" rel="stylesheet">
 
+    <!-- JSON-LD Local Business Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "GoWise Print",
+      "image": "https://www.gowise.co.uk/gowise-logo.png",
+      "@id": "https://www.gowise.co.uk",
+      "url": "https://www.gowise.co.uk",
+      "telephone": "+441603431304",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "4 Belmore Road, Thorpe St Andrew",
+        "addressLocality": "Norwich",
+        "addressRegion": "Norfolk",
+        "postalCode": "NR7 0PT",
+        "addressCountry": "UK"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 52.6323,
+        "longitude": 1.3415
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday"
+          ],
+          "opens": "08:30",
+          "closes": "17:00"
+        }
+      ],
+      "sameAs": []
+    }
+    </script>
+
     <style>
         /* Base Reset & Universal Font Enforcement */
         * { 
@@ -530,7 +571,7 @@
         <!-- 1. Hero Section -->
         <section class="inner-hero" aria-label="Introduction">
             <div class="hero-bg">
-                <img src="Resources-1.jpg" alt="Macro shot of a designer's screen showing crop marks and bleed margins" class="cover-img">
+                <img src="Resources-1.jpg" alt="Macro shot of a designer's screen showing crop marks and bleed margins for commercial print preparation" class="cover-img">
             </div>
             <div class="inner-hero-content">
                 <h1>Print Resources & Artwork Guide</h1>
@@ -555,7 +596,7 @@
                 
                 <div class="colour-grid">
                     <div class="color-card scroll-reveal" style="transition-delay: 0s;">
-                        <img src="rgb-icon.png" alt="RGB Icon" class="color-icon">
+                        <img src="rgb-icon.png" alt="RGB colour model icon for digital screen display" class="color-icon">
                         <h3>RGB<br class="mobile-break"> (Red, Green, Blue)</h3>
                         <p>This is the colour model used by digital screens (monitors, phones, TVs). Because screens emit light, RGB can produce incredibly bright, neon, and highly saturated colours. <strong>We cannot print directly from RGB files.</strong></p>
                     </div>
@@ -563,7 +604,7 @@
                     <hr class="cyan-divider scroll-reveal">
                     
                     <div class="color-card scroll-reveal" style="transition-delay: 0.2s;">
-                        <img src="cmyk-icon.png" alt="CMYK Icon" class="color-icon">
+                        <img src="cmyk-icon.png" alt="CMYK colour model icon for commercial litho and digital printing" class="color-icon">
                         <h3>CMYK<br class="mobile-break"> (Cyan, Magenta, Yellow, Key/Black)</h3>
                         <p>This is the standard colour model for commercial printing. Presses combine these four ink colours to reproduce images. Because ink absorbs light rather than emitting it, CMYK has a smaller "colour gamut" than RGB.</p>
                     </div>
@@ -609,7 +650,7 @@
                 
                 <div class="checklist-grid">
                     <div class="checklist-item scroll-reveal" style="transition-delay: 0s;">
-                        <img src="resolution-icon.svg" alt="Resolution Icon" class="checklist-icon">
+                        <img src="resolution-icon.svg" alt="Print resolution 300 DPI icon" class="checklist-icon">
                         <div class="check-content">
                             <h4>Resolution</h4>
                             <p>All images and raster graphics must be at least <strong>300 DPI</strong> (Dots Per Inch) at their actual printed size.</p>
@@ -617,7 +658,7 @@
                     </div>
                     
                     <div class="checklist-item scroll-reveal" style="transition-delay: 0.1s;">
-                        <img src="bleed-icon.svg" alt="Bleed Icon" class="checklist-icon">
+                        <img src="bleed-icon.svg" alt="Print bleed margins icon" class="checklist-icon">
                         <div class="check-content">
                             <h4>Bleed</h4>
                             <p>If your design features colour or images that run right to the edge of the page, you must include a <strong>3mm bleed</strong> on all sides. This gives our finishing team the tolerance needed to trim your pages perfectly without leaving white borders.</p>
@@ -625,7 +666,7 @@
                     </div>
                     
                     <div class="checklist-item scroll-reveal" style="transition-delay: 0.2s;">
-                        <img src="safe-zone-icon.svg" alt="Safe Zone Icon" class="checklist-icon">
+                        <img src="safe-zone-icon.svg" alt="Print safe zone and trim edge icon" class="checklist-icon">
                         <div class="check-content">
                             <h4>Safe Zone</h4>
                             <p>Keep all important text and logos at least <strong>5mm away</strong> from the trim edge to ensure nothing gets cut off during the binding or guillotining process.</p>
@@ -633,7 +674,7 @@
                     </div>
                     
                     <div class="checklist-item scroll-reveal" style="transition-delay: 0.3s;">
-                        <img src="file-format-icon.svg" alt="File Formats Icon" class="checklist-icon">
+                        <img src="file-format-icon.svg" alt="Print-ready PDF file format icon" class="checklist-icon">
                         <div class="check-content">
                             <h4>File Formats</h4>
                             <p>We strongly prefer <strong>Print-Ready PDFs</strong>. Please ensure all fonts are outlined or embedded, and transparency layers are flattened.</p>
@@ -650,7 +691,8 @@
                 <p>Ready to see how different stocks, sizes, and binding methods affect your bottom line? Take the guesswork out of your print budget.</p>
                 <p style="margin-bottom: 30px;">Use our interactive HTML cost calculation tool to input your preferred specifications—from standard A-sizes to custom 320x450mm sheets—and get an instant, transparent estimate for your next run.</p>
                 <div class="cta-actions">
-                    <a href="#" class="btn">Contact Our Pre-Press Team</a>
+                    <!-- Added ID to trigger the contact modal -->
+                    <a href="#" id="prePressBtn" class="btn">Contact Our Pre-Press Team</a>
                 </div>
             </div>
         </section>
@@ -693,10 +735,10 @@
 
     <footer>
         <div class="footer-header">
-    <!-- 7. Footer Header text split on mobile -->
-    <h2>Visit Our Norwich<br class="mobile-break"> Print Shop</h2>
-    <p>GoWise Print proudly serves local businesses, independent creators, and trade partners across Norfolk and the UK.</p>
-</div>
+            <!-- 7. Footer Header text split on mobile -->
+            <h2>Visit Our Norwich<br class="mobile-break"> Print Shop</h2>
+            <p>GoWise Print proudly serves local businesses, independent creators, and trade partners across Norfolk and the UK.</p>
+        </div>
         <div class="footer-grid">
             <div class="footer-arrow-container">
                 <svg class="footer-arrow" id="slideArrow" viewBox="0 0 100 50" xmlns="http://www.w3.org/2000/svg">
@@ -768,6 +810,7 @@
         // --- Modal & Form Logic ---
         const navQuoteBtn = document.getElementById('navQuoteBtn');
         const navQuoteBtnMobile = document.getElementById('navQuoteBtnMobile');
+        const prePressBtn = document.getElementById('prePressBtn'); // Target the new pre-press button
         const quoteModal = document.getElementById('quoteModal');
         const closeModal = document.getElementById('closeModal');
         const asyncForm = document.getElementById('asyncQuoteForm');
@@ -782,9 +825,10 @@
             setTimeout(() => quoteModal.classList.add('active'), 10);
         };
 
-        // Attach modal trigger to both desktop and mobile buttons
+        // Attach modal trigger to buttons
         if (navQuoteBtn) navQuoteBtn.addEventListener('click', showQuoteModal);
         if (navQuoteBtnMobile) navQuoteBtnMobile.addEventListener('click', showQuoteModal);
+        if (prePressBtn) prePressBtn.addEventListener('click', showQuoteModal);
 
         const hideQuoteModal = () => {
             quoteModal.classList.remove('active');
