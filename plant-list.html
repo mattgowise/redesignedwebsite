@@ -239,20 +239,18 @@
         .service-article.visible .service-banner { transform: scaleX(1); }
         .service-article.visible .service-banner span { opacity: 1; }
         
-        /* Standardized to 4fr / 5fr Grid */
+        /* Grid Layout Fix - Forces images to match text height precisely */
         .service-row {
             display: grid;
             grid-template-columns: 4fr 5fr;
             gap: 60px;
-            /* Stretch forces the image container to mirror the exact height of the text column */
-            align-items: stretch;
+            align-items: stretch; /* Stretch forces container to match text height */
         }
         .service-article:nth-child(even) .service-row { grid-template-columns: 5fr 4fr; }
         .service-article:nth-child(even) .service-text { order: -1; } 
         
         .service-img-container { 
             width: 100%; 
-            /* Height 100% allows it to expand into the stretch space */
             height: 100%; 
             border-radius: 4px; 
             overflow: hidden; 
@@ -260,9 +258,19 @@
             transform-origin: center;
             opacity: 0;
             transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.6s ease-out;
+            position: relative; /* Anchors the absolute image inside */
         }
         .service-article.visible .service-img-container { transform: scale(1); opacity: 1; }
-        .service-img-container img { transition: transform 0.6s ease; width: 100%; height: 100%; object-fit: cover; }
+        
+        .service-img-container img { 
+            position: absolute; /* Takes image out of flow so it doesn't inflate row height */
+            top: 0;
+            left: 0;
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover; /* Centers and crops safely */
+            transition: transform 0.6s ease; 
+        }
         .service-article:hover .service-img-container img { transform: scale(1.02); }
         
         .service-text > p { font-size: 16px; margin-bottom: 25px; font-weight: 400; color: #444; line-height: 1.4; }
@@ -281,7 +289,7 @@
         }
 
         /* 5-Colour Banner & Section */
-        .fuji-section { padding: 40px 0 80px 0; }
+        .fuji-section { padding: 0 0 60px 0; }
         
         .magenta-banner { 
             background-color: var(--gowise-magenta); 
@@ -359,7 +367,7 @@
         .fuji-section.visible .fuji-img-container { opacity: 1; }
         .fuji-section.visible .fuji-text-grid { opacity: 1; transform: translateY(0); }
 
-        /* Equipment Inventory Section (Full Width Background) */
+        /* Equipment Inventory Section (Preserved Dark Background) */
         .equipment-inventory-section { background-color: var(--header-dark); width: 100%; padding: 80px 0; margin-bottom: 0; }
         .equipment-header { text-align: center; margin-bottom: 50px; }
 
@@ -401,7 +409,7 @@
         .equipment-list { list-style: none; padding: 0; }
         .equipment-list li { margin-bottom: 8px; font-size: 16px; color: #bbb; font-weight: 300; line-height: 1.5; }
 
-        /* Partner CTA (Full Width Background) */
+        /* Partner CTA (Preserved Cyan Background) */
         .partner-cta-section { background-color: var(--gowise-cyan); width: 100%; color: #fff; padding: 80px 0; text-align: center; margin-bottom: 0; }
         .partner-cta-container { max-width: 900px; margin: 0 auto; }
         .partner-cta-section h2 { color: #fff; font-size: 36px; margin-bottom: 20px; }
@@ -503,7 +511,7 @@
                 padding: 0; 
                 overflow: hidden; 
             }
-            .hero-bg { position: relative; height: 50%; width: 100%; flex-shrink: 0; }
+            .hero-bg { position: relative; height: 50%; width: 100%; flex-shrink: 0; top: 0; left: 0; }
             .inner-hero-content { 
                 position: relative; 
                 background-color: #ffffff; 
@@ -518,6 +526,7 @@
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
+                box-shadow: none;
             }
             
             .inner-hero-content h1 { font-size: 28px; color: var(--gowise-cyan); margin-bottom: 10px; line-height: 1.2; }
@@ -652,7 +661,7 @@
                     <h2 class="service-banner"><span>Digital Press Capabilities</span></h2>
                     <div class="service-row">
                         <div class="service-img-container">
-                            <img src="Plant-2.jpg" alt="Fujifilm Revoria 5-colour digital printing press in Norwich" class="cover-img">
+                            <img src="Plant-2.jpg" alt="Fujifilm Revoria 5-colour digital printing press in Norwich">
                         </div>
                         <div class="service-text">
                             <p>Our digital suite is built for speed, variable data, and colour reproduction that standard CMYK digital presses simply cannot achieve.</p>
@@ -671,7 +680,7 @@
                     <h2 class="service-banner"><span>Lithographic Press Capabilities</span></h2>
                     <div class="service-row">
                         <div class="service-img-container">
-                            <img src="Plant-3.jpg" alt="Heidelberg lithographic printing press ink rollers" class="cover-img">
+                            <img src="Plant-3.jpg" alt="Heidelberg lithographic printing press ink rollers">
                         </div>
                         <div class="service-text">
                             <p>For long runs and exact brand colour matching, traditional litho remains unbeatable.</p>
@@ -689,7 +698,7 @@
                     <h2 class="service-banner mobile-shrink-text"><span>In-House Finishing <br class="mobile-break">& Book Binding</span></h2>
                     <div class="service-row">
                         <div class="service-img-container">
-                            <img src="Plant-4.jpg" alt="Professional book binding and finishing equipment in Norfolk" class="cover-img">
+                            <img src="Plant-4.jpg" alt="Professional book binding and finishing equipment in Norfolk">
                         </div>
                         <div class="service-text">
                             <p>We do not outsource our binding. Our fully equipped finishing department operates as a dedicated trade finishing service.</p>
@@ -833,7 +842,7 @@
                 </div>
                 <div class="form-group">
                     <label for="details">Project Details</label>
-                    <textarea id="details" name="details" placeholder="Please describe your printing needs (dimensions, quantity, paper stock, binding styles, etc.)..." required></textarea>
+                    <textarea id="details" name="details" placeholder="Please describe your printing needs (dimensions, quantity, paper stock, binding styles, etc.)...." required></textarea>
                 </div>
                 <button type="submit" class="btn" id="submitQuoteBtn" style="width: 100%;">Send Request</button>
             </form>
