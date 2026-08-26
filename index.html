@@ -147,7 +147,7 @@
         .btn-quote { background-color: var(--gowise-magenta); color: #fff !important; padding: 10px 20px !important; border-radius: 3px; font-weight: 600; transition: background-color 0.3s ease, transform 0.2s ease; }
         .btn-quote:hover { background-color: var(--gowise-pink); transform: translateY(-2px); }
 
-        .dropdown { display: none; position: absolute; top: 100%; left: 0; background-color: var(--gowise-cyan); min-width: 240px; z-index: 99; }
+        .dropdown { display: none; position: absolute; top: 100%; left: 0; background-color: var(--gowise-cyan); min-width: 240px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); z-index: 99; }
         .main-nav li:hover .dropdown { display: block; animation: dropFade 0.3s ease forwards; }
         .dropdown li { padding: 0; }
         .dropdown a { display: block; padding: 12px 15px; border-bottom: 1px solid rgba(255, 255, 255, 0.2); font-size: 12px; text-transform: none; color: #ffffff; }
@@ -187,7 +187,7 @@
         }
         .carousel-slide.active .carousel-content { transform: translateX(0); }
         .carousel-content h1 { font-size: 48px; font-weight: 300; color: #fff; margin-bottom: 20px; line-height: 1.2; }
-        .carousel-content h2 { font-size: 48px; font-weight: 300; color: #fff; margin-bottom: 20px; line-height: 1.2; }
+        .carousel-content h2 { font-size: 48px; font-weight: 300; color: #fff; margin-bottom: 20px; line-height: 1.2; } /* Added H2 styling for subsequent slides */
         .carousel-content p { font-size: 20px; color: #eee; font-weight: 300; }
         
         .carousel-arrow {
@@ -322,16 +322,23 @@
         .environment-banner.visible { opacity: 1; }
         
         .env-bg-img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; }
+        
         .environment-banner .overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.6); z-index: 2; }
         .environment-banner h2 { position: relative; z-index: 3; font-size: 42px; font-weight: 300; color: #fff; text-transform: uppercase; letter-spacing: 1px; transform: scale(0.9); opacity: 0; transition: all 0.8s ease-out 0.2s; }
         .environment-banner.visible h2 { transform: scale(1); opacity: 1; }
 
-        /* Adjusted wrapper so it aligns identically to the services-section grid */
-        .environment-wrapper { padding: 60px 5% 100px; max-width: 1400px; margin: 0 auto; }
-        .environment-content { 
+        /* Full Width Green Background */
+        .environment-full-bg { 
             background-color: #a2b058; 
-            padding: 60px 8%; 
-            border-radius: 4px;
+            width: 100%; 
+            padding: 60px 0; 
+        }
+
+        /* Inner container restricted to 1400px to perfectly align with Our Services grid */
+        .environment-content { 
+            max-width: 1400px; 
+            margin: 0 auto; 
+            padding: 0 5%; 
             opacity: 0; 
             transform: translateY(40px); 
             transition: opacity 0.8s ease-out, transform 0.8s ease-out; 
@@ -341,11 +348,24 @@
         .environment-content p:last-child { margin-bottom: 0; }
 
         /* 6. Footer & Location */
-        /* Adjusted wrapper so it aligns identically to the services-section grid */
-        .footer-wrapper { padding: 0 5% 60px; max-width: 1400px; margin: 0 auto; }
-        footer { background: var(--header-dark); color: #fff; position: relative; overflow: hidden; padding: 60px 8%; border-radius: 4px;}
+        /* Full Width Black Background */
+        footer { 
+            background: var(--header-dark); 
+            color: #fff; 
+            position: relative; 
+            overflow: hidden; 
+            padding: 60px 0; 
+            width: 100%;
+        }
         footer p { color: #ffffff; } 
         
+        /* Inner container restricted to 1400px to perfectly align with Our Services grid */
+        .footer-content {
+            max-width: 1400px; 
+            margin: 0 auto; 
+            padding: 0 5%; 
+        }
+
         .footer-header { margin-bottom: 40px; text-align: center; }
         .footer-header h2 { color: #ffffff; font-size: 32px; }
         .footer-grid { display: flex; align-items: stretch; justify-content: space-between; gap: 40px; }
@@ -356,7 +376,7 @@
         /* 7. Roundel */
         .quote-roundel {
             position: fixed;
-            top: 65%;
+            top: 65%; /* Adjusted down */
             right: 20px;
             transform: translateY(-50%);
             width: 90px;
@@ -423,7 +443,7 @@
         /* 1050px Breakpoint: Hamburger & Core Mobile Layout */
         @media (max-width: 1050px) {
             .mobile-break { display: block; }
-            .carousel-arrow { display: none; } 
+            .carousel-arrow { display: none; } /* Hide Carousel Arrows on Mobile */
             
             header { flex-direction: row; flex-wrap: wrap; justify-content: space-between; align-items: center; padding: 15px 5%; }
             .logo img { max-height: 60px; }
@@ -431,6 +451,7 @@
             .header-right { display: flex; align-items: center; gap: 15px; }
             .header-right .btn-quote { padding: 8px 12px !important; font-size: 12px; margin-top: 0; }
             
+            /* Hamburger animated toggle setup */
             .hamburger { display: flex; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 5px; z-index: 1001; }
             .hamburger span { display: block; width: 25px; height: 3px; background-color: #fff; transition: 0.3s; }
             .hamburger.active span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
@@ -444,6 +465,7 @@
             .main-nav li { width: 100%; padding: 0; border-top: 1px solid rgba(255,255,255,0.1); border-bottom: none; }
             .main-nav a { display: block; padding: 15px 0; }
             
+            /* Hide the desktop quote button since it moved to the header wrapper */
             .main-nav a.desktop-quote { display: none !important; }
             
             .dropdown { position: static; display: none; background-color: transparent; box-shadow: none; min-width: 100%; border-left: 2px solid var(--gowise-cyan); margin-left: 10px; }
@@ -459,15 +481,15 @@
             .pink-divider { order: 5; }
             .services-section { order: 6; }
             .environment-banner { order: 7; }
-            .environment-wrapper { order: 8; padding: 40px 5% 60px; }
-            .environment-content { padding: 40px 6%; }
+            .environment-full-bg { order: 8; padding: 40px 0; }
 
+            /* Stacked Carousel Styles (Mobile Only Overrides) */
             .carousel-slide { flex-direction: column; }
             .carousel-bg-img { position: relative; height: 50%; object-fit: cover; filter: brightness(1); }
             .carousel-content {
                 position: relative;
                 transform: none !important;
-                background-color: #ffffff; 
+                background-color: #ffffff; /* White background only on mobile */
                 margin: 0;
                 padding: 20px 5%;
                 max-width: 100%;
@@ -478,6 +500,7 @@
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
+                box-shadow: none;
             }
             .carousel-content h1, .carousel-content h2 { font-size: 28px; margin-bottom: 10px; color: var(--gowise-cyan); }
             .carousel-content p { font-size: 16px; color: #444; }
@@ -488,9 +511,9 @@
             
             .environment-banner h2 { font-size: min(6vw, 24px); white-space: nowrap; }
             
-            .footer-wrapper { padding: 0 5% 40px; }
-            footer { padding: 40px 6%; }
+            footer { padding: 40px 0; }
             
+            /* Remove the floating quote roundel */
             .quote-roundel { display: none !important; }
         }
 
@@ -499,6 +522,7 @@
             .trust-bar { grid-template-columns: 1fr; text-align: center; }
             .trust-item { flex-direction: column; }
             
+            /* Top Bar on one line without underlines */
             .top-bar { flex-direction: row; justify-content: center; gap: 15px; font-size: 12px; white-space: nowrap; }
             .top-bar a { text-decoration: none !important; }
             
@@ -523,6 +547,7 @@
             <img src="gowise-logo.png" alt="Gowise Print Logo">
         </a>
         
+        <!-- Mobile Right Hand Group (Quote + Hamburger) -->
         <div class="header-right">
             <a href="#" id="navQuoteBtnMobile" class="btn-quote">GET A QUOTE</a>
             <button class="hamburger" id="hamburgerBtn" aria-label="Menu">
@@ -700,23 +725,23 @@
             </div>
         </section>
 
-        <!-- 5. Environmental Policy -->
+        <!-- 5. Environmental Policy Banner -->
         <section class="environment-banner scroll-reveal">
             <img src="Environmental-Header-Image.jpg" alt="Environmentally friendly and sustainable printing practices" class="env-bg-img" loading="lazy">
             <div class="overlay"></div>
             <h2>Our Environmental Policy</h2>
         </section>
 
-        <!-- Wrapped the content box so it matches the 1400px width limit of Our Services perfectly -->
-        <div class="environment-wrapper">
-            <section class="environment-content scroll-reveal">
+        <!-- Full Width Green Background Section -->
+        <section class="environment-full-bg">
+            <div class="environment-content scroll-reveal">
                 <p>Our company has always operated out of a relatively small group of units and our physical size gives us a naturally low ‘carbon footprint’. We were the second printer in the country to take advantage of a scheme from one of our paper suppliers. The scheme is in conjunction with the Woodland Trust. Through it, we are assessed for and fully offset the CO2 produced by our entire operation. This also includes the production and delivery of our paper.</p>
                 
                 <p>We take our impact on the environment very seriously; during production, before (paper manufacture) and after (our waste). As well as our own policies, we also continually monitor the environmental considerations of our suppliers and sub-contractors.</p>
                 
                 <p>Our policy is not static. We believe a permanent commitment to the environment is essential for a modern business. Our processes must be frequently reviewed. It is not just about recycling and reducing waste, but consideration in every aspect of our operation. This is a subject we are always willing to discuss at length with our customers, suppliers and other stakeholders.</p>
-            </section>
-        </div>
+            </div>
+        </section>
 
     </main>
 
@@ -763,10 +788,11 @@
     </div>
 
     <!-- 6. Footer -->
-    <!-- Wrapped the footer so it matches the 1400px width limit of Our Services perfectly -->
-    <div class="footer-wrapper">
-        <footer>
+    <!-- Full Width Black Background Section -->
+    <footer>
+        <div class="footer-content">
             <div class="footer-header">
+                <!-- 7. Footer Header text split on mobile -->
                 <h2>Visit Our Norwich<br class="mobile-break"> Print Shop</h2>
                 <p>GoWise Print proudly serves local businesses, independent creators, and trade partners across Norfolk and the UK.</p>
             </div>
@@ -792,8 +818,8 @@
                 </div>
                 
             </div>
-        </footer>
-    </div>
+        </div>
+    </footer>
 
     <script>
         // --- Hamburger Menu Toggle ---
