@@ -139,7 +139,6 @@
         @media (max-width: 1050px) {
             .mobile-break { display: block; }
             .desktop-break { display: none; }
-            .carousel-arrow { display: none; }
             header { flex-direction: row; flex-wrap: wrap; justify-content: space-between; align-items: center; padding: 15px 5%; }
             .logo img { max-height: 60px; }
             .header-right { display: flex; align-items: center; gap: 15px; }
@@ -169,11 +168,12 @@
         @keyframes slideUpFade { to { opacity: 1; transform: translateY(0); } }
         @keyframes kenBurns { from { transform: scale(1); } to { transform: scale(1.1); } }
 
+        /* Content Wrappers */
+        .section-container { max-width: 1400px; margin: 0 auto; padding: 0 5%; }
+
         /* Intro Section */
         .page-intro { 
-            padding: 60px 5% 40px; 
-            max-width: 1400px; 
-            margin: 0 auto; 
+            padding: 60px 0 40px; 
             text-align: center; 
             opacity: 0;
             transform: translateY(40px);
@@ -189,8 +189,7 @@
             margin: 0 auto; 
         }
 
-        .section-container { max-width: 1400px; margin: 0 auto; }
-        .plant-list-section { padding: 0 5% 80px; }
+        .plant-list-section { padding: 0 0 60px 0; }
         
         /* Animated Magenta Divider */
         .magenta-divider { 
@@ -204,43 +203,50 @@
         }
         .magenta-divider.visible { width: 120px; opacity: 1; }
 
-        /* Reusable Animated Magenta Banner for Headings */
-        h2.magenta-banner-heading {
+        /* Service Article Block */
+        .service-article {
+            margin-bottom: 60px;
+            scroll-margin-top: 160px;
+        }
+        .service-article:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Full-Width Service Header */
+        .service-banner {
             background-color: var(--gowise-magenta);
-            color: #fff !important;
+            color: #fff;
             padding: 15px 5%;
             text-align: center;
-            font-size: 32px;
+            font-size: 24px;
             font-weight: 300;
             text-transform: uppercase;
             letter-spacing: 1px;
-            margin-bottom: 25px;
+            margin-bottom: 40px;
             border-radius: 4px;
             transform: scaleX(0);
             transform-origin: center;
             transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
-            line-height: 1.3;
-            display: block;
+            line-height: 1.2;
+            width: 100%;
         }
-        h2.magenta-banner-heading span {
+        .service-banner span {
             display: inline-block;
             opacity: 0;
             transition: opacity 0.5s ease-out 0.4s;
         }
-        .visible h2.magenta-banner-heading { transform: scaleX(1); }
-        .visible h2.magenta-banner-heading span { opacity: 1; }
+        .service-article.visible .service-banner { transform: scaleX(1); }
+        .service-article.visible .service-banner span { opacity: 1; }
         
-        /* Service Rows (Equipment Blocks) */
+        /* Standardized to 4fr / 5fr Grid */
         .service-row {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            align-items: start;
-            margin-bottom: 80px;
-            scroll-margin-top: 120px; 
+            grid-template-columns: 4fr 5fr;
+            gap: 60px;
+            align-items: start; /* Aligns top of image with top of text */
         }
-        .service-row:last-child { margin-bottom: 0; }
-        .service-row:nth-child(even) .service-text { order: -1; } 
+        .service-article:nth-child(even) .service-row { grid-template-columns: 5fr 4fr; }
+        .service-article:nth-child(even) .service-text { order: -1; } 
         
         .service-img-container { 
             width: 100%; 
@@ -248,44 +254,15 @@
             height: auto; 
             border-radius: 4px; 
             overflow: hidden; 
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1); 
             transform: scale(0);
             transform-origin: center;
             opacity: 0;
             transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.6s ease-out;
         }
-        .service-row.visible .service-img-container {
-            transform: scale(1);
-            opacity: 1;
-        }
-        .service-img-container img { transition: transform 0.6s ease; }
-        .service-row:hover .service-img-container img { transform: scale(1.05); }
+        .service-article.visible .service-img-container { transform: scale(1); opacity: 1; }
+        .service-img-container img { transition: transform 0.6s ease; width: 100%; height: 100%; object-fit: cover; }
+        .service-article:hover .service-img-container img { transform: scale(1.02); }
         
-        /* Inner Banner Styling for the 3 Headings */
-        .service-banner {
-            background-color: var(--gowise-magenta);
-            color: #fff;
-            padding: 15px 5%;
-            text-align: center;
-            font-size: 24px;
-            font-weight: 300; 
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 20px;
-            border-radius: 4px;
-            transform: scaleX(0);
-            transform-origin: center;
-            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
-            line-height: 1.2;
-        }
-        .service-banner span {
-            display: inline-block;
-            opacity: 0;
-            transition: opacity 0.5s ease-out 0.4s;
-        }
-        .service-row.visible .service-banner { transform: scaleX(1); }
-        .service-row.visible .service-banner span { opacity: 1; }
-
         .service-text > p { font-size: 16px; margin-bottom: 25px; font-weight: 400; color: #444; line-height: 1.4; }
         
         .capabilities-list { list-style: none; padding: 0; }
@@ -297,12 +274,12 @@
             opacity: 0;
             transition: opacity 0.6s ease-out 0.7s;
         }
-        .service-row.visible .service-text > p, .service-row.visible .service-text > .capabilities-list {
+        .service-article.visible .service-text > p, .service-article.visible .service-text > .capabilities-list {
             opacity: 1;
         }
 
         /* 5-Colour Banner & Section */
-        .fuji-section { padding: 0 5% 80px; }
+        .fuji-section { padding: 40px 0 80px 0; }
         
         .magenta-banner { 
             background-color: var(--gowise-magenta); 
@@ -313,7 +290,7 @@
             font-weight: 300; 
             text-transform: uppercase; 
             letter-spacing: 1px; 
-            margin-bottom: 25px;
+            margin-bottom: 40px;
             border-radius: 4px;
             transform: scaleX(0); 
             transform-origin: center;
@@ -346,13 +323,7 @@
             transition: opacity 0.6s ease-out 0.7s, transform 0.6s ease-out 0.7s;
         }
         
-        .fuji-text p {
-            font-size: 16px;
-            font-weight: 400;
-            color: #444;
-            line-height: 1.6;
-            margin-bottom: 20px;
-        }
+        .fuji-text p { font-size: 16px; font-weight: 400; color: #444; line-height: 1.6; margin-bottom: 20px; }
         
         .fuji-image-card {
             position: relative;
@@ -361,15 +332,9 @@
             width: 100%;
             min-height: 200px;
             overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
         }
 
-        .fuji-image-card img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
+        .fuji-image-card img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
         .fuji-image-label {
             position: absolute;
@@ -392,16 +357,41 @@
         .fuji-section.visible .fuji-img-container { opacity: 1; }
         .fuji-section.visible .fuji-text-grid { opacity: 1; transform: translateY(0); }
 
-        /* Equipment Inventory Section */
-        .equipment-inventory-section { background-color: var(--header-dark); padding: 40px 5% 80px; margin-bottom: 0; }
+        /* Equipment Inventory Section (Full Width Background) */
+        .equipment-inventory-section { background-color: var(--header-dark); width: 100%; padding: 80px 0; margin-bottom: 0; }
         .equipment-header { text-align: center; margin-bottom: 50px; }
+
+        /* Reusable Animated Magenta Banner for Headings */
+        h2.magenta-banner-heading {
+            background-color: var(--gowise-magenta);
+            color: #fff !important;
+            padding: 15px 5%;
+            text-align: center;
+            font-size: 32px;
+            font-weight: 300;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 25px;
+            border-radius: 4px;
+            transform: scaleX(0);
+            transform-origin: center;
+            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+            line-height: 1.3;
+            display: block;
+        }
+        h2.magenta-banner-heading span {
+            display: inline-block;
+            opacity: 0;
+            transition: opacity 0.5s ease-out 0.4s;
+        }
+        .visible h2.magenta-banner-heading { transform: scaleX(1); }
+        .visible h2.magenta-banner-heading span { opacity: 1; }
         
-        /* Delayed fade for paragraph if it exists inside header block */
-        .equipment-header p, .footer-header p {
+        .equipment-header p {
             opacity: 0;
             transition: opacity 0.6s ease-out 0.7s;
         }
-        .equipment-header.visible p, .footer-header.visible p { opacity: 1; }
+        .equipment-header.visible p { opacity: 1; }
 
         .equipment-grid { display: grid; grid-template-columns: auto auto auto; justify-content: center; gap: 80px; }
         .equipment-column h3 { font-size: 28px; color: #fff; margin-bottom: 20px; font-weight: 300; }
@@ -409,8 +399,8 @@
         .equipment-list { list-style: none; padding: 0; }
         .equipment-list li { margin-bottom: 8px; font-size: 16px; color: #bbb; font-weight: 300; line-height: 1.5; }
 
-        /* Partner CTA */
-        .partner-cta-section { background-color: var(--gowise-cyan); color: #fff; padding: 80px 5%; text-align: center; margin-bottom: 0; }
+        /* Partner CTA (Full Width Background) */
+        .partner-cta-section { background-color: var(--gowise-cyan); width: 100%; color: #fff; padding: 80px 0; text-align: center; margin-bottom: 0; }
         .partner-cta-container { max-width: 900px; margin: 0 auto; }
         .partner-cta-section h2 { color: #fff; font-size: 36px; margin-bottom: 20px; }
         .partner-cta-section p { color: #fff; font-size: 18px; margin-bottom: 30px; }
@@ -436,26 +426,32 @@
         .form-group textarea { resize: vertical; min-height: 120px; }
         .form-group input:focus, .form-group textarea:focus { border-color: var(--gowise-magenta); outline: none; }
 
-        /* 6. Footer & Location */
-        footer { background: var(--header-dark); color: #fff; position: relative; overflow: hidden; padding: 60px 5%; }
+        /* Footer */
+        footer { 
+            background: var(--header-dark); 
+            color: #fff; 
+            position: relative; 
+            overflow: hidden; 
+            padding: 60px 0; 
+            width: 100%;
+            border-top: 4px solid var(--gowise-magenta);
+        }
         footer p { color: #ffffff !important; } 
         
+        .footer-content { max-width: 1400px; margin: 0 auto; padding: 0 5%; }
         .footer-header { margin-bottom: 40px; text-align: center; }
-        .footer-grid { display: flex; align-items: stretch; justify-content: space-between; gap: 40px; max-width: 1400px; margin: 0 auto; }
-        .footer-arrow-container { flex: 0 0 120px; display: flex; align-items: center; }
-        .footer-arrow { width: 100%; height: auto; transform: translateX(-150px); opacity: 0; transition: transform 1s cubic-bezier(0.25, 1, 0.5, 1), opacity 1s ease; }
-        .footer-arrow.slide-in { transform: translateX(0); opacity: 1; }
+        .footer-header h2 { color: #ffffff; font-size: 32px; }
+        .footer-grid { display: flex; align-items: stretch; justify-content: space-between; gap: 40px; }
         .footer-text-columns { flex: 1; display: flex; justify-content: flex-start; gap: 60px; font-size: 14px; line-height: 1.8; padding-top: 20px; }
         .map-container { flex: 0 0 400px; height: 300px; background: #ddd; border-radius: 4px; overflow: hidden; }
         .map-container iframe { width: 100%; height: 100%; border: none; }
 
         /* Responsive Overrides */
         @media (max-width: 1200px) {
-            .service-row { gap: 40px; }
             .equipment-grid { grid-template-columns: auto auto; justify-content: center; gap: 60px; }
         }
 
-        /* Mobile & Hamburger Threshold (Matched to Index) */
+        /* Mobile & Hamburger Threshold */
         @media (max-width: 992px) {
             .mobile-break { display: block; }
             .desktop-break { display: none; }
@@ -477,17 +473,19 @@
             .main-nav { flex-direction: column; align-items: stretch; gap: 0; }
             .main-nav li { padding: 0; border-top: 1px solid #444; }
             .main-nav a { display: block; padding: 15px 10px; }
-            .main-nav li:last-child { display: none; } /* Hide the desktop nav quote button */
+            .main-nav li:last-child { display: none; }
             
             .dropdown { position: static; box-shadow: none; display: none; background-color: transparent; border-left: 2px solid var(--gowise-cyan); margin-left: 10px; }
             .main-nav li:hover .dropdown { display: block; animation: none; }
             .dropdown a { padding: 10px 15px; border-bottom: none; }
 
             .inner-hero-content { padding: 30px 20px; margin: 0 5%; }
+            
+            .service-row { grid-template-columns: 1fr !important; gap: 40px; }
+            .service-article:nth-child(even) .service-text { order: 0; }
         }
         
         @media (max-width: 768px) {
-            /* Updated Top Bar to keep it on one line for mobile */
             .top-bar { flex-direction: row; justify-content: center; gap: 20px; font-size: 12px; }
             
             /* Stacked Hero Overrides */
@@ -515,20 +513,17 @@
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
-                box-shadow: none;
             }
             
-            /* Text scaling */
             .inner-hero-content h1 { font-size: 28px; color: var(--gowise-cyan); margin-bottom: 10px; line-height: 1.2; }
             .inner-hero-content p { font-size: 16px; color: #444444; margin-bottom: 0; }
 
-            /* Scaling for the new Banners & Grid */
             .magenta-banner { font-size: 24px; padding: 20px 5%; margin-bottom: 20px; }
             .service-banner { font-size: 20px; padding: 12px 5%; }
             h2.magenta-banner-heading { font-size: 20px; padding: 12px 5%; }
             .fuji-text-grid { grid-template-columns: 1fr; gap: 20px; }
 
-            /* Mobile Carousel implementation for Service Rows */
+            /* Mobile Carousel for Service Rows */
             .plant-list-section .section-container {
                 display: flex;
                 overflow-x: auto;
@@ -540,18 +535,16 @@
             }
             .plant-list-section .section-container::-webkit-scrollbar { display: none; }
             
-            .service-row { 
+            .service-article { 
                 flex: 0 0 88vw;
                 scroll-snap-align: center;
-                grid-template-columns: 1fr; 
                 margin-bottom: 0; 
             }
-            .service-row:nth-child(even) .service-text { order: 0; } 
+            .service-row { gap: 20px; }
             
             .equipment-grid { grid-template-columns: 1fr; text-align: center; gap: 40px; }
             
             .footer-grid { flex-wrap: wrap; justify-content: center; text-align: center; }
-            .footer-arrow-container { display: none; }
             .footer-text-columns { flex-direction: column; gap: 30px; align-items: center; }
             .map-container { width: 100%; flex: 1 1 100%; }
         }
@@ -638,7 +631,9 @@
 
         <!-- Intro Section -->
         <section class="page-intro scroll-reveal">
-            <p>By keeping our core printing and finishing processes entirely in-house, we offer trade buyers complete control over quality, turnaround times, and technical specifications.</p>
+            <div class="section-container">
+                <p>By keeping our core printing and finishing processes entirely in-house, we offer trade buyers complete control over quality, turnaround times, and technical specifications.</p>
+            </div>
         </section>
 
         <!-- Animated Divider -->
@@ -648,52 +643,58 @@
             <div class="section-container">
                 
                 <!-- Digital Press -->
-                <article id="digital" class="service-row scroll-reveal">
-                    <div class="service-img-container">
-                        <img src="Plant-2.jpg" alt="Fujifilm Revoria 5-colour digital printing press in Norwich" class="cover-img">
-                    </div>
-                    <div class="service-text">
-                        <h2 class="service-banner"><span>Digital Press Capabilities</span></h2>
-                        <p>Our digital suite is built for speed, variable data, and colour reproduction that standard CMYK digital presses simply cannot achieve.</p>
-                        <ul class="capabilities-list">
-                            <li><strong>Fujifilm 5UPER COLOUR© Digital Press:</strong> Our flagship 5-colour system hits specific RGB tones and simulates Pantone® colours with exceptional accuracy.</li>
-                            <li><strong>Variable Data Printing (VDP):</strong> Full capability to swap text, numbering, and imagery sheet-to-sheet.</li>
-                            <li><strong>Short-Run Efficiency:</strong> Cost-effective for runs up to 500 units and bespoke merchandise.</li>
-                            <li><strong>Custom Sheet Handling:</strong> Configured for custom raw sizes like 320x450mm.</li>
-                        </ul>
+                <article id="digital" class="service-article scroll-reveal">
+                    <h2 class="service-banner"><span>Digital Press Capabilities</span></h2>
+                    <div class="service-row">
+                        <div class="service-img-container">
+                            <img src="Plant-2.jpg" alt="Fujifilm Revoria 5-colour digital printing press in Norwich" class="cover-img">
+                        </div>
+                        <div class="service-text">
+                            <p>Our digital suite is built for speed, variable data, and colour reproduction that standard CMYK digital presses simply cannot achieve.</p>
+                            <ul class="capabilities-list">
+                                <li><strong>Fujifilm 5UPER COLOUR© Digital Press:</strong> Our flagship 5-colour system hits specific RGB tones and simulates Pantone® colours with exceptional accuracy.</li>
+                                <li><strong>Variable Data Printing (VDP):</strong> Full capability to swap text, numbering, and imagery sheet-to-sheet.</li>
+                                <li><strong>Short-Run Efficiency:</strong> Cost-effective for runs up to 500 units and bespoke merchandise.</li>
+                                <li><strong>Custom Sheet Handling:</strong> Configured for custom raw sizes like 320x450mm.</li>
+                            </ul>
+                        </div>
                     </div>
                 </article>
 
                 <!-- Litho Press -->
-                <article id="litho" class="service-row scroll-reveal">
-                    <div class="service-img-container">
-                        <img src="Plant-3.jpg" alt="Heidelberg lithographic printing press ink rollers" class="cover-img">
-                    </div>
-                    <div class="service-text">
-                        <h2 class="service-banner"><span>Lithographic Press Capabilities</span></h2>
-                        <p>For long runs and exact brand colour matching, traditional litho remains unbeatable.</p>
-                        <ul class="capabilities-list">
-                            <li><strong>Four-Colour Process (CMYK) Litho:</strong> High-accuracy production for catalogues, brochures, and commercial flyers.</li>
-                            <li><strong>Spot Colour Pantone® Matching:</strong> Exact ink mixing before the press runs for absolute colour fidelity.</li>
-                            <li><strong>Large Format Sheet Yields:</strong> Capacity to process larger raw stock sizes, such as 450x640mm.</li>
-                        </ul>
+                <article id="litho" class="service-article scroll-reveal">
+                    <h2 class="service-banner"><span>Lithographic Press Capabilities</span></h2>
+                    <div class="service-row">
+                        <div class="service-img-container">
+                            <img src="Plant-3.jpg" alt="Heidelberg lithographic printing press ink rollers" class="cover-img">
+                        </div>
+                        <div class="service-text">
+                            <p>For long runs and exact brand colour matching, traditional litho remains unbeatable.</p>
+                            <ul class="capabilities-list">
+                                <li><strong>Four-Colour Process (CMYK) Litho:</strong> High-accuracy production for catalogues, brochures, and commercial flyers.</li>
+                                <li><strong>Spot Colour Pantone® Matching:</strong> Exact ink mixing before the press runs for absolute colour fidelity.</li>
+                                <li><strong>Large Format Sheet Yields:</strong> Capacity to process larger raw stock sizes, such as 450x640mm.</li>
+                            </ul>
+                        </div>
                     </div>
                 </article>
 
                 <!-- Finishing -->
-                <article id="finishing" class="service-row scroll-reveal">
-                    <div class="service-img-container">
-                        <img src="Plant-4.jpg" alt="Professional book binding and finishing equipment in Norfolk" class="cover-img">
-                    </div>
-                    <div class="service-text">
-                        <h2 class="service-banner mobile-shrink-text"><span>In-House Finishing <br class="mobile-break">& Book Binding</span></h2>
-                        <p>We do not outsource our binding. Our fully equipped finishing department operates as a dedicated trade finishing service.</p>
-                        <ul class="capabilities-list">
-                            <li><strong>PUR Perfect Binding:</strong> Polyurethane Reactive adhesive for superior page pull strength and lay-flat flexibility.</li>
-                            <li><strong>Square Back Binding:</strong> Automated folding and stapling that presses the spine flat, mimicking a perfect-bound look.</li>
-                            <li><strong>Wire-O Binding:</strong> Precision punching for manuals requiring a 360-degree fold.</li>
-                            <li><strong>Pre-Press & Artwork:</strong> Full in-house department to inspect bleeds, colour profiles, and imposition layouts.</li>
-                        </ul>
+                <article id="finishing" class="service-article scroll-reveal">
+                    <h2 class="service-banner mobile-shrink-text"><span>In-House Finishing <br class="mobile-break">& Book Binding</span></h2>
+                    <div class="service-row">
+                        <div class="service-img-container">
+                            <img src="Plant-4.jpg" alt="Professional book binding and finishing equipment in Norfolk" class="cover-img">
+                        </div>
+                        <div class="service-text">
+                            <p>We do not outsource our binding. Our fully equipped finishing department operates as a dedicated trade finishing service.</p>
+                            <ul class="capabilities-list">
+                                <li><strong>PUR Perfect Binding:</strong> Polyurethane Reactive adhesive for superior page pull strength and lay-flat flexibility.</li>
+                                <li><strong>Square Back Binding:</strong> Automated folding and stapling that presses the spine flat, mimicking a perfect-bound look.</li>
+                                <li><strong>Wire-O Binding:</strong> Precision punching for manuals requiring a 360-degree fold.</li>
+                                <li><strong>Pre-Press & Artwork:</strong> Full in-house department to inspect bleeds, colour profiles, and imposition layouts.</li>
+                            </ul>
+                        </div>
                     </div>
                 </article>
             </div>
@@ -794,14 +795,14 @@
         </section>
 
         <section class="partner-cta-section scroll-reveal">
-            <div class="partner-cta-container">
-                <h2>Partner With GoWise</h2>
-                <p>We work seamlessly with trade buyers, offering white-label shipping and competitive trade pricing on both long and short runs.</p>
-                <div class="cta-actions">
-                    <!-- Adjusted link to open modal instead of an empty id jump -->
-                    <a href="#" id="ctaQuoteBtn" class="btn">Request a Quote or Trade Pricing</a>
-                    <!-- Wired this button to open the modal as well -->
-                    <a href="#" id="contactTeamBtn" class="btn btn-outline">Contact Our Production Team</a>
+            <div class="section-container">
+                <div class="partner-cta-container">
+                    <h2>Partner With GoWise</h2>
+                    <p>We work seamlessly with trade buyers, offering white-label shipping and competitive trade pricing on both long and short runs.</p>
+                    <div class="cta-actions">
+                        <a href="#" id="ctaQuoteBtn" class="btn">Request a Quote or Trade Pricing</a>
+                        <a href="#" id="contactTeamBtn" class="btn btn-outline">Contact Our Production Team</a>
+                    </div>
                 </div>
             </div>
         </section>
@@ -846,38 +847,33 @@
 
     <!-- 6. Footer -->
     <footer>
-        <div class="footer-header">
-    <!-- 7. Footer Header text split on mobile -->
-    <h2>Visit Our Norwich<br class="mobile-break"> Print Shop</h2>
-    <p>GoWise Print proudly serves local businesses, independent creators, and trade partners across Norfolk and the UK.</p>
-</div>
-        <div class="footer-grid">
-            
-            <div class="footer-arrow-container">
-                <svg class="footer-arrow" id="slideArrow" viewBox="0 0 100 50" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M0,15 L60,15 L60,0 L100,25 L60,50 L60,35 L0,35 Z" fill="var(--gowise-magenta)"/>
-                </svg>
+        <div class="footer-content">
+            <div class="footer-header">
+                <h2>Visit Our Norwich<br class="mobile-break"> Print Shop</h2>
+                <p>GoWise Print proudly serves local businesses, independent creators, and trade partners across Norfolk and the UK.</p>
             </div>
-            
-            <div class="footer-text-columns">
-                <div>
-                    <p style="font-size: 18px; margin-bottom: 15px; color: var(--gowise-cyan); font-weight: 600; text-transform: none; letter-spacing: normal;">CONTACT INFO</p>
-                    <p><strong>Address:</strong><br>4 Belmore Road<br>Thorpe St Andrew<br>Norwich, Norfolk<br>NR7 0PT</p>
-                    <br>
-                    <p><strong>Phone:</strong> +44 (0)1603 431304</p>
-                    <p><strong>Email:</strong> print@gowise.co.uk</p>
+            <div class="footer-grid">
+                
+                <div class="footer-text-columns">
+                    <div>
+                        <p style="font-size: 18px; margin-bottom: 15px; color: #ffffff; font-weight: 600; text-transform: none; letter-spacing: normal;">CONTACT INFO</p>
+                        <p><strong>Address:</strong><br>4 Belmore Road<br>Thorpe St Andrew<br>Norwich, Norfolk<br>NR7 0PT</p>
+                        <br>
+                        <p><strong>Phone:</strong> +44 (0)1603 431304</p>
+                        <p><strong>Email:</strong> print@gowise.co.uk</p>
+                    </div>
+                    
+                    <div>
+                        <p style="font-size: 18px; margin-bottom: 15px; color: #ffffff; font-weight: 600; text-transform: none; letter-spacing: normal;">OPENING HOURS</p>
+                        <p>MONDAY: 08:30 – 17:00<br>TUESDAY: 08:30 – 17:00<br>WEDNESDAY: 08:30 – 17:00<br>THURSDAY: 08:30 – 17:00<br>FRIDAY: 08:30 – 17:00<br>SATURDAY: CLOSED<br>SUNDAY: CLOSED</p>
+                    </div>
                 </div>
                 
-                <div>
-                    <p style="font-size: 18px; margin-bottom: 15px; color: var(--gowise-cyan); font-weight: 600; text-transform: none; letter-spacing: normal;">OPENING HOURS</p>
-                    <p>MONDAY: 08:30 – 17:00<br>TUESDAY: 08:30 – 17:00<br>WEDNESDAY: 08:30 – 17:00<br>THURSDAY: 08:30 – 17:00<br>FRIDAY: 08:30 – 17:00<br>SATURDAY: CLOSED<br>SUNDAY: CLOSED</p>
+                <div class="map-container">
+                    <iframe src="https://maps.google.com/maps?q=NR7%200PT&t=&z=14&ie=UTF8&iwloc=&output=embed" loading="lazy" allowfullscreen title="GoWise Print Location Map"></iframe>
                 </div>
+                
             </div>
-            
-            <div class="map-container">
-                <iframe src="https://maps.google.com/maps?q=NR7%200PT&t=&z=14&ie=UTF8&iwloc=&output=embed" loading="lazy" allowfullscreen title="GoWise Print Location Map"></iframe>
-            </div>
-            
         </div>
     </footer>
 
@@ -908,24 +904,11 @@
 
         createObserver('.scroll-reveal', 'visible', 0.15);
 
-        // Footer Arrow Animation
-        const arrow = document.getElementById('slideArrow');
-        const arrowObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    arrow.classList.add('slide-in');
-                } else {
-                    arrow.classList.remove('slide-in');
-                }
-            });
-        }, { threshold: 0.1 }); 
-        if(arrow) arrowObserver.observe(arrow);
-
         // --- 4. Request Form & Success Modals Interactivity ---
         const navQuoteBtn = document.getElementById('navQuoteBtn'); // Desktop Nav btn
         const navQuoteBtnMobile = document.getElementById('navQuoteBtnMobile'); // Mobile Nav btn
-        const ctaQuoteBtn = document.getElementById('ctaQuoteBtn'); // New CTA quote btn
-        const contactTeamBtn = document.getElementById('contactTeamBtn'); // New Contact Team btn
+        const ctaQuoteBtn = document.getElementById('ctaQuoteBtn'); // CTA btn
+        const contactTeamBtn = document.getElementById('contactTeamBtn'); // Contact Team btn
         const quoteModal = document.getElementById('quoteModal');
         const closeModal = document.getElementById('closeModal');
         
