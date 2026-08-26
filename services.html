@@ -88,10 +88,6 @@
             --gowise-cyan: #009ee0; 
             --header-dark: #333333;
             --transition-speed: 0.4s;
-            
-            /* Dynamic Parallax Math Variables */
-            --panel-aspect-ratio: 0.25; /* Safe fallback ratio before image loads */
-            --actual-panel-width: min(calc(100vh * var(--panel-aspect-ratio)), 18vw); /* Cap panel width to prevent crushing content on tall displays */
         }
 
         /* Typography Styles */
@@ -147,22 +143,11 @@
         .dropdown a { display: block; padding: 12px 15px; border-bottom: 1px solid rgba(255, 255, 255, 0.2); font-size: 12px; text-transform: none; color: #ffffff; }
         .dropdown a:hover { background-color: rgba(0, 0, 0, 0.15); color: #fff; padding-left: 20px; transition: padding 0.3s ease, background-color 0.3s ease; }
 
-        /* Animation explicit start and end to prevent stuck hidden text */
         @keyframes dropFade { 
             from { opacity: 0; transform: translateY(-10px); } 
             to { opacity: 1; transform: translateY(0); } 
         }
 
-        /* Mobile Utilities */
-        /* 1050px Breakpoint: Hamburger & Core Mobile Layout */
-        @media (max-width: 1050px) {
-            .mobile-break { display: block; }
-            .carousel-arrow { display: none; } /* Hide Carousel Arrows on Mobile */
-            header { flex-direction: row; flex-wrap: wrap; justify-content: space-between; align-items: center; padding: 15px 5%; }
-            .logo img { max-height: 60px; }
-            .header-right { display: flex; align-items: center; gap: 15px; }
-            .header-right .btn-quote { padding: 8px 12px !important; font-size: 12px; margin-top: 0; }}
-        
         /* 1. Inner Hero Section */
         .inner-hero {
             position: relative;
@@ -201,41 +186,19 @@
             to { transform: scale(1.1); } 
         }
 
-        /* --- TOP WHITE WRAPPER --- */
-        /* Forces the top sections to sit above the parallax shadow and remain pure white */
-        .top-white-wrapper {
-            position: relative;
-            z-index: 2;
-            background-color: #ffffff;
-        }
-
-        /* --- PARALLAX WRAPPER & WHITE COLUMN --- */
-        .parallax-wrapper {
-            background-image: url('images/side-panel.jpg'), url('images/side-panel.jpg'); 
-            background-repeat: no-repeat, no-repeat;
-            background-position: left top, right top;
-            background-attachment: fixed, fixed;
-            background-size: var(--actual-panel-width) 100%, var(--actual-panel-width) 100%; 
-            background-color: #ffffff; 
-            width: 100%;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .white-center-column {
-            width: calc(100% - (var(--actual-panel-width) * 2));
+        /* Universal Content Wrapper (Matched to index.html 1400px standard) */
+        .content-wrapper {
+            max-width: 1400px;
             margin: 0 auto;
-            background-color: #ffffff;
-            box-shadow: 0 0 30px rgba(0, 0, 0, 0.08);
-            transition: width 0.3s ease;
+            padding: 0 5%;
         }
 
         /* 2. Intro Section */
-        .page-intro { padding: 60px 5% 40px; max-width: 1400px; margin: 0 auto; text-align: center; }
+        .page-intro { padding: 60px 0 40px; text-align: center; }
         .page-intro p { font-size: 18px; line-height: 1.8; color: #555; max-width: 1100px; margin: 0 auto; }
 
         /* 3. Alternating Service Rows */
-        .services-detail-section { padding: 0 5% 40px; }
+        .services-detail-section { padding: 0 0 80px 0; }
         
         /* Animated Magenta Divider */
         .magenta-divider { 
@@ -247,20 +210,18 @@
             opacity: 0;
             transition: width 1s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.8s ease-out; 
         }
-        .magenta-divider.visible {
-            width: 120px;
-            opacity: 1;
-        }
+        .magenta-divider.visible { width: 120px; opacity: 1; }
         
-        .section-container { max-width: 1400px; margin: 0 auto; }
+        /* Standardized to 4fr / 5fr to keep images proportioned elegantly within the 1400px space */
         .service-row {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            align-items: start;
+            grid-template-columns: 4fr 5fr;
+            gap: 60px;
+            align-items: center;
             margin-bottom: 80px;
             scroll-margin-top: 160px; 
         }
+        .service-row:nth-child(even) { grid-template-columns: 5fr 4fr; }
         .service-row:nth-child(even) .service-text { order: -1; } 
         
         .service-img-container { 
@@ -269,18 +230,14 @@
             height: auto; 
             border-radius: 4px; 
             overflow: hidden; 
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1); 
             transform: scale(0);
             transform-origin: center;
             opacity: 0;
             transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.6s ease-out;
         }
-        .service-row.visible .service-img-container {
-            transform: scale(1);
-            opacity: 1;
-        }
+        .service-row.visible .service-img-container { transform: scale(1); opacity: 1; }
         .service-img-container img { transition: transform 0.6s ease; }
-        .service-row:hover .service-img-container img { transform: scale(1.05); }
+        .service-row:hover .service-img-container img { transform: scale(1.02); }
         
         /* Inner Banner Styling for Headings */
         .service-banner {
@@ -313,39 +270,32 @@
         .service-features li { position: relative; margin-bottom: 20px; font-size: 16px; font-weight: 300; line-height: 1.8; color: #555; }
         .service-features strong { display: block; font-size: 16px; font-weight: 600; color: var(--gowise-cyan); margin-bottom: 5px; text-transform: none; letter-spacing: normal; }
 
-        /* Delayed Fade for the body text and buttons in Service Rows */
         .service-text > p, .service-text > .service-features, .service-text > .btn {
             opacity: 0;
             transition: opacity 0.6s ease-out 0.7s;
         }
-        .service-row.visible .service-text > p, .service-row.visible .service-text > .service-features, .service-row.visible .service-text > .btn {
-            opacity: 1;
-        }
+        .service-row.visible .service-text > p, .service-row.visible .service-text > .service-features, .service-row.visible .service-text > .btn { opacity: 1; }
 
         /* 4. Comparison Cards (Digital/Litho) */
         .resource-section { 
-            padding: 60px 5% 100px; 
-            scroll-margin-top: 160px; 
+            padding: 80px 0 100px; 
+            scroll-margin-top: 100px; 
             background-color: #f4f4f4; 
             border-top: 1px solid #eaeaea; 
             position: relative; 
             z-index: 2;
+            width: 100%;
         }
         .section-header { text-align: center; margin-bottom: 50px; }
         .section-header h2 { font-size: 36px; color: var(--gowise-magenta); margin-bottom: 15px; }
         .section-header p { font-size: 18px; max-width: 1200px; margin: 0 auto; }
 
-        .comparison-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-        }
+        .comparison-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
         
         .comparison-card {
             background: #fff;
             padding: 40px;
             border-radius: 4px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
             border-top: 4px solid var(--gowise-cyan);
             opacity: 0;
             transform: translateY(30px);
@@ -356,10 +306,7 @@
         }
         .comparison-card.visible { opacity: 1; transform: translateY(0); }
         
-        .card-content {
-            flex-grow: 1; 
-        }
-        
+        .card-content { flex-grow: 1; }
         .comparison-card h3 { font-size: 24px; margin-bottom: 20px; color: var(--header-dark); }
         .comparison-card p { font-size: 16px; font-weight: 300; line-height: 1.8; color: #555; margin-bottom: 15px; }
         .comparison-card strong { font-weight: 600; color: var(--header-dark); text-transform: none; letter-spacing: normal; }
@@ -373,15 +320,21 @@
             margin-bottom: 10px;
         }
 
-        /* Footer overrides */
-        footer { background: var(--header-dark); color: #fff; position: relative; overflow: hidden; padding: 60px 5%; z-index: 2; }
-        footer p { color: #ffffff; }
+        /* 5. Footer & Location */
+        footer { 
+            background: var(--header-dark); 
+            color: #fff; 
+            position: relative; 
+            overflow: hidden; 
+            padding: 60px 0; 
+            width: 100%;
+        }
+        footer p { color: #ffffff; } 
+        
+        .footer-content { max-width: 1400px; margin: 0 auto; padding: 0 5%; }
         .footer-header { margin-bottom: 40px; text-align: center; }
-        .footer-header h2 { color: var(--gowise-magenta); font-size: 32px; }
-        .footer-grid { display: flex; align-items: stretch; justify-content: space-between; gap: 40px; max-width: 1400px; margin: 0 auto; }
-        .footer-arrow-container { flex: 0 0 120px; display: flex; align-items: center; }
-        .footer-arrow { width: 100%; height: auto; transform: translateX(-150px); opacity: 0; transition: transform 1s cubic-bezier(0.25, 1, 0.5, 1), opacity 1s ease; }
-        .footer-arrow.slide-in { transform: translateX(0); opacity: 1; }
+        .footer-header h2 { color: #ffffff; font-size: 32px; }
+        .footer-grid { display: flex; align-items: stretch; justify-content: space-between; gap: 40px; }
         .footer-text-columns { flex: 1; display: flex; justify-content: flex-start; gap: 60px; font-size: 14px; line-height: 1.8; padding-top: 20px; }
         .map-container { flex: 0 0 400px; height: 300px; background: #ddd; border-radius: 4px; overflow: hidden; }
         .map-container iframe { width: 100%; height: 100%; border: none; }
@@ -405,22 +358,13 @@
         [id] { scroll-margin-top: 160px !important; }
 
         /* --- RESPONSIVE BREAKPOINTS --- */
-
-        /* 1050px Breakpoint: Hamburger & Grid collapses */
         @media (max-width: 1050px) {
-            :root {
-                /* Disables the pink side panels dynamically so mobile layout has full reading width */
-                --actual-panel-width: 0px; 
-            }
-            .parallax-wrapper {
-                background-image: none; 
-            }
+            .mobile-break { display: block; }
 
             header { flex-direction: row; flex-wrap: wrap; justify-content: space-between; align-items: center; padding: 15px 5%; }
             .header-right { display: flex; align-items: center; gap: 15px; }
             .header-right .btn-quote { padding: 8px 12px !important; font-size: 12px; margin-top: 0; }
             
-            /* Hamburger animated toggle setup */
             .hamburger { display: flex; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 5px; z-index: 1001; }
             .hamburger span { display: block; width: 25px; height: 3px; background-color: #fff; transition: 0.3s; }
             .hamburger.active span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
@@ -433,31 +377,28 @@
             .main-nav { flex-direction: column; align-items: flex-start; gap: 0; }
             .main-nav li { width: 100%; border-bottom: 1px solid rgba(255,255,255,0.1); }
             .main-nav a { display: block; padding: 15px 0; }
-            
-            /* Hide the desktop quote button since it moved to the header wrapper */
             .main-nav a.desktop-quote { display: none !important; }
             
             .dropdown { position: static; display: none; background-color: #222; box-shadow: none; min-width: 100%; border-left: 2px solid var(--gowise-cyan); margin-left: 10px; }
             .main-nav li:hover .dropdown, .main-nav li:active .dropdown { display: block; animation: none; }
             .dropdown a { padding: 10px 15px; border-bottom: none; }
             
-            .service-row { gap: 40px; }
+            /* Responsive Grid Collapse */
+            .service-row { grid-template-columns: 1fr !important; gap: 40px; }
+            .service-row:nth-child(even) .service-text { order: 0; } 
+            
             .comparison-grid { grid-template-columns: 1fr; }
             .footer-grid { flex-wrap: wrap; justify-content: center; text-align: center; }
-            .footer-arrow-container { display: none; }
             .footer-text-columns { flex-direction: column; gap: 30px; align-items: center; }
             .map-container { width: 100%; flex: 1 1 100%; }
         }
 
-        /* 768px Breakpoint: Mobile specific layout tweaks */
         @media (max-width: 768px) {
             .mobile-break { display: block; }
             
-            /* Top Bar on one line without underlines */
             .top-bar { flex-direction: row; justify-content: center; gap: 15px; font-size: 12px; white-space: nowrap; }
             .top-bar a { text-decoration: none !important; }
 
-            /* Stacked Hero Overrides - FIXED to keep text over image securely */
             .inner-hero { min-height: 40vh; flex-direction: column; justify-content: center; overflow: hidden; padding: 40px 0; }
             .hero-bg { position: absolute; height: 100%; width: 100%; flex-shrink: 0; top: 0; left: 0; }
             .inner-hero-content { 
@@ -470,16 +411,11 @@
                 max-width: 100%; 
                 backdrop-filter: blur(5px); 
             }
-            
-            /* Text scaling and color application for dark overlay */
             .inner-hero-content h1 { font-size: 28px; color: #ffffff; }
             .inner-hero-content p { color: #dddddd; font-size: 15px; }
 
-            .service-row { grid-template-columns: 1fr; margin-bottom: 50px; }
-            .service-row:nth-child(even) .service-text { order: 0; } 
-            
+            .service-row { margin-bottom: 50px; }
             .service-banner { font-size: 20px; padding: 12px 5%; }
-
             .footer-header h2 { font-size: 26px; }
         }
     </style>
@@ -494,11 +430,9 @@
     <!-- Navigation -->
     <header>
         <a href="index.html" class="logo">
-            <!-- Path reverted back to the root folder! -->
             <img src="gowise-logo.png" alt="Gowise Print Logo">
         </a>
         
-        <!-- Mobile Actions: Quote + Animated Hamburger -->
         <div class="header-right">
             <a href="#" id="navQuoteBtnMobile" class="btn-quote">GET A QUOTE</a>
             <button class="hamburger" id="hamburgerBtn" aria-label="Menu">
@@ -560,141 +494,133 @@
             </div>
         </section>
 
-        <!-- Top Sections Wrapper to cleanly hide the upward-bleeding drop shadow -->
-        <div class="top-white-wrapper">
-            <!-- 2. Intro Section -->
-            <section class="page-intro scroll-reveal">
+        <!-- 2. Intro Section -->
+        <section class="page-intro scroll-reveal">
+            <div class="content-wrapper">
                 <p>By housing advanced printing technology, comprehensive book binding, and an expert pre-press design team under one roof, we ensure your project transitions seamlessly from a digital file to a perfectly finished physical product. Explore our core services below to see how we bring your ideas to the page.</p>
-            </section>
+            </div>
+        </section>
 
-            <!-- 3. Services Core Breakdown (Alternating Layout) -->
-            <section class="services-detail-section">
-                <div class="section-container">
-                    
-                    <hr class="magenta-divider scroll-reveal">
-                    
-                    <!-- Category 1: Printing -->
-                    <article id="printing" class="service-row scroll-reveal">
-                        <div class="service-img-container">
-                            <img src="Services-2.jpg" alt="Spot colour lithographic printing press at GoWise Print Norwich" class="cover-img">
-                        </div>
-                        <div class="service-text">
-                            <h2 class="service-banner"><span>1. Commercial & Independent Printing</span></h2>
-                            <p>We don't believe in a one-size-fits-all approach to ink and paper. We match your specific run size, budget, and colour requirements with the ideal printing press, ensuring flawless detail and maximum cost-efficiency.</p>
-                            
-                            <ul class="service-features">
-                                <li>
-                                    <strong>Spot Colour Lithographic Printing</strong>
-                                    When brand consistency is paramount, our traditional litho presses deliver. We are specialists in exact Pantone® ink matching, making this the perfect choice for corporate stationery, packaging, and high-volume runs where extreme precision and vibrant solid colours are non-negotiable.
-                                </li>
-                                <li>
-                                    <strong>5-Colour Digital Printing</strong>
-                                    Our cutting-edge Fujifilm 5UPER COLOUR© press goes far beyond standard CMYK. By utilizing an expanded colour gamut, we achieve incredibly rich RGB tones and simulate Pantone colours with stunning accuracy. Digital is fast, cost-effective for shorter runs, and perfect for variable data printing.
-                                </li>
-                                <li>
-                                    <strong>Custom Formats & Stocks</strong>
-                                    We optimize your artwork for both standard and custom raw sheet sizes (including 320x450mm and 450x640mm) to reduce waste and keep your costs down, whether you're printing heavy-stock art prints or high-volume flyers.
-                                </li>
-                            </ul>
-                        </div>
-                    </article>
-
-                    <!-- Category 2: Binding -->
-                    <article id="binding" class="service-row scroll-reveal">
-                        <div class="service-img-container">
-                            <img src="Services-3.jpg" alt="Professional book binding services including PUR perfect binding and wire binding in Norfolk" class="cover-img">
-                        </div>
-                        <div class="service-text">
-                            <h2 class="service-banner"><span>2. Book Binding & In-House Finishing</span></h2>
-                            <p>A beautifully printed page is only half the journey; the finish dictates how your publication is experienced. Because we handle all our binding in-house, we maintain complete quality control without the delays of outsourcing.</p>
-                            
-                            <ul class="service-features">
-                                <li>
-                                    <strong>PUR Perfect Binding</strong>
-                                    The gold standard for paperback books, thick catalogues, and graphic novels. Polyurethane Reactive (PUR) glue is significantly stronger and more flexible than standard adhesives, ensuring your book won't crack even when opened completely flat.
-                                </li>
-                                <li>
-                                    <strong>Square Back Binding</strong>
-                                    Get the premium, flat-spine look of a perfect-bound book with the cost-effectiveness of stapling. Ideal for independent creators, atmospheric folklore zines, and limited-edition lookbooks, this method presses the folded spine flat so your publication stacks and presents beautifully.
-                                </li>
-                                <li>
-                                    <strong>Wire Binding</strong>
-                                    When your manual, sketchbook, or presentation deck needs to lay entirely flat or fold back 360 degrees, our durable wire-o binding offers the most practical and professional finish.
-                                </li>
-                            </ul>
-                        </div>
-                    </article>
-
-                    <!-- Category 3: Design -->
-                    <article id="design" class="service-row scroll-reveal">
-                        <div class="service-img-container">
-                            <img src="Services-4.jpg" alt="Graphic design and print-ready artwork setup services at GoWise Print" class="cover-img">
-                        </div>
-                        <div class="service-text">
-                            <h2 class="service-banner"><span>3. Graphic Design & Artwork Setup</span></h2>
-                            <p>Even the best presses can't fix poorly prepared files. Our full in-house graphic design and pre-press team is here to bridge the gap between your screen and our printers.</p>
-                            
-                            <ul class="service-features">
-                                <li>
-                                    <strong>Print-Ready File Setup</strong>
-                                    Let us take the stress out of commercial print preparation. We can review your files to ensure perfect CMYK conversions, correct bleed margins, and proper resolution, so your final product looks exactly as you envisioned.
-                                </li>
-                                <li>
-                                    <strong>Creative Design Services</strong>
-                                    Bring us a rough concept, and our experienced designers will bring it to life. From striking corporate branding to layout design for multi-page publications, we merge deep technical printing knowledge with a wealth of creative experience to save you time and money.
-                                </li>
-                            </ul>
-
-                            <a href="resources.html" class="btn">Read Our Artwork Guide</a>
-                        </div>
-                    </article>
-
-                </div>
-            </section>
-        </div>
-        
-        <!-- Parallax Background Wrapper ONLY for Digital vs Litho Section -->
-        <div class="parallax-wrapper">
-            <div class="white-center-column">
+        <!-- 3. Services Core Breakdown (Alternating Layout) -->
+        <section class="services-detail-section">
+            <div class="content-wrapper">
                 
-                <!-- 4. Digital vs Litho Section -->
-                <section id="digital-vs-litho" class="resource-section">
-                    <div class="section-container">
-                        <div class="section-header scroll-reveal">
-                            <h2>Digital vs. Lithographic Printing</h2>
-                            <p>Which is right for you? Choosing the right press depends entirely on your quantity, timeline, and quality requirements.</p>
-                        </div>
-                        
-                        <div class="comparison-grid">
-                            <div class="comparison-card scroll-reveal" style="transition-delay: 0s; border-top-color: var(--gowise-magenta);">
-                                <div class="card-content">
-                                    <h3>Digital Printing</h3>
-                                    <p><strong>Best for short to medium runs (typically 1 to 500 units).</strong></p>
-                                    <p>Because there are no traditional printing plates to set up, digital is incredibly fast and cost-effective for smaller batches, limited-edition art prints, and variable data projects.</p>
-                                </div>
-                                <img src="images/revoria.svg" alt="Fujifilm Revoria 5-colour digital printing press for short run printing" class="comparison-img">
-                            </div>
-                            <div class="comparison-card scroll-reveal" style="transition-delay: 0.2s; border-top-color: var(--gowise-magenta);">
-                                <div class="card-content">
-                                    <h3>Lithographic Printing (Litho)</h3>
-                                    <p><strong>Best for high-volume commercial runs.</strong></p>
-                                    <p>Litho uses wet ink and custom plates. The initial setup takes longer and costs more, but once the press is running, the cost-per-page drops drastically. Litho also allows us to use traditional Pantone® spot colours and print on much larger raw sheet sizes (such as 450x640mm) for maximum yield.</p>
-                                </div>
-                                <img src="images/heidelberg.svg" alt="Heidelberg lithographic press for high-volume commercial printing" class="comparison-img">
-                            </div>
-                        </div>
+                <hr class="magenta-divider scroll-reveal">
+                
+                <!-- Category 1: Printing -->
+                <article id="printing" class="service-row scroll-reveal">
+                    <div class="service-img-container">
+                        <img src="Services-2.jpg" alt="Spot colour lithographic printing press at GoWise Print Norwich" class="cover-img">
                     </div>
-                </section>
+                    <div class="service-text">
+                        <h2 class="service-banner"><span>1. Commercial & Independent Printing</span></h2>
+                        <p>We don't believe in a one-size-fits-all approach to ink and paper. We match your specific run size, budget, and colour requirements with the ideal printing press, ensuring flawless detail and maximum cost-efficiency.</p>
+                        
+                        <ul class="service-features">
+                            <li>
+                                <strong>Spot Colour Lithographic Printing</strong>
+                                When brand consistency is paramount, our traditional litho presses deliver. We are specialists in exact Pantone® ink matching, making this the perfect choice for corporate stationery, packaging, and high-volume runs where extreme precision and vibrant solid colours are non-negotiable.
+                            </li>
+                            <li>
+                                <strong>5-Colour Digital Printing</strong>
+                                Our cutting-edge Fujifilm 5UPER COLOUR© press goes far beyond standard CMYK. By utilizing an expanded colour gamut, we achieve incredibly rich RGB tones and simulate Pantone colours with stunning accuracy. Digital is fast, cost-effective for shorter runs, and perfect for variable data printing.
+                            </li>
+                            <li>
+                                <strong>Custom Formats & Stocks</strong>
+                                We optimize your artwork for both standard and custom raw sheet sizes (including 320x450mm and 450x640mm) to reduce waste and keep your costs down, whether you're printing heavy-stock art prints or high-volume flyers.
+                            </li>
+                        </ul>
+                    </div>
+                </article>
+
+                <!-- Category 2: Binding -->
+                <article id="binding" class="service-row scroll-reveal">
+                    <div class="service-img-container">
+                        <img src="Services-3.jpg" alt="Professional book binding services including PUR perfect binding and wire binding in Norfolk" class="cover-img">
+                    </div>
+                    <div class="service-text">
+                        <h2 class="service-banner"><span>2. Book Binding & In-House Finishing</span></h2>
+                        <p>A beautifully printed page is only half the journey; the finish dictates how your publication is experienced. Because we handle all our binding in-house, we maintain complete quality control without the delays of outsourcing.</p>
+                        
+                        <ul class="service-features">
+                            <li>
+                                <strong>PUR Perfect Binding</strong>
+                                The gold standard for paperback books, thick catalogues, and graphic novels. Polyurethane Reactive (PUR) glue is significantly stronger and more flexible than standard adhesives, ensuring your book won't crack even when opened completely flat.
+                            </li>
+                            <li>
+                                <strong>Square Back Binding</strong>
+                                Get the premium, flat-spine look of a perfect-bound book with the cost-effectiveness of stapling. Ideal for independent creators, atmospheric folklore zines, and limited-edition lookbooks, this method presses the folded spine flat so your publication stacks and presents beautifully.
+                            </li>
+                            <li>
+                                <strong>Wire Binding</strong>
+                                When your manual, sketchbook, or presentation deck needs to lay entirely flat or fold back 360 degrees, our durable wire-o binding offers the most practical and professional finish.
+                            </li>
+                        </ul>
+                    </div>
+                </article>
+
+                <!-- Category 3: Design -->
+                <article id="design" class="service-row scroll-reveal">
+                    <div class="service-img-container">
+                        <img src="Services-4.jpg" alt="Graphic design and print-ready artwork setup services at GoWise Print" class="cover-img">
+                    </div>
+                    <div class="service-text">
+                        <h2 class="service-banner"><span>3. Graphic Design & Artwork Setup</span></h2>
+                        <p>Even the best presses can't fix poorly prepared files. Our full in-house graphic design and pre-press team is here to bridge the gap between your screen and our printers.</p>
+                        
+                        <ul class="service-features">
+                            <li>
+                                <strong>Print-Ready File Setup</strong>
+                                Let us take the stress out of commercial print preparation. We can review your files to ensure perfect CMYK conversions, correct bleed margins, and proper resolution, so your final product looks exactly as you envisioned.
+                            </li>
+                            <li>
+                                <strong>Creative Design Services</strong>
+                                Bring us a rough concept, and our experienced designers will bring it to life. From striking corporate branding to layout design for multi-page publications, we merge deep technical printing knowledge with a wealth of creative experience to save you time and money.
+                            </li>
+                        </ul>
+
+                        <a href="resources.html" class="btn">Read Our Artwork Guide</a>
+                    </div>
+                </article>
 
             </div>
-        </div>
+        </section>
+        
+        <!-- 4. Digital vs Litho Section -->
+        <section id="digital-vs-litho" class="resource-section">
+            <div class="content-wrapper">
+                <div class="section-header scroll-reveal">
+                    <h2>Digital vs. Lithographic Printing</h2>
+                    <p>Which is right for you? Choosing the right press depends entirely on your quantity, timeline, and quality requirements.</p>
+                </div>
+                
+                <div class="comparison-grid">
+                    <div class="comparison-card scroll-reveal" style="transition-delay: 0s;">
+                        <div class="card-content">
+                            <h3>Digital Printing</h3>
+                            <p><strong>Best for short to medium runs (typically 1 to 500 units).</strong></p>
+                            <p>Because there are no traditional printing plates to set up, digital is incredibly fast and cost-effective for smaller batches, limited-edition art prints, and variable data projects.</p>
+                        </div>
+                        <img src="images/revoria.svg" alt="Fujifilm Revoria 5-colour digital printing press for short run printing" class="comparison-img">
+                    </div>
+                    <div class="comparison-card scroll-reveal" style="transition-delay: 0.2s;">
+                        <div class="card-content">
+                            <h3>Lithographic Printing (Litho)</h3>
+                            <p><strong>Best for high-volume commercial runs.</strong></p>
+                            <p>Litho uses wet ink and custom plates. The initial setup takes longer and costs more, but once the press is running, the cost-per-page drops drastically. Litho also allows us to use traditional Pantone® spot colours and print on much larger raw sheet sizes (such as 450x640mm) for maximum yield.</p>
+                        </div>
+                        <img src="images/heidelberg.svg" alt="Heidelberg lithographic press for high-volume commercial printing" class="comparison-img">
+                    </div>
+                </div>
+            </div>
+        </section>
 
     </main>
 
     <!-- Quote Request Modal Window -->
     <div class="modal-overlay" id="quoteModal">
         <div class="modal-content">
-            <span class="close-modal" id="closeModal">×</span>
+            <span class="close-modal" id="closeModal">&times;</span>
             <h3>Request a Quote</h3>
             <form id="asyncQuoteForm">
                 <input type="hidden" name="access_key" value="3c30689d-ea16-4629-92a1-5737b09d6f4c">
@@ -718,55 +644,55 @@
     <!-- Submission Success Pop-Up -->
     <div class="modal-overlay" id="successModal">
         <div class="modal-content" style="max-width: 420px; text-align: center;">
-            <span class="close-modal" id="closeSuccessX">×</span>
+            <span class="close-modal" id="closeSuccessX">&times;</span>
             <h3 style="color: var(--gowise-cyan); margin-bottom: 15px;">Thank You!</h3>
             <p style="font-size: 16px; color: #444; margin-bottom: 25px;">Your quote request has been successfully submitted. Our production team will review your project details and get back to you shortly.</p>
             <button type="button" class="btn" id="closeSuccessBtn" style="width: 100%; background-color: var(--gowise-cyan);">Close Window</button>
         </div>
     </div>
 
+    <!-- Full Width Black Footer -->
     <footer>
-        <div class="footer-header">
-            <h2>Visit Our Norwich<br class="mobile-break"> Print Shop</h2>
-            <p>GoWise Print proudly serves local businesses, independent creators, and trade partners across Norfolk and the UK.</p>
-        </div>
-        <div class="footer-grid">
-            <div class="footer-arrow-container">
-                <svg class="footer-arrow" id="slideArrow" viewBox="0 0 100 50" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M0,15 L60,15 L60,0 L100,25 L60,50 L60,35 L0,35 Z" fill="var(--gowise-magenta)"/>
-                </svg>
+        <!-- Inner 1400px Container -->
+        <div class="footer-content">
+            <div class="footer-header">
+                <h2>Visit Our Norwich<br class="mobile-break"> Print Shop</h2>
+                <p>GoWise Print proudly serves local businesses, independent creators, and trade partners across Norfolk and the UK.</p>
             </div>
-            <div class="footer-text-columns">
-                <div>
-                    <p style="font-size: 18px; margin-bottom: 15px; color: var(--gowise-cyan); font-weight: 600; text-transform: none; letter-spacing: normal;">CONTACT INFO</p>
-                    <p><strong>Address:</strong><br>4 Belmore Road<br>Thorpe St Andrew<br>Norwich, Norfolk<br>NR7 0PT</p>
-                    <br>
-                    <p><strong>Phone:</strong> +44 (0)1603 431304</p>
-                    <p><strong>Email:</strong> print@gowise.co.uk</p>
+            <div class="footer-grid">
+                
+                <div class="footer-text-columns">
+                    <div>
+                        <p style="font-size: 18px; margin-bottom: 15px; color: #ffffff; font-weight: 600; text-transform: none; letter-spacing: normal;">CONTACT INFO</p>
+                        <p><strong>Address:</strong><br>4 Belmore Road<br>Thorpe St Andrew<br>Norwich, Norfolk<br>NR7 0PT</p>
+                        <br>
+                        <p><strong>Phone:</strong> +44 (0)1603 431304</p>
+                        <p><strong>Email:</strong> print@gowise.co.uk</p>
+                    </div>
+                    
+                    <div>
+                        <p style="font-size: 18px; margin-bottom: 15px; color: #ffffff; font-weight: 600; text-transform: none; letter-spacing: normal;">OPENING HOURS</p>
+                        <p>MONDAY: 08:30 – 17:00<br>TUESDAY: 08:30 – 17:00<br>WEDNESDAY: 08:30 – 17:00<br>THURSDAY: 08:30 – 17:00<br>FRIDAY: 08:30 – 17:00<br>SATURDAY: CLOSED<br>SUNDAY: CLOSED</p>
+                    </div>
                 </div>
-                <div>
-                    <p style="font-size: 18px; margin-bottom: 15px; color: var(--gowise-cyan); font-weight: 600; text-transform: none; letter-spacing: normal;">OPENING HOURS</p>
-                    <p>MONDAY: 08:30 – 17:00<br>TUESDAY: 08:30 – 17:00<br>WEDNESDAY: 08:30 – 17:00<br>THURSDAY: 08:30 – 17:00<br>FRIDAY: 08:30 – 17:00<br>SATURDAY: CLOSED<br>SUNDAY: CLOSED</p>
+                
+                <div class="map-container">
+                    <iframe src="https://maps.google.com/maps?q=NR7%200PT&t=&z=14&ie=UTF8&iwloc=&output=embed" loading="lazy" allowfullscreen title="GoWise Print Location Map"></iframe>
                 </div>
-            </div>
-            <div class="map-container">
-                <iframe src="https://maps.google.com/maps?q=NR7%200PT&t=&z=14&ie=UTF8&iwloc=&output=embed" loading="lazy" allowfullscreen title="GoWise Print Location Map"></iframe>
+                
             </div>
         </div>
     </footer>
 
     <script>
-        // --- Dynamic Parallax Scaling ---
-        // Measures the side panel image and guarantees the white central column perfectly aligns to its edge
-        const setPanelRatio = () => {
-            const img = new Image();
-            img.src = 'images/side-panel.jpg';
-            img.onload = () => {
-                const ratio = img.width / img.height;
-                document.documentElement.style.setProperty('--panel-aspect-ratio', ratio);
-            };
-        };
-        setPanelRatio();
+        // --- Hamburger Menu Toggle ---
+        const hamburgerBtn = document.getElementById('hamburgerBtn');
+        const mobileNav = document.querySelector('nav');
+        
+        hamburgerBtn.addEventListener('click', () => {
+            hamburgerBtn.classList.toggle('active');
+            mobileNav.classList.toggle('active');
+        });
 
         // Scroll Animations
         const createObserver = (selector, visibleClass, threshold = 0.15) => {
@@ -785,30 +711,6 @@
 
         createObserver('.scroll-reveal', 'visible', 0.15);
 
-        // Footer Arrow Animation
-        const arrow = document.getElementById('slideArrow');
-        const arrowObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    arrow.classList.add('slide-in');
-                } else {
-                    arrow.classList.remove('slide-in');
-                }
-            });
-        }, { threshold: 0.1 }); 
-        if(arrow) arrowObserver.observe(arrow);
-
-        // --- Hamburger Menu Toggle ---
-        const hamburgerBtn = document.getElementById('hamburgerBtn');
-        const navMenu = document.getElementById('navMenu');
-        
-        if (hamburgerBtn) {
-            hamburgerBtn.addEventListener('click', () => {
-                hamburgerBtn.classList.toggle('active');
-                navMenu.classList.toggle('active');
-            });
-        }
-
         // --- Modal & Form Logic ---
         const navQuoteBtn = document.getElementById('navQuoteBtn');
         const navQuoteBtnMobile = document.getElementById('navQuoteBtnMobile');
@@ -826,7 +728,6 @@
             setTimeout(() => quoteModal.classList.add('active'), 10);
         };
 
-        // Attach modal trigger to both desktop and mobile buttons
         if (navQuoteBtn) navQuoteBtn.addEventListener('click', showQuoteModal);
         if (navQuoteBtnMobile) navQuoteBtnMobile.addEventListener('click', showQuoteModal);
 
