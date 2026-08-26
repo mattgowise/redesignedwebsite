@@ -317,25 +317,28 @@
         .box-4 { background-color: #221f20; }
         .box-5 { background-color: #e73ce9; }
 
-        /* 5. Environmental Policy */
-        .environment-banner { position: relative; padding: 100px 5%; text-align: center; color: #fff; overflow: hidden; opacity: 0; transition: opacity 1s ease-out; }
-        .environment-banner.visible { opacity: 1; }
+        /* 5. Unified Environmental Policy Background & Content */
+        .environmental-section {
+            position: relative;
+            width: 100%;
+            padding: 100px 0;
+            overflow: hidden;
+        }
         
-        .env-bg-img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; }
+        .env-bg-img { 
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; 
+        }
         
-        .environment-banner .overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.6); z-index: 2; }
-        .environment-banner h2 { position: relative; z-index: 3; font-size: 42px; font-weight: 300; color: #fff; text-transform: uppercase; letter-spacing: 1px; transform: scale(0.9); opacity: 0; transition: all 0.8s ease-out 0.2s; }
-        .environment-banner.visible h2 { transform: scale(1); opacity: 1; }
-
-        /* Full Width Green Background */
-        .environment-full-bg { 
-            background-color: #a2b058; 
-            width: 100%; 
-            padding: 60px 0; 
+        .env-overlay { 
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%; 
+            background-color: rgba(0, 0, 0, 0.7); /* Dark overlay ensures white text is readable */
+            z-index: 2; 
         }
 
         /* Inner container restricted to 1400px to perfectly align with Our Services grid */
-        .environment-content { 
+        .env-content-wrapper { 
+            position: relative; 
+            z-index: 3; 
             max-width: 1400px; 
             margin: 0 auto; 
             padding: 0 5%; 
@@ -343,9 +346,25 @@
             transform: translateY(40px); 
             transition: opacity 0.8s ease-out, transform 0.8s ease-out; 
         }
-        .environment-content.visible { opacity: 1; transform: translateY(0); }
-        .environment-content p { font-size: 16px; margin-bottom: 25px; line-height: 1.8; color: #ffffff; }
-        .environment-content p:last-child { margin-bottom: 0; }
+        .env-content-wrapper.visible { opacity: 1; transform: translateY(0); }
+        
+        .env-content-wrapper h2 { 
+            font-size: 42px; 
+            font-weight: 300; 
+            color: #fff; 
+            text-transform: uppercase; 
+            letter-spacing: 1px; 
+            margin-bottom: 40px; 
+            text-align: center; 
+        }
+        
+        .env-content-wrapper p { 
+            font-size: 16px; 
+            margin-bottom: 25px; 
+            line-height: 1.8; 
+            color: #ffffff; 
+        }
+        .env-content-wrapper p:last-child { margin-bottom: 0; }
 
         /* 6. Footer & Location */
         /* Full Width Black Background */
@@ -376,7 +395,7 @@
         /* 7. Roundel */
         .quote-roundel {
             position: fixed;
-            top: 65%; /* Adjusted down */
+            top: 65%; /* Adjusted down to not obscure arrows */
             right: 20px;
             transform: translateY(-50%);
             width: 90px;
@@ -480,8 +499,7 @@
             .intro-text-section { order: 4; }
             .pink-divider { order: 5; }
             .services-section { order: 6; }
-            .environment-banner { order: 7; }
-            .environment-full-bg { order: 8; padding: 40px 0; }
+            .environmental-section { order: 7; }
 
             /* Stacked Carousel Styles (Mobile Only Overrides) */
             .carousel-slide { flex-direction: column; }
@@ -509,7 +527,8 @@
             .service-column { gap: 10px; }
             .service-square { aspect-ratio: auto; min-height: 80px; padding: 15px; }
             
-            .environment-banner h2 { font-size: min(6vw, 24px); white-space: nowrap; }
+            .environmental-section { padding: 60px 0; }
+            .env-content-wrapper h2 { font-size: min(6vw, 32px); white-space: nowrap; margin-bottom: 30px; }
             
             footer { padding: 40px 0; }
             
@@ -527,6 +546,9 @@
             .top-bar a { text-decoration: none !important; }
             
             .intro-text-section p { font-size: 18px; }
+            
+            .environmental-section { padding: 50px 0; }
+            .env-content-wrapper h2 { font-size: 28px; }
             
             .footer-grid { flex-wrap: wrap; justify-content: center; text-align: center; }
             .footer-text-columns { flex-direction: column; gap: 30px; align-items: center; }
@@ -725,16 +747,13 @@
             </div>
         </section>
 
-        <!-- 5. Environmental Policy Banner -->
-        <section class="environment-banner scroll-reveal">
+        <!-- 5. Unified Environmental Policy Background & Content -->
+        <section class="environmental-section">
             <img src="Environmental-Header-Image.jpg" alt="Environmentally friendly and sustainable printing practices" class="env-bg-img" loading="lazy">
-            <div class="overlay"></div>
-            <h2>Our Environmental Policy</h2>
-        </section>
-
-        <!-- Full Width Green Background Section -->
-        <section class="environment-full-bg">
-            <div class="environment-content scroll-reveal">
+            <div class="env-overlay"></div>
+            
+            <div class="env-content-wrapper scroll-reveal">
+                <h2>Our Environmental Policy</h2>
                 <p>Our company has always operated out of a relatively small group of units and our physical size gives us a naturally low ‘carbon footprint’. We were the second printer in the country to take advantage of a scheme from one of our paper suppliers. The scheme is in conjunction with the Woodland Trust. Through it, we are assessed for and fully offset the CO2 produced by our entire operation. This also includes the production and delivery of our paper.</p>
                 
                 <p>We take our impact on the environment very seriously; during production, before (paper manufacture) and after (our waste). As well as our own policies, we also continually monitor the environmental considerations of our suppliers and sub-contractors.</p>
