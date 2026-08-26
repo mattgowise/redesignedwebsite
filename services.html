@@ -72,7 +72,7 @@
         }
 
         /* Utility */
-        .mobile-break { display: none; } /* Keeps headers on one line for desktop */
+        .mobile-break { display: none; } 
         
         /* Enable smooth scrolling for anchor links */
         html { scroll-behavior: smooth; }
@@ -186,7 +186,7 @@
             to { transform: scale(1.1); } 
         }
 
-        /* Universal Content Wrapper (Matched to index.html 1400px standard) */
+        /* Universal Content Wrapper */
         .content-wrapper {
             max-width: 1400px;
             margin: 0 auto;
@@ -211,19 +211,51 @@
             transition: width 1s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.8s ease-out; 
         }
         .magenta-divider.visible { width: 120px; opacity: 1; }
+
+        /* Service Article Block */
+        .service-article {
+            margin-bottom: 80px;
+            scroll-margin-top: 160px;
+        }
+        .service-article:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Full-Width Service Header */
+        .service-banner {
+            background-color: var(--gowise-magenta);
+            color: #fff;
+            padding: 15px 5%;
+            text-align: center;
+            font-size: 24px;
+            font-weight: 300;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 40px; /* Distance from banner to image/text grid */
+            border-radius: 4px;
+            transform: scaleX(0);
+            transform-origin: center;
+            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+            line-height: 1.2;
+            width: 100%;
+        }
+        .service-banner span {
+            display: inline-block;
+            opacity: 0;
+            transition: opacity 0.5s ease-out 0.4s;
+        }
+        .service-article.visible .service-banner { transform: scaleX(1); }
+        .service-article.visible .service-banner span { opacity: 1; }
         
-        /* Standardized to 4fr / 5fr to keep images proportioned elegantly within the 1400px space */
+        /* Standardized to 4fr / 5fr Grid */
         .service-row {
             display: grid;
             grid-template-columns: 4fr 5fr;
             gap: 60px;
-            align-items: center;
-            margin-bottom: 60px;
-            scroll-margin-top: 160px; 
+            align-items: start; /* Aligns top of image with top of text */
         }
-        .service-row:nth-child(even) { grid-template-columns: 5fr 4fr; }
-        .service-row:nth-child(even) .service-text { order: -1; } 
-        .service-row:last-child { margin-bottom: 0; }
+        .service-article:nth-child(even) .service-row { grid-template-columns: 5fr 4fr; }
+        .service-article:nth-child(even) .service-text { order: -1; } 
         
         .service-img-container { 
             width: 100%; 
@@ -236,35 +268,10 @@
             opacity: 0;
             transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.6s ease-out;
         }
-        .service-row.visible .service-img-container { transform: scale(1); opacity: 1; }
-        .service-img-container img { transition: transform 0.6s ease; }
-        .service-row:hover .service-img-container img { transform: scale(1.02); }
+        .service-article.visible .service-img-container { transform: scale(1); opacity: 1; }
+        .service-img-container img { transition: transform 0.6s ease; width: 100%; height: 100%; object-fit: cover; }
+        .service-article:hover .service-img-container img { transform: scale(1.02); }
         
-        /* Inner Banner Styling for Headings */
-        .service-banner {
-            background-color: var(--gowise-magenta);
-            color: #fff;
-            padding: 15px 5%;
-            text-align: center;
-            font-size: 24px;
-            font-weight: 300;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 20px;
-            border-radius: 4px;
-            transform: scaleX(0);
-            transform-origin: center;
-            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
-            line-height: 1.2;
-        }
-        .service-banner span {
-            display: inline-block;
-            opacity: 0;
-            transition: opacity 0.5s ease-out 0.4s;
-        }
-        .service-row.visible .service-banner { transform: scaleX(1); }
-        .service-row.visible .service-banner span { opacity: 1; }
-
         .service-text > p { font-size: 16px; margin-bottom: 25px; font-weight: 300; color: #555; line-height: 1.8; }
         
         .service-features { list-style: none; padding: 0; }
@@ -275,7 +282,7 @@
             opacity: 0;
             transition: opacity 0.6s ease-out 0.7s;
         }
-        .service-row.visible .service-text > p, .service-row.visible .service-text > .service-features, .service-row.visible .service-text > .btn { opacity: 1; }
+        .service-article.visible .service-text > p, .service-article.visible .service-text > .service-features, .service-article.visible .service-text > .btn { opacity: 1; }
 
         /* 4. Comparison Cards (Digital/Litho) */
         .resource-section { 
@@ -328,7 +335,7 @@
             overflow: hidden; 
             padding: 60px 0; 
             width: 100%;
-            border-top: 1px solid #444; /* Added a subtle line to separate from the dark section above */
+            border-top: 4px solid var(--gowise-magenta); /* Full width magenta separator */
         }
         footer p { color: #ffffff; } 
         
@@ -385,12 +392,13 @@
             /* Hide the desktop quote button since it moved to the header wrapper */
             .main-nav a.desktop-quote { display: none !important; }
             
-            .dropdown { position: static; display: none; background-color: #222; box-shadow: none; min-width: 100%; border-left: 2px solid var(--gowise-cyan); margin-left: 10px; }
+            .dropdown { position: static; display: none; background-color: transparent; box-shadow: none; min-width: 100%; border-left: 2px solid var(--gowise-cyan); margin-left: 10px; }
             .main-nav li:hover .dropdown, .main-nav li:active .dropdown { display: block; animation: none; }
             .dropdown a { padding: 10px 15px; border-bottom: none; }
             
+            /* Responsive Grid Collapse */
             .service-row { grid-template-columns: 1fr !important; gap: 40px; }
-            .service-row:nth-child(even) .service-text { order: 0; } 
+            .service-article:nth-child(even) .service-text { order: 0; } 
             
             .comparison-grid { grid-template-columns: 1fr; }
             .footer-grid { flex-wrap: wrap; justify-content: center; text-align: center; }
@@ -406,7 +414,7 @@
             .top-bar { flex-direction: row; justify-content: center; gap: 15px; font-size: 12px; white-space: nowrap; }
             .top-bar a { text-decoration: none !important; }
 
-            /* Stacked Hero Overrides - FIXED to keep text over image securely */
+            /* Stacked Hero Overrides */
             .inner-hero { min-height: 40vh; flex-direction: column; justify-content: center; overflow: hidden; padding: 40px 0; }
             .hero-bg { position: absolute; height: 100%; width: 100%; flex-shrink: 0; top: 0; left: 0; }
             .inner-hero-content { 
@@ -420,12 +428,10 @@
                 backdrop-filter: blur(5px); 
             }
             
-            /* Text scaling and color application for dark overlay */
             .inner-hero-content h1 { font-size: 28px; color: #ffffff; }
             .inner-hero-content p { color: #dddddd; font-size: 15px; }
 
-            .service-row { margin-bottom: 60px; }
-            
+            .service-article { margin-bottom: 60px; }
             .service-banner { font-size: 20px; padding: 12px 5%; }
 
             .footer-header h2 { font-size: 26px; }
@@ -514,85 +520,90 @@
             </div>
         </section>
 
-        <!-- 3. Services Core Breakdown (Alternating Layout) -->
+        <!-- 3. Services Core Breakdown -->
         <section class="services-detail-section">
             <div class="content-wrapper">
                 
                 <hr class="magenta-divider scroll-reveal">
                 
                 <!-- Category 1: Printing -->
-                <article id="printing" class="service-row scroll-reveal">
-                    <div class="service-img-container">
-                        <img src="Services-2.jpg" alt="Spot colour lithographic printing press at GoWise Print Norwich" class="cover-img">
-                    </div>
-                    <div class="service-text">
-                        <h2 class="service-banner"><span>1. Commercial & Independent Printing</span></h2>
-                        <p>We don't believe in a one-size-fits-all approach to ink and paper. We match your specific run size, budget, and colour requirements with the ideal printing press, ensuring flawless detail and maximum cost-efficiency.</p>
-                        
-                        <ul class="service-features">
-                            <li>
-                                <strong>Spot Colour Lithographic Printing</strong>
-                                When brand consistency is paramount, our traditional litho presses deliver. We are specialists in exact Pantone® ink matching, making this the perfect choice for corporate stationery, packaging, and high-volume runs where extreme precision and vibrant solid colours are non-negotiable.
-                            </li>
-                            <li>
-                                <strong>5-Colour Digital Printing</strong>
-                                Our cutting-edge Fujifilm 5UPER COLOUR© press goes far beyond standard CMYK. By utilizing an expanded colour gamut, we achieve incredibly rich RGB tones and simulate Pantone colours with stunning accuracy. Digital is fast, cost-effective for shorter runs, and perfect for variable data printing.
-                            </li>
-                            <li>
-                                <strong>Custom Formats & Stocks</strong>
-                                We optimize your artwork for both standard and custom raw sheet sizes (including 320x450mm and 450x640mm) to reduce waste and keep your costs down, whether you're printing heavy-stock art prints or high-volume flyers.
-                            </li>
-                        </ul>
+                <article id="printing" class="service-article scroll-reveal">
+                    <h2 class="service-banner"><span>1. Commercial & Independent Printing</span></h2>
+                    <div class="service-row">
+                        <div class="service-img-container">
+                            <img src="Services-2.jpg" alt="Spot colour lithographic printing press at GoWise Print Norwich" class="cover-img">
+                        </div>
+                        <div class="service-text">
+                            <p>We don't believe in a one-size-fits-all approach to ink and paper. We match your specific run size, budget, and colour requirements with the ideal printing press, ensuring flawless detail and maximum cost-efficiency.</p>
+                            
+                            <ul class="service-features">
+                                <li>
+                                    <strong>Spot Colour Lithographic Printing</strong>
+                                    When brand consistency is paramount, our traditional litho presses deliver. We are specialists in exact Pantone® ink matching, making this the perfect choice for corporate stationery, packaging, and high-volume runs where extreme precision and vibrant solid colours are non-negotiable.
+                                </li>
+                                <li>
+                                    <strong>5-Colour Digital Printing</strong>
+                                    Our cutting-edge Fujifilm 5UPER COLOUR© press goes far beyond standard CMYK. By utilizing an expanded colour gamut, we achieve incredibly rich RGB tones and simulate Pantone colours with stunning accuracy. Digital is fast, cost-effective for shorter runs, and perfect for variable data printing.
+                                </li>
+                                <li>
+                                    <strong>Custom Formats & Stocks</strong>
+                                    We optimize your artwork for both standard and custom raw sheet sizes (including 320x450mm and 450x640mm) to reduce waste and keep your costs down, whether you're printing heavy-stock art prints or high-volume flyers.
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </article>
 
                 <!-- Category 2: Binding -->
-                <article id="binding" class="service-row scroll-reveal">
-                    <div class="service-img-container">
-                        <img src="Services-3.jpg" alt="Professional book binding services including PUR perfect binding and wire binding in Norfolk" class="cover-img">
-                    </div>
-                    <div class="service-text">
-                        <h2 class="service-banner"><span>2. Book Binding & In-House Finishing</span></h2>
-                        <p>A beautifully printed page is only half the journey; the finish dictates how your publication is experienced. Because we handle all our binding in-house, we maintain complete quality control without the delays of outsourcing.</p>
-                        
-                        <ul class="service-features">
-                            <li>
-                                <strong>PUR Perfect Binding</strong>
-                                The gold standard for paperback books, thick catalogues, and graphic novels. Polyurethane Reactive (PUR) glue is significantly stronger and more flexible than standard adhesives, ensuring your book won't crack even when opened completely flat.
-                            </li>
-                            <li>
-                                <strong>Square Back Binding</strong>
-                                Get the premium, flat-spine look of a perfect-bound book with the cost-effectiveness of stapling. Ideal for independent creators, atmospheric folklore zines, and limited-edition lookbooks, this method presses the folded spine flat so your publication stacks and presents beautifully.
-                            </li>
-                            <li>
-                                <strong>Wire Binding</strong>
-                                When your manual, sketchbook, or presentation deck needs to lay entirely flat or fold back 360 degrees, our durable wire-o binding offers the most practical and professional finish.
-                            </li>
-                        </ul>
+                <article id="binding" class="service-article scroll-reveal">
+                    <h2 class="service-banner"><span>2. Book Binding & In-House Finishing</span></h2>
+                    <div class="service-row">
+                        <div class="service-img-container">
+                            <img src="Services-3.jpg" alt="Professional book binding services including PUR perfect binding and wire binding in Norfolk" class="cover-img">
+                        </div>
+                        <div class="service-text">
+                            <p>A beautifully printed page is only half the journey; the finish dictates how your publication is experienced. Because we handle all our binding in-house, we maintain complete quality control without the delays of outsourcing.</p>
+                            
+                            <ul class="service-features">
+                                <li>
+                                    <strong>PUR Perfect Binding</strong>
+                                    The gold standard for paperback books, thick catalogues, and graphic novels. Polyurethane Reactive (PUR) glue is significantly stronger and more flexible than standard adhesives, ensuring your book won't crack even when opened completely flat.
+                                </li>
+                                <li>
+                                    <strong>Square Back Binding</strong>
+                                    Get the premium, flat-spine look of a perfect-bound book with the cost-effectiveness of stapling. Ideal for independent creators, atmospheric folklore zines, and limited-edition lookbooks, this method presses the folded spine flat so your publication stacks and presents beautifully.
+                                </li>
+                                <li>
+                                    <strong>Wire Binding</strong>
+                                    When your manual, sketchbook, or presentation deck needs to lay entirely flat or fold back 360 degrees, our durable wire-o binding offers the most practical and professional finish.
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </article>
 
                 <!-- Category 3: Design -->
-                <article id="design" class="service-row scroll-reveal">
-                    <div class="service-img-container">
-                        <img src="Services-4.jpg" alt="Graphic design and print-ready artwork setup services at GoWise Print" class="cover-img">
-                    </div>
-                    <div class="service-text">
-                        <h2 class="service-banner"><span>3. Graphic Design & Artwork Setup</span></h2>
-                        <p>Even the best presses can't fix poorly prepared files. Our full in-house graphic design and pre-press team is here to bridge the gap between your screen and our printers.</p>
-                        
-                        <ul class="service-features">
-                            <li>
-                                <strong>Print-Ready File Setup</strong>
-                                Let us take the stress out of commercial print preparation. We can review your files to ensure perfect CMYK conversions, correct bleed margins, and proper resolution, so your final product looks exactly as you envisioned.
-                            </li>
-                            <li>
-                                <strong>Creative Design Services</strong>
-                                Bring us a rough concept, and our experienced designers will bring it to life. From striking corporate branding to layout design for multi-page publications, we merge deep technical printing knowledge with a wealth of creative experience to save you time and money.
-                            </li>
-                        </ul>
-
-                        <a href="resources.html" class="btn">Read Our Artwork Guide</a>
+                <article id="design" class="service-article scroll-reveal">
+                    <h2 class="service-banner"><span>3. Graphic Design & Artwork Setup</span></h2>
+                    <div class="service-row">
+                        <div class="service-img-container">
+                            <img src="Services-4.jpg" alt="Graphic design and print-ready artwork setup services at GoWise Print" class="cover-img">
+                        </div>
+                        <div class="service-text">
+                            <p>Even the best presses can't fix poorly prepared files. Our full in-house graphic design and pre-press team is here to bridge the gap between your screen and our printers.</p>
+                            
+                            <ul class="service-features">
+                                <li>
+                                    <strong>Print-Ready File Setup</strong>
+                                    Let us take the stress out of commercial print preparation. We can review your files to ensure perfect CMYK conversions, correct bleed margins, and proper resolution, so your final product looks exactly as you envisioned.
+                                </li>
+                                <li>
+                                    <strong>Creative Design Services</strong>
+                                    Bring us a rough concept, and our experienced designers will bring it to life. From striking corporate branding to layout design for multi-page publications, we merge deep technical printing knowledge with a wealth of creative experience to save you time and money.
+                                </li>
+                            </ul>
+                            <a href="resources.html" class="btn">Read Our Artwork Guide</a>
+                        </div>
                     </div>
                 </article>
 
@@ -664,6 +675,7 @@
         </div>
     </div>
 
+    <!-- Full Width Black Footer -->
     <footer>
         <div class="footer-content">
             <div class="footer-header">
@@ -738,7 +750,6 @@
             setTimeout(() => quoteModal.classList.add('active'), 10);
         };
 
-        // Attach modal trigger to both desktop and mobile buttons
         if (navQuoteBtn) navQuoteBtn.addEventListener('click', showQuoteModal);
         if (navQuoteBtnMobile) navQuoteBtnMobile.addEventListener('click', showQuoteModal);
 
