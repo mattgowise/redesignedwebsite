@@ -92,7 +92,7 @@
 
         /* Typography Styles */
         h1, h2, h3, h4 { font-weight: 300; color: var(--header-dark); text-transform: uppercase; letter-spacing: 1px; }
-        p { line-height: 1.8; color: #555; margin-bottom: 15px; font-weight: 300; font-size: 16px; }
+        p { line-height: 1.6; color: #555; margin-bottom: 15px; font-weight: 300; font-size: 18px; }
         
         .btn {
             display: inline-block;
@@ -121,7 +121,7 @@
         }
 
         /* Header & Nav */
-        .top-bar { background-color: var(--gowise-magenta); color: #fff; display: flex; justify-content: space-between; padding: 8px 5%; font-size: 13px; font-weight: 400; }
+        .top-bar { background-color: var(--gowise-magenta); color: #fff; display: flex; justify-content: space-between; padding: 8px 5%; font-size: 14px; font-weight: 400; }
         .top-bar a { text-decoration: none; color: inherit; }
 
         header { background-color: var(--header-dark); color: #fff; padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; }
@@ -129,7 +129,7 @@
         .logo img { max-height: 90px; width: auto; transition: transform 0.3s ease; }
         .logo:hover img { transform: scale(1.05); }
         
-        .main-nav { display: flex; align-items: center; gap: 20px; font-size: 13px; font-weight: 300; }
+        .main-nav { display: flex; align-items: center; gap: 20px; font-size: 14px; font-weight: 300; }
         .main-nav li { position: relative; padding: 10px 0; }
         .main-nav a { padding: 5px 10px; transition: color 0.3s; text-transform: uppercase; }
         .main-nav a:not(.btn-quote):hover, .main-nav a.active { color: var(--gowise-cyan); }
@@ -140,7 +140,7 @@
         .dropdown { display: none; position: absolute; top: 100%; left: 0; background-color: var(--gowise-cyan); min-width: 240px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); z-index: 99; }
         .main-nav li:hover .dropdown { display: block; animation: dropFade 0.3s ease forwards; }
         .dropdown li { padding: 0; }
-        .dropdown a { display: block; padding: 12px 15px; border-bottom: 1px solid rgba(255, 255, 255, 0.2); font-size: 12px; text-transform: none; color: #ffffff; }
+        .dropdown a { display: block; padding: 12px 15px; border-bottom: 1px solid rgba(255, 255, 255, 0.2); font-size: 14px; text-transform: none; color: #ffffff; }
         .dropdown a:hover { background-color: rgba(0, 0, 0, 0.15); color: #fff; padding-left: 20px; transition: padding 0.3s ease, background-color 0.3s ease; }
 
         @keyframes dropFade { 
@@ -172,7 +172,7 @@
         }
         
         .inner-hero-content h1 { font-size: 42px; color: #fff; margin-bottom: 20px; line-height: 1.2; opacity: 0; animation: slideUpFade 0.8s forwards; }
-        .inner-hero-content p { font-size: 18px; color: #ddd; font-weight: 300; opacity: 0; animation: slideUpFade 0.8s 0.2s forwards; }
+        .inner-hero-content p { font-size: 20px; color: #ddd; font-weight: 300; opacity: 0; animation: slideUpFade 0.8s 0.2s forwards; line-height: 1.6; }
         
         .hero-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; }
         .hero-bg img { animation: kenBurns 20s infinite alternate ease-in-out; }
@@ -195,7 +195,7 @@
 
         /* 2. Intro Section */
         .page-intro { padding: 60px 0 40px; text-align: center; }
-        .page-intro p { font-size: 18px; line-height: 1.8; color: #555; max-width: 1100px; margin: 0 auto; }
+        .page-intro p { font-size: 20px; line-height: 1.6; color: #555; max-width: 65ch; margin: 0 auto; }
 
         /* 3. Alternating Service Rows */
         .services-detail-section { padding: 0 0 60px 0; }
@@ -231,7 +231,7 @@
             font-weight: 300;
             text-transform: uppercase;
             letter-spacing: 1px;
-            margin-bottom: 40px; /* Distance from banner to image/text grid */
+            margin-bottom: 40px;
             border-radius: 4px;
             transform: scaleX(0);
             transform-origin: center;
@@ -252,7 +252,7 @@
             display: grid;
             grid-template-columns: 4fr 5fr;
             gap: 60px;
-            align-items: start; /* Aligns top of image with top of text */
+            align-items: start;
         }
         .service-article:nth-child(even) .service-row { grid-template-columns: 5fr 4fr; }
         .service-article:nth-child(even) .service-text { order: -1; } 
@@ -272,11 +272,11 @@
         .service-img-container img { transition: transform 0.6s ease; width: 100%; height: 100%; object-fit: cover; }
         .service-article:hover .service-img-container img { transform: scale(1.02); }
         
-        .service-text > p { font-size: 16px; margin-bottom: 25px; font-weight: 300; color: #555; line-height: 1.8; }
+        .service-text > p { font-size: 18px; margin-bottom: 25px; font-weight: 300; color: #555; line-height: 1.6; }
         
         .service-features { list-style: none; padding: 0; }
-        .service-features li { position: relative; margin-bottom: 20px; font-size: 16px; font-weight: 300; line-height: 1.8; color: #555; }
-        .service-features strong { display: block; font-size: 16px; font-weight: 600; color: var(--gowise-cyan); margin-bottom: 5px; text-transform: none; letter-spacing: normal; }
+        .service-features li { position: relative; margin-bottom: 20px; font-size: 18px; font-weight: 300; line-height: 1.6; color: #555; }
+        .service-features strong { display: block; font-size: 18px; font-weight: 600; color: var(--gowise-cyan); margin-bottom: 5px; text-transform: none; letter-spacing: normal; }
 
         .service-text > p, .service-text > .service-features, .service-text > .btn {
             opacity: 0;
@@ -295,7 +295,7 @@
         }
         .section-header { text-align: center; margin-bottom: 50px; }
         .resource-section .section-header h2 { font-size: 36px; color: var(--gowise-magenta); margin-bottom: 15px; }
-        .resource-section .section-header p { font-size: 18px; color: #ddd; max-width: 1200px; margin: 0 auto; }
+        .resource-section .section-header p { font-size: 18px; color: #ddd; max-width: 65ch; margin: 0 auto; line-height: 1.6; }
 
         .comparison-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
         
@@ -315,7 +315,7 @@
         
         .card-content { flex-grow: 1; }
         .comparison-card h3 { font-size: 24px; margin-bottom: 20px; color: var(--header-dark); }
-        .comparison-card p { font-size: 16px; font-weight: 300; line-height: 1.8; color: #555; margin-bottom: 15px; }
+        .comparison-card p { font-size: 18px; font-weight: 300; line-height: 1.6; color: #555; margin-bottom: 15px; }
         .comparison-card strong { font-weight: 600; color: var(--header-dark); text-transform: none; letter-spacing: normal; }
 
         .comparison-img {
@@ -335,7 +335,7 @@
             overflow: hidden; 
             padding: 60px 0; 
             width: 100%;
-            border-top: 4px solid var(--gowise-magenta); /* Full width magenta separator */
+            border-top: 4px solid var(--gowise-magenta); 
         }
         footer p { color: #ffffff; } 
         
@@ -343,7 +343,7 @@
         .footer-header { margin-bottom: 40px; text-align: center; }
         .footer-header h2 { color: #ffffff; font-size: 32px; }
         .footer-grid { display: flex; align-items: stretch; justify-content: space-between; gap: 40px; }
-        .footer-text-columns { flex: 1; display: flex; justify-content: flex-start; gap: 60px; font-size: 14px; line-height: 1.8; padding-top: 20px; }
+        .footer-text-columns { flex: 1; display: flex; justify-content: flex-start; gap: 60px; font-size: 16px; line-height: 1.6; padding-top: 20px; }
         .map-container { flex: 0 0 400px; height: 300px; background: #ddd; border-radius: 4px; overflow: hidden; }
         .map-container iframe { width: 100%; height: 100%; border: none; }
 
@@ -357,8 +357,8 @@
         .modal-content h3 { color: var(--gowise-magenta); margin-bottom: 20px; font-size: 28px; }
         
         .form-group { margin-bottom: 20px; }
-        .form-group label { display: block; font-weight: 600; margin-bottom: 8px; font-size: 14px; color: var(--header-dark); text-transform: none; letter-spacing: normal; }
-        .form-group input, .form-group textarea { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 4px; font-size: 14px; font-family: inherit; transition: border-color 0.3s; }
+        .form-group label { display: block; font-weight: 600; margin-bottom: 8px; font-size: 16px; color: var(--header-dark); text-transform: none; letter-spacing: normal; }
+        .form-group input, .form-group textarea { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 4px; font-size: 16px; font-family: inherit; transition: border-color 0.3s; }
         .form-group textarea { resize: vertical; min-height: 120px; }
         .form-group input:focus, .form-group textarea:focus { border-color: var(--gowise-magenta); outline: none; }
 
@@ -387,14 +387,14 @@
             
             .main-nav { flex-direction: column; align-items: flex-start; gap: 0; }
             .main-nav li { width: 100%; border-bottom: 1px solid rgba(255,255,255,0.1); }
-            .main-nav a { display: block; padding: 15px 0; }
+            .main-nav a { display: block; padding: 15px 0; font-size: 16px; }
             
             /* Hide the desktop quote button since it moved to the header wrapper */
             .main-nav a.desktop-quote { display: none !important; }
             
             .dropdown { position: static; display: none; background-color: transparent; box-shadow: none; min-width: 100%; border-left: 2px solid var(--gowise-cyan); margin-left: 10px; }
             .main-nav li:hover .dropdown, .main-nav li:active .dropdown { display: block; animation: none; }
-            .dropdown a { padding: 10px 15px; border-bottom: none; }
+            .dropdown a { padding: 10px 15px; border-bottom: none; font-size: 16px; }
             
             /* Responsive Grid Collapse */
             .service-row { grid-template-columns: 1fr !important; gap: 40px; }
@@ -411,7 +411,7 @@
             .mobile-break { display: block; }
             
             /* Top Bar on one line without underlines */
-            .top-bar { flex-direction: row; justify-content: center; gap: 15px; font-size: 12px; white-space: nowrap; }
+            .top-bar { flex-direction: row; justify-content: center; gap: 15px; font-size: 14px; white-space: nowrap; }
             .top-bar a { text-decoration: none !important; }
 
             /* Stacked Hero Overrides */
@@ -429,7 +429,7 @@
             }
             
             .inner-hero-content h1 { font-size: 28px; color: #ffffff; }
-            .inner-hero-content p { color: #dddddd; font-size: 15px; }
+            .inner-hero-content p { color: #dddddd; font-size: 16px; }
 
             .service-article { margin-bottom: 60px; }
             .service-banner { font-size: 20px; padding: 12px 5%; }
@@ -670,7 +670,7 @@
         <div class="modal-content" style="max-width: 420px; text-align: center;">
             <span class="close-modal" id="closeSuccessX">&times;</span>
             <h3 style="color: var(--gowise-cyan); margin-bottom: 15px;">Thank You!</h3>
-            <p style="font-size: 16px; color: #444; margin-bottom: 25px;">Your quote request has been successfully submitted. Our production team will review your project details and get back to you shortly.</p>
+            <p style="font-size: 18px; color: #444; margin-bottom: 25px;">Your quote request has been successfully submitted. Our production team will review your project details and get back to you shortly.</p>
             <button type="button" class="btn" id="closeSuccessBtn" style="width: 100%; background-color: var(--gowise-cyan);">Close Window</button>
         </div>
     </div>
@@ -707,7 +707,6 @@
     </footer>
 
     <script>
-        // --- Hamburger Menu Toggle ---
         const hamburgerBtn = document.getElementById('hamburgerBtn');
         const mobileNav = document.querySelector('nav');
         
@@ -716,7 +715,6 @@
             mobileNav.classList.toggle('active');
         });
 
-        // Scroll Animations
         const createObserver = (selector, visibleClass, threshold = 0.15) => {
             const elements = document.querySelectorAll(selector);
             const observer = new IntersectionObserver((entries) => {
@@ -733,7 +731,6 @@
 
         createObserver('.scroll-reveal', 'visible', 0.15);
 
-        // --- Modal & Form Logic ---
         const navQuoteBtn = document.getElementById('navQuoteBtn');
         const navQuoteBtnMobile = document.getElementById('navQuoteBtnMobile');
         const quoteModal = document.getElementById('quoteModal');
