@@ -91,7 +91,7 @@
 
         /* Typography Styles */
         h1, h2, h3, h4 { font-weight: 300; color: var(--header-dark); text-transform: uppercase; letter-spacing: 1px; }
-        p { line-height: 1.8; color: #555; }
+        p { line-height: 1.6; color: #555; font-size: 18px; }
         
         /* Utility */
         .mobile-break { display: none; } /* Hidden on desktop, shown on mobile via media query */
@@ -129,7 +129,7 @@
         }
 
         /* Top Bar */
-        .top-bar { background-color: var(--gowise-magenta); color: #fff; display: flex; justify-content: space-between; padding: 8px 5%; font-size: 13px; font-weight: 400; }
+        .top-bar { background-color: var(--gowise-magenta); color: #fff; display: flex; justify-content: space-between; padding: 8px 5%; font-size: 14px; font-weight: 400; }
         .top-bar a, .top-bar span { color: #fff !important; text-decoration: none !important; }
 
         /* Main Header & Nav */
@@ -139,7 +139,7 @@
         .logo:hover img { transform: scale(1.05); }
         
         /* Unified Navigation Menu */
-        .main-nav { display: flex; align-items: center; gap: 20px; font-size: 13px; font-weight: 300; }
+        .main-nav { display: flex; align-items: center; gap: 20px; font-size: 14px; font-weight: 300; }
         .main-nav li { position: relative; padding: 10px 0; }
         .main-nav a { padding: 5px 10px; transition: color 0.3s; text-transform: uppercase; }
         .main-nav a:not(.btn-quote):hover, .main-nav a.active { color: var(--gowise-cyan); }
@@ -150,19 +150,10 @@
         .dropdown { display: none; position: absolute; top: 100%; left: 0; background-color: var(--gowise-cyan); min-width: 240px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); z-index: 99; }
         .main-nav li:hover .dropdown { display: block; animation: dropFade 0.3s ease forwards; }
         .dropdown li { padding: 0; }
-        .dropdown a { display: block; padding: 12px 15px; border-bottom: 1px solid rgba(255, 255, 255, 0.2); font-size: 12px; text-transform: none; color: #ffffff; }
+        .dropdown a { display: block; padding: 12px 15px; border-bottom: 1px solid rgba(255, 255, 255, 0.2); font-size: 14px; text-transform: none; color: #ffffff; }
         .dropdown a:hover { background-color: rgba(0, 0, 0, 0.15); color: #fff; padding-left: 20px; transition: padding 0.3s ease, background-color 0.3s ease; }
 
         @keyframes dropFade { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
-
-        /* Utility specific for mobile breaks */
-        @media (max-width: 1050px) {
-            .mobile-break { display: block; }
-            .carousel-arrow { display: none; }
-            header { flex-direction: row; flex-wrap: wrap; justify-content: space-between; align-items: center; padding: 15px 5%; }
-            .logo img { max-height: 60px; }
-            .header-right { display: flex; align-items: center; gap: 15px; }
-            .header-right .btn-quote { padding: 8px 12px !important; font-size: 12px; margin-top: 0; }}
 
         /* 1. Hero Carousel */
         .carousel-container { position: relative; width: 100%; min-height: 70vh; background-color: #111; overflow: hidden; display: flex; align-items: center; justify-content: center; }
@@ -187,8 +178,8 @@
         }
         .carousel-slide.active .carousel-content { transform: translateX(0); }
         .carousel-content h1 { font-size: 48px; font-weight: 300; color: #fff; margin-bottom: 20px; line-height: 1.2; }
-        .carousel-content h2 { font-size: 48px; font-weight: 300; color: #fff; margin-bottom: 20px; line-height: 1.2; } /* Added H2 styling for subsequent slides */
-        .carousel-content p { font-size: 20px; color: #eee; font-weight: 300; }
+        .carousel-content h2 { font-size: 48px; font-weight: 300; color: #fff; margin-bottom: 20px; line-height: 1.2; }
+        .carousel-content p { font-size: 20px; color: #eee; font-weight: 300; line-height: 1.6; }
         
         .carousel-arrow {
             position: absolute;
@@ -213,8 +204,8 @@
         .trust-item { display: flex; align-items: center; gap: 20px; opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
         .trust-item.visible { opacity: 1; transform: translateY(0); }
         .trust-icon { width: 60px; height: 60px; flex-shrink: 0; }
-        .trust-text h4 { font-size: 16px; font-weight: 600; color: var(--gowise-cyan); margin-bottom: 5px; text-transform: none; letter-spacing: normal; }
-        .trust-text p { font-size: 13px; color: #ccc; line-height: 1.4; }
+        .trust-text h4 { font-size: 18px; font-weight: 600; color: var(--gowise-cyan); margin-bottom: 5px; text-transform: none; letter-spacing: normal; }
+        .trust-text p { font-size: 16px; color: #ccc; line-height: 1.6; }
 
         /* 3. New Introduction Banners */
         .pink-banner { 
@@ -240,7 +231,7 @@
 
         .intro-text-section { padding: 80px 5% 40px 5%; text-align: center; background-color: #fcfcfc; }
         .intro-text-section p { 
-            font-size: 18px; line-height: 1.8; color: #555; max-width: 1100px; margin: 0 auto;  
+            font-size: 20px; line-height: 1.6; color: #555; max-width: 65ch; margin: 0 auto;  
             opacity: 0; 
             transform: translateY(30px); 
             transition: opacity 0.8s ease-out, transform 0.8s ease-out; 
@@ -298,12 +289,12 @@
             color: inherit;
         }
         .service-square:hover { transform: translateY(-10px); z-index: 2; }
-        .service-square h3 { color: #fff; font-size: 20px; margin: 0; line-height: 1.4; font-weight: 300; }
+        .service-square h3 { color: #fff; font-size: 22px; margin: 0; line-height: 1.4; font-weight: 300; }
         
         .service-desc { 
             text-align: left; 
             font-weight: 300; 
-            font-size: 15px; 
+            font-size: 18px; 
             line-height: 1.6; 
             color: #444; 
             margin: 0; 
@@ -331,11 +322,10 @@
         
         .env-overlay { 
             position: absolute; top: 0; left: 0; width: 100%; height: 100%; 
-            background-color: rgba(0, 0, 0, 0.7); /* Dark overlay ensures white text is readable */
+            background-color: rgba(0, 0, 0, 0.7); 
             z-index: 2; 
         }
 
-        /* Inner container restricted to 1400px to perfectly align with Our Services grid */
         .env-content-wrapper { 
             position: relative; 
             z-index: 3; 
@@ -359,15 +349,15 @@
         }
         
         .env-content-wrapper p { 
-            font-size: 16px; 
-            margin-bottom: 25px; 
-            line-height: 1.8; 
+            font-size: 18px; 
+            margin: 0 auto 25px auto; 
+            max-width: 65ch;
+            line-height: 1.6; 
             color: #ffffff; 
         }
         .env-content-wrapper p:last-child { margin-bottom: 0; }
 
         /* 6. Footer & Location */
-        /* Full Width Black Background */
         footer { 
             background: var(--header-dark); 
             color: #fff; 
@@ -378,7 +368,6 @@
         }
         footer p { color: #ffffff; } 
         
-        /* Inner container restricted to 1400px to perfectly align with Our Services grid */
         .footer-content {
             max-width: 1400px; 
             margin: 0 auto; 
@@ -388,14 +377,14 @@
         .footer-header { margin-bottom: 40px; text-align: center; }
         .footer-header h2 { color: #ffffff; font-size: 32px; }
         .footer-grid { display: flex; align-items: stretch; justify-content: space-between; gap: 40px; }
-        .footer-text-columns { flex: 1; display: flex; justify-content: flex-start; gap: 60px; font-size: 14px; line-height: 1.8; padding-top: 20px; }
+        .footer-text-columns { flex: 1; display: flex; justify-content: flex-start; gap: 60px; font-size: 16px; line-height: 1.6; padding-top: 20px; }
         .map-container { flex: 0 0 400px; height: 300px; background: #ddd; border-radius: 4px; overflow: hidden; }
         .map-container iframe { width: 100%; height: 100%; border: none; }
 
         /* 7. Roundel */
         .quote-roundel {
             position: fixed;
-            top: 65%; /* Adjusted down to not obscure arrows */
+            top: 65%;
             right: 20px;
             transform: translateY(-50%);
             width: 90px;
@@ -407,7 +396,7 @@
             align-items: center;
             justify-content: center;
             text-align: center;
-            font-size: 14px;
+            font-size: 16px;
             font-weight: 600;
             cursor: pointer;
             box-shadow: 0 4px 15px rgba(0,0,0,0.3);
@@ -421,9 +410,7 @@
             background-color: var(--gowise-magenta);
         }
 
-        /* =======================================================
-           BULLETPROOF MODAL CSS 
-           ======================================================= */
+        /* Modal CSS */
         .modal-overlay { 
             position: fixed !important; 
             top: 0 !important; 
@@ -447,22 +434,20 @@
         .close-modal:hover { color: var(--gowise-pink); }
         .modal-content h3 { color: var(--gowise-magenta); margin-bottom: 20px; font-size: 28px; }
         .form-group { margin-bottom: 20px; }
-        .form-group label { display: block; font-weight: 600; margin-bottom: 8px; font-size: 14px; color: var(--header-dark); text-transform: none; letter-spacing: normal; }
-        .form-group input, .form-group textarea { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 4px; font-size: 14px; font-family: inherit; transition: border-color 0.3s; }
+        .form-group label { display: block; font-weight: 600; margin-bottom: 8px; font-size: 16px; color: var(--header-dark); text-transform: none; letter-spacing: normal; }
+        .form-group input, .form-group textarea { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 4px; font-size: 16px; font-family: inherit; transition: border-color 0.3s; }
         .form-group textarea { resize: vertical; min-height: 120px; }
         .form-group input:focus, .form-group textarea:focus { border-color: var(--gowise-magenta); outline: none; }
 
         /* --- RESPONSIVE BREAKPOINTS --- */
-
         @media (max-width: 1200px) {
             .squares-grid { grid-template-columns: repeat(3, 1fr); }
             .carousel-content { margin-left: 5%; max-width: 500px; }
         }
         
-        /* 1050px Breakpoint: Hamburger & Core Mobile Layout */
         @media (max-width: 1050px) {
             .mobile-break { display: block; }
-            .carousel-arrow { display: none; } /* Hide Carousel Arrows on Mobile */
+            .carousel-arrow { display: none; }
             
             header { flex-direction: row; flex-wrap: wrap; justify-content: space-between; align-items: center; padding: 15px 5%; }
             .logo img { max-height: 60px; }
@@ -470,7 +455,6 @@
             .header-right { display: flex; align-items: center; gap: 15px; }
             .header-right .btn-quote { padding: 8px 12px !important; font-size: 12px; margin-top: 0; }
             
-            /* Hamburger animated toggle setup */
             .hamburger { display: flex; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 5px; z-index: 1001; }
             .hamburger span { display: block; width: 25px; height: 3px; background-color: #fff; transition: 0.3s; }
             .hamburger.active span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
@@ -482,16 +466,14 @@
             
             .main-nav { flex-direction: column; align-items: flex-start; gap: 0; }
             .main-nav li { width: 100%; padding: 0; border-top: 1px solid rgba(255,255,255,0.1); border-bottom: none; }
-            .main-nav a { display: block; padding: 15px 0; }
+            .main-nav a { display: block; padding: 15px 0; font-size: 16px; }
             
-            /* Hide the desktop quote button since it moved to the header wrapper */
             .main-nav a.desktop-quote { display: none !important; }
             
             .dropdown { position: static; display: none; background-color: transparent; box-shadow: none; min-width: 100%; border-left: 2px solid var(--gowise-cyan); margin-left: 10px; }
             .main-nav li:hover .dropdown, .main-nav li:active .dropdown { display: block; animation: none; }
-            .dropdown a { padding: 10px 15px; border-bottom: none; }
+            .dropdown a { padding: 10px 15px; border-bottom: none; font-size: 16px; }
 
-            /* Reordering the Main Body for Mobile */
             main { display: flex; flex-direction: column; }
             .pink-banner { order: 1; margin-top: 0; font-size: 24px; padding: 30px 5%; }
             .carousel-container { order: 2; height: 500px; min-height: unset; display: block; }
@@ -501,13 +483,12 @@
             .services-section { order: 6; }
             .environmental-section { order: 7; }
 
-            /* Stacked Carousel Styles (Mobile Only Overrides) */
             .carousel-slide { flex-direction: column; }
             .carousel-bg-img { position: relative; height: 50%; object-fit: cover; filter: brightness(1); }
             .carousel-content {
                 position: relative;
                 transform: none !important;
-                background-color: #ffffff; /* White background only on mobile */
+                background-color: #ffffff;
                 margin: 0;
                 padding: 20px 5%;
                 max-width: 100%;
@@ -532,17 +513,14 @@
             
             footer { padding: 40px 0; }
             
-            /* Remove the floating quote roundel */
             .quote-roundel { display: none !important; }
         }
 
-        /* 768px Breakpoint: Lower Mobile Polish */
         @media (max-width: 768px) {
             .trust-bar { grid-template-columns: 1fr; text-align: center; }
             .trust-item { flex-direction: column; }
             
-            /* Top Bar on one line without underlines */
-            .top-bar { flex-direction: row; justify-content: center; gap: 15px; font-size: 12px; white-space: nowrap; }
+            .top-bar { flex-direction: row; justify-content: center; gap: 15px; font-size: 14px; white-space: nowrap; }
             .top-bar a { text-decoration: none !important; }
             
             .intro-text-section p { font-size: 18px; }
@@ -563,13 +541,11 @@
         <a href="mailto:print@gowise.co.uk">print@gowise.co.uk</a>
     </div>
 
-    <!-- Unified Navigation Structure -->
     <header>
         <a href="index.html" class="logo">
             <img src="gowise-logo.png" alt="Gowise Print Logo">
         </a>
         
-        <!-- Mobile Right Hand Group (Quote + Hamburger) -->
         <div class="header-right">
             <a href="#" id="navQuoteBtnMobile" class="btn-quote">GET A QUOTE</a>
             <button class="hamburger" id="hamburgerBtn" aria-label="Menu">
@@ -620,13 +596,11 @@
     </header>
 
     <main>
-        <!-- 1. Auto-fading Carousel -->
         <section class="carousel-container" aria-label="Introduction">
             
             <button class="carousel-arrow prev-arrow" id="prevSlideBtn" aria-label="Previous Slide">&#10094;</button>
             <button class="carousel-arrow next-arrow" id="nextSlideBtn" aria-label="Next Slide">&#10095;</button>
 
-            <!-- Slide 1 -->
             <div class="carousel-slide active">
                 <img src="Home-1.jpg" alt="Commercial lithographic printing press at GoWise Print in Norwich" class="carousel-bg-img">
                 <div class="carousel-content">
@@ -634,7 +608,6 @@
                     <p>We have been proudly serving local businesses and independent creators with premium print and finishing services since 1983.</p>
                 </div>
             </div>
-            <!-- Slide 2 -->
             <div class="carousel-slide">
                 <img src="Home-7.jpg" alt="Independent Creators reviewing print proofs in Norfolk" class="carousel-bg-img" loading="lazy">
                 <div class="carousel-content">
@@ -642,7 +615,6 @@
                     <p>We pride ourselves on being large enough to cope with your most demanding projects, yet small enough to care about every fine detail.</p>
                 </div>
             </div>
-            <!-- Slide 3 -->
             <div class="carousel-slide">
                 <img src="Home-6.jpg" alt="High volume trade printing and bespoke runs in Norwich" class="carousel-bg-img" loading="lazy">
                 <div class="carousel-content">
@@ -652,7 +624,6 @@
             </div>
         </section>
 
-        <!-- 2. Trust Indicators -->
         <section class="trust-bar" aria-label="Why Choose Us">
             <div class="trust-item scroll-stagger" style="transition-delay: 0s;">
                 <div class="trust-icon">
@@ -683,7 +654,6 @@
             </div>
         </section>
 
-        <!-- 3. Introduction Banners -->
         <section class="pink-banner scroll-reveal">
             <span>Gowise Print. <br class="mobile-break">Expert Printers Norwich</span>
         </section>
@@ -694,17 +664,14 @@
             </p>
         </section>
 
-        <!-- Pink Divider -->
         <hr class="pink-divider scroll-reveal">
 
-        <!-- 4. Our Services Grid -->
         <section id="services" class="services-section" aria-label="Our Services">
             <div class="services-header scroll-reveal">
                 <h2>Our Services</h2>
             </div>
             <div class="squares-grid">
                 
-                <!-- Box 1 -->
                 <div class="service-column scroll-stagger" style="transition-delay: 0s;">
                     <a href="services.html#digital-vs-litho" class="service-square box-1">
                         <h3>Litho Printing &<br>Digital Printing</h3>
@@ -712,7 +679,6 @@
                     <p class="service-desc">What is lithographic and digital printing? Read about the difference.</p>
                 </div>
 
-                <!-- Box 2 -->
                 <div class="service-column scroll-stagger" style="transition-delay: 0.15s;">
                     <a href="services.html#commercial-printing" class="service-square box-2">
                         <h3>Pantone Spot Colour<br>Litho Printing</h3>
@@ -720,7 +686,6 @@
                     <p class="service-desc">Exact Pantone ink matching is a dying art and one we are very keen to preserve. We still offer traditional litho printed pantone matching and will for many years to come.</p>
                 </div>
 
-                <!-- Box 3 -->
                 <div class="service-column scroll-stagger" style="transition-delay: 0.3s;">
                     <a href="services.html#binding" class="service-square box-3">
                         <h3>Book<br>Binding</h3>
@@ -728,7 +693,6 @@
                     <p class="service-desc">We offer PUR binding (paperback books), wire binding and square back folded and stapled binding – all finished in house. Trade finishing service also available.</p>
                 </div>
 
-                <!-- Box 4 -->
                 <div class="service-column scroll-stagger" style="transition-delay: 0.45s;">
                     <a href="services.html#design" class="service-square box-4">
                         <h3>Artwork &<br>Design</h3>
@@ -736,7 +700,6 @@
                     <p class="service-desc">Let us enhance your design and save you money by merging our printing knowledge with a wealth of design and artwork experience.</p>
                 </div>
 
-                <!-- Box 5 -->
                 <div class="service-column scroll-stagger" style="transition-delay: 0.6s;">
                     <a href="plant-list.html#digital" class="service-square box-5">
                         <h3>Five Colour<br>Digital Printing</h3>
@@ -747,7 +710,6 @@
             </div>
         </section>
 
-        <!-- 5. Unified Environmental Policy Background & Content -->
         <section class="environmental-section">
             <img src="Environmental-Header-Image.jpg" alt="Environmentally friendly and sustainable printing practices" class="env-bg-img" loading="lazy">
             <div class="env-overlay"></div>
@@ -764,18 +726,15 @@
 
     </main>
 
-    <!-- Floating Quote Roundel -->
     <div class="quote-roundel" id="quoteRoundel">
         <span>Get a<br>Quote</span>
     </div>
 
-    <!-- Quote Request Modal Window -->
     <div class="modal-overlay" id="quoteModal" style="display: none;">
         <div class="modal-content">
             <span class="close-modal" id="closeModal">&times;</span>
             <h3>Request a Quote</h3>
             
-            <!-- Web3Forms API Submission Form -->
             <form id="asyncQuoteForm">
                 <input type="hidden" name="access_key" value="3c30689d-ea16-4629-92a1-5737b09d6f4c">
                 
@@ -796,22 +755,18 @@
         </div>
     </div>
 
-    <!-- Submission Success Pop-Up Window -->
     <div class="modal-overlay" id="successModal" style="display: none;">
         <div class="modal-content" style="max-width: 420px; text-align: center;">
             <span class="close-modal" id="closeSuccessX">&times;</span>
             <h3 style="color: #00aae9; margin-bottom: 15px;">Thank You!</h3>
-            <p style="font-size: 16px; color: #444; margin-bottom: 25px;">Your quote request has been successfully submitted. Our production team will review your project details and get back to you shortly.</p>
+            <p style="font-size: 18px; color: #444; margin-bottom: 25px;">Your quote request has been successfully submitted. Our production team will review your project details and get back to you shortly.</p>
             <button type="button" class="btn box-1" id="closeSuccessBtn" style="width: 100%; color: #fff;">Close Window</button>
         </div>
     </div>
 
-    <!-- 6. Footer -->
-    <!-- Full Width Black Background Section -->
     <footer>
         <div class="footer-content">
             <div class="footer-header">
-                <!-- 7. Footer Header text split on mobile -->
                 <h2>Visit Our Norwich<br class="mobile-break"> Print Shop</h2>
                 <p>GoWise Print proudly serves local businesses, independent creators, and trade partners across Norfolk and the UK.</p>
             </div>
@@ -841,7 +796,6 @@
     </footer>
 
     <script>
-        // --- Hamburger Menu Toggle ---
         const hamburgerBtn = document.getElementById('hamburgerBtn');
         const mobileNav = document.getElementById('navMenu');
         
@@ -852,7 +806,6 @@
             });
         }
 
-        // --- 1. Auto-fading Carousel Logic ---
         const slides = document.querySelectorAll('.carousel-slide');
         const prevBtn = document.getElementById('prevSlideBtn');
         const nextBtn = document.getElementById('nextSlideBtn');
@@ -893,7 +846,6 @@
 
         startInterval();
 
-        // --- 2. Scroll Animations ---
         const createObserver = (selector, visibleClass, threshold = 0.15) => {
             const elements = document.querySelectorAll(selector);
             const observer = new IntersectionObserver((entries) => {
@@ -912,10 +864,9 @@
         createObserver('.scroll-reveal', 'visible', 0.15);
         createObserver('.pink-divider', 'visible', 1.0);
 
-        // --- 3. Request Form & Success Modals Interactivity ---
         const roundel = document.getElementById('quoteRoundel');
-        const navQuoteBtn = document.getElementById('navQuoteBtn'); // Desktop Nav btn
-        const navQuoteBtnMobile = document.getElementById('navQuoteBtnMobile'); // Mobile Nav btn
+        const navQuoteBtn = document.getElementById('navQuoteBtn');
+        const navQuoteBtnMobile = document.getElementById('navQuoteBtnMobile');
         const quoteModal = document.getElementById('quoteModal');
         const closeModal = document.getElementById('closeModal');
         
@@ -926,26 +877,22 @@
         const closeSuccessX = document.getElementById('closeSuccessX');
         const closeSuccessBtn = document.getElementById('closeSuccessBtn');
 
-        // Reveal Form Modal Function
         const showQuoteModal = (e) => {
             if(e) e.preventDefault();
             quoteModal.style.display = 'flex';
             setTimeout(() => quoteModal.classList.add('active'), 10);
         };
 
-        // Attach to all buttons
         if(roundel) roundel.addEventListener('click', showQuoteModal);
         if(navQuoteBtn) navQuoteBtn.addEventListener('click', showQuoteModal);
         if(navQuoteBtnMobile) navQuoteBtnMobile.addEventListener('click', showQuoteModal);
 
-        // Hide Form Modal Function
         const hideQuoteModal = () => {
             quoteModal.classList.remove('active');
             setTimeout(() => quoteModal.style.display = 'none', 400); 
         };
         closeModal.addEventListener('click', hideQuoteModal);
 
-        // Hide Success Modal Function
         const hideSuccessModal = () => {
             successModal.classList.remove('active');
             setTimeout(() => successModal.style.display = 'none', 400);
@@ -953,17 +900,14 @@
         closeSuccessX.addEventListener('click', hideSuccessModal);
         closeSuccessBtn.addEventListener('click', hideSuccessModal);
 
-        // Background click processing to close elements
         window.addEventListener('click', (e) => {
             if (e.target === quoteModal) hideQuoteModal();
             if (e.target === successModal) hideSuccessModal();
         });
 
-        // Asynchronous Messaging API Route Submission Processing (Web3Forms)
         asyncForm.addEventListener('submit', function(e) {
-            e.preventDefault(); // Stop page routing/reloads
+            e.preventDefault(); 
             
-            // Set dynamic loading states
             submitBtn.textContent = "Sending Request...";
             submitBtn.disabled = true;
 
@@ -976,11 +920,9 @@
             .then(async (response) => {
                 let json = await response.json();
                 if (response.status == 200) {
-                    // Step A: Close the entry form seamlessly
                     hideQuoteModal();
-                    asyncForm.reset(); // Wipe inputs
+                    asyncForm.reset(); 
                     
-                    // Step B: Pop open the Confirmation Window overlay
                     successModal.style.display = 'flex';
                     setTimeout(() => successModal.classList.add('active'), 10);
                 } else {
@@ -991,7 +933,6 @@
                 alert("Network error. Please confirm server connectivity or reach out directly to print@gowise.co.uk.");
             })
             .finally(() => {
-                // Restore primary CTA interface elements
                 submitBtn.textContent = "Send Request";
                 submitBtn.disabled = false;
             });
