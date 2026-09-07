@@ -431,7 +431,25 @@
             .inner-hero-content h1 { font-size: 28px; color: #ffffff; }
             .inner-hero-content p { color: #dddddd; font-size: 16px; }
 
-            .service-article { margin-bottom: 60px; }
+            /* Mobile Carousel implementation for Service Rows */
+            .services-detail-section .content-wrapper {
+                display: flex;
+                overflow-x: auto;
+                scroll-snap-type: x mandatory;
+                gap: 20px;
+                padding-bottom: 20px;
+                -ms-overflow-style: none;
+                scrollbar-width: none;
+            }
+            .services-detail-section .content-wrapper::-webkit-scrollbar { display: none; }
+            
+            .service-article { 
+                flex: 0 0 88vw;
+                scroll-snap-align: center;
+                margin-bottom: 0; 
+            }
+            .service-row { gap: 20px; }
+            
             .service-banner { font-size: 20px; padding: 12px 5%; }
 
             .footer-header h2 { font-size: 26px; }
@@ -521,10 +539,10 @@
         </section>
 
         <!-- 3. Services Core Breakdown -->
+        <hr class="magenta-divider scroll-reveal">
+        
         <section class="services-detail-section">
             <div class="content-wrapper">
-                
-                <hr class="magenta-divider scroll-reveal">
                 
                 <!-- Category 1: Printing -->
                 <article id="printing" class="service-article scroll-reveal">
